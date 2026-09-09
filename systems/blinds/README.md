@@ -6,13 +6,14 @@
 
 ```mermaid
 flowchart LR
-    BLINDS[Motorised blinds] --> HUB[Automate Pulse Pro]
+    BLINDS[Motorised blinds] --> HUB[Automate / shade control]
     HUB --> HA[Home Assistant]
+    MATTER[Matter / Thread infrastructure] --> HA
     HA --> DASH[Blinds dashboard]
     HA --> AUTO[Morning / sunset automations]
 ```
 
-The live Home Assistant integration inventory contains `automate_pulse_pro`, while the installation also contains Matter/Thread infrastructure. The blind subsystem documentation keeps those roles separate: Pulse Pro provides the deployed blind integration path; the Thread/Matter stack is documented under `systems/thread-matter/`.
+The live Home Assistant installation contains both `automate_pulse_pro` and Matter/Thread infrastructure. The dashboard also mixes normal cover entities with Automate battery telemetry. For that reason, this public documentation does **not** claim that every blind entity is sourced through one protocol/integration path. Use the live Home Assistant device/entity page when diagnosing an individual blind.
 
 ## Deployed covers
 
@@ -82,15 +83,15 @@ It uses Home Assistant Sections/Tiles for normal cover controls and `custom:butt
 
 ### One blind is unavailable
 
-Do not reset the whole system first. Check the affected cover entity and hub/device status individually. A single unavailable blind is more likely to be a device/radio/hub mapping issue than a Home Assistant-wide failure.
+Do not reset the whole system first. Open the affected cover's Home Assistant device/entity page and identify whether that entity is coming from Automate Pulse Pro, Matter, or another installed path before changing the hub or Thread network.
 
 ### All blinds are unavailable
 
-Check the Automate Pulse Pro integration/hub path and network connectivity before changing automations or dashboard YAML.
+Check the common control path(s), Home Assistant integrations and network connectivity before changing automations or dashboard YAML. If Matter-backed covers and Automate-only telemetry fail differently, use that split to narrow the fault.
 
 ### Cover position is wrong
 
-Confirm the motor/hub calibration outside Home Assistant. A dashboard percentage is only as accurate as the blind's calibrated endpoints.
+Confirm the motor/hub/device calibration outside Home Assistant. A dashboard percentage is only as accurate as the blind's calibrated endpoints.
 
 ### Battery card is unavailable while cover control works
 
