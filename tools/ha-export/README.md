@@ -17,6 +17,7 @@ The exporter reads the live Home Assistant files from the Mac Samba mount and ge
 - custom-component manifest inventory without copying third-party source code
 - ESPHome YAML filename inventory without copying ESPHome credentials/configuration
 - an export report listing redactions and skipped items
+- an automatic post-export public-safety report
 
 Generated output is written under:
 
@@ -47,6 +48,25 @@ The tool does not copy the following into the repository:
 
 `core.config_entries` is read only to produce aggregate integration-domain counts. Its raw contents are never written to the repository.
 
+## Automatic public-safety pass
+
+`run-export.sh` now performs two stages:
+
+1. export/sanitize the selected Home Assistant material;
+2. post-process and validate the generated repository files.
+
+The safety pass automatically removes MAC/hardware addresses and email addresses from generated material, checks for Bearer tokens, secret-bearing URLs and credential-like assignments, and checks exported Home Assistant data for possible globally routable IPv4 addresses.
+
+The resulting report is written to:
+
+```text
+inventory/generated-live/PUBLIC-SAFETY-SCAN.md
+```
+
+If high-risk findings remain, the script exits with an error and prints `EXPORT NOT READY FOR PUBLIC COMMIT`.
+
+The safety pass only operates on generated files inside the repository. It does not modify the live Home Assistant Samba share.
+
 ## Running it on this installation
 
 The Home Assistant Samba `config` share is mounted on the Mac at:
@@ -61,11 +81,14 @@ From the repository root run:
 zsh tools/ha-export/run-export.sh
 ```
 
-Or explicitly:
+Or explicitly run the exporter and safety pass:
 
 ```bash
 python3 tools/ha-export/export_home_assistant.py \
   --source /Volumes/config \
+  --repo /Users/jeremyyounger/Documents/GitHub/Home-Assistant-Smart-Home-Infrastructure
+
+python3 tools/ha-export/public_safety.py \
   --repo /Users/jeremyyounger/Documents/GitHub/Home-Assistant-Smart-Home-Infrastructure
 ```
 
@@ -73,10 +96,11 @@ The exporter only reads the Home Assistant share. It never modifies files on the
 
 ## After running
 
-First inspect:
+Review both:
 
 ```text
 inventory/generated-live/EXPORT-REPORT.md
+inventory/generated-live/PUBLIC-SAFETY-SCAN.md
 ```
 
 Then run:
@@ -85,7 +109,7 @@ Then run:
 git status --short
 ```
 
-Do not blindly commit material if the report contains unexpected warnings or redactions. The repository is public, so the generated files still receive a review before merge.
+Do not blindly commit material if either report contains unexpected warnings or redactions. The repository is public, so generated files still receive a review before merge.
 
 ## Repeat exports
 
