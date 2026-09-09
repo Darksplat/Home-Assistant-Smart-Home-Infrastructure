@@ -24,32 +24,129 @@ CREDENTIAL_ASSIGNMENT_RE = re.compile(
 )
 IPV4_TOKEN_RE = re.compile(r"(?<![0-9.])(?:\d{1,3}\.){3}\d{1,3}(?![0-9.])")
 
+# Hardware-derived or vendor-generated hexadecimal identifiers can leak stable
+# device identity even when the original registry unique_id is omitted. Requiring
+# at least one A-F character avoids rewriting ordinary numeric automation IDs.
+OPAQUE_HEX_RE = re.compile(
+    r"(?<![0-9A-Fa-f])(?=[0-9A-Fa-f]{12,64}(?![0-9A-Fa-f]))"
+    r"(?=[0-9A-Fa-f]*[A-Fa-f])[0-9A-Fa-f]{12,64}"
+)
+MOBILE_NOTIFY_RE = re.compile(r"\bnotify\.mobile_app_[a-z0-9_]+\b", re.IGNORECASE)
+
+# These live files are useful operationally but contain household-member-specific
+# labels and assignments. The public repository documents/templates them elsewhere
+# rather than publishing the live household copy.
+PRIVATE_GENERATED_PATHS = (
+    "home-assistant/live-export/configuration/packages/household_chores.yaml",
+    "home-assistant/live-export/dashboards/dashboard-household.json",
+    "home-assistant/live-export/dashboards/dashboard-household.yaml",
+)
+
 
 def text_files(root: Path):
     if not root.exists():
         return
-    for path in root.rglob("*"):
+    for path in sorted(root.rglob("*")):
         if path.is_file() and path.suffix.lower() in {".md", ".yaml", ".yml", ".json", ".jinja"}:
             yield path
 
 
-def redact_generated_identifiers(repo: Path) -> tuple[int, int]:
+def remove_household_specific_files(repo: Path) -> int:
+    removed = 0
+    for rel in PRIVATE_GENERATED_PATHS:
+        path = repo / rel
+        if path.is_file():
+            path.unlink()
+            removed += 1
+
+    # Keep the generated dashboard index consistent with the public output.
+    index = repo / "home-assistant" / "live-export" / "dashboards" / "README.md"
+    if index.is_file():
+        lines = index.read_text(encoding="utf-8").splitlines()
+        filtered = [line for line in lines if "lovelace.dashboard_household" not in line]
+        if filtered != lines:
+            index.write_text("\n".join(filtered) + "\n", encoding="utf-8")
+
+    return removed
+
+
+def remove_mobile_app_inventory_rows(repo: Path) -> tuple[int, int]:
+    """Remove personal companion-app devices/entities from public inventory tables."""
+    removed_devices = 0
+    removed_entities = 0
+
+    devices = repo / "inventory" / "generated-live" / "devices.md"
+    if devices.is_file():
+        lines = devices.read_text(encoding="utf-8").splitlines()
+        kept: list[str] = []
+        for line in lines:
+            if line.startswith("| D") and "mobile_app" in line.lower():
+                removed_devices += 1
+                continue
+            kept.append(line)
+        devices.write_text("\n".join(kept) + "\n", encoding="utf-8")
+
+    entities = repo / "inventory" / "generated-live" / "entities.md"
+    if entities.is_file():
+        lines = entities.read_text(encoding="utf-8").splitlines()
+        kept = []
+        for line in lines:
+            # Platform is the second table column.
+            if line.startswith("| ") and re.search(r"\|\s*mobile_app\s*\|", line, re.IGNORECASE):
+                removed_entities += 1
+                continue
+            kept.append(line)
+        entities.write_text("\n".join(kept) + "\n", encoding="utf-8")
+
+    return removed_devices, removed_entities
+
+
+def redact_generated_identifiers(repo: Path) -> tuple[int, int, int, int]:
     roots = [repo / "home-assistant" / "live-export", repo / "inventory" / "generated-live"]
     mac_count = 0
     email_count = 0
+    opaque_count = 0
+    mobile_notify_count = 0
+
+    opaque_aliases: dict[str, str] = {}
+    mobile_aliases: dict[str, str] = {}
+
+    def opaque_replacement(match: re.Match[str]) -> str:
+        nonlocal opaque_count
+        token = match.group(0)
+        if token not in opaque_aliases:
+            opaque_aliases[token] = f"deviceid_{len(opaque_aliases) + 1:03d}"
+        opaque_count += 1
+        return opaque_aliases[token]
+
+    def mobile_replacement(match: re.Match[str]) -> str:
+        nonlocal mobile_notify_count
+        token = match.group(0)
+        if token not in mobile_aliases:
+            mobile_aliases[token] = (
+                f"notify.mobile_app_household_device_{len(mobile_aliases) + 1:02d}"
+            )
+        mobile_notify_count += 1
+        return mobile_aliases[token]
+
     for root in roots:
         for path in text_files(root) or []:
             try:
                 text = path.read_text(encoding="utf-8")
             except (OSError, UnicodeDecodeError):
                 continue
+
             new_text, macs = MAC_RE.subn("<HARDWARE_ADDRESS_OMITTED>", text)
             new_text, emails = EMAIL_RE.subn("<EMAIL_OMITTED>", new_text)
-            if macs or emails:
+            new_text = MOBILE_NOTIFY_RE.sub(mobile_replacement, new_text)
+            new_text = OPAQUE_HEX_RE.sub(opaque_replacement, new_text)
+
+            if new_text != text:
                 path.write_text(new_text, encoding="utf-8")
-                mac_count += macs
-                email_count += emails
-    return mac_count, email_count
+            mac_count += macs
+            email_count += emails
+
+    return mac_count, email_count, opaque_count, mobile_notify_count
 
 
 def fix_export_report(repo: Path) -> None:
@@ -101,7 +198,11 @@ def scan(repo: Path) -> list[tuple[str, str, int]]:
 
                 # Credential assignments are meaningful in deployable config/dashboard
                 # files, but ordinary documentation words such as "credentials" are not.
-                if rel.startswith("home-assistant/live-export/") and path.suffix.lower() in {".yaml", ".yml", ".json"}:
+                if rel.startswith("home-assistant/live-export/") and path.suffix.lower() in {
+                    ".yaml",
+                    ".yml",
+                    ".json",
+                }:
                     if CREDENTIAL_ASSIGNMENT_RE.search(line):
                         findings.append(("credential-like assignment", rel, lineno))
 
@@ -116,7 +217,17 @@ def scan(repo: Path) -> list[tuple[str, str, int]]:
     return findings
 
 
-def write_report(repo: Path, mac_redactions: int, email_redactions: int, findings: list[tuple[str, str, int]]) -> None:
+def write_report(
+    repo: Path,
+    mac_redactions: int,
+    email_redactions: int,
+    opaque_redactions: int,
+    mobile_notify_redactions: int,
+    household_files_removed: int,
+    mobile_devices_removed: int,
+    mobile_entities_removed: int,
+    findings: list[tuple[str, str, int]],
+) -> None:
     path = repo / "inventory" / "generated-live" / "PUBLIC-SAFETY-SCAN.md"
     lines = [
         "# Public export safety scan",
@@ -127,6 +238,17 @@ def write_report(repo: Path, mac_redactions: int, email_redactions: int, finding
         "",
         f"- MAC/hardware addresses redacted: **{mac_redactions}**",
         f"- Email addresses redacted: **{email_redactions}**",
+        f"- Opaque hardware/vendor identifiers aliased: **{opaque_redactions}**",
+        f"- Mobile-app notification targets aliased: **{mobile_notify_redactions}**",
+        "",
+        "## Privacy exclusions",
+        "",
+        f"- Household-specific generated files removed: **{household_files_removed}**",
+        f"- Mobile-app device inventory rows removed: **{mobile_devices_removed}**",
+        f"- Mobile-app entity inventory rows removed: **{mobile_entities_removed}**",
+        "",
+        "The live household chores package/dashboard and Home Assistant Companion App "
+        "device/entity inventory are intentionally excluded from the public snapshot.",
         "",
         "## Remaining high-risk findings",
         "",
@@ -150,15 +272,37 @@ def main() -> int:
     args = parser.parse_args()
     repo = args.repo.resolve()
 
-    mac_redactions, email_redactions = redact_generated_identifiers(repo)
+    household_files_removed = remove_household_specific_files(repo)
+    mobile_devices_removed, mobile_entities_removed = remove_mobile_app_inventory_rows(repo)
+    (
+        mac_redactions,
+        email_redactions,
+        opaque_redactions,
+        mobile_notify_redactions,
+    ) = redact_generated_identifiers(repo)
     fix_export_report(repo)
     findings = scan(repo)
-    write_report(repo, mac_redactions, email_redactions, findings)
+    write_report(
+        repo,
+        mac_redactions,
+        email_redactions,
+        opaque_redactions,
+        mobile_notify_redactions,
+        household_files_removed,
+        mobile_devices_removed,
+        mobile_entities_removed,
+        findings,
+    )
 
     print()
     print("Public export safety pass")
     print(f"MAC/hardware addresses redacted: {mac_redactions}")
     print(f"Email addresses redacted: {email_redactions}")
+    print(f"Opaque hardware/vendor identifiers aliased: {opaque_redactions}")
+    print(f"Mobile-app notification targets aliased: {mobile_notify_redactions}")
+    print(f"Household-specific generated files removed: {household_files_removed}")
+    print(f"Mobile-app device inventory rows removed: {mobile_devices_removed}")
+    print(f"Mobile-app entity inventory rows removed: {mobile_entities_removed}")
     print(f"Remaining high-risk findings: {len(findings)}")
     print("Review: inventory/generated-live/PUBLIC-SAFETY-SCAN.md")
 
