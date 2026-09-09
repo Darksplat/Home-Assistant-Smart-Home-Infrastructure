@@ -23,23 +23,24 @@ CREDENTIAL_ASSIGNMENT_RE = re.compile(
     r"refresh[_-]?token|client[_-]?secret|authorization|credential|webhook)[^:]*:\s*(?!.*!secret).+"
 )
 IPV4_TOKEN_RE = re.compile(r"(?<![0-9.])(?:\d{1,3}\.){3}\d{1,3}(?![0-9.])")
-
-# Hardware-derived or vendor-generated hexadecimal identifiers can leak stable
-# device identity even when the original registry unique_id is omitted. Requiring
-# at least one A-F character avoids rewriting ordinary numeric automation IDs.
 OPAQUE_HEX_RE = re.compile(
     r"(?<![0-9A-Fa-f])(?=[0-9A-Fa-f]{12,64}(?![0-9A-Fa-f]))"
     r"(?=[0-9A-Fa-f]*[A-Fa-f])[0-9A-Fa-f]{12,64}"
 )
 MOBILE_NOTIFY_RE = re.compile(r"\bnotify\.mobile_app_[a-z0-9_]+\b", re.IGNORECASE)
 
-# These live files are useful operationally but contain household-member-specific
-# labels and assignments. The public repository documents/templates them elsewhere
-# rather than publishing the live household copy.
+# These files are intentionally not suitable for a public repository. The
+# household dashboard/package contains member-specific data, while complete
+# device/entity registries disclose names, room associations and operational
+# details far beyond what is needed for reproducibility.
 PRIVATE_GENERATED_PATHS = (
     "home-assistant/live-export/configuration/packages/household_chores.yaml",
     "home-assistant/live-export/dashboards/dashboard-household.json",
     "home-assistant/live-export/dashboards/dashboard-household.yaml",
+)
+REGISTRY_INVENTORY_PATHS = (
+    "inventory/generated-live/devices.md",
+    "inventory/generated-live/entities.md",
 )
 
 
@@ -51,15 +52,19 @@ def text_files(root: Path):
             yield path
 
 
-def remove_household_specific_files(repo: Path) -> int:
+def remove_paths(repo: Path, paths: tuple[str, ...]) -> int:
     removed = 0
-    for rel in PRIVATE_GENERATED_PATHS:
+    for rel in paths:
         path = repo / rel
         if path.is_file():
             path.unlink()
             removed += 1
+    return removed
 
-    # Keep the generated dashboard index consistent with the public output.
+
+def remove_household_specific_files(repo: Path) -> int:
+    removed = remove_paths(repo, PRIVATE_GENERATED_PATHS)
+
     index = repo / "home-assistant" / "live-export" / "dashboards" / "README.md"
     if index.is_file():
         lines = index.read_text(encoding="utf-8").splitlines()
@@ -68,37 +73,6 @@ def remove_household_specific_files(repo: Path) -> int:
             index.write_text("\n".join(filtered) + "\n", encoding="utf-8")
 
     return removed
-
-
-def remove_mobile_app_inventory_rows(repo: Path) -> tuple[int, int]:
-    """Remove personal companion-app devices/entities from public inventory tables."""
-    removed_devices = 0
-    removed_entities = 0
-
-    devices = repo / "inventory" / "generated-live" / "devices.md"
-    if devices.is_file():
-        lines = devices.read_text(encoding="utf-8").splitlines()
-        kept: list[str] = []
-        for line in lines:
-            if line.startswith("| D") and "mobile_app" in line.lower():
-                removed_devices += 1
-                continue
-            kept.append(line)
-        devices.write_text("\n".join(kept) + "\n", encoding="utf-8")
-
-    entities = repo / "inventory" / "generated-live" / "entities.md"
-    if entities.is_file():
-        lines = entities.read_text(encoding="utf-8").splitlines()
-        kept = []
-        for line in lines:
-            # Platform is the second table column.
-            if line.startswith("| ") and re.search(r"\|\s*mobile_app\s*\|", line, re.IGNORECASE):
-                removed_entities += 1
-                continue
-            kept.append(line)
-        entities.write_text("\n".join(kept) + "\n", encoding="utf-8")
-
-    return removed_devices, removed_entities
 
 
 def redact_generated_identifiers(repo: Path) -> tuple[int, int, int, int]:
@@ -123,9 +97,7 @@ def redact_generated_identifiers(repo: Path) -> tuple[int, int, int, int]:
         nonlocal mobile_notify_count
         token = match.group(0)
         if token not in mobile_aliases:
-            mobile_aliases[token] = (
-                f"notify.mobile_app_household_device_{len(mobile_aliases) + 1:02d}"
-            )
+            mobile_aliases[token] = f"notify.mobile_app_household_device_{len(mobile_aliases) + 1:02d}"
         mobile_notify_count += 1
         return mobile_aliases[token]
 
@@ -196,8 +168,6 @@ def scan(repo: Path) -> list[tuple[str, str, int]]:
                 if URL_SECRET_RE.search(line):
                     findings.append(("secret-bearing URL", rel, lineno))
 
-                # Credential assignments are meaningful in deployable config/dashboard
-                # files, but ordinary documentation words such as "credentials" are not.
                 if rel.startswith("home-assistant/live-export/") and path.suffix.lower() in {
                     ".yaml",
                     ".yml",
@@ -206,9 +176,6 @@ def scan(repo: Path) -> list[tuple[str, str, int]]:
                     if CREDENTIAL_ASSIGNMENT_RE.search(line):
                         findings.append(("credential-like assignment", rel, lineno))
 
-                # Only treat globally routable IPv4-looking values as warnings inside
-                # exported HA configuration/dashboard data. Inventory metadata/version
-                # strings are intentionally excluded to avoid e.g. 1.7.5.2 false positives.
                 if rel.startswith("home-assistant/live-export/"):
                     for token in IPV4_TOKEN_RE.findall(line):
                         if is_global_ipv4(token):
@@ -224,8 +191,7 @@ def write_report(
     opaque_redactions: int,
     mobile_notify_redactions: int,
     household_files_removed: int,
-    mobile_devices_removed: int,
-    mobile_entities_removed: int,
+    registry_files_removed: int,
     findings: list[tuple[str, str, int]],
 ) -> None:
     path = repo / "inventory" / "generated-live" / "PUBLIC-SAFETY-SCAN.md"
@@ -244,11 +210,11 @@ def write_report(
         "## Privacy exclusions",
         "",
         f"- Household-specific generated files removed: **{household_files_removed}**",
-        f"- Mobile-app device inventory rows removed: **{mobile_devices_removed}**",
-        f"- Mobile-app entity inventory rows removed: **{mobile_entities_removed}**",
+        f"- Full device/entity registry inventory files removed: **{registry_files_removed}**",
         "",
-        "The live household chores package/dashboard and Home Assistant Companion App "
-        "device/entity inventory are intentionally excluded from the public snapshot.",
+        "The live household chores package/dashboard and complete Home Assistant device/entity "
+        "registries are intentionally excluded from the public snapshot. Aggregate counts, "
+        "integration inventory, area inventory and curated subsystem documentation remain public.",
         "",
         "## Remaining high-risk findings",
         "",
@@ -273,7 +239,7 @@ def main() -> int:
     repo = args.repo.resolve()
 
     household_files_removed = remove_household_specific_files(repo)
-    mobile_devices_removed, mobile_entities_removed = remove_mobile_app_inventory_rows(repo)
+    registry_files_removed = remove_paths(repo, REGISTRY_INVENTORY_PATHS)
     (
         mac_redactions,
         email_redactions,
@@ -289,8 +255,7 @@ def main() -> int:
         opaque_redactions,
         mobile_notify_redactions,
         household_files_removed,
-        mobile_devices_removed,
-        mobile_entities_removed,
+        registry_files_removed,
         findings,
     )
 
@@ -301,8 +266,7 @@ def main() -> int:
     print(f"Opaque hardware/vendor identifiers aliased: {opaque_redactions}")
     print(f"Mobile-app notification targets aliased: {mobile_notify_redactions}")
     print(f"Household-specific generated files removed: {household_files_removed}")
-    print(f"Mobile-app device inventory rows removed: {mobile_devices_removed}")
-    print(f"Mobile-app entity inventory rows removed: {mobile_entities_removed}")
+    print(f"Full device/entity registry inventory files removed: {registry_files_removed}")
     print(f"Remaining high-risk findings: {len(findings)}")
     print("Review: inventory/generated-live/PUBLIC-SAFETY-SCAN.md")
 

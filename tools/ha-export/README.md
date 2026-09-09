@@ -11,11 +11,10 @@ The exporter reads the live Home Assistant files from the Mac Samba mount and ge
 - storage-mode Lovelace dashboards from `.storage/lovelace.*`
 - dashboard JSON plus YAML-compatible copies
 - Home Assistant area inventory
-- device inventory without identifiers, MAC addresses, serial numbers or unique IDs
-- entity inventory without registry unique IDs
 - integration-domain/count inventory
 - custom-component manifest inventory without copying third-party source code
 - ESPHome YAML filename inventory without copying ESPHome credentials/configuration
+- aggregate device/entity counts in the export report
 - an export report listing redactions and skipped items
 - an automatic post-export public-safety report
 
@@ -26,7 +25,7 @@ home-assistant/live-export/
 inventory/generated-live/
 ```
 
-## What it deliberately does NOT export
+## What it deliberately does NOT publish
 
 The tool does not publish the following into the repository:
 
@@ -46,7 +45,9 @@ The tool does not publish the following into the repository:
 - raw custom-component source code
 - add-on/app credential stores
 - the live household chores package/dashboard
-- Home Assistant Companion App device/entity inventory rows
+- complete Home Assistant device and entity registry inventories
+
+The live registries are still read to produce aggregate counts and to support sanitization, but their detailed rows are removed from the public snapshot. This avoids publishing household device names, personal mobile-device labels, exact room-to-device mappings and household-specific helper/entity names.
 
 `core.config_entries` is read only to produce aggregate integration-domain counts. Its raw contents are never written to the repository.
 
@@ -62,7 +63,7 @@ The safety pass automatically:
 - removes MAC/hardware addresses and email addresses;
 - aliases long hardware/vendor-generated hexadecimal identifiers so stable device IDs are not published;
 - aliases `notify.mobile_app_*` targets to generic household-device names;
-- removes Companion App devices/entities from the public inventories;
+- removes the full device/entity registry inventories from the public output;
 - removes the live household chores package and household dashboard, which contain household-member-specific assignments;
 - checks for Bearer tokens, secret-bearing URLs and credential-like assignments;
 - checks exported Home Assistant data for possible globally routable IPv4 addresses.
@@ -123,12 +124,10 @@ Do not blindly commit material if either report contains unexpected warnings or 
 
 ## Repeat exports
 
-The generated directories are rebuilt each time the script runs. This makes later Home Assistant snapshots repeatable: mount Samba, run one command, review the diff, commit/push, and GitHub shows exactly what changed in the live system.
+The generated directories are rebuilt each time the script runs. This makes later Home Assistant snapshots repeatable: mount Samba, run one command, review the diff, commit/push, and GitHub shows exactly what changed in the public-safe output.
 
 ## Dashboard format
 
 Storage-mode dashboards are exported from the `data.config` object only; the Home Assistant `.storage` wrapper is discarded.
 
-Each retained dashboard is written as both `.json` and `.yaml`. The `.yaml` copy deliberately uses JSON object syntax, which is YAML 1.2-compatible. This preserves the structure without requiring PyYAML or introducing formatting/semantic changes during extraction.
-
-The public snapshot is intentionally sanitized rather than a byte-for-byte deployment copy. Hardware-derived entity fragments and personal mobile notification targets may therefore appear as aliases such as `deviceid_001` or `notify.mobile_app_household_device_01`.
+Each public dashboard is written as both `.json` and `.yaml`. The `.yaml` copy deliberately uses JSON object syntax, which is YAML 1.2-compatible. This preserves the exact live structure without requiring PyYAML or introducing formatting/semantic changes during extraction.
