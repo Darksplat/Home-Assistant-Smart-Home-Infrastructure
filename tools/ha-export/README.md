@@ -8,7 +8,7 @@ The exporter reads the live Home Assistant files from the Mac Samba mount and ge
 
 - selected top-level YAML configuration (`configuration.yaml`, `automations.yaml`, `scripts.yaml`, `scenes.yaml` when present)
 - `packages/` and `themes/` text configuration
-- all storage-mode Lovelace dashboards from `.storage/lovelace.*`
+- storage-mode Lovelace dashboards from `.storage/lovelace.*`
 - dashboard JSON plus YAML-compatible copies
 - Home Assistant area inventory
 - device inventory without identifiers, MAC addresses, serial numbers or unique IDs
@@ -28,13 +28,13 @@ inventory/generated-live/
 
 ## What it deliberately does NOT export
 
-The tool does not copy the following into the repository:
+The tool does not publish the following into the repository:
 
 - `secrets.yaml`
 - `.storage` wholesale
 - authentication data
 - `http.auth`
-- mobile-app data
+- raw mobile-app data
 - person data
 - Thread datasets
 - raw `core.config_entries`
@@ -45,17 +45,27 @@ The tool does not copy the following into the repository:
 - raw ESPHome YAML
 - raw custom-component source code
 - add-on/app credential stores
+- the live household chores package/dashboard
+- Home Assistant Companion App device/entity inventory rows
 
 `core.config_entries` is read only to produce aggregate integration-domain counts. Its raw contents are never written to the repository.
 
 ## Automatic public-safety pass
 
-`run-export.sh` now performs two stages:
+`run-export.sh` performs two stages:
 
 1. export/sanitize the selected Home Assistant material;
 2. post-process and validate the generated repository files.
 
-The safety pass automatically removes MAC/hardware addresses and email addresses from generated material, checks for Bearer tokens, secret-bearing URLs and credential-like assignments, and checks exported Home Assistant data for possible globally routable IPv4 addresses.
+The safety pass automatically:
+
+- removes MAC/hardware addresses and email addresses;
+- aliases long hardware/vendor-generated hexadecimal identifiers so stable device IDs are not published;
+- aliases `notify.mobile_app_*` targets to generic household-device names;
+- removes Companion App devices/entities from the public inventories;
+- removes the live household chores package and household dashboard, which contain household-member-specific assignments;
+- checks for Bearer tokens, secret-bearing URLs and credential-like assignments;
+- checks exported Home Assistant data for possible globally routable IPv4 addresses.
 
 The resulting report is written to:
 
@@ -119,4 +129,6 @@ The generated directories are rebuilt each time the script runs. This makes late
 
 Storage-mode dashboards are exported from the `data.config` object only; the Home Assistant `.storage` wrapper is discarded.
 
-Each dashboard is written as both `.json` and `.yaml`. The `.yaml` copy deliberately uses JSON object syntax, which is YAML 1.2-compatible. This preserves the exact live structure without requiring PyYAML or introducing formatting/semantic changes during extraction.
+Each retained dashboard is written as both `.json` and `.yaml`. The `.yaml` copy deliberately uses JSON object syntax, which is YAML 1.2-compatible. This preserves the structure without requiring PyYAML or introducing formatting/semantic changes during extraction.
+
+The public snapshot is intentionally sanitized rather than a byte-for-byte deployment copy. Hardware-derived entity fragments and personal mobile notification targets may therefore appear as aliases such as `deviceid_001` or `notify.mobile_app_household_device_01`.
