@@ -41,21 +41,25 @@ home-assistant/live-export/
 
 ### `systems/`
 
-Documentation and configuration grouped by functional system, including:
+Curated subsystem architecture, operating logic, installation notes and troubleshooting. The current documented set includes:
 
-- hot water
-- solar and energy
-- weather
-- FarmBot and garden
-- network infrastructure
-- Thread and Matter
-- security
-- garage
-- blinds
-- waste collection
-- household chores
-- notifications
-- system monitoring
+- [`hot-water/`](systems/hot-water/) — EVOHeat EVO270 local Modbus/MQTT monitoring
+- [`solar-energy/`](systems/solar-energy/) — Fronius, Sigenergy, Amber and Solcast
+- [`weather/`](systems/weather/) — Ecowitt + Bureau of Meteorology
+- [`garden-farmbot/`](systems/garden-farmbot/) — FarmBot, Rain Bird and pump/power control
+- [`blinds/`](systems/blinds/) — Automate/Pulse roller blinds
+- [`thread-matter/`](systems/thread-matter/) — Thread, OTBR and Matter Server
+- [`security/`](systems/security/) — Reolink CCTV/NVR/doorbell/chimes
+- [`garage/`](systems/garage/) — Meross LAN garage-door control
+- [`letterbox-sentinel/`](systems/letterbox-sentinel/) — DIY MQTT mail/parcel monitoring
+- [`waste-collection/`](systems/waste-collection/) — bin sensors and reminders
+- [`network/`](systems/network/) — Home Assistant-facing network operations
+- [`system-monitoring/`](systems/system-monitoring/) — host/app/integration health
+- [`notifications/`](systems/notifications/) — public-safe notification architecture
+- [`duino-coin/`](systems/duino-coin/) — REST miner monitoring
+- [`household-chores/`](systems/household-chores/) — public design notes; private live implementation excluded
+
+See [`systems/README.md`](systems/README.md) for the subsystem index.
 
 ### `inventory/`
 
@@ -99,10 +103,12 @@ The current public baseline includes evidence/configuration for systems such as:
 - FarmBot
 - Rain Bird irrigation
 - Reolink security cameras/NVR/doorbell
+- Letterbox Sentinel
 - Meross LAN devices and garage door
 - Automate Pulse Pro blinds
 - Matter / Thread / OTBR
 - MQTT / Mosquitto
+- Duino-Coin monitoring
 - Roborock
 - Synology DSM
 - LG webOS / Yamaha MusicCast / Cast
@@ -145,10 +151,10 @@ See [`docs/security/`](docs/security/) for the full policy.
 
 ## Status
 
-The repository now has a repeatable live baseline rather than an empty documentation skeleton. Work from here is primarily:
+The major deployed subsystems represented by the current live snapshot now have curated public documentation. Ongoing work is primarily:
 
-- curating subsystem documentation from live evidence
-- adding installation/rebuild procedures
-- documenting physical network/hardware topology where Home Assistant cannot infer it
-- preserving sanitized troubleshooting cases
-- refreshing the live snapshot after meaningful Home Assistant changes
+- refreshing the live snapshot after meaningful Home Assistant changes;
+- extending rebuild/commissioning procedures as hardware changes;
+- documenting physical network/hardware topology where Home Assistant cannot infer it;
+- preserving sanitized troubleshooting cases;
+- keeping subsystem docs aligned with deployed automations and dashboards.
