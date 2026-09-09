@@ -1,0 +1,98 @@
+# Bulk Home Assistant exporter
+
+This tool turns the mounted live Home Assistant `/config` share into a conservative, public-safe repository export in one pass.
+
+## What it exports
+
+The exporter reads the live Home Assistant files from the Mac Samba mount and generates:
+
+- selected top-level YAML configuration (`configuration.yaml`, `automations.yaml`, `scripts.yaml`, `scenes.yaml` when present)
+- `packages/` and `themes/` text configuration
+- all storage-mode Lovelace dashboards from `.storage/lovelace.*`
+- dashboard JSON plus YAML-compatible copies
+- Home Assistant area inventory
+- device inventory without identifiers, MAC addresses, serial numbers or unique IDs
+- entity inventory without registry unique IDs
+- integration-domain/count inventory
+- custom-component manifest inventory without copying third-party source code
+- ESPHome YAML filename inventory without copying ESPHome credentials/configuration
+- an export report listing redactions and skipped items
+
+Generated output is written under:
+
+```text
+home-assistant/live-export/
+inventory/generated-live/
+```
+
+## What it deliberately does NOT export
+
+The tool does not copy the following into the repository:
+
+- `secrets.yaml`
+- `.storage` wholesale
+- authentication data
+- `http.auth`
+- mobile-app data
+- person data
+- Thread datasets
+- raw `core.config_entries`
+- databases, WAL or SHM files
+- Home Assistant logs
+- backups/archives
+- SSL/private keys/certificates
+- raw ESPHome YAML
+- raw custom-component source code
+- add-on/app credential stores
+
+`core.config_entries` is read only to produce aggregate integration-domain counts. Its raw contents are never written to the repository.
+
+## Running it on this installation
+
+The Home Assistant Samba `config` share is mounted on the Mac at:
+
+```text
+/Volumes/config
+```
+
+From the repository root run:
+
+```bash
+zsh tools/ha-export/run-export.sh
+```
+
+Or explicitly:
+
+```bash
+python3 tools/ha-export/export_home_assistant.py \
+  --source /Volumes/config \
+  --repo /Users/jeremyyounger/Documents/GitHub/Home-Assistant-Smart-Home-Infrastructure
+```
+
+The exporter only reads the Home Assistant share. It never modifies files on the Pi.
+
+## After running
+
+First inspect:
+
+```text
+inventory/generated-live/EXPORT-REPORT.md
+```
+
+Then run:
+
+```bash
+git status --short
+```
+
+Do not blindly commit material if the report contains unexpected warnings or redactions. The repository is public, so the generated files still receive a review before merge.
+
+## Repeat exports
+
+The generated directories are rebuilt each time the script runs. This makes later Home Assistant snapshots repeatable: mount Samba, run one command, review the diff, commit/push, and GitHub shows exactly what changed in the live system.
+
+## Dashboard format
+
+Storage-mode dashboards are exported from the `data.config` object only; the Home Assistant `.storage` wrapper is discarded.
+
+Each dashboard is written as both `.json` and `.yaml`. The `.yaml` copy deliberately uses JSON object syntax, which is YAML 1.2-compatible. This preserves the exact live structure without requiring PyYAML or introducing formatting/semantic changes during extraction.
