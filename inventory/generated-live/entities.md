@@ -20,28 +20,22 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | automation.letterbox_sentinel_parcel_detected | automation | Letterbox Sentinel - Parcel Detected |  |  |  |
 | automation.letterbox_sentinel_parcel_sensor_battery_alerts | automation | Letterbox Sentinel - Parcel Sensor Battery Alerts |  |  |  |
 | automation.turn_on_water_pp | automation | Garden Pressure Pump Schedule |  |  |  |
-| binary_sensor.34eae79f4bce_api_status | mqtt | API Status |  | D152 |  |
-| binary_sensor.34eae79f4bce_api_status_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE API Status | Back Fence Garden | D138 |  |
-| binary_sensor.34eae79f4bce_fault | mqtt | Fault |  | D152 |  |
-| binary_sensor.34eae79f4bce_fault_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Fault | Back Fence Garden | D138 |  |
-| binary_sensor.34eae79f4bce_power | mqtt | Power |  | D152 |  |
-| binary_sensor.34eae79f4bce_power_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Power | Back Fence Garden | D138 |  |
-| binary_sensor.34eae79f4bce_status | mqtt | Status |  | D152 |  |
-| binary_sensor.34eae79f4bce_status_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Status | Back Fence Garden | D138 |  |
-| binary_sensor.34eae7b41fea_api_status | mqtt | API Status |  | D151 |  |
-| binary_sensor.34eae7b41fea_api_status_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA API Status | Backyard | D137 |  |
-| binary_sensor.34eae7b41fea_fault | mqtt | Fault |  | D151 |  |
-| binary_sensor.34eae7b41fea_fault_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Fault | Backyard | D137 |  |
-| binary_sensor.34eae7b41fea_power | mqtt | Power |  | D151 |  |
-| binary_sensor.34eae7b41fea_power_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Power | Backyard | D137 |  |
-| binary_sensor.34eae7b41fea_status | mqtt | Status |  | D151 |  |
-| binary_sensor.34eae7b41fea_status_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Status | Backyard | D137 |  |
-| binary_sensor.aeryn_iphone_camera_motion | mobile_app | Aeryn iPhone Camera Motion |  | D155 |  |
-| binary_sensor.aeryn_iphone_focus | mobile_app | Aeryn iPhone Focus |  | D155 |  |
-| binary_sensor.aeryn_iphone_kiosk_mode | mobile_app | Aeryn iPhone Kiosk Mode |  | D155 |  |
-| binary_sensor.alkira_pro_ipad_camera_motion | mobile_app | Alkira Pro iPad Camera Motion |  | D161 | integration |
-| binary_sensor.alkira_pro_ipad_kiosk_mode | mobile_app | Alkira Pro iPad Kiosk Mode |  | D161 | integration |
-| binary_sensor.alkira_pro_ipad_kiosk_screensaver | mobile_app | Alkira Pro iPad Kiosk Screensaver |  | D161 |  |
+| binary_sensor.deviceid_003_api_status | mqtt | API Status |  | D152 |  |
+| binary_sensor.deviceid_003_api_status_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 API Status | Back Fence Garden | D138 |  |
+| binary_sensor.deviceid_003_fault | mqtt | Fault |  | D152 |  |
+| binary_sensor.deviceid_003_fault_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Fault | Back Fence Garden | D138 |  |
+| binary_sensor.deviceid_003_power | mqtt | Power |  | D152 |  |
+| binary_sensor.deviceid_003_power_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Power | Back Fence Garden | D138 |  |
+| binary_sensor.deviceid_003_status | mqtt | Status |  | D152 |  |
+| binary_sensor.deviceid_003_status_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Status | Back Fence Garden | D138 |  |
+| binary_sensor.deviceid_002_api_status | mqtt | API Status |  | D151 |  |
+| binary_sensor.deviceid_002_api_status_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 API Status | Backyard | D137 |  |
+| binary_sensor.deviceid_002_fault | mqtt | Fault |  | D151 |  |
+| binary_sensor.deviceid_002_fault_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Fault | Backyard | D137 |  |
+| binary_sensor.deviceid_002_power | mqtt | Power |  | D151 |  |
+| binary_sensor.deviceid_002_power_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Power | Backyard | D137 |  |
+| binary_sensor.deviceid_002_status | mqtt | Status |  | D151 |  |
+| binary_sensor.deviceid_002_status_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Status | Backyard | D137 |  |
 | binary_sensor.alpstuga_air_quality_monitor_hardware_faults | matter | Hardware faults | Battery Shed | D111 | integration |
 | binary_sensor.alpstuga_air_quality_monitor_network_faults | matter | Network faults | Battery Shed | D111 | integration |
 | binary_sensor.alpstuga_air_quality_monitor_radio_faults | matter | Radio faults | Battery Shed | D111 | integration |
@@ -104,17 +98,7 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | binary_sensor.garage_garage_door_opener_problem | meross_lan | Problem | Garage | D150 |  |
 | binary_sensor.gt_ax11000_f7c0_wan_status | upnp | WAN status | Pantry | D014 |  |
 | binary_sensor.ha_data_connected | hassio | Connected |  | D149 | integration |
-| binary_sensor.imac_office_active | mobile_app | iMac Office Active |  | D103 |  |
-| binary_sensor.imac_office_audio_input_in_use | mobile_app | iMac Office Audio Input In Use |  | D103 |  |
-| binary_sensor.imac_office_audio_output_in_use | mobile_app | iMac Office Audio Output In Use |  | D103 |  |
-| binary_sensor.imac_office_camera_in_use | mobile_app | iMac Office Camera In Use |  | D103 |  |
 | binary_sensor.indoor_dog_water_needs_cleaning | template | Indoor Dog Water Needs Cleaning |  |  |  |
-| binary_sensor.jem_ipad_camera_motion | mobile_app | Jem iPad Camera Motion |  | D156 |  |
-| binary_sensor.jem_ipad_kiosk_mode | mobile_app | Jem iPad Kiosk Mode |  | D156 |  |
-| binary_sensor.jem_ipad_kiosk_screensaver | mobile_app | Jem iPad Kiosk Screensaver |  | D156 |  |
-| binary_sensor.jem_iphone_camera_motion | mobile_app | Jem iPhone Camera Motion |  | D162 | integration |
-| binary_sensor.jem_iphone_kiosk_mode | mobile_app | Jem iPhone Kiosk Mode |  | D162 | integration |
-| binary_sensor.jem_iphone_kiosk_screensaver | mobile_app | Jem iPhone Kiosk Screensaver |  | D162 |  |
 | binary_sensor.kitchen_configuration_status | matter | Configuration status |  | D115 |  |
 | binary_sensor.kitchen_vacuum_van_helsing_charging | roborock | Charging | Kitchen | D122 |  |
 | binary_sensor.kitchen_vacuum_van_helsing_cleaning | roborock | Cleaning | Kitchen | D122 |  |
@@ -149,12 +133,6 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | binary_sensor.myggbett_door_window_sensor_radio_faults_2 | matter | Radio faults | Bedroom | D107 | integration |
 | binary_sensor.myggbett_door_window_sensor_radio_faults_3 | matter | Radio faults | Pantry | D108 | integration |
 | binary_sensor.myggbett_door_window_sensor_radio_faults_4 | matter | Radio faults | Living Room | D109 | integration |
-| binary_sensor.nathaniels_iphone_camera_motion | mobile_app | Nathaniel’s iPhone Camera Motion |  | D159 |  |
-| binary_sensor.nathaniels_iphone_kiosk_mode | mobile_app | Nathaniel’s iPhone Kiosk Mode |  | D159 |  |
-| binary_sensor.nathaniels_iphone_kiosk_screensaver | mobile_app | Nathaniel’s iPhone Kiosk Screensaver |  | D159 |  |
-| binary_sensor.ninja_guide_mum_camera_motion | mobile_app | Ninja Guide Mum Camera Motion |  | D157 |  |
-| binary_sensor.ninja_guide_mum_kiosk_mode | mobile_app | Ninja Guide Mum Kiosk Mode |  | D157 |  |
-| binary_sensor.ninja_guide_mum_kiosk_screensaver | mobile_app | Ninja Guide Mum Kiosk Screensaver |  | D157 |  |
 | binary_sensor.opencode_running | hassio | Running |  | D102 | integration |
 | binary_sensor.openthread_border_router_running | hassio | Running |  | D101 | integration |
 | binary_sensor.outdoor_dog_water_needs_cleaning | template | Outdoor Dog Water Needs Cleaning |  |  |  |
@@ -217,9 +195,6 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | binary_sensor.synserv02_m_2_drive_2_exceeded_max_bad_sectors | synology_dsm | Exceeded max bad sectors |  | D047 |  |
 | binary_sensor.synserv02_security_status | synology_dsm | Security status |  | D037 |  |
 | binary_sensor.terminal_ssh_running | hassio | Running |  | D070 | integration |
-| binary_sensor.the_green_ninja_camera_motion | mobile_app | The Green Ninja Camera Motion |  | D163 | integration |
-| binary_sensor.the_green_ninja_kiosk_mode | mobile_app | The Green Ninja Kiosk Mode |  | D163 | integration |
-| binary_sensor.the_green_ninja_kiosk_screensaver | mobile_app | The Green Ninja Kiosk Screensaver |  | D163 |  |
 | binary_sensor.tv_room_configuration_status | matter | Configuration status |  | D113 |  |
 | binary_sensor.vacuum_van_helsing_dock_clean_water_box | roborock | Clean water box |  | D123 |  |
 | binary_sensor.vacuum_van_helsing_dock_dirty_water_box | roborock | Dirty water box |  | D123 |  |
@@ -290,8 +265,8 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | button.shed_ptz_zoom_in | reolink | PTZ zoom in | Shed | D077 | integration |
 | button.shed_ptz_zoom_out | reolink | PTZ zoom out | Shed | D077 | integration |
 | button.sigen_plant_grid_power_loss_lockout_alarm_clear | sigen | Grid Power Loss Lockout Alarm Clear | Battery Shed | D024 |  |
-| button.smart_switch_26030582330465570902c4e7ae28b8aa_refresh | meross_lan | Refresh | Water Tank Pump | D056 |  |
-| button.smart_switch_26030582330465570902c4e7ae28b8aa_reload | meross_lan | Reload | Water Tank Pump | D056 |  |
+| button.smart_switch_deviceid_001_refresh | meross_lan | Refresh | Water Tank Pump | D056 |  |
+| button.smart_switch_deviceid_001_reload | meross_lan | Reload | Water Tank Pump | D056 |  |
 | button.study_study_jeremy_1_identify | matter | Identify | Study | D126 |  |
 | button.synserv01_restart | synology_dsm | Restart | Garage | D015 |  |
 | button.synserv01_shut_down | synology_dsm | Shut down | Garage | D015 |  |
@@ -347,10 +322,10 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | camera.shed_shed_balanced | reolink | Balanced | Shed | D077 | integration |
 | camera.shed_snapshots_clear | reolink | Snapshots clear | Shed | D077 | integration |
 | camera.shed_snapshots_fluent | reolink | Snapshots fluent | Shed | D077 | integration |
-| climate.34eae79f4bce | mqtt |  |  | D152 |  |
-| climate.34eae79f4bce_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE | Back Fence Garden | D138 |  |
-| climate.34eae7b41fea | mqtt |  |  | D151 |  |
-| climate.34eae7b41fea_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA | Backyard | D137 |  |
+| climate.deviceid_003 | mqtt |  |  | D152 |  |
+| climate.deviceid_003_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 | Back Fence Garden | D138 |  |
+| climate.deviceid_002 | mqtt |  |  | D151 |  |
+| climate.deviceid_002_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 | Backyard | D137 |  |
 | cover.automate_shade_269_pulse_blind_269 | automate_pulse_pro | TV Room Blind – Pulse |  | D143 | user |
 | cover.automate_shade_743_pulse_blind_743 | automate_pulse_pro | Living Room Blind – Pulse |  | D144 | user |
 | cover.automate_shade_7ih_pulse_blind_7ih | automate_pulse_pro | Primary Bedroom Blind – Pulse |  | D142 | user |
@@ -366,16 +341,8 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | cover.living_room | matter |  |  | D114 |  |
 | cover.primary_bedroom | matter |  |  | D119 |  |
 | cover.tv_room | matter |  |  | D113 |  |
-| date.34eae79f4bce_vacation_date | mqtt | Vacation Date |  | D152 |  |
-| date.34eae7b41fea_vacation_date | mqtt | Vacation Date |  | D151 |  |
-| device_tracker.aeryn_iphone | mobile_app | Aeryn iPhone |  | D155 |  |
-| device_tracker.alkira_pro_ipad | mobile_app | Alkira Pro iPad |  | D161 |  |
-| device_tracker.imac_office | mobile_app | iMac Office |  | D103 |  |
-| device_tracker.jem_ipad | mobile_app | Jem iPad |  | D156 |  |
-| device_tracker.jem_iphone | mobile_app | Jem iPhone |  | D162 |  |
-| device_tracker.nathaniels_iphone | mobile_app | Nathaniel’s iPhone |  | D159 |  |
-| device_tracker.ninja_guide_mum | mobile_app | Ninja Guide Mum |  | D157 |  |
-| device_tracker.the_green_ninja | mobile_app | The Green Ninja |  | D163 |  |
+| date.deviceid_003_vacation_date | mqtt | Vacation Date |  | D152 |  |
+| date.deviceid_002_vacation_date | mqtt | Vacation Date |  | D151 |  |
 | event.backup_automatic_backup | backup | Automatic backup |  | D007 |  |
 | event.kitchen_bilresa_dual_button_2_button_1 | matter | Button (1) | Kitchen | D131 |  |
 | event.kitchen_bilresa_dual_button_2_button_2 | matter | Button (2) | Kitchen | D131 |  |
@@ -428,15 +395,7 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | media_player.media_room | yamaha_musiccast | Media Room | Media Room | D049 |  |
 | media_player.my_bedroom_speaker_1 | cast |  |  | D110 |  |
 | media_player.room_media_room_zone2 | yamaha_musiccast | Media Room zone2 | Media Room | D050 |  |
-| notify.aeryn_iphone | mobile_app |  |  | D155 |  |
-| notify.alkira_pro_ipad | mobile_app |  |  | D161 |  |
 | notify.household_notifications | group | Household Notifications |  |  |  |
-| notify.imac_office | mobile_app |  |  | D103 |  |
-| notify.jem_ipad | mobile_app |  |  | D156 |  |
-| notify.jem_iphone | mobile_app |  |  | D162 |  |
-| notify.nathaniels_iphone | mobile_app |  |  | D159 |  |
-| notify.ninja_guide_mum | mobile_app |  |  | D157 |  |
-| notify.the_green_ninja | mobile_app |  |  | D163 |  |
 | number.back_overall_ai_animal_delay | reolink | AI animal delay | Backyard | D080 | integration |
 | number.back_overall_ai_animal_sensitivity | reolink | AI animal sensitivity | Backyard | D080 |  |
 | number.back_overall_ai_person_delay | reolink | AI person delay | Backyard | D080 | integration |
@@ -755,13 +714,13 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | script.household_feed_dogs_aeryn | script | Household - Feed Walter & Astra - Aeryn |  |  |  |
 | script.household_walter_bath_aeryn | script | Household - Walter Bath - Aeryn |  |  |  |
 | script.household_walter_flea_aeryn | script | Household - Walter Flea Tablet - Aeryn |  |  |  |
-| select.34eae79f4bce_temperature_unit | mqtt | Temperature Unit (read-only) |  | D152 |  |
-| select.34eae79f4bce_temperature_unit_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Temperature Unit | Back Fence Garden | D138 |  |
-| select.34eae7b41fea_temperature_unit | mqtt | Temperature Unit (read-only) |  | D151 |  |
-| select.34eae7b41fea_temperature_unit_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Temperature Unit | Backyard | D137 |  |
+| select.deviceid_003_temperature_unit | mqtt | Temperature Unit (read-only) |  | D152 |  |
+| select.deviceid_003_temperature_unit_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Temperature Unit | Back Fence Garden | D138 |  |
+| select.deviceid_002_temperature_unit | mqtt | Temperature Unit (read-only) |  | D151 |  |
+| select.deviceid_002_temperature_unit_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Temperature Unit | Backyard | D137 |  |
 | select.amber_express_home_pricing_mode | amber_express | Pricing Mode | Home | D029 |  |
-| select.back_fence_garden_evo270_ensuite_kitchen_34eae79f4bce_34eae79f4bce_operating_mode | mqtt | Operating Mode |  | D152 |  |
-| select.back_fence_garden_evo270_ensuite_kitchen_34eae79f4bce_34eae79f4bce_operating_mode_aquatemp_old | aqua_temp | 34EAE79F4BCE Operating Mode | Back Fence Garden | D138 |  |
+| select.back_fence_garden_evo270_ensuite_kitchen_deviceid_003_deviceid_003_operating_mode | mqtt | Operating Mode |  | D152 |  |
+| select.back_fence_garden_evo270_ensuite_kitchen_deviceid_003_deviceid_003_operating_mode_aquatemp_old | aqua_temp | deviceid_005 Operating Mode | Back Fence Garden | D138 |  |
 | select.back_overall_clear_bit_rate | reolink | Clear bit rate | Backyard | D080 | integration |
 | select.back_overall_clear_frame_rate | reolink | Clear frame rate | Backyard | D080 | integration |
 | select.back_overall_day_night_mode | reolink | Day night mode | Backyard | D080 |  |
@@ -774,8 +733,8 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | select.backyard_clear_bit_rate | reolink | Clear bit rate | Backyard | D075 | integration |
 | select.backyard_clear_frame_rate | reolink | Clear frame rate | Backyard | D075 | integration |
 | select.backyard_day_night_mode | reolink | Day night mode | Backyard | D075 |  |
-| select.backyard_evo270_bathroom_laundry_34eae7b41fea_34eae7b41fea_operating_mode | mqtt | Operating Mode |  | D151 |  |
-| select.backyard_evo270_bathroom_laundry_34eae7b41fea_34eae7b41fea_operating_mode_aquatemp_old | aqua_temp | 34EAE7B41FEA Operating Mode | Backyard | D137 |  |
+| select.backyard_evo270_bathroom_laundry_deviceid_002_deviceid_002_operating_mode | mqtt | Operating Mode |  | D151 |  |
+| select.backyard_evo270_bathroom_laundry_deviceid_002_deviceid_002_operating_mode_aquatemp_old | aqua_temp | deviceid_004 Operating Mode | Backyard | D137 |  |
 | select.backyard_floodlight_mode | reolink | Floodlight mode | Backyard | D075 |  |
 | select.backyard_fluent_bit_rate | reolink | Fluent bit rate | Backyard | D075 | integration |
 | select.backyard_fluent_frame_rate | reolink | Fluent frame rate | Backyard | D075 | integration |
@@ -883,375 +842,338 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | select.study_study_jeremy_1_power_on_behavior | matter | Power-on behavior | Study | D126 |  |
 | select.synserv02_fan_speed_mode | synology_dsm | Fan speed mode |  | D037 |  |
 | select.vacuum_van_helsing_dock_empty_mode | roborock | Empty mode |  | D123 |  |
-| sensor.34eae79f4bce_3v_de_o10 | mqtt | 3V_DE [O10] |  | D152 |  |
-| sensor.34eae79f4bce_3v_de_o10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE 3V_DE [O10] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_4_way_valve_o03 | mqtt | 4-way valve [O03] |  | D152 |  |
-| sensor.34eae79f4bce_4_way_valve_o03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE 4-way valve [O03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_accelerate_the_running_time_of_heater_s05 | mqtt | Accelerate the running time of heater [S05] |  | D152 |  |
-| sensor.34eae79f4bce_accelerate_the_running_time_of_heater_s05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Accelerate the running time of heater [S05] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_accumulative_running_time_of_booster_o09 | mqtt | Accumulative running time of booster [O09] |  | D152 |  |
-| sensor.34eae79f4bce_accumulative_running_time_of_booster_o09_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Accumulative running time of booster [O09] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_accumulative_running_time_of_compressor_o08 | mqtt | Accumulative running time of compressor [O08] |  | D152 |  |
-| sensor.34eae79f4bce_accumulative_running_time_of_compressor_o08_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Accumulative running time of compressor [O08] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_activate_the_nighttime_temp_decreases_mode_n04 | mqtt | Activate the nighttime temp decreases mode [N04] |  | D152 |  |
-| sensor.34eae79f4bce_activate_the_nighttime_temp_decreases_mode_n04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Activate the nighttime temp decreases mode [N04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_adjustable_range_of_target_temperature_h98 | mqtt | Adjustable range of target temperature [H98] |  | D152 |  |
-| sensor.34eae79f4bce_adjustable_range_of_target_temperature_h98_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Adjustable range of target temperature [H98] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_ambient_temp_of_shutting_down_compressor_compulsively_r12 | mqtt | Ambient temp of shutting down compressor compulsively [R12] |  | D152 |  |
-| sensor.34eae79f4bce_ambient_temp_of_shutting_down_compressor_compulsively_r12_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Ambient temp of shutting down compressor compulsively [R12] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_ambient_temperature_t01 | mqtt | Ambient temperature [T01] |  | D152 |  |
-| sensor.34eae79f4bce_ambient_temperature_t01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Ambient temperature [T01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_booster_replaces_heat_pump_r07 | mqtt | Booster replaces heat pump? [R07] |  | D152 |  |
-| sensor.34eae79f4bce_booster_replaces_heat_pump_r07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Booster replaces heat pump? [R07] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_booster_startup_delay_r06 | mqtt | Booster startup delay [R06] |  | D152 |  |
-| sensor.34eae79f4bce_booster_startup_delay_r06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Booster startup delay [R06] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_bottom_temperature_t02 | mqtt | Bottom temperature [T02] |  | D152 |  |
-| sensor.34eae79f4bce_bottom_temperature_t02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Bottom temperature [T02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_chu_shuang_defrost_o14 | mqtt | 除霜Defrost [O14] |  | D152 |  |
-| sensor.34eae79f4bce_chu_shuang_defrost_o14_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE 除霜Defrost [O14] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_circle_of_disinfection_g04 | mqtt | Circle of disinfection [G04] |  | D152 |  |
-| sensor.34eae79f4bce_circle_of_disinfection_g04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Circle of disinfection [G04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_circle_of_submitting_data_to_cloud_h32 | mqtt | Circle of submitting data to Cloud [H32] |  | D152 |  |
-| sensor.34eae79f4bce_circle_of_submitting_data_to_cloud_h32_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Circle of submitting data to Cloud [H32] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_coil_temperature_t04 | mqtt | Coil temperature [T04] |  | D152 |  |
-| sensor.34eae79f4bce_coil_temperature_t04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Coil temperature [T04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_compensate_to_the_shown_temp_h99 | mqtt | Compensate to the shown temp [H99] |  | D152 |  |
-| sensor.34eae79f4bce_compensate_to_the_shown_temp_h99_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Compensate to the shown temp [H99] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_compressor_o01 | mqtt | Compressor [O01] |  | D152 |  |
-| sensor.34eae79f4bce_compressor_o01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Compressor [O01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_defrosting_shutdown_temp_d02 | mqtt | Defrosting shutdown temp [D02] |  | D152 |  |
-| sensor.34eae79f4bce_defrosting_shutdown_temp_d02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Defrosting shutdown temp [D02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_defrosting_startup_temp_d01 | mqtt | Defrosting startup temp [D01] |  | D152 |  |
-| sensor.34eae79f4bce_defrosting_startup_temp_d01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Defrosting startup temp [D01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_defrosting_way_d06 | mqtt | Defrosting way [D06] |  | D152 |  |
-| sensor.34eae79f4bce_defrosting_way_d06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Defrosting way [D06] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_device_address_h30 | mqtt | Device address [H30] |  | D152 |  |
-| sensor.34eae79f4bce_device_address_h30_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Device address [H30] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_disinfection_target_temp_g01 | mqtt | Disinfection target temp [G01] |  | D152 |  |
-| sensor.34eae79f4bce_disinfection_target_temp_g01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Disinfection target temp [G01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_dtu_wifishi_fou_shang_xian_o13 | mqtt | DTU&WIFI是否上线 [O13] |  | D152 |  |
-| sensor.34eae79f4bce_dtu_wifishi_fou_shang_xian_o13_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE DTU&WIFI是否上线 [O13] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_duration_of_defrosting_d03 | mqtt | Duration of defrosting [D03] |  | D152 |  |
-| sensor.34eae79f4bce_duration_of_defrosting_d03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Duration of defrosting [D03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_duration_of_disinfection_g02 | mqtt | Duration of disinfection [G02] |  | D152 |  |
-| sensor.34eae79f4bce_duration_of_disinfection_g02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Duration of disinfection [G02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_eev_adjustment_mode_e01 | mqtt | EEV adjustment mode [E01] |  | D152 |  |
-| sensor.34eae79f4bce_eev_adjustment_mode_e01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE EEV adjustment mode [E01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_eev_current_position_o07 | mqtt | EEV current position [O07] |  | D152 |  |
-| sensor.34eae79f4bce_eev_current_position_o07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE EEV current position [O07] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_electrical_heater_o02 | mqtt | Electrical heater [O02] |  | D152 |  |
-| sensor.34eae79f4bce_electrical_heater_o02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Electrical heater [O02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_enable_r05_as_setpoint_of_booster_r04 | mqtt | Enable R05 as setpoint of booster? [R04] |  | D152 |  |
-| sensor.34eae79f4bce_enable_r05_as_setpoint_of_booster_r04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Enable R05 as setpoint of booster? [R04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_enable_top_sensor_to_control_compressor_r17 | mqtt | Enable top sensor to control compressor? [R17] |  | D152 |  |
-| sensor.34eae79f4bce_enable_top_sensor_to_control_compressor_r17_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Enable top sensor to control compressor? [R17] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_fan_high_speed_o04 | mqtt | Fan high speed [O04] |  | D152 |  |
-| sensor.34eae79f4bce_fan_high_speed_o04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Fan high speed [O04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_fan_low_speed_o05 | mqtt | Fan low speed [O05] |  | D152 |  |
-| sensor.34eae79f4bce_fan_low_speed_o05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Fan low speed [O05] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_heating_source_h03 | mqtt | Heating source [H03] |  | D152 |  |
-| sensor.34eae79f4bce_heating_source_h03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Heating source [H03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_high_pressure_switch_s04 | mqtt | High pressure switch [S04] |  | D152 |  |
-| sensor.34eae79f4bce_high_pressure_switch_s04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE High pressure switch [S04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_hysteresis_of_heat_pump_startup_bottom_sensor_r03 | mqtt | Hysteresis of heat pump startup(bottom sensor) [R03] |  | D152 |  |
-| sensor.34eae79f4bce_hysteresis_of_heat_pump_startup_bottom_sensor_r03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Hysteresis of heat pump startup(bottom sensor) [R03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_hysteresis_of_heat_pump_startup_top_sensor_r18 | mqtt | Hysteresis of heat pump startup(top sensor) [R18] |  | D152 |  |
-| sensor.34eae79f4bce_hysteresis_of_heat_pump_startup_top_sensor_r18_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Hysteresis of heat pump startup(top sensor) [R18] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_intelligent_control_mode_h31 | mqtt | Intelligent control mode [H31] |  | D152 |  |
-| sensor.34eae79f4bce_intelligent_control_mode_h31_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Intelligent control mode [H31] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_intelligent_defrosting_judgement_d07 | mqtt | Intelligent defrosting judgement [D07] |  | D152 |  |
-| sensor.34eae79f4bce_intelligent_defrosting_judgement_d07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Intelligent defrosting judgement [D07] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12 | mqtt | 记忆芯片EEPROM存储次数 [T12] |  | D152 |  |
-| sensor.34eae79f4bce_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE 记忆芯片EEPROM存储次数 [T12] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11 | mqtt | 进入参数超范围保护次数 [T11] |  | D152 |  |
-| sensor.34eae79f4bce_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE 进入参数超范围保护次数 [T11] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_longest_duration_of_defrosting_d04 | mqtt | Longest duration of defrosting [D04] |  | D152 |  |
-| sensor.34eae79f4bce_longest_duration_of_defrosting_d04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Longest duration of defrosting [D04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_longest_running_time_of_solar_water_pump_n02 | mqtt | Longest running time of solar water pump [N02] |  | D152 |  |
-| sensor.34eae79f4bce_longest_running_time_of_solar_water_pump_n02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Longest running time of solar water pump [N02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_low_pressure_switch_s03 | mqtt | Low pressure switch [S03] |  | D152 |  |
-| sensor.34eae79f4bce_low_pressure_switch_s03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Low pressure switch [S03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_maximal_ambient_temp_of_working_compressor_r15 | mqtt | Maximal ambient temp of working compressor [R15] |  | D152 |  |
-| sensor.34eae79f4bce_maximal_ambient_temp_of_working_compressor_r15_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Maximal ambient temp of working compressor [R15] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_minimal_opening_position_of_eev_e04 | mqtt | Minimal opening position of EEV [E04] |  | D152 |  |
-| sensor.34eae79f4bce_minimal_opening_position_of_eev_e04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Minimal opening position of EEV [E04] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_mv_de_o11 | mqtt | MV_DE [O11] |  | D152 |  |
-| sensor.34eae79f4bce_mv_de_o11_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE MV_DE [O11] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_original_position_of_eev_e03 | mqtt | Original position of EEV [E03] |  | D152 |  |
-| sensor.34eae79f4bce_original_position_of_eev_e03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Original position of EEV [E03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_over_heat_protection_switch_s02 | mqtt | Over heat protection switch [S02] |  | D152 |  |
-| sensor.34eae79f4bce_over_heat_protection_switch_s02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Over heat protection switch [S02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_position_of_eev_for_defrosting_e05 | mqtt | Position of EEV for defrosting [E05] |  | D152 |  |
-| sensor.34eae79f4bce_position_of_eev_for_defrosting_e05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Position of EEV for defrosting [E05] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_remenber_the_status_of_device_when_power_down_h01 | mqtt | Remenber the status of device when power down [H01] |  | D152 |  |
-| sensor.34eae79f4bce_remenber_the_status_of_device_when_power_down_h01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Remenber the status of device when power down [H01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_remote_on_off_switch_s01 | mqtt | Remote ON/OFF switch [S01] |  | D152 |  |
-| sensor.34eae79f4bce_remote_on_off_switch_s01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Remote ON/OFF switch [S01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_reserve_solar_pump_solar_valve_pump_o06 | mqtt | Reserve/solar pump/solar valve pump [O06] |  | D152 |  |
-| sensor.34eae79f4bce_reserve_solar_pump_solar_valve_pump_o06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Reserve/solar pump/solar valve pump [O06] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_second_heating_source_s06 | mqtt | Second heating source [S06] |  | D152 |  |
-| sensor.34eae79f4bce_second_heating_source_s06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Second heating source [S06] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_setpoint_1_of_ambient_temp_to_stop_compressor_r19 | mqtt | Setpoint 1 of ambient temp to stop compressor [R19] |  | D152 |  |
-| sensor.34eae79f4bce_setpoint_1_of_ambient_temp_to_stop_compressor_r19_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Setpoint 1 of ambient temp to stop compressor [R19] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_setpoint_2_of_ambient_temp_to_stop_compressor_r20 | mqtt | Setpoint 2 of ambient temp to stop compressor [R20] |  | D152 |  |
-| sensor.34eae79f4bce_setpoint_2_of_ambient_temp_to_stop_compressor_r20_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Setpoint 2 of ambient temp to stop compressor [R20] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08 | mqtt | Setpoint of ambient temp to activate booster to replace heat pump [R08] |  | D152 |  |
-| sensor.34eae79f4bce_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Setpoint of ambient temp to activate booster to replace heat pump [R08] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10 | mqtt | Setpoint of ambient temp to activate booster with delay [R10] |  | D152 |  |
-| sensor.34eae79f4bce_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Setpoint of ambient temp to activate booster with delay [R10] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09 | mqtt | Setpoint of ambient temp to activate booster without delay [R09] |  | D152 |  |
-| sensor.34eae79f4bce_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Setpoint of ambient temp to activate booster without delay [R09] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_setpoint_of_booster_r05 | mqtt | Setpoint of booster [R05] |  | D152 |  |
-| sensor.34eae79f4bce_setpoint_of_booster_r05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Setpoint of booster [R05] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_shortest_duration_of_defrosting_d05 | mqtt | Shortest duration of defrosting [D05] |  | D152 |  |
-| sensor.34eae79f4bce_shortest_duration_of_defrosting_d05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Shortest duration of defrosting [D05] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_shutdown_o12 | mqtt | shutDown [O12] |  | D152 |  |
-| sensor.34eae79f4bce_shutdown_o12_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE shutDown [O12] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_shutdown_point_of_the_nighttime_temp_decreases_mode_n06 | mqtt | Shutdown point of the nighttime temp decreases mode [N06] |  | D152 |  |
-| sensor.34eae79f4bce_shutdown_point_of_the_nighttime_temp_decreases_mode_n06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Shutdown point of the nighttime temp decreases mode [N06] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_shutdown_temp_of_solar_water_pump_n10 | mqtt | Shutdown temp of solar water pump [N10] |  | D152 |  |
-| sensor.34eae79f4bce_shutdown_temp_of_solar_water_pump_n10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Shutdown temp of solar water pump [N10] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_solar_temperature_t06 | mqtt | Solar temperature [T06] |  | D152 |  |
-| sensor.34eae79f4bce_solar_temperature_t06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Solar temperature [T06] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_solar_water_releasing_temp_n09 | mqtt | Solar water releasing temp [N09] |  | D152 |  |
-| sensor.34eae79f4bce_solar_water_releasing_temp_n09_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Solar water releasing temp [N09] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_startup_point_of_disinfection_g03 | mqtt | Startup point of disinfection [G03] |  | D152 |  |
-| sensor.34eae79f4bce_startup_point_of_disinfection_g03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Startup point of disinfection [G03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_startup_point_of_the_nighttime_temp_decreases_mode_n05 | mqtt | Startup point of the nighttime temp decreases mode [N05] |  | D152 |  |
-| sensor.34eae79f4bce_startup_point_of_the_nighttime_temp_decreases_mode_n05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Startup point of the nighttime temp decreases mode [N05] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_startup_temp_of_decreasing_solar_water_temp_n07 | mqtt | Startup temp of decreasing solar water temp [N07] |  | D152 |  |
-| sensor.34eae79f4bce_startup_temp_of_decreasing_solar_water_temp_n07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Startup temp of decreasing solar water temp [N07] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_suction_temperature_t05 | mqtt | Suction temperature [T05] |  | D152 |  |
-| sensor.34eae79f4bce_suction_temperature_t05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Suction temperature [T05] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_target_degree_of_supreheat_e02 | mqtt | Target degree of supreheat [E02] |  | D152 |  |
-| sensor.34eae79f4bce_target_degree_of_supreheat_e02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Target degree of supreheat [E02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_target_temp_r01 | mqtt | Target temp [R01] |  | D152 |  |
-| sensor.34eae79f4bce_target_temp_r01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Target temp [R01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_temp_hysteresis_of_solar_water_pump_n03 | mqtt | Temp hysteresis of solar water pump [N03] |  | D152 |  |
-| sensor.34eae79f4bce_temp_hysteresis_of_solar_water_pump_n03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Temp hysteresis of solar water pump [N03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08 | mqtt | Temp hysteresis of stopping decreasing solar water temp [N08] |  | D152 |  |
-| sensor.34eae79f4bce_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Temp hysteresis of stopping decreasing solar water temp [N08] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_temperature_unit_h07 | mqtt | Temperature unit [H07] |  | D152 |  |
-| sensor.34eae79f4bce_temperature_unit_h07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Temperature unit [H07] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_temperature_value_shown_on_app_display_t10 | mqtt | Temperature value shown on APP/display [T10] |  | D152 |  |
-| sensor.34eae79f4bce_temperature_value_shown_on_app_display_t10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Temperature value shown on APP/display [T10] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_the_sensor_to_control_solar_water_pump_n01 | mqtt | The sensor to control solar water pump [N01] |  | D152 |  |
-| sensor.34eae79f4bce_the_sensor_to_control_solar_water_pump_n01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE The sensor to control solar water pump [N01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_the_target_temp_of_second_heating_source_r14 | mqtt | The target temp of second heating source [R14] |  | D152 |  |
-| sensor.34eae79f4bce_the_target_temp_of_second_heating_source_r14_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE The target temp of second heating source [R14] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_top_temperature_t03 | mqtt | Top temperature [T03] |  | D152 |  |
-| sensor.34eae79f4bce_top_temperature_t03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Top temperature [T03] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_usage_of_out_05_01 | mqtt | Usage of OUT 05 [/01] |  | D152 |  |
-| sensor.34eae79f4bce_usage_of_out_05_01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Usage of OUT 05 [/01] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_usage_of_out_06_02 | mqtt | Usage of OUT 06 [/02] |  | D152 |  |
-| sensor.34eae79f4bce_usage_of_out_06_02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Usage of OUT 06 [/02] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_working_mode_of_solar_water_pump_n11 | mqtt | Working mode of solar water pump [N11] |  | D152 |  |
-| sensor.34eae79f4bce_working_mode_of_solar_water_pump_n11_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE Working mode of solar water pump [N11] | Back Fence Garden | D138 |  |
-| sensor.34eae79f4bce_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15 | mqtt | 系统是否进入高温热水阶段 [O15] |  | D152 |  |
-| sensor.34eae79f4bce_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen 34EAE79F4BCE 系统是否进入高温热水阶段 [O15] | Back Fence Garden | D138 |  |
-| sensor.34eae7b41fea_3v_de_o10 | mqtt | 3V_DE [O10] |  | D151 |  |
-| sensor.34eae7b41fea_3v_de_o10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA 3V_DE [O10] | Backyard | D137 |  |
-| sensor.34eae7b41fea_4_way_valve_o03 | mqtt | 4-way valve [O03] |  | D151 |  |
-| sensor.34eae7b41fea_4_way_valve_o03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA 4-way valve [O03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_accelerate_the_running_time_of_heater_s05 | mqtt | Accelerate the running time of heater [S05] |  | D151 |  |
-| sensor.34eae7b41fea_accelerate_the_running_time_of_heater_s05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Accelerate the running time of heater [S05] | Backyard | D137 |  |
-| sensor.34eae7b41fea_accumulative_running_time_of_booster_o09 | mqtt | Accumulative running time of booster [O09] |  | D151 |  |
-| sensor.34eae7b41fea_accumulative_running_time_of_booster_o09_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Accumulative running time of booster [O09] | Backyard | D137 |  |
-| sensor.34eae7b41fea_accumulative_running_time_of_compressor_o08 | mqtt | Accumulative running time of compressor [O08] |  | D151 |  |
-| sensor.34eae7b41fea_accumulative_running_time_of_compressor_o08_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Accumulative running time of compressor [O08] | Backyard | D137 |  |
-| sensor.34eae7b41fea_activate_the_nighttime_temp_decreases_mode_n04 | mqtt | Activate the nighttime temp decreases mode [N04] |  | D151 |  |
-| sensor.34eae7b41fea_activate_the_nighttime_temp_decreases_mode_n04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Activate the nighttime temp decreases mode [N04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_adjustable_range_of_target_temperature_h98 | mqtt | Adjustable range of target temperature [H98] |  | D151 |  |
-| sensor.34eae7b41fea_adjustable_range_of_target_temperature_h98_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Adjustable range of target temperature [H98] | Backyard | D137 |  |
-| sensor.34eae7b41fea_ambient_temp_of_shutting_down_compressor_compulsively_r12 | mqtt | Ambient temp of shutting down compressor compulsively [R12] |  | D151 |  |
-| sensor.34eae7b41fea_ambient_temp_of_shutting_down_compressor_compulsively_r12_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Ambient temp of shutting down compressor compulsively [R12] | Backyard | D137 |  |
-| sensor.34eae7b41fea_ambient_temperature_t01 | mqtt | Ambient temperature [T01] |  | D151 |  |
-| sensor.34eae7b41fea_ambient_temperature_t01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Ambient temperature [T01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_booster_replaces_heat_pump_r07 | mqtt | Booster replaces heat pump? [R07] |  | D151 |  |
-| sensor.34eae7b41fea_booster_replaces_heat_pump_r07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Booster replaces heat pump? [R07] | Backyard | D137 |  |
-| sensor.34eae7b41fea_booster_startup_delay_r06 | mqtt | Booster startup delay [R06] |  | D151 |  |
-| sensor.34eae7b41fea_booster_startup_delay_r06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Booster startup delay [R06] | Backyard | D137 |  |
-| sensor.34eae7b41fea_bottom_temperature_t02 | mqtt | Bottom temperature [T02] |  | D151 |  |
-| sensor.34eae7b41fea_bottom_temperature_t02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Bottom temperature [T02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_chu_shuang_defrost_o14 | mqtt | 除霜Defrost [O14] |  | D151 |  |
-| sensor.34eae7b41fea_chu_shuang_defrost_o14_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA 除霜Defrost [O14] | Backyard | D137 |  |
-| sensor.34eae7b41fea_circle_of_disinfection_g04 | mqtt | Circle of disinfection [G04] |  | D151 |  |
-| sensor.34eae7b41fea_circle_of_disinfection_g04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Circle of disinfection [G04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_circle_of_submitting_data_to_cloud_h32 | mqtt | Circle of submitting data to Cloud [H32] |  | D151 |  |
-| sensor.34eae7b41fea_circle_of_submitting_data_to_cloud_h32_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Circle of submitting data to Cloud [H32] | Backyard | D137 |  |
-| sensor.34eae7b41fea_coil_temperature_t04 | mqtt | Coil temperature [T04] |  | D151 |  |
-| sensor.34eae7b41fea_coil_temperature_t04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Coil temperature [T04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_compensate_to_the_shown_temp_h99 | mqtt | Compensate to the shown temp [H99] |  | D151 |  |
-| sensor.34eae7b41fea_compensate_to_the_shown_temp_h99_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Compensate to the shown temp [H99] | Backyard | D137 |  |
-| sensor.34eae7b41fea_compressor_o01 | mqtt | Compressor [O01] |  | D151 |  |
-| sensor.34eae7b41fea_compressor_o01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Compressor [O01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_defrosting_shutdown_temp_d02 | mqtt | Defrosting shutdown temp [D02] |  | D151 |  |
-| sensor.34eae7b41fea_defrosting_shutdown_temp_d02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Defrosting shutdown temp [D02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_defrosting_startup_temp_d01 | mqtt | Defrosting startup temp [D01] |  | D151 |  |
-| sensor.34eae7b41fea_defrosting_startup_temp_d01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Defrosting startup temp [D01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_defrosting_way_d06 | mqtt | Defrosting way [D06] |  | D151 |  |
-| sensor.34eae7b41fea_defrosting_way_d06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Defrosting way [D06] | Backyard | D137 |  |
-| sensor.34eae7b41fea_device_address_h30 | mqtt | Device address [H30] |  | D151 |  |
-| sensor.34eae7b41fea_device_address_h30_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Device address [H30] | Backyard | D137 |  |
-| sensor.34eae7b41fea_disinfection_target_temp_g01 | mqtt | Disinfection target temp [G01] |  | D151 |  |
-| sensor.34eae7b41fea_disinfection_target_temp_g01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Disinfection target temp [G01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_dtu_wifishi_fou_shang_xian_o13 | mqtt | DTU&WIFI是否上线 [O13] |  | D151 |  |
-| sensor.34eae7b41fea_dtu_wifishi_fou_shang_xian_o13_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA DTU&WIFI是否上线 [O13] | Backyard | D137 |  |
-| sensor.34eae7b41fea_duration_of_defrosting_d03 | mqtt | Duration of defrosting [D03] |  | D151 |  |
-| sensor.34eae7b41fea_duration_of_defrosting_d03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Duration of defrosting [D03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_duration_of_disinfection_g02 | mqtt | Duration of disinfection [G02] |  | D151 |  |
-| sensor.34eae7b41fea_duration_of_disinfection_g02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Duration of disinfection [G02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_eev_adjustment_mode_e01 | mqtt | EEV adjustment mode [E01] |  | D151 |  |
-| sensor.34eae7b41fea_eev_adjustment_mode_e01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA EEV adjustment mode [E01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_eev_current_position_o07 | mqtt | EEV current position [O07] |  | D151 |  |
-| sensor.34eae7b41fea_eev_current_position_o07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA EEV current position [O07] | Backyard | D137 |  |
-| sensor.34eae7b41fea_electrical_heater_o02 | mqtt | Electrical heater [O02] |  | D151 |  |
-| sensor.34eae7b41fea_electrical_heater_o02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Electrical heater [O02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_enable_r05_as_setpoint_of_booster_r04 | mqtt | Enable R05 as setpoint of booster? [R04] |  | D151 |  |
-| sensor.34eae7b41fea_enable_r05_as_setpoint_of_booster_r04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Enable R05 as setpoint of booster? [R04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_enable_top_sensor_to_control_compressor_r17 | mqtt | Enable top sensor to control compressor? [R17] |  | D151 |  |
-| sensor.34eae7b41fea_enable_top_sensor_to_control_compressor_r17_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Enable top sensor to control compressor? [R17] | Backyard | D137 |  |
-| sensor.34eae7b41fea_fan_high_speed_o04 | mqtt | Fan high speed [O04] |  | D151 |  |
-| sensor.34eae7b41fea_fan_high_speed_o04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Fan high speed [O04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_fan_low_speed_o05 | mqtt | Fan low speed [O05] |  | D151 |  |
-| sensor.34eae7b41fea_fan_low_speed_o05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Fan low speed [O05] | Backyard | D137 |  |
-| sensor.34eae7b41fea_heating_source_h03 | mqtt | Heating source [H03] |  | D151 |  |
-| sensor.34eae7b41fea_heating_source_h03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Heating source [H03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_high_pressure_switch_s04 | mqtt | High pressure switch [S04] |  | D151 |  |
-| sensor.34eae7b41fea_high_pressure_switch_s04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA High pressure switch [S04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_hysteresis_of_heat_pump_startup_bottom_sensor_r03 | mqtt | Hysteresis of heat pump startup(bottom sensor) [R03] |  | D151 |  |
-| sensor.34eae7b41fea_hysteresis_of_heat_pump_startup_bottom_sensor_r03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Hysteresis of heat pump startup(bottom sensor) [R03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_hysteresis_of_heat_pump_startup_top_sensor_r18 | mqtt | Hysteresis of heat pump startup(top sensor) [R18] |  | D151 |  |
-| sensor.34eae7b41fea_hysteresis_of_heat_pump_startup_top_sensor_r18_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Hysteresis of heat pump startup(top sensor) [R18] | Backyard | D137 |  |
-| sensor.34eae7b41fea_intelligent_control_mode_h31 | mqtt | Intelligent control mode [H31] |  | D151 |  |
-| sensor.34eae7b41fea_intelligent_control_mode_h31_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Intelligent control mode [H31] | Backyard | D137 |  |
-| sensor.34eae7b41fea_intelligent_defrosting_judgement_d07 | mqtt | Intelligent defrosting judgement [D07] |  | D151 |  |
-| sensor.34eae7b41fea_intelligent_defrosting_judgement_d07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Intelligent defrosting judgement [D07] | Backyard | D137 |  |
-| sensor.34eae7b41fea_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12 | mqtt | 记忆芯片EEPROM存储次数 [T12] |  | D151 |  |
-| sensor.34eae7b41fea_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA 记忆芯片EEPROM存储次数 [T12] | Backyard | D137 |  |
-| sensor.34eae7b41fea_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11 | mqtt | 进入参数超范围保护次数 [T11] |  | D151 |  |
-| sensor.34eae7b41fea_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA 进入参数超范围保护次数 [T11] | Backyard | D137 |  |
-| sensor.34eae7b41fea_longest_duration_of_defrosting_d04 | mqtt | Longest duration of defrosting [D04] |  | D151 |  |
-| sensor.34eae7b41fea_longest_duration_of_defrosting_d04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Longest duration of defrosting [D04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_longest_running_time_of_solar_water_pump_n02 | mqtt | Longest running time of solar water pump [N02] |  | D151 |  |
-| sensor.34eae7b41fea_longest_running_time_of_solar_water_pump_n02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Longest running time of solar water pump [N02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_low_pressure_switch_s03 | mqtt | Low pressure switch [S03] |  | D151 |  |
-| sensor.34eae7b41fea_low_pressure_switch_s03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Low pressure switch [S03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_maximal_ambient_temp_of_working_compressor_r15 | mqtt | Maximal ambient temp of working compressor [R15] |  | D151 |  |
-| sensor.34eae7b41fea_maximal_ambient_temp_of_working_compressor_r15_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Maximal ambient temp of working compressor [R15] | Backyard | D137 |  |
-| sensor.34eae7b41fea_minimal_opening_position_of_eev_e04 | mqtt | Minimal opening position of EEV [E04] |  | D151 |  |
-| sensor.34eae7b41fea_minimal_opening_position_of_eev_e04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Minimal opening position of EEV [E04] | Backyard | D137 |  |
-| sensor.34eae7b41fea_mv_de_o11 | mqtt | MV_DE [O11] |  | D151 |  |
-| sensor.34eae7b41fea_mv_de_o11_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA MV_DE [O11] | Backyard | D137 |  |
-| sensor.34eae7b41fea_original_position_of_eev_e03 | mqtt | Original position of EEV [E03] |  | D151 |  |
-| sensor.34eae7b41fea_original_position_of_eev_e03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Original position of EEV [E03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_over_heat_protection_switch_s02 | mqtt | Over heat protection switch [S02] |  | D151 |  |
-| sensor.34eae7b41fea_over_heat_protection_switch_s02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Over heat protection switch [S02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_position_of_eev_for_defrosting_e05 | mqtt | Position of EEV for defrosting [E05] |  | D151 |  |
-| sensor.34eae7b41fea_position_of_eev_for_defrosting_e05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Position of EEV for defrosting [E05] | Backyard | D137 |  |
-| sensor.34eae7b41fea_remenber_the_status_of_device_when_power_down_h01 | mqtt | Remenber the status of device when power down [H01] |  | D151 |  |
-| sensor.34eae7b41fea_remenber_the_status_of_device_when_power_down_h01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Remenber the status of device when power down [H01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_remote_on_off_switch_s01 | mqtt | Remote ON/OFF switch [S01] |  | D151 |  |
-| sensor.34eae7b41fea_remote_on_off_switch_s01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Remote ON/OFF switch [S01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_reserve_solar_pump_solar_valve_pump_o06 | mqtt | Reserve/solar pump/solar valve pump [O06] |  | D151 |  |
-| sensor.34eae7b41fea_reserve_solar_pump_solar_valve_pump_o06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Reserve/solar pump/solar valve pump [O06] | Backyard | D137 |  |
-| sensor.34eae7b41fea_second_heating_source_s06 | mqtt | Second heating source [S06] |  | D151 |  |
-| sensor.34eae7b41fea_second_heating_source_s06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Second heating source [S06] | Backyard | D137 |  |
-| sensor.34eae7b41fea_setpoint_1_of_ambient_temp_to_stop_compressor_r19 | mqtt | Setpoint 1 of ambient temp to stop compressor [R19] |  | D151 |  |
-| sensor.34eae7b41fea_setpoint_1_of_ambient_temp_to_stop_compressor_r19_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Setpoint 1 of ambient temp to stop compressor [R19] | Backyard | D137 |  |
-| sensor.34eae7b41fea_setpoint_2_of_ambient_temp_to_stop_compressor_r20 | mqtt | Setpoint 2 of ambient temp to stop compressor [R20] |  | D151 |  |
-| sensor.34eae7b41fea_setpoint_2_of_ambient_temp_to_stop_compressor_r20_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Setpoint 2 of ambient temp to stop compressor [R20] | Backyard | D137 |  |
-| sensor.34eae7b41fea_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08 | mqtt | Setpoint of ambient temp to activate booster to replace heat pump [R08] |  | D151 |  |
-| sensor.34eae7b41fea_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Setpoint of ambient temp to activate booster to replace heat pump [R08] | Backyard | D137 |  |
-| sensor.34eae7b41fea_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10 | mqtt | Setpoint of ambient temp to activate booster with delay [R10] |  | D151 |  |
-| sensor.34eae7b41fea_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Setpoint of ambient temp to activate booster with delay [R10] | Backyard | D137 |  |
-| sensor.34eae7b41fea_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09 | mqtt | Setpoint of ambient temp to activate booster without delay [R09] |  | D151 |  |
-| sensor.34eae7b41fea_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Setpoint of ambient temp to activate booster without delay [R09] | Backyard | D137 |  |
-| sensor.34eae7b41fea_setpoint_of_booster_r05 | mqtt | Setpoint of booster [R05] |  | D151 |  |
-| sensor.34eae7b41fea_setpoint_of_booster_r05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Setpoint of booster [R05] | Backyard | D137 |  |
-| sensor.34eae7b41fea_shortest_duration_of_defrosting_d05 | mqtt | Shortest duration of defrosting [D05] |  | D151 |  |
-| sensor.34eae7b41fea_shortest_duration_of_defrosting_d05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Shortest duration of defrosting [D05] | Backyard | D137 |  |
-| sensor.34eae7b41fea_shutdown_o12 | mqtt | shutDown [O12] |  | D151 |  |
-| sensor.34eae7b41fea_shutdown_o12_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA shutDown [O12] | Backyard | D137 |  |
-| sensor.34eae7b41fea_shutdown_point_of_the_nighttime_temp_decreases_mode_n06 | mqtt | Shutdown point of the nighttime temp decreases mode [N06] |  | D151 |  |
-| sensor.34eae7b41fea_shutdown_point_of_the_nighttime_temp_decreases_mode_n06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Shutdown point of the nighttime temp decreases mode [N06] | Backyard | D137 |  |
-| sensor.34eae7b41fea_shutdown_temp_of_solar_water_pump_n10 | mqtt | Shutdown temp of solar water pump [N10] |  | D151 |  |
-| sensor.34eae7b41fea_shutdown_temp_of_solar_water_pump_n10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Shutdown temp of solar water pump [N10] | Backyard | D137 |  |
-| sensor.34eae7b41fea_solar_temperature_t06 | mqtt | Solar temperature [T06] |  | D151 |  |
-| sensor.34eae7b41fea_solar_temperature_t06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Solar temperature [T06] | Backyard | D137 |  |
-| sensor.34eae7b41fea_solar_water_releasing_temp_n09 | mqtt | Solar water releasing temp [N09] |  | D151 |  |
-| sensor.34eae7b41fea_solar_water_releasing_temp_n09_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Solar water releasing temp [N09] | Backyard | D137 |  |
-| sensor.34eae7b41fea_startup_point_of_disinfection_g03 | mqtt | Startup point of disinfection [G03] |  | D151 |  |
-| sensor.34eae7b41fea_startup_point_of_disinfection_g03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Startup point of disinfection [G03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_startup_point_of_the_nighttime_temp_decreases_mode_n05 | mqtt | Startup point of the nighttime temp decreases mode [N05] |  | D151 |  |
-| sensor.34eae7b41fea_startup_point_of_the_nighttime_temp_decreases_mode_n05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Startup point of the nighttime temp decreases mode [N05] | Backyard | D137 |  |
-| sensor.34eae7b41fea_startup_temp_of_decreasing_solar_water_temp_n07 | mqtt | Startup temp of decreasing solar water temp [N07] |  | D151 |  |
-| sensor.34eae7b41fea_startup_temp_of_decreasing_solar_water_temp_n07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Startup temp of decreasing solar water temp [N07] | Backyard | D137 |  |
-| sensor.34eae7b41fea_suction_temperature_t05 | mqtt | Suction temperature [T05] |  | D151 |  |
-| sensor.34eae7b41fea_suction_temperature_t05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Suction temperature [T05] | Backyard | D137 |  |
-| sensor.34eae7b41fea_target_degree_of_supreheat_e02 | mqtt | Target degree of supreheat [E02] |  | D151 |  |
-| sensor.34eae7b41fea_target_degree_of_supreheat_e02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Target degree of supreheat [E02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_target_temp_r01 | mqtt | Target temp [R01] |  | D151 |  |
-| sensor.34eae7b41fea_target_temp_r01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Target temp [R01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_temp_hysteresis_of_solar_water_pump_n03 | mqtt | Temp hysteresis of solar water pump [N03] |  | D151 |  |
-| sensor.34eae7b41fea_temp_hysteresis_of_solar_water_pump_n03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Temp hysteresis of solar water pump [N03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08 | mqtt | Temp hysteresis of stopping decreasing solar water temp [N08] |  | D151 |  |
-| sensor.34eae7b41fea_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Temp hysteresis of stopping decreasing solar water temp [N08] | Backyard | D137 |  |
-| sensor.34eae7b41fea_temperature_unit_h07 | mqtt | Temperature unit [H07] |  | D151 |  |
-| sensor.34eae7b41fea_temperature_unit_h07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Temperature unit [H07] | Backyard | D137 |  |
-| sensor.34eae7b41fea_temperature_value_shown_on_app_display_t10 | mqtt | Temperature value shown on APP/display [T10] |  | D151 |  |
-| sensor.34eae7b41fea_temperature_value_shown_on_app_display_t10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Temperature value shown on APP/display [T10] | Backyard | D137 |  |
-| sensor.34eae7b41fea_the_sensor_to_control_solar_water_pump_n01 | mqtt | The sensor to control solar water pump [N01] |  | D151 |  |
-| sensor.34eae7b41fea_the_sensor_to_control_solar_water_pump_n01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA The sensor to control solar water pump [N01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_the_target_temp_of_second_heating_source_r14 | mqtt | The target temp of second heating source [R14] |  | D151 |  |
-| sensor.34eae7b41fea_the_target_temp_of_second_heating_source_r14_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA The target temp of second heating source [R14] | Backyard | D137 |  |
-| sensor.34eae7b41fea_top_temperature_t03 | mqtt | Top temperature [T03] |  | D151 |  |
-| sensor.34eae7b41fea_top_temperature_t03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Top temperature [T03] | Backyard | D137 |  |
-| sensor.34eae7b41fea_usage_of_out_05_01 | mqtt | Usage of OUT 05 [/01] |  | D151 |  |
-| sensor.34eae7b41fea_usage_of_out_05_01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Usage of OUT 05 [/01] | Backyard | D137 |  |
-| sensor.34eae7b41fea_usage_of_out_06_02 | mqtt | Usage of OUT 06 [/02] |  | D151 |  |
-| sensor.34eae7b41fea_usage_of_out_06_02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Usage of OUT 06 [/02] | Backyard | D137 |  |
-| sensor.34eae7b41fea_working_mode_of_solar_water_pump_n11 | mqtt | Working mode of solar water pump [N11] |  | D151 |  |
-| sensor.34eae7b41fea_working_mode_of_solar_water_pump_n11_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA Working mode of solar water pump [N11] | Backyard | D137 |  |
-| sensor.34eae7b41fea_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15 | mqtt | 系统是否进入高温热水阶段 [O15] |  | D151 |  |
-| sensor.34eae7b41fea_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry 34EAE7B41FEA 系统是否进入高温热水阶段 [O15] | Backyard | D137 |  |
-| sensor.aeryn_iphone_activity | mobile_app | Aeryn iPhone Activity |  | D155 |  |
-| sensor.aeryn_iphone_app_version | mobile_app | Aeryn iPhone App Version |  | D155 |  |
-| sensor.aeryn_iphone_audio_output | mobile_app | Aeryn iPhone Audio Output |  | D155 |  |
-| sensor.aeryn_iphone_average_active_pace | mobile_app | Aeryn iPhone Average Active Pace |  | D155 |  |
-| sensor.aeryn_iphone_battery_level | mobile_app | Aeryn iPhone Battery Level |  | D155 |  |
-| sensor.aeryn_iphone_battery_state | mobile_app | Aeryn iPhone Battery State |  | D155 |  |
-| sensor.aeryn_iphone_bssid | mobile_app | Aeryn iPhone BSSID |  | D155 |  |
-| sensor.aeryn_iphone_camera_stream | mobile_app | Aeryn iPhone Camera Stream |  | D155 |  |
-| sensor.aeryn_iphone_connection_type | mobile_app | Aeryn iPhone Connection Type |  | D155 |  |
-| sensor.aeryn_iphone_distance | mobile_app | Aeryn iPhone Distance |  | D155 |  |
-| sensor.aeryn_iphone_floors_ascended | mobile_app | Aeryn iPhone Floors Ascended |  | D155 |  |
-| sensor.aeryn_iphone_floors_descended | mobile_app | Aeryn iPhone Floors Descended |  | D155 |  |
-| sensor.aeryn_iphone_geocoded_location | mobile_app | Aeryn iPhone Geocoded Location |  | D155 |  |
-| sensor.aeryn_iphone_kiosk_brightness | mobile_app | Aeryn iPhone Kiosk Brightness |  | D155 |  |
-| sensor.aeryn_iphone_kiosk_volume | mobile_app | Aeryn iPhone Kiosk Volume |  | D155 |  |
-| sensor.aeryn_iphone_last_update_trigger | mobile_app | Aeryn iPhone Last Update Trigger |  | D155 |  |
-| sensor.aeryn_iphone_location_permission | mobile_app | Aeryn iPhone Location permission |  | D155 |  |
-| sensor.aeryn_iphone_pressure | mobile_app | Aeryn iPhone Pressure |  | D155 |  |
-| sensor.aeryn_iphone_sim_1 | mobile_app | Aeryn iPhone SIM 1 |  | D155 |  |
-| sensor.aeryn_iphone_sim_2 | mobile_app | Aeryn iPhone SIM 2 |  | D155 |  |
-| sensor.aeryn_iphone_ssid | mobile_app | Aeryn iPhone SSID |  | D155 |  |
-| sensor.aeryn_iphone_steps | mobile_app | Aeryn iPhone Steps |  | D155 |  |
-| sensor.aeryn_iphone_storage | mobile_app | Aeryn iPhone Storage |  | D155 |  |
-| sensor.alkira_pro_ipad_app_version | mobile_app | Alkira Pro iPad App Version |  | D161 |  |
-| sensor.alkira_pro_ipad_audio_output | mobile_app | Alkira Pro iPad Audio Output |  | D161 | integration |
-| sensor.alkira_pro_ipad_battery_level | mobile_app | Alkira Pro iPad Battery Level |  | D161 |  |
-| sensor.alkira_pro_ipad_battery_state | mobile_app | Alkira Pro iPad Battery State |  | D161 |  |
-| sensor.alkira_pro_ipad_bssid | mobile_app | Alkira Pro iPad BSSID |  | D161 | integration |
-| sensor.alkira_pro_ipad_camera_stream | mobile_app | Alkira Pro iPad Camera Stream |  | D161 | integration |
-| sensor.alkira_pro_ipad_connection_type | mobile_app | Alkira Pro iPad Connection Type |  | D161 | integration |
-| sensor.alkira_pro_ipad_geocoded_location | mobile_app | Alkira Pro iPad Geocoded Location |  | D161 | integration |
-| sensor.alkira_pro_ipad_kiosk_brightness | mobile_app | Alkira Pro iPad Kiosk Brightness |  | D161 | integration |
-| sensor.alkira_pro_ipad_kiosk_volume | mobile_app | Alkira Pro iPad Kiosk Volume |  | D161 | integration |
-| sensor.alkira_pro_ipad_last_update_trigger | mobile_app | Alkira Pro iPad Last Update Trigger |  | D161 | integration |
-| sensor.alkira_pro_ipad_location_permission | mobile_app | Alkira Pro iPad Location permission |  | D161 |  |
-| sensor.alkira_pro_ipad_ssid | mobile_app | Alkira Pro iPad SSID |  | D161 | integration |
-| sensor.alkira_pro_ipad_storage | mobile_app | Alkira Pro iPad Storage |  | D161 | integration |
+| sensor.deviceid_003_3v_de_o10 | mqtt | 3V_DE [O10] |  | D152 |  |
+| sensor.deviceid_003_3v_de_o10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 3V_DE [O10] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_4_way_valve_o03 | mqtt | 4-way valve [O03] |  | D152 |  |
+| sensor.deviceid_003_4_way_valve_o03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 4-way valve [O03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_accelerate_the_running_time_of_heater_s05 | mqtt | Accelerate the running time of heater [S05] |  | D152 |  |
+| sensor.deviceid_003_accelerate_the_running_time_of_heater_s05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Accelerate the running time of heater [S05] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_accumulative_running_time_of_booster_o09 | mqtt | Accumulative running time of booster [O09] |  | D152 |  |
+| sensor.deviceid_003_accumulative_running_time_of_booster_o09_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Accumulative running time of booster [O09] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_accumulative_running_time_of_compressor_o08 | mqtt | Accumulative running time of compressor [O08] |  | D152 |  |
+| sensor.deviceid_003_accumulative_running_time_of_compressor_o08_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Accumulative running time of compressor [O08] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_activate_the_nighttime_temp_decreases_mode_n04 | mqtt | Activate the nighttime temp decreases mode [N04] |  | D152 |  |
+| sensor.deviceid_003_activate_the_nighttime_temp_decreases_mode_n04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Activate the nighttime temp decreases mode [N04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_adjustable_range_of_target_temperature_h98 | mqtt | Adjustable range of target temperature [H98] |  | D152 |  |
+| sensor.deviceid_003_adjustable_range_of_target_temperature_h98_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Adjustable range of target temperature [H98] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_ambient_temp_of_shutting_down_compressor_compulsively_r12 | mqtt | Ambient temp of shutting down compressor compulsively [R12] |  | D152 |  |
+| sensor.deviceid_003_ambient_temp_of_shutting_down_compressor_compulsively_r12_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Ambient temp of shutting down compressor compulsively [R12] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_ambient_temperature_t01 | mqtt | Ambient temperature [T01] |  | D152 |  |
+| sensor.deviceid_003_ambient_temperature_t01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Ambient temperature [T01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_booster_replaces_heat_pump_r07 | mqtt | Booster replaces heat pump? [R07] |  | D152 |  |
+| sensor.deviceid_003_booster_replaces_heat_pump_r07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Booster replaces heat pump? [R07] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_booster_startup_delay_r06 | mqtt | Booster startup delay [R06] |  | D152 |  |
+| sensor.deviceid_003_booster_startup_delay_r06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Booster startup delay [R06] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_bottom_temperature_t02 | mqtt | Bottom temperature [T02] |  | D152 |  |
+| sensor.deviceid_003_bottom_temperature_t02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Bottom temperature [T02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_chu_shuang_defrost_o14 | mqtt | 除霜Defrost [O14] |  | D152 |  |
+| sensor.deviceid_003_chu_shuang_defrost_o14_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 除霜Defrost [O14] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_circle_of_disinfection_g04 | mqtt | Circle of disinfection [G04] |  | D152 |  |
+| sensor.deviceid_003_circle_of_disinfection_g04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Circle of disinfection [G04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_circle_of_submitting_data_to_cloud_h32 | mqtt | Circle of submitting data to Cloud [H32] |  | D152 |  |
+| sensor.deviceid_003_circle_of_submitting_data_to_cloud_h32_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Circle of submitting data to Cloud [H32] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_coil_temperature_t04 | mqtt | Coil temperature [T04] |  | D152 |  |
+| sensor.deviceid_003_coil_temperature_t04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Coil temperature [T04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_compensate_to_the_shown_temp_h99 | mqtt | Compensate to the shown temp [H99] |  | D152 |  |
+| sensor.deviceid_003_compensate_to_the_shown_temp_h99_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Compensate to the shown temp [H99] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_compressor_o01 | mqtt | Compressor [O01] |  | D152 |  |
+| sensor.deviceid_003_compressor_o01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Compressor [O01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_defrosting_shutdown_temp_d02 | mqtt | Defrosting shutdown temp [D02] |  | D152 |  |
+| sensor.deviceid_003_defrosting_shutdown_temp_d02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Defrosting shutdown temp [D02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_defrosting_startup_temp_d01 | mqtt | Defrosting startup temp [D01] |  | D152 |  |
+| sensor.deviceid_003_defrosting_startup_temp_d01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Defrosting startup temp [D01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_defrosting_way_d06 | mqtt | Defrosting way [D06] |  | D152 |  |
+| sensor.deviceid_003_defrosting_way_d06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Defrosting way [D06] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_device_address_h30 | mqtt | Device address [H30] |  | D152 |  |
+| sensor.deviceid_003_device_address_h30_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Device address [H30] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_disinfection_target_temp_g01 | mqtt | Disinfection target temp [G01] |  | D152 |  |
+| sensor.deviceid_003_disinfection_target_temp_g01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Disinfection target temp [G01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_dtu_wifishi_fou_shang_xian_o13 | mqtt | DTU&WIFI是否上线 [O13] |  | D152 |  |
+| sensor.deviceid_003_dtu_wifishi_fou_shang_xian_o13_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 DTU&WIFI是否上线 [O13] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_duration_of_defrosting_d03 | mqtt | Duration of defrosting [D03] |  | D152 |  |
+| sensor.deviceid_003_duration_of_defrosting_d03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Duration of defrosting [D03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_duration_of_disinfection_g02 | mqtt | Duration of disinfection [G02] |  | D152 |  |
+| sensor.deviceid_003_duration_of_disinfection_g02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Duration of disinfection [G02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_eev_adjustment_mode_e01 | mqtt | EEV adjustment mode [E01] |  | D152 |  |
+| sensor.deviceid_003_eev_adjustment_mode_e01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 EEV adjustment mode [E01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_eev_current_position_o07 | mqtt | EEV current position [O07] |  | D152 |  |
+| sensor.deviceid_003_eev_current_position_o07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 EEV current position [O07] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_electrical_heater_o02 | mqtt | Electrical heater [O02] |  | D152 |  |
+| sensor.deviceid_003_electrical_heater_o02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Electrical heater [O02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_enable_r05_as_setpoint_of_booster_r04 | mqtt | Enable R05 as setpoint of booster? [R04] |  | D152 |  |
+| sensor.deviceid_003_enable_r05_as_setpoint_of_booster_r04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Enable R05 as setpoint of booster? [R04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_enable_top_sensor_to_control_compressor_r17 | mqtt | Enable top sensor to control compressor? [R17] |  | D152 |  |
+| sensor.deviceid_003_enable_top_sensor_to_control_compressor_r17_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Enable top sensor to control compressor? [R17] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_fan_high_speed_o04 | mqtt | Fan high speed [O04] |  | D152 |  |
+| sensor.deviceid_003_fan_high_speed_o04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Fan high speed [O04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_fan_low_speed_o05 | mqtt | Fan low speed [O05] |  | D152 |  |
+| sensor.deviceid_003_fan_low_speed_o05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Fan low speed [O05] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_heating_source_h03 | mqtt | Heating source [H03] |  | D152 |  |
+| sensor.deviceid_003_heating_source_h03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Heating source [H03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_high_pressure_switch_s04 | mqtt | High pressure switch [S04] |  | D152 |  |
+| sensor.deviceid_003_high_pressure_switch_s04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 High pressure switch [S04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_hysteresis_of_heat_pump_startup_bottom_sensor_r03 | mqtt | Hysteresis of heat pump startup(bottom sensor) [R03] |  | D152 |  |
+| sensor.deviceid_003_hysteresis_of_heat_pump_startup_bottom_sensor_r03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Hysteresis of heat pump startup(bottom sensor) [R03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_hysteresis_of_heat_pump_startup_top_sensor_r18 | mqtt | Hysteresis of heat pump startup(top sensor) [R18] |  | D152 |  |
+| sensor.deviceid_003_hysteresis_of_heat_pump_startup_top_sensor_r18_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Hysteresis of heat pump startup(top sensor) [R18] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_intelligent_control_mode_h31 | mqtt | Intelligent control mode [H31] |  | D152 |  |
+| sensor.deviceid_003_intelligent_control_mode_h31_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Intelligent control mode [H31] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_intelligent_defrosting_judgement_d07 | mqtt | Intelligent defrosting judgement [D07] |  | D152 |  |
+| sensor.deviceid_003_intelligent_defrosting_judgement_d07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Intelligent defrosting judgement [D07] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12 | mqtt | 记忆芯片EEPROM存储次数 [T12] |  | D152 |  |
+| sensor.deviceid_003_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 记忆芯片EEPROM存储次数 [T12] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11 | mqtt | 进入参数超范围保护次数 [T11] |  | D152 |  |
+| sensor.deviceid_003_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 进入参数超范围保护次数 [T11] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_longest_duration_of_defrosting_d04 | mqtt | Longest duration of defrosting [D04] |  | D152 |  |
+| sensor.deviceid_003_longest_duration_of_defrosting_d04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Longest duration of defrosting [D04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_longest_running_time_of_solar_water_pump_n02 | mqtt | Longest running time of solar water pump [N02] |  | D152 |  |
+| sensor.deviceid_003_longest_running_time_of_solar_water_pump_n02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Longest running time of solar water pump [N02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_low_pressure_switch_s03 | mqtt | Low pressure switch [S03] |  | D152 |  |
+| sensor.deviceid_003_low_pressure_switch_s03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Low pressure switch [S03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_maximal_ambient_temp_of_working_compressor_r15 | mqtt | Maximal ambient temp of working compressor [R15] |  | D152 |  |
+| sensor.deviceid_003_maximal_ambient_temp_of_working_compressor_r15_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Maximal ambient temp of working compressor [R15] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_minimal_opening_position_of_eev_e04 | mqtt | Minimal opening position of EEV [E04] |  | D152 |  |
+| sensor.deviceid_003_minimal_opening_position_of_eev_e04_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Minimal opening position of EEV [E04] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_mv_de_o11 | mqtt | MV_DE [O11] |  | D152 |  |
+| sensor.deviceid_003_mv_de_o11_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 MV_DE [O11] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_original_position_of_eev_e03 | mqtt | Original position of EEV [E03] |  | D152 |  |
+| sensor.deviceid_003_original_position_of_eev_e03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Original position of EEV [E03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_over_heat_protection_switch_s02 | mqtt | Over heat protection switch [S02] |  | D152 |  |
+| sensor.deviceid_003_over_heat_protection_switch_s02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Over heat protection switch [S02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_position_of_eev_for_defrosting_e05 | mqtt | Position of EEV for defrosting [E05] |  | D152 |  |
+| sensor.deviceid_003_position_of_eev_for_defrosting_e05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Position of EEV for defrosting [E05] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_remenber_the_status_of_device_when_power_down_h01 | mqtt | Remenber the status of device when power down [H01] |  | D152 |  |
+| sensor.deviceid_003_remenber_the_status_of_device_when_power_down_h01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Remenber the status of device when power down [H01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_remote_on_off_switch_s01 | mqtt | Remote ON/OFF switch [S01] |  | D152 |  |
+| sensor.deviceid_003_remote_on_off_switch_s01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Remote ON/OFF switch [S01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_reserve_solar_pump_solar_valve_pump_o06 | mqtt | Reserve/solar pump/solar valve pump [O06] |  | D152 |  |
+| sensor.deviceid_003_reserve_solar_pump_solar_valve_pump_o06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Reserve/solar pump/solar valve pump [O06] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_second_heating_source_s06 | mqtt | Second heating source [S06] |  | D152 |  |
+| sensor.deviceid_003_second_heating_source_s06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Second heating source [S06] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_setpoint_1_of_ambient_temp_to_stop_compressor_r19 | mqtt | Setpoint 1 of ambient temp to stop compressor [R19] |  | D152 |  |
+| sensor.deviceid_003_setpoint_1_of_ambient_temp_to_stop_compressor_r19_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Setpoint 1 of ambient temp to stop compressor [R19] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_setpoint_2_of_ambient_temp_to_stop_compressor_r20 | mqtt | Setpoint 2 of ambient temp to stop compressor [R20] |  | D152 |  |
+| sensor.deviceid_003_setpoint_2_of_ambient_temp_to_stop_compressor_r20_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Setpoint 2 of ambient temp to stop compressor [R20] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08 | mqtt | Setpoint of ambient temp to activate booster to replace heat pump [R08] |  | D152 |  |
+| sensor.deviceid_003_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Setpoint of ambient temp to activate booster to replace heat pump [R08] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10 | mqtt | Setpoint of ambient temp to activate booster with delay [R10] |  | D152 |  |
+| sensor.deviceid_003_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Setpoint of ambient temp to activate booster with delay [R10] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09 | mqtt | Setpoint of ambient temp to activate booster without delay [R09] |  | D152 |  |
+| sensor.deviceid_003_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Setpoint of ambient temp to activate booster without delay [R09] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_setpoint_of_booster_r05 | mqtt | Setpoint of booster [R05] |  | D152 |  |
+| sensor.deviceid_003_setpoint_of_booster_r05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Setpoint of booster [R05] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_shortest_duration_of_defrosting_d05 | mqtt | Shortest duration of defrosting [D05] |  | D152 |  |
+| sensor.deviceid_003_shortest_duration_of_defrosting_d05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Shortest duration of defrosting [D05] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_shutdown_o12 | mqtt | shutDown [O12] |  | D152 |  |
+| sensor.deviceid_003_shutdown_o12_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 shutDown [O12] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_shutdown_point_of_the_nighttime_temp_decreases_mode_n06 | mqtt | Shutdown point of the nighttime temp decreases mode [N06] |  | D152 |  |
+| sensor.deviceid_003_shutdown_point_of_the_nighttime_temp_decreases_mode_n06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Shutdown point of the nighttime temp decreases mode [N06] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_shutdown_temp_of_solar_water_pump_n10 | mqtt | Shutdown temp of solar water pump [N10] |  | D152 |  |
+| sensor.deviceid_003_shutdown_temp_of_solar_water_pump_n10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Shutdown temp of solar water pump [N10] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_solar_temperature_t06 | mqtt | Solar temperature [T06] |  | D152 |  |
+| sensor.deviceid_003_solar_temperature_t06_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Solar temperature [T06] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_solar_water_releasing_temp_n09 | mqtt | Solar water releasing temp [N09] |  | D152 |  |
+| sensor.deviceid_003_solar_water_releasing_temp_n09_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Solar water releasing temp [N09] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_startup_point_of_disinfection_g03 | mqtt | Startup point of disinfection [G03] |  | D152 |  |
+| sensor.deviceid_003_startup_point_of_disinfection_g03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Startup point of disinfection [G03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_startup_point_of_the_nighttime_temp_decreases_mode_n05 | mqtt | Startup point of the nighttime temp decreases mode [N05] |  | D152 |  |
+| sensor.deviceid_003_startup_point_of_the_nighttime_temp_decreases_mode_n05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Startup point of the nighttime temp decreases mode [N05] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_startup_temp_of_decreasing_solar_water_temp_n07 | mqtt | Startup temp of decreasing solar water temp [N07] |  | D152 |  |
+| sensor.deviceid_003_startup_temp_of_decreasing_solar_water_temp_n07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Startup temp of decreasing solar water temp [N07] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_suction_temperature_t05 | mqtt | Suction temperature [T05] |  | D152 |  |
+| sensor.deviceid_003_suction_temperature_t05_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Suction temperature [T05] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_target_degree_of_supreheat_e02 | mqtt | Target degree of supreheat [E02] |  | D152 |  |
+| sensor.deviceid_003_target_degree_of_supreheat_e02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Target degree of supreheat [E02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_target_temp_r01 | mqtt | Target temp [R01] |  | D152 |  |
+| sensor.deviceid_003_target_temp_r01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Target temp [R01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_temp_hysteresis_of_solar_water_pump_n03 | mqtt | Temp hysteresis of solar water pump [N03] |  | D152 |  |
+| sensor.deviceid_003_temp_hysteresis_of_solar_water_pump_n03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Temp hysteresis of solar water pump [N03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08 | mqtt | Temp hysteresis of stopping decreasing solar water temp [N08] |  | D152 |  |
+| sensor.deviceid_003_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Temp hysteresis of stopping decreasing solar water temp [N08] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_temperature_unit_h07 | mqtt | Temperature unit [H07] |  | D152 |  |
+| sensor.deviceid_003_temperature_unit_h07_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Temperature unit [H07] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_temperature_value_shown_on_app_display_t10 | mqtt | Temperature value shown on APP/display [T10] |  | D152 |  |
+| sensor.deviceid_003_temperature_value_shown_on_app_display_t10_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Temperature value shown on APP/display [T10] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_the_sensor_to_control_solar_water_pump_n01 | mqtt | The sensor to control solar water pump [N01] |  | D152 |  |
+| sensor.deviceid_003_the_sensor_to_control_solar_water_pump_n01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 The sensor to control solar water pump [N01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_the_target_temp_of_second_heating_source_r14 | mqtt | The target temp of second heating source [R14] |  | D152 |  |
+| sensor.deviceid_003_the_target_temp_of_second_heating_source_r14_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 The target temp of second heating source [R14] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_top_temperature_t03 | mqtt | Top temperature [T03] |  | D152 |  |
+| sensor.deviceid_003_top_temperature_t03_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Top temperature [T03] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_usage_of_out_05_01 | mqtt | Usage of OUT 05 [/01] |  | D152 |  |
+| sensor.deviceid_003_usage_of_out_05_01_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Usage of OUT 05 [/01] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_usage_of_out_06_02 | mqtt | Usage of OUT 06 [/02] |  | D152 |  |
+| sensor.deviceid_003_usage_of_out_06_02_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Usage of OUT 06 [/02] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_working_mode_of_solar_water_pump_n11 | mqtt | Working mode of solar water pump [N11] |  | D152 |  |
+| sensor.deviceid_003_working_mode_of_solar_water_pump_n11_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 Working mode of solar water pump [N11] | Back Fence Garden | D138 |  |
+| sensor.deviceid_003_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15 | mqtt | 系统是否进入高温热水阶段 [O15] |  | D152 |  |
+| sensor.deviceid_003_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15_aquatemp_old | aqua_temp | EVO270 – Ensuite & Kitchen deviceid_005 系统是否进入高温热水阶段 [O15] | Back Fence Garden | D138 |  |
+| sensor.deviceid_002_3v_de_o10 | mqtt | 3V_DE [O10] |  | D151 |  |
+| sensor.deviceid_002_3v_de_o10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 3V_DE [O10] | Backyard | D137 |  |
+| sensor.deviceid_002_4_way_valve_o03 | mqtt | 4-way valve [O03] |  | D151 |  |
+| sensor.deviceid_002_4_way_valve_o03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 4-way valve [O03] | Backyard | D137 |  |
+| sensor.deviceid_002_accelerate_the_running_time_of_heater_s05 | mqtt | Accelerate the running time of heater [S05] |  | D151 |  |
+| sensor.deviceid_002_accelerate_the_running_time_of_heater_s05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Accelerate the running time of heater [S05] | Backyard | D137 |  |
+| sensor.deviceid_002_accumulative_running_time_of_booster_o09 | mqtt | Accumulative running time of booster [O09] |  | D151 |  |
+| sensor.deviceid_002_accumulative_running_time_of_booster_o09_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Accumulative running time of booster [O09] | Backyard | D137 |  |
+| sensor.deviceid_002_accumulative_running_time_of_compressor_o08 | mqtt | Accumulative running time of compressor [O08] |  | D151 |  |
+| sensor.deviceid_002_accumulative_running_time_of_compressor_o08_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Accumulative running time of compressor [O08] | Backyard | D137 |  |
+| sensor.deviceid_002_activate_the_nighttime_temp_decreases_mode_n04 | mqtt | Activate the nighttime temp decreases mode [N04] |  | D151 |  |
+| sensor.deviceid_002_activate_the_nighttime_temp_decreases_mode_n04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Activate the nighttime temp decreases mode [N04] | Backyard | D137 |  |
+| sensor.deviceid_002_adjustable_range_of_target_temperature_h98 | mqtt | Adjustable range of target temperature [H98] |  | D151 |  |
+| sensor.deviceid_002_adjustable_range_of_target_temperature_h98_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Adjustable range of target temperature [H98] | Backyard | D137 |  |
+| sensor.deviceid_002_ambient_temp_of_shutting_down_compressor_compulsively_r12 | mqtt | Ambient temp of shutting down compressor compulsively [R12] |  | D151 |  |
+| sensor.deviceid_002_ambient_temp_of_shutting_down_compressor_compulsively_r12_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Ambient temp of shutting down compressor compulsively [R12] | Backyard | D137 |  |
+| sensor.deviceid_002_ambient_temperature_t01 | mqtt | Ambient temperature [T01] |  | D151 |  |
+| sensor.deviceid_002_ambient_temperature_t01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Ambient temperature [T01] | Backyard | D137 |  |
+| sensor.deviceid_002_booster_replaces_heat_pump_r07 | mqtt | Booster replaces heat pump? [R07] |  | D151 |  |
+| sensor.deviceid_002_booster_replaces_heat_pump_r07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Booster replaces heat pump? [R07] | Backyard | D137 |  |
+| sensor.deviceid_002_booster_startup_delay_r06 | mqtt | Booster startup delay [R06] |  | D151 |  |
+| sensor.deviceid_002_booster_startup_delay_r06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Booster startup delay [R06] | Backyard | D137 |  |
+| sensor.deviceid_002_bottom_temperature_t02 | mqtt | Bottom temperature [T02] |  | D151 |  |
+| sensor.deviceid_002_bottom_temperature_t02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Bottom temperature [T02] | Backyard | D137 |  |
+| sensor.deviceid_002_chu_shuang_defrost_o14 | mqtt | 除霜Defrost [O14] |  | D151 |  |
+| sensor.deviceid_002_chu_shuang_defrost_o14_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 除霜Defrost [O14] | Backyard | D137 |  |
+| sensor.deviceid_002_circle_of_disinfection_g04 | mqtt | Circle of disinfection [G04] |  | D151 |  |
+| sensor.deviceid_002_circle_of_disinfection_g04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Circle of disinfection [G04] | Backyard | D137 |  |
+| sensor.deviceid_002_circle_of_submitting_data_to_cloud_h32 | mqtt | Circle of submitting data to Cloud [H32] |  | D151 |  |
+| sensor.deviceid_002_circle_of_submitting_data_to_cloud_h32_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Circle of submitting data to Cloud [H32] | Backyard | D137 |  |
+| sensor.deviceid_002_coil_temperature_t04 | mqtt | Coil temperature [T04] |  | D151 |  |
+| sensor.deviceid_002_coil_temperature_t04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Coil temperature [T04] | Backyard | D137 |  |
+| sensor.deviceid_002_compensate_to_the_shown_temp_h99 | mqtt | Compensate to the shown temp [H99] |  | D151 |  |
+| sensor.deviceid_002_compensate_to_the_shown_temp_h99_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Compensate to the shown temp [H99] | Backyard | D137 |  |
+| sensor.deviceid_002_compressor_o01 | mqtt | Compressor [O01] |  | D151 |  |
+| sensor.deviceid_002_compressor_o01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Compressor [O01] | Backyard | D137 |  |
+| sensor.deviceid_002_defrosting_shutdown_temp_d02 | mqtt | Defrosting shutdown temp [D02] |  | D151 |  |
+| sensor.deviceid_002_defrosting_shutdown_temp_d02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Defrosting shutdown temp [D02] | Backyard | D137 |  |
+| sensor.deviceid_002_defrosting_startup_temp_d01 | mqtt | Defrosting startup temp [D01] |  | D151 |  |
+| sensor.deviceid_002_defrosting_startup_temp_d01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Defrosting startup temp [D01] | Backyard | D137 |  |
+| sensor.deviceid_002_defrosting_way_d06 | mqtt | Defrosting way [D06] |  | D151 |  |
+| sensor.deviceid_002_defrosting_way_d06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Defrosting way [D06] | Backyard | D137 |  |
+| sensor.deviceid_002_device_address_h30 | mqtt | Device address [H30] |  | D151 |  |
+| sensor.deviceid_002_device_address_h30_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Device address [H30] | Backyard | D137 |  |
+| sensor.deviceid_002_disinfection_target_temp_g01 | mqtt | Disinfection target temp [G01] |  | D151 |  |
+| sensor.deviceid_002_disinfection_target_temp_g01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Disinfection target temp [G01] | Backyard | D137 |  |
+| sensor.deviceid_002_dtu_wifishi_fou_shang_xian_o13 | mqtt | DTU&WIFI是否上线 [O13] |  | D151 |  |
+| sensor.deviceid_002_dtu_wifishi_fou_shang_xian_o13_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 DTU&WIFI是否上线 [O13] | Backyard | D137 |  |
+| sensor.deviceid_002_duration_of_defrosting_d03 | mqtt | Duration of defrosting [D03] |  | D151 |  |
+| sensor.deviceid_002_duration_of_defrosting_d03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Duration of defrosting [D03] | Backyard | D137 |  |
+| sensor.deviceid_002_duration_of_disinfection_g02 | mqtt | Duration of disinfection [G02] |  | D151 |  |
+| sensor.deviceid_002_duration_of_disinfection_g02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Duration of disinfection [G02] | Backyard | D137 |  |
+| sensor.deviceid_002_eev_adjustment_mode_e01 | mqtt | EEV adjustment mode [E01] |  | D151 |  |
+| sensor.deviceid_002_eev_adjustment_mode_e01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 EEV adjustment mode [E01] | Backyard | D137 |  |
+| sensor.deviceid_002_eev_current_position_o07 | mqtt | EEV current position [O07] |  | D151 |  |
+| sensor.deviceid_002_eev_current_position_o07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 EEV current position [O07] | Backyard | D137 |  |
+| sensor.deviceid_002_electrical_heater_o02 | mqtt | Electrical heater [O02] |  | D151 |  |
+| sensor.deviceid_002_electrical_heater_o02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Electrical heater [O02] | Backyard | D137 |  |
+| sensor.deviceid_002_enable_r05_as_setpoint_of_booster_r04 | mqtt | Enable R05 as setpoint of booster? [R04] |  | D151 |  |
+| sensor.deviceid_002_enable_r05_as_setpoint_of_booster_r04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Enable R05 as setpoint of booster? [R04] | Backyard | D137 |  |
+| sensor.deviceid_002_enable_top_sensor_to_control_compressor_r17 | mqtt | Enable top sensor to control compressor? [R17] |  | D151 |  |
+| sensor.deviceid_002_enable_top_sensor_to_control_compressor_r17_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Enable top sensor to control compressor? [R17] | Backyard | D137 |  |
+| sensor.deviceid_002_fan_high_speed_o04 | mqtt | Fan high speed [O04] |  | D151 |  |
+| sensor.deviceid_002_fan_high_speed_o04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Fan high speed [O04] | Backyard | D137 |  |
+| sensor.deviceid_002_fan_low_speed_o05 | mqtt | Fan low speed [O05] |  | D151 |  |
+| sensor.deviceid_002_fan_low_speed_o05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Fan low speed [O05] | Backyard | D137 |  |
+| sensor.deviceid_002_heating_source_h03 | mqtt | Heating source [H03] |  | D151 |  |
+| sensor.deviceid_002_heating_source_h03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Heating source [H03] | Backyard | D137 |  |
+| sensor.deviceid_002_high_pressure_switch_s04 | mqtt | High pressure switch [S04] |  | D151 |  |
+| sensor.deviceid_002_high_pressure_switch_s04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 High pressure switch [S04] | Backyard | D137 |  |
+| sensor.deviceid_002_hysteresis_of_heat_pump_startup_bottom_sensor_r03 | mqtt | Hysteresis of heat pump startup(bottom sensor) [R03] |  | D151 |  |
+| sensor.deviceid_002_hysteresis_of_heat_pump_startup_bottom_sensor_r03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Hysteresis of heat pump startup(bottom sensor) [R03] | Backyard | D137 |  |
+| sensor.deviceid_002_hysteresis_of_heat_pump_startup_top_sensor_r18 | mqtt | Hysteresis of heat pump startup(top sensor) [R18] |  | D151 |  |
+| sensor.deviceid_002_hysteresis_of_heat_pump_startup_top_sensor_r18_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Hysteresis of heat pump startup(top sensor) [R18] | Backyard | D137 |  |
+| sensor.deviceid_002_intelligent_control_mode_h31 | mqtt | Intelligent control mode [H31] |  | D151 |  |
+| sensor.deviceid_002_intelligent_control_mode_h31_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Intelligent control mode [H31] | Backyard | D137 |  |
+| sensor.deviceid_002_intelligent_defrosting_judgement_d07 | mqtt | Intelligent defrosting judgement [D07] |  | D151 |  |
+| sensor.deviceid_002_intelligent_defrosting_judgement_d07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Intelligent defrosting judgement [D07] | Backyard | D137 |  |
+| sensor.deviceid_002_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12 | mqtt | 记忆芯片EEPROM存储次数 [T12] |  | D151 |  |
+| sensor.deviceid_002_ji_yi_xin_pian_eepromcun_chu_ci_shu_t12_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 记忆芯片EEPROM存储次数 [T12] | Backyard | D137 |  |
+| sensor.deviceid_002_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11 | mqtt | 进入参数超范围保护次数 [T11] |  | D151 |  |
+| sensor.deviceid_002_jin_ru_can_shu_chao_fan_wei_bao_hu_ci_shu_t11_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 进入参数超范围保护次数 [T11] | Backyard | D137 |  |
+| sensor.deviceid_002_longest_duration_of_defrosting_d04 | mqtt | Longest duration of defrosting [D04] |  | D151 |  |
+| sensor.deviceid_002_longest_duration_of_defrosting_d04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Longest duration of defrosting [D04] | Backyard | D137 |  |
+| sensor.deviceid_002_longest_running_time_of_solar_water_pump_n02 | mqtt | Longest running time of solar water pump [N02] |  | D151 |  |
+| sensor.deviceid_002_longest_running_time_of_solar_water_pump_n02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Longest running time of solar water pump [N02] | Backyard | D137 |  |
+| sensor.deviceid_002_low_pressure_switch_s03 | mqtt | Low pressure switch [S03] |  | D151 |  |
+| sensor.deviceid_002_low_pressure_switch_s03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Low pressure switch [S03] | Backyard | D137 |  |
+| sensor.deviceid_002_maximal_ambient_temp_of_working_compressor_r15 | mqtt | Maximal ambient temp of working compressor [R15] |  | D151 |  |
+| sensor.deviceid_002_maximal_ambient_temp_of_working_compressor_r15_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Maximal ambient temp of working compressor [R15] | Backyard | D137 |  |
+| sensor.deviceid_002_minimal_opening_position_of_eev_e04 | mqtt | Minimal opening position of EEV [E04] |  | D151 |  |
+| sensor.deviceid_002_minimal_opening_position_of_eev_e04_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Minimal opening position of EEV [E04] | Backyard | D137 |  |
+| sensor.deviceid_002_mv_de_o11 | mqtt | MV_DE [O11] |  | D151 |  |
+| sensor.deviceid_002_mv_de_o11_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 MV_DE [O11] | Backyard | D137 |  |
+| sensor.deviceid_002_original_position_of_eev_e03 | mqtt | Original position of EEV [E03] |  | D151 |  |
+| sensor.deviceid_002_original_position_of_eev_e03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Original position of EEV [E03] | Backyard | D137 |  |
+| sensor.deviceid_002_over_heat_protection_switch_s02 | mqtt | Over heat protection switch [S02] |  | D151 |  |
+| sensor.deviceid_002_over_heat_protection_switch_s02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Over heat protection switch [S02] | Backyard | D137 |  |
+| sensor.deviceid_002_position_of_eev_for_defrosting_e05 | mqtt | Position of EEV for defrosting [E05] |  | D151 |  |
+| sensor.deviceid_002_position_of_eev_for_defrosting_e05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Position of EEV for defrosting [E05] | Backyard | D137 |  |
+| sensor.deviceid_002_remenber_the_status_of_device_when_power_down_h01 | mqtt | Remenber the status of device when power down [H01] |  | D151 |  |
+| sensor.deviceid_002_remenber_the_status_of_device_when_power_down_h01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Remenber the status of device when power down [H01] | Backyard | D137 |  |
+| sensor.deviceid_002_remote_on_off_switch_s01 | mqtt | Remote ON/OFF switch [S01] |  | D151 |  |
+| sensor.deviceid_002_remote_on_off_switch_s01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Remote ON/OFF switch [S01] | Backyard | D137 |  |
+| sensor.deviceid_002_reserve_solar_pump_solar_valve_pump_o06 | mqtt | Reserve/solar pump/solar valve pump [O06] |  | D151 |  |
+| sensor.deviceid_002_reserve_solar_pump_solar_valve_pump_o06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Reserve/solar pump/solar valve pump [O06] | Backyard | D137 |  |
+| sensor.deviceid_002_second_heating_source_s06 | mqtt | Second heating source [S06] |  | D151 |  |
+| sensor.deviceid_002_second_heating_source_s06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Second heating source [S06] | Backyard | D137 |  |
+| sensor.deviceid_002_setpoint_1_of_ambient_temp_to_stop_compressor_r19 | mqtt | Setpoint 1 of ambient temp to stop compressor [R19] |  | D151 |  |
+| sensor.deviceid_002_setpoint_1_of_ambient_temp_to_stop_compressor_r19_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Setpoint 1 of ambient temp to stop compressor [R19] | Backyard | D137 |  |
+| sensor.deviceid_002_setpoint_2_of_ambient_temp_to_stop_compressor_r20 | mqtt | Setpoint 2 of ambient temp to stop compressor [R20] |  | D151 |  |
+| sensor.deviceid_002_setpoint_2_of_ambient_temp_to_stop_compressor_r20_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Setpoint 2 of ambient temp to stop compressor [R20] | Backyard | D137 |  |
+| sensor.deviceid_002_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08 | mqtt | Setpoint of ambient temp to activate booster to replace heat pump [R08] |  | D151 |  |
+| sensor.deviceid_002_setpoint_of_ambient_temp_to_activate_booster_to_replace_heat_pump_r08_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Setpoint of ambient temp to activate booster to replace heat pump [R08] | Backyard | D137 |  |
+| sensor.deviceid_002_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10 | mqtt | Setpoint of ambient temp to activate booster with delay [R10] |  | D151 |  |
+| sensor.deviceid_002_setpoint_of_ambient_temp_to_activate_booster_with_delay_r10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Setpoint of ambient temp to activate booster with delay [R10] | Backyard | D137 |  |
+| sensor.deviceid_002_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09 | mqtt | Setpoint of ambient temp to activate booster without delay [R09] |  | D151 |  |
+| sensor.deviceid_002_setpoint_of_ambient_temp_to_activate_booster_without_delay_r09_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Setpoint of ambient temp to activate booster without delay [R09] | Backyard | D137 |  |
+| sensor.deviceid_002_setpoint_of_booster_r05 | mqtt | Setpoint of booster [R05] |  | D151 |  |
+| sensor.deviceid_002_setpoint_of_booster_r05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Setpoint of booster [R05] | Backyard | D137 |  |
+| sensor.deviceid_002_shortest_duration_of_defrosting_d05 | mqtt | Shortest duration of defrosting [D05] |  | D151 |  |
+| sensor.deviceid_002_shortest_duration_of_defrosting_d05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Shortest duration of defrosting [D05] | Backyard | D137 |  |
+| sensor.deviceid_002_shutdown_o12 | mqtt | shutDown [O12] |  | D151 |  |
+| sensor.deviceid_002_shutdown_o12_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 shutDown [O12] | Backyard | D137 |  |
+| sensor.deviceid_002_shutdown_point_of_the_nighttime_temp_decreases_mode_n06 | mqtt | Shutdown point of the nighttime temp decreases mode [N06] |  | D151 |  |
+| sensor.deviceid_002_shutdown_point_of_the_nighttime_temp_decreases_mode_n06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Shutdown point of the nighttime temp decreases mode [N06] | Backyard | D137 |  |
+| sensor.deviceid_002_shutdown_temp_of_solar_water_pump_n10 | mqtt | Shutdown temp of solar water pump [N10] |  | D151 |  |
+| sensor.deviceid_002_shutdown_temp_of_solar_water_pump_n10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Shutdown temp of solar water pump [N10] | Backyard | D137 |  |
+| sensor.deviceid_002_solar_temperature_t06 | mqtt | Solar temperature [T06] |  | D151 |  |
+| sensor.deviceid_002_solar_temperature_t06_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Solar temperature [T06] | Backyard | D137 |  |
+| sensor.deviceid_002_solar_water_releasing_temp_n09 | mqtt | Solar water releasing temp [N09] |  | D151 |  |
+| sensor.deviceid_002_solar_water_releasing_temp_n09_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Solar water releasing temp [N09] | Backyard | D137 |  |
+| sensor.deviceid_002_startup_point_of_disinfection_g03 | mqtt | Startup point of disinfection [G03] |  | D151 |  |
+| sensor.deviceid_002_startup_point_of_disinfection_g03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Startup point of disinfection [G03] | Backyard | D137 |  |
+| sensor.deviceid_002_startup_point_of_the_nighttime_temp_decreases_mode_n05 | mqtt | Startup point of the nighttime temp decreases mode [N05] |  | D151 |  |
+| sensor.deviceid_002_startup_point_of_the_nighttime_temp_decreases_mode_n05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Startup point of the nighttime temp decreases mode [N05] | Backyard | D137 |  |
+| sensor.deviceid_002_startup_temp_of_decreasing_solar_water_temp_n07 | mqtt | Startup temp of decreasing solar water temp [N07] |  | D151 |  |
+| sensor.deviceid_002_startup_temp_of_decreasing_solar_water_temp_n07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Startup temp of decreasing solar water temp [N07] | Backyard | D137 |  |
+| sensor.deviceid_002_suction_temperature_t05 | mqtt | Suction temperature [T05] |  | D151 |  |
+| sensor.deviceid_002_suction_temperature_t05_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Suction temperature [T05] | Backyard | D137 |  |
+| sensor.deviceid_002_target_degree_of_supreheat_e02 | mqtt | Target degree of supreheat [E02] |  | D151 |  |
+| sensor.deviceid_002_target_degree_of_supreheat_e02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Target degree of supreheat [E02] | Backyard | D137 |  |
+| sensor.deviceid_002_target_temp_r01 | mqtt | Target temp [R01] |  | D151 |  |
+| sensor.deviceid_002_target_temp_r01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Target temp [R01] | Backyard | D137 |  |
+| sensor.deviceid_002_temp_hysteresis_of_solar_water_pump_n03 | mqtt | Temp hysteresis of solar water pump [N03] |  | D151 |  |
+| sensor.deviceid_002_temp_hysteresis_of_solar_water_pump_n03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Temp hysteresis of solar water pump [N03] | Backyard | D137 |  |
+| sensor.deviceid_002_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08 | mqtt | Temp hysteresis of stopping decreasing solar water temp [N08] |  | D151 |  |
+| sensor.deviceid_002_temp_hysteresis_of_stopping_decreasing_solar_water_temp_n08_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Temp hysteresis of stopping decreasing solar water temp [N08] | Backyard | D137 |  |
+| sensor.deviceid_002_temperature_unit_h07 | mqtt | Temperature unit [H07] |  | D151 |  |
+| sensor.deviceid_002_temperature_unit_h07_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Temperature unit [H07] | Backyard | D137 |  |
+| sensor.deviceid_002_temperature_value_shown_on_app_display_t10 | mqtt | Temperature value shown on APP/display [T10] |  | D151 |  |
+| sensor.deviceid_002_temperature_value_shown_on_app_display_t10_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Temperature value shown on APP/display [T10] | Backyard | D137 |  |
+| sensor.deviceid_002_the_sensor_to_control_solar_water_pump_n01 | mqtt | The sensor to control solar water pump [N01] |  | D151 |  |
+| sensor.deviceid_002_the_sensor_to_control_solar_water_pump_n01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 The sensor to control solar water pump [N01] | Backyard | D137 |  |
+| sensor.deviceid_002_the_target_temp_of_second_heating_source_r14 | mqtt | The target temp of second heating source [R14] |  | D151 |  |
+| sensor.deviceid_002_the_target_temp_of_second_heating_source_r14_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 The target temp of second heating source [R14] | Backyard | D137 |  |
+| sensor.deviceid_002_top_temperature_t03 | mqtt | Top temperature [T03] |  | D151 |  |
+| sensor.deviceid_002_top_temperature_t03_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Top temperature [T03] | Backyard | D137 |  |
+| sensor.deviceid_002_usage_of_out_05_01 | mqtt | Usage of OUT 05 [/01] |  | D151 |  |
+| sensor.deviceid_002_usage_of_out_05_01_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Usage of OUT 05 [/01] | Backyard | D137 |  |
+| sensor.deviceid_002_usage_of_out_06_02 | mqtt | Usage of OUT 06 [/02] |  | D151 |  |
+| sensor.deviceid_002_usage_of_out_06_02_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Usage of OUT 06 [/02] | Backyard | D137 |  |
+| sensor.deviceid_002_working_mode_of_solar_water_pump_n11 | mqtt | Working mode of solar water pump [N11] |  | D151 |  |
+| sensor.deviceid_002_working_mode_of_solar_water_pump_n11_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 Working mode of solar water pump [N11] | Backyard | D137 |  |
+| sensor.deviceid_002_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15 | mqtt | 系统是否进入高温热水阶段 [O15] |  | D151 |  |
+| sensor.deviceid_002_xi_tong_shi_fou_jin_ru_gao_wen_re_shui_jie_duan_o15_aquatemp_old | aqua_temp | EVO270 – Bathroom & Laundry deviceid_004 系统是否进入高温热水阶段 [O15] | Backyard | D137 |  |
 | sensor.alpstuga_air_quality_monitor_air_quality | matter | Air quality | Battery Shed | D111 |  |
 | sensor.alpstuga_air_quality_monitor_boot_reason | matter | Boot reason | Battery Shed | D111 | integration |
 | sensor.alpstuga_air_quality_monitor_carbon_dioxide | matter | Carbon dioxide | Battery Shed | D111 |  |
@@ -1287,16 +1209,16 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | sensor.automate_shade_buu_pulse_blind_buu_battery | automate_pulse_pro | Pulse Blind BUU Battery |  | D146 |  |
 | sensor.automate_shade_kcn_pulse_blind_kcn_battery | automate_pulse_pro | Pulse Blind KCN Battery |  | D147 |  |
 | sensor.automate_shade_ydk_pulse_blind_ydk_battery | automate_pulse_pro | Pulse Blind YDK Battery |  | D141 |  |
-| sensor.back_fence_garden_evo270_ensuite_kitchen_34eae79f4bce_evo270_ensuite_kitchen_clock_drift | aqua_temp | EVO270 Ensuite & Kitchen Clock Drift | Back Fence Garden | D138 |  |
-| sensor.back_fence_garden_evo270_ensuite_kitchen_34eae79f4bce_evo270_ensuite_kitchen_unit_time | aqua_temp | EVO270 Ensuite & Kitchen Unit Time | Back Fence Garden | D138 |  |
+| sensor.back_fence_garden_evo270_ensuite_kitchen_deviceid_003_evo270_ensuite_kitchen_clock_drift | aqua_temp | EVO270 Ensuite & Kitchen Clock Drift | Back Fence Garden | D138 |  |
+| sensor.back_fence_garden_evo270_ensuite_kitchen_deviceid_003_evo270_ensuite_kitchen_unit_time | aqua_temp | EVO270 Ensuite & Kitchen Unit Time | Back Fence Garden | D138 |  |
 | sensor.back_overall_day_night_state | reolink | Day night state | Backyard | D080 |  |
 | sensor.backup_backup_manager_state | backup | Backup Manager state |  | D007 |  |
 | sensor.backup_last_attempted_automatic_backup | backup | Last attempted automatic backup |  | D007 |  |
 | sensor.backup_last_successful_automatic_backup | backup | Last successful automatic backup |  | D007 |  |
 | sensor.backup_next_scheduled_automatic_backup | backup | Next scheduled automatic backup |  | D007 |  |
 | sensor.backyard_day_night_state | reolink | Day night state | Backyard | D075 |  |
-| sensor.backyard_evo270_bathroom_laundry_34eae7b41fea_evo270_bathroom_laundry_clock_drift | aqua_temp | EVO270 Bathroom & Laundry Clock Drift | Backyard | D137 |  |
-| sensor.backyard_evo270_bathroom_laundry_34eae7b41fea_evo270_bathroom_laundry_unit_time | aqua_temp | EVO270 Bathroom & Laundry Unit Time | Backyard | D137 |  |
+| sensor.backyard_evo270_bathroom_laundry_deviceid_002_evo270_bathroom_laundry_clock_drift | aqua_temp | EVO270 Bathroom & Laundry Clock Drift | Backyard | D137 |  |
+| sensor.backyard_evo270_bathroom_laundry_deviceid_002_evo270_bathroom_laundry_unit_time | aqua_temp | EVO270 Bathroom & Laundry Unit Time | Backyard | D137 |  |
 | sensor.bedroom_main_front_powerpoint_active_current | matter | Active current | Bedroom | D128 |  |
 | sensor.bedroom_main_front_powerpoint_apparent_current | matter | Apparent current | Bedroom | D128 |  |
 | sensor.bedroom_main_front_powerpoint_apparent_power | matter | Apparent power | Bedroom | D128 |  |
@@ -1526,52 +1448,6 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | sensor.home_assistant_operating_system_version | hassio | Version |  | D005 | integration |
 | sensor.home_assistant_supervisor_cpu_percent | hassio | CPU percent |  | D003 | integration |
 | sensor.home_assistant_supervisor_memory_percent | hassio | Memory percent |  | D003 | integration |
-| sensor.imac_office_active_audio_input | mobile_app | iMac Office Active Audio Input |  | D103 |  |
-| sensor.imac_office_active_audio_output | mobile_app | iMac Office Active Audio Output |  | D103 |  |
-| sensor.imac_office_active_camera | mobile_app | iMac Office Active Camera |  | D103 |  |
-| sensor.imac_office_app_version | mobile_app | iMac Office App Version |  | D103 |  |
-| sensor.imac_office_audio_output | mobile_app | iMac Office Audio Output |  | D103 |  |
-| sensor.imac_office_bssid | mobile_app | iMac Office BSSID |  | D103 |  |
-| sensor.imac_office_connection_type | mobile_app | iMac Office Connection Type |  | D103 |  |
-| sensor.imac_office_displays | mobile_app | iMac Office Displays |  | D103 |  |
-| sensor.imac_office_frontmost_app | mobile_app | iMac Office Frontmost App |  | D103 |  |
-| sensor.imac_office_geocoded_location | mobile_app | iMac Office Geocoded Location |  | D103 |  |
-| sensor.imac_office_last_update_trigger | mobile_app | iMac Office Last Update Trigger |  | D103 |  |
-| sensor.imac_office_location_permission | mobile_app | iMac Office Location permission |  | D103 |  |
-| sensor.imac_office_primary_display_id | mobile_app | iMac Office Primary Display ID |  | D103 |  |
-| sensor.imac_office_primary_display_name | mobile_app | iMac Office Primary Display Name |  | D103 |  |
-| sensor.imac_office_ssid | mobile_app | iMac Office SSID |  | D103 |  |
-| sensor.imac_office_storage | mobile_app | iMac Office Storage |  | D103 |  |
-| sensor.jem_ipad_app_version | mobile_app | Jem iPad App Version |  | D156 |  |
-| sensor.jem_ipad_audio_output | mobile_app | Jem iPad Audio Output |  | D156 |  |
-| sensor.jem_ipad_battery_level | mobile_app | Jem iPad Battery Level |  | D156 |  |
-| sensor.jem_ipad_battery_state | mobile_app | Jem iPad Battery State |  | D156 |  |
-| sensor.jem_ipad_bssid | mobile_app | Jem iPad BSSID |  | D156 |  |
-| sensor.jem_ipad_camera_stream | mobile_app | Jem iPad Camera Stream |  | D156 |  |
-| sensor.jem_ipad_connection_type | mobile_app | Jem iPad Connection Type |  | D156 |  |
-| sensor.jem_ipad_geocoded_location | mobile_app | Jem iPad Geocoded Location |  | D156 |  |
-| sensor.jem_ipad_kiosk_brightness | mobile_app | Jem iPad Kiosk Brightness |  | D156 |  |
-| sensor.jem_ipad_kiosk_volume | mobile_app | Jem iPad Kiosk Volume |  | D156 |  |
-| sensor.jem_ipad_last_update_trigger | mobile_app | Jem iPad Last Update Trigger |  | D156 |  |
-| sensor.jem_ipad_location_permission | mobile_app | Jem iPad Location permission |  | D156 |  |
-| sensor.jem_ipad_ssid | mobile_app | Jem iPad SSID |  | D156 |  |
-| sensor.jem_ipad_storage | mobile_app | Jem iPad Storage |  | D156 |  |
-| sensor.jem_iphone_app_version | mobile_app | Jem iPhone App Version |  | D162 |  |
-| sensor.jem_iphone_audio_output | mobile_app | Jem iPhone Audio Output |  | D162 | integration |
-| sensor.jem_iphone_battery_level | mobile_app | Jem iPhone Battery Level |  | D162 |  |
-| sensor.jem_iphone_battery_state | mobile_app | Jem iPhone Battery State |  | D162 |  |
-| sensor.jem_iphone_bssid | mobile_app | Jem iPhone BSSID |  | D162 | integration |
-| sensor.jem_iphone_camera_stream | mobile_app | Jem iPhone Camera Stream |  | D162 | integration |
-| sensor.jem_iphone_connection_type | mobile_app | Jem iPhone Connection Type |  | D162 | integration |
-| sensor.jem_iphone_geocoded_location | mobile_app | Jem iPhone Geocoded Location |  | D162 | integration |
-| sensor.jem_iphone_kiosk_brightness | mobile_app | Jem iPhone Kiosk Brightness |  | D162 | integration |
-| sensor.jem_iphone_kiosk_volume | mobile_app | Jem iPhone Kiosk Volume |  | D162 | integration |
-| sensor.jem_iphone_last_update_trigger | mobile_app | Jem iPhone Last Update Trigger |  | D162 | integration |
-| sensor.jem_iphone_location_permission | mobile_app | Jem iPhone Location permission |  | D162 |  |
-| sensor.jem_iphone_sim_1 | mobile_app | Jem iPhone SIM 1 |  | D162 | integration |
-| sensor.jem_iphone_sim_2 | mobile_app | Jem iPhone SIM 2 |  | D162 | integration |
-| sensor.jem_iphone_ssid | mobile_app | Jem iPhone SSID |  | D162 | integration |
-| sensor.jem_iphone_storage | mobile_app | Jem iPhone Storage |  | D162 | integration |
 | sensor.kitchen_bilresa_dual_button_2_battery | matter | Battery | Kitchen | D131 |  |
 | sensor.kitchen_bilresa_dual_button_2_battery_type | matter | Battery type | Kitchen | D131 |  |
 | sensor.kitchen_bilresa_dual_button_2_battery_voltage | matter | Battery voltage | Kitchen | D131 |  |
@@ -1868,40 +1744,6 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | sensor.myggbett_door_window_sensor_uptime_2 | matter | Uptime | Bedroom | D107 | integration |
 | sensor.myggbett_door_window_sensor_uptime_3 | matter | Uptime | Pantry | D108 | integration |
 | sensor.myggbett_door_window_sensor_uptime_4 | matter | Uptime | Living Room | D109 | integration |
-| sensor.nathaniels_iphone_app_version | mobile_app | Nathaniel’s iPhone App Version |  | D159 |  |
-| sensor.nathaniels_iphone_audio_output | mobile_app | Nathaniel’s iPhone Audio Output |  | D159 |  |
-| sensor.nathaniels_iphone_battery_level | mobile_app | Nathaniel’s iPhone Battery Level |  | D159 |  |
-| sensor.nathaniels_iphone_battery_state | mobile_app | Nathaniel’s iPhone Battery State |  | D159 |  |
-| sensor.nathaniels_iphone_bssid | mobile_app | Nathaniel’s iPhone BSSID |  | D159 |  |
-| sensor.nathaniels_iphone_camera_stream | mobile_app | Nathaniel’s iPhone Camera Stream |  | D159 |  |
-| sensor.nathaniels_iphone_connection_type | mobile_app | Nathaniel’s iPhone Connection Type |  | D159 |  |
-| sensor.nathaniels_iphone_geocoded_location | mobile_app | Nathaniel’s iPhone Geocoded Location |  | D159 |  |
-| sensor.nathaniels_iphone_kiosk_brightness | mobile_app | Nathaniel’s iPhone Kiosk Brightness |  | D159 |  |
-| sensor.nathaniels_iphone_kiosk_volume | mobile_app | Nathaniel’s iPhone Kiosk Volume |  | D159 |  |
-| sensor.nathaniels_iphone_last_update_trigger | mobile_app | Nathaniel’s iPhone Last Update Trigger |  | D159 |  |
-| sensor.nathaniels_iphone_location_permission | mobile_app | Nathaniel’s iPhone Location permission |  | D159 |  |
-| sensor.nathaniels_iphone_sim_1 | mobile_app | Nathaniel’s iPhone SIM 1 |  | D159 |  |
-| sensor.nathaniels_iphone_sim_2 | mobile_app | Nathaniel’s iPhone SIM 2 |  | D159 |  |
-| sensor.nathaniels_iphone_ssid | mobile_app | Nathaniel’s iPhone SSID |  | D159 |  |
-| sensor.nathaniels_iphone_storage | mobile_app | Nathaniel’s iPhone Storage |  | D159 |  |
-| sensor.nathaniels_iphone_watch_battery_level | mobile_app | Nathaniel’s iPhone Watch Battery Level |  | D159 |  |
-| sensor.nathaniels_iphone_watch_battery_state | mobile_app | Nathaniel’s iPhone Watch Battery State |  | D159 |  |
-| sensor.ninja_guide_mum_app_version | mobile_app | Ninja Guide Mum App Version |  | D157 |  |
-| sensor.ninja_guide_mum_audio_output | mobile_app | Ninja Guide Mum Audio Output |  | D157 |  |
-| sensor.ninja_guide_mum_battery_level | mobile_app | Ninja Guide Mum Battery Level |  | D157 |  |
-| sensor.ninja_guide_mum_battery_state | mobile_app | Ninja Guide Mum Battery State |  | D157 |  |
-| sensor.ninja_guide_mum_bssid | mobile_app | Ninja Guide Mum BSSID |  | D157 |  |
-| sensor.ninja_guide_mum_camera_stream | mobile_app | Ninja Guide Mum Camera Stream |  | D157 |  |
-| sensor.ninja_guide_mum_connection_type | mobile_app | Ninja Guide Mum Connection Type |  | D157 |  |
-| sensor.ninja_guide_mum_geocoded_location | mobile_app | Ninja Guide Mum Geocoded Location |  | D157 |  |
-| sensor.ninja_guide_mum_kiosk_brightness | mobile_app | Ninja Guide Mum Kiosk Brightness |  | D157 |  |
-| sensor.ninja_guide_mum_kiosk_volume | mobile_app | Ninja Guide Mum Kiosk Volume |  | D157 |  |
-| sensor.ninja_guide_mum_last_update_trigger | mobile_app | Ninja Guide Mum Last Update Trigger |  | D157 |  |
-| sensor.ninja_guide_mum_location_permission | mobile_app | Ninja Guide Mum Location permission |  | D157 |  |
-| sensor.ninja_guide_mum_sim_1 | mobile_app | Ninja Guide Mum SIM 1 |  | D157 |  |
-| sensor.ninja_guide_mum_sim_2 | mobile_app | Ninja Guide Mum SIM 2 |  | D157 |  |
-| sensor.ninja_guide_mum_ssid | mobile_app | Ninja Guide Mum SSID |  | D157 |  |
-| sensor.ninja_guide_mum_storage | mobile_app | Ninja Guide Mum Storage |  | D157 |  |
 | sensor.nvr16_hdd_0_storage | reolink | HDD 0 storage | Garage | D072 | integration |
 | sensor.nvr16_hdd_1_storage | reolink | HDD 1 storage | Garage | D072 | integration |
 | sensor.opencode_cpu_percent | hassio | CPU percent |  | D102 | integration |
@@ -2164,7 +2006,7 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | sensor.sigen_plant_total_load_consumption | sigen | Total Load Consumption | Battery Shed | D024 |  |
 | sensor.sigen_plant_total_load_power | sigen | Total Load Power | Battery Shed | D024 |  |
 | sensor.sigen_plant_total_pv_generation | sigen | Total PV Generation | Battery Shed | D024 |  |
-| sensor.smart_garage_door_26020595609031610701c4e7ae278e9c_sensor_protocol | meross_lan | Sensor protocol | Garage | D150 | integration |
+| sensor.smart_garage_door_deviceid_006_sensor_protocol | meross_lan | Sensor protocol | Garage | D150 | integration |
 | sensor.smart_meter_63a_apparent_power | fronius | Apparent power | Home | D034 | integration |
 | sensor.smart_meter_63a_apparent_power_phase_1 | fronius | Apparent power phase 1 | Home | D034 | integration |
 | sensor.smart_meter_63a_apparent_power_phase_2 | fronius | Apparent power phase 2 | Home | D034 | integration |
@@ -2199,8 +2041,8 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | sensor.smart_meter_63a_voltage_phase_2_3 | fronius | Voltage phase 2-3 | Home | D034 | integration |
 | sensor.smart_meter_63a_voltage_phase_3 | fronius | Voltage phase 3 | Home | D034 | integration |
 | sensor.smart_meter_63a_voltage_phase_3_1 | fronius | Voltage phase 3-1 | Home | D034 | integration |
-| sensor.smart_switch_26030582330465570902c4e7ae28b8aa_sensor_protocol | meross_lan | Sensor protocol | Water Tank Pump | D056 | integration |
-| sensor.smart_switch_26030582330465570902c4e7ae28b8aa_signal_strength | meross_lan | Signal strength | Water Tank Pump | D056 |  |
+| sensor.smart_switch_deviceid_001_sensor_protocol | meross_lan | Sensor protocol | Water Tank Pump | D056 | integration |
+| sensor.smart_switch_deviceid_001_signal_strength | meross_lan | Signal strength | Water Tank Pump | D056 |  |
 | sensor.solarnet_meter_mode | fronius | Meter mode | Roof | D032 |  |
 | sensor.solarnet_power_grid | fronius | Power grid | Roof | D032 | integration |
 | sensor.solarnet_power_grid_export | fronius | Power grid export | Roof | D032 |  |
@@ -2364,22 +2206,6 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | sensor.terminal_ssh_memory_percent | hassio | Memory percent |  | D070 | integration |
 | sensor.terminal_ssh_newest_version | hassio | Newest version |  | D070 | integration |
 | sensor.terminal_ssh_version | hassio | Version |  | D070 | integration |
-| sensor.the_green_ninja_app_version | mobile_app | The Green Ninja App Version |  | D163 |  |
-| sensor.the_green_ninja_audio_output | mobile_app | The Green Ninja Audio Output |  | D163 | integration |
-| sensor.the_green_ninja_battery_level | mobile_app | The Green Ninja Battery Level |  | D163 |  |
-| sensor.the_green_ninja_battery_state | mobile_app | The Green Ninja Battery State |  | D163 |  |
-| sensor.the_green_ninja_bssid | mobile_app | The Green Ninja BSSID |  | D163 | integration |
-| sensor.the_green_ninja_camera_stream | mobile_app | The Green Ninja Camera Stream |  | D163 | integration |
-| sensor.the_green_ninja_connection_type | mobile_app | The Green Ninja Connection Type |  | D163 | integration |
-| sensor.the_green_ninja_geocoded_location | mobile_app | The Green Ninja Geocoded Location |  | D163 | integration |
-| sensor.the_green_ninja_kiosk_brightness | mobile_app | The Green Ninja Kiosk Brightness |  | D163 | integration |
-| sensor.the_green_ninja_kiosk_volume | mobile_app | The Green Ninja Kiosk Volume |  | D163 | integration |
-| sensor.the_green_ninja_last_update_trigger | mobile_app | The Green Ninja Last Update Trigger |  | D163 | integration |
-| sensor.the_green_ninja_location_permission | mobile_app | The Green Ninja Location permission |  | D163 |  |
-| sensor.the_green_ninja_sim_1 | mobile_app | The Green Ninja SIM 1 |  | D163 | integration |
-| sensor.the_green_ninja_sim_2 | mobile_app | The Green Ninja SIM 2 |  | D163 | integration |
-| sensor.the_green_ninja_ssid | mobile_app | The Green Ninja SSID |  | D163 | integration |
-| sensor.the_green_ninja_storage | mobile_app | The Green Ninja Storage |  | D163 | integration |
 | sensor.tv_room_blind_voltage | template | TV Room Blind Voltage |  |  |  |
 | sensor.tv_room_target_opening_position | matter | Target opening position |  | D113 | integration |
 | sensor.usd_to_aud | rest | USD to AUD |  |  |  |
@@ -2399,16 +2225,16 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | siren.lhs_gate_siren | reolink | Siren | LHS Gate | D073 |  |
 | siren.rhs_gate_siren | reolink | Siren | RHS Gate | D074 |  |
 | siren.shed_siren | reolink | Siren | Shed | D077 |  |
-| switch.34eae79f4bce_timer_1_off_enabled | mqtt | Timer 1 OFF Enabled |  | D152 |  |
-| switch.34eae79f4bce_timer_1_on_enabled | mqtt | Timer 1 ON Enabled |  | D152 |  |
-| switch.34eae79f4bce_timer_2_off_enabled | mqtt | Timer 2 OFF Enabled |  | D152 |  |
-| switch.34eae79f4bce_timer_2_on_enabled | mqtt | Timer 2 ON Enabled |  | D152 |  |
-| switch.34eae79f4bce_vacation_date_enabled | mqtt | Vacation Date Enabled |  | D152 |  |
-| switch.34eae7b41fea_timer_1_off_enabled | mqtt | Timer 1 OFF Enabled |  | D151 |  |
-| switch.34eae7b41fea_timer_1_on_enabled | mqtt | Timer 1 ON Enabled |  | D151 |  |
-| switch.34eae7b41fea_timer_2_off_enabled | mqtt | Timer 2 OFF Enabled |  | D151 |  |
-| switch.34eae7b41fea_timer_2_on_enabled | mqtt | Timer 2 ON Enabled |  | D151 |  |
-| switch.34eae7b41fea_vacation_date_enabled | mqtt | Vacation Date Enabled |  | D151 |  |
+| switch.deviceid_003_timer_1_off_enabled | mqtt | Timer 1 OFF Enabled |  | D152 |  |
+| switch.deviceid_003_timer_1_on_enabled | mqtt | Timer 1 ON Enabled |  | D152 |  |
+| switch.deviceid_003_timer_2_off_enabled | mqtt | Timer 2 OFF Enabled |  | D152 |  |
+| switch.deviceid_003_timer_2_on_enabled | mqtt | Timer 2 ON Enabled |  | D152 |  |
+| switch.deviceid_003_vacation_date_enabled | mqtt | Vacation Date Enabled |  | D152 |  |
+| switch.deviceid_002_timer_1_off_enabled | mqtt | Timer 1 OFF Enabled |  | D151 |  |
+| switch.deviceid_002_timer_1_on_enabled | mqtt | Timer 1 ON Enabled |  | D151 |  |
+| switch.deviceid_002_timer_2_off_enabled | mqtt | Timer 2 OFF Enabled |  | D151 |  |
+| switch.deviceid_002_timer_2_on_enabled | mqtt | Timer 2 ON Enabled |  | D151 |  |
+| switch.deviceid_002_vacation_date_enabled | mqtt | Vacation Date Enabled |  | D151 |  |
 | switch.alpstuga_air_quality_monitor | matter | Display | Battery Shed | D111 |  |
 | switch.amber_express_pre_release | hacs | Pre-release | Battery Shed | D013 | integration |
 | switch.apexcharts_card_pre_release | hacs | Pre-release |  | D066 | integration |
@@ -2569,9 +2395,9 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | switch.sigen_plant_plant_power | sigen | Plant Power | Battery Shed | D024 | integration |
 | switch.sigen_plant_remote_ems_controlled_by_home_assistant | sigen | Remote EMS (Controlled by Home Assistant) | Battery Shed | D024 | integration |
 | switch.sigenergy_ess_pre_release | hacs | Pre-release | Battery Shed | D012 | integration |
-| switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet | meross_lan | Outlet | Water Tank Pump | D056 |  |
-| switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1 | meross_lan | Water Pp | Water Tank Pump | D056 |  |
-| switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2 | meross_lan | Farmbot | Water Tank Pump | D056 |  |
+| switch.smart_switch_deviceid_001_outlet | meross_lan | Outlet | Water Tank Pump | D056 |  |
+| switch.smart_switch_deviceid_001_outlet_1 | meross_lan | Water Pp | Water Tank Pump | D056 |  |
+| switch.smart_switch_deviceid_001_outlet_2 | meross_lan | Farmbot | Water Tank Pump | D056 |  |
 | switch.solcast_pv_forecast_pre_release | hacs | Pre-release |  | D030 | integration |
 | switch.sonoff_dongle_flasher | hassio |  |  | D100 | integration |
 | switch.studio_code_server | hassio |  |  | D069 | integration |
@@ -2583,18 +2409,18 @@ Unique IDs and raw registry device IDs are intentionally omitted.
 | switch.weather_chart_card_pre_release | hacs | Pre-release |  | D090 | integration |
 | switch.weather_forecast_card_pre_release | hacs | Pre-release |  | D121 | integration |
 | switch.wind_rose_card_pre_release | hacs | Pre-release |  | D096 | integration |
-| tag.2a57c230_6147_470c_b4f1_09767f093419 | tag | Tag 2a57c230-6147-470c-b4f1-09767f093419 |  |  |  |
+| tag.2a57c230_6147_470c_b4f1_deviceid_007 | tag | Tag 2a57c230-6147-470c-b4f1-deviceid_007 |  |  |  |
 | tag.astra | tag | Astra |  |  |  |
 | tag.feed_walter_astra | tag | Feed Walter & Astra |  |  |  |
 | tag.walter | tag | Walter |  |  |  |
-| time.34eae79f4bce_timer_1_off | mqtt | Timer 1 OFF Time |  | D152 |  |
-| time.34eae79f4bce_timer_1_on | mqtt | Timer 1 ON Time |  | D152 |  |
-| time.34eae79f4bce_timer_2_off | mqtt | Timer 2 OFF Time |  | D152 |  |
-| time.34eae79f4bce_timer_2_on | mqtt | Timer 2 ON Time |  | D152 |  |
-| time.34eae7b41fea_timer_1_off | mqtt | Timer 1 OFF Time |  | D151 |  |
-| time.34eae7b41fea_timer_1_on | mqtt | Timer 1 ON Time |  | D151 |  |
-| time.34eae7b41fea_timer_2_off | mqtt | Timer 2 OFF Time |  | D151 |  |
-| time.34eae7b41fea_timer_2_on | mqtt | Timer 2 ON Time |  | D151 |  |
+| time.deviceid_003_timer_1_off | mqtt | Timer 1 OFF Time |  | D152 |  |
+| time.deviceid_003_timer_1_on | mqtt | Timer 1 ON Time |  | D152 |  |
+| time.deviceid_003_timer_2_off | mqtt | Timer 2 OFF Time |  | D152 |  |
+| time.deviceid_003_timer_2_on | mqtt | Timer 2 ON Time |  | D152 |  |
+| time.deviceid_002_timer_1_off | mqtt | Timer 1 OFF Time |  | D151 |  |
+| time.deviceid_002_timer_1_on | mqtt | Timer 1 ON Time |  | D151 |  |
+| time.deviceid_002_timer_2_off | mqtt | Timer 2 OFF Time |  | D151 |  |
+| time.deviceid_002_timer_2_on | mqtt | Timer 2 ON Time |  | D151 |  |
 | time.backyard_back_overall_floodlight_schedule_end | reolink | Floodlight schedule end | Backyard | D080 | integration |
 | time.backyard_back_overall_floodlight_schedule_start | reolink | Floodlight schedule start | Backyard | D080 | integration |
 | time.backyard_backyard_floodlight_schedule_end | reolink | Floodlight schedule end | Backyard | D075 | integration |

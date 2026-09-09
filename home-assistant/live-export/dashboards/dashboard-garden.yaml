@@ -12,12 +12,12 @@
               "icon": "mdi:sprout",
               "multiline_secondary": true,
               "primary": "Outside Smart switch",
-              "secondary": "{% set bot = is_state('switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2', 'on') %} {% set pump = is_state('switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1', 'on') %} {% set rain = states('sensor.farmbot_pioneer_dr_weather_station_24h_rain_piezo') | float(0) %} {% if bot and pump %}FarmBot online · Irrigation running {% elif bot %}FarmBot online · Pump idle {% elif pump %}Pump running · FarmBot offline {% else %}Systems standing by · 24h rain {{ rain | round(1) }} mm{% endif %}",
+              "secondary": "{% set bot = is_state('switch.smart_switch_deviceid_001_outlet_2', 'on') %} {% set pump = is_state('switch.smart_switch_deviceid_001_outlet_1', 'on') %} {% set rain = states('sensor.farmbot_pioneer_dr_weather_station_24h_rain_piezo') | float(0) %} {% if bot and pump %}FarmBot online · Irrigation running {% elif bot %}FarmBot online · Pump idle {% elif pump %}Pump running · FarmBot offline {% else %}Systems standing by · 24h rain {{ rain | round(1) }} mm{% endif %}",
               "tap_action": {
                 "action": "none"
               },
               "type": "custom:mushroom-template-card",
-              "color": "{% if is_state('switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2', 'on') %}green{% else %}grey{% endif %}",
+              "color": "{% if is_state('switch.smart_switch_deviceid_001_outlet_2', 'on') %}green{% else %}grey{% endif %}",
               "features_position": "bottom",
               "card_mod": {
                 "style": "ha-card {\n  overflow: hidden;\n  min-height: 112px; border-radius: 26px;\n  border: 1px solid rgba(255,255,255,0.12);\n  background: radial-gradient(circle at 90% 10%, rgba(76,175,80,0.22), transparent 34%), radial-gradient(circle at 10% 90%, rgba(0,188,212,0.15), transparent 38%), linear-gradient(135deg, rgba(20,27,38,0.98), rgba(8,12,20,0.98));\n  box-shadow: 0 14px 36px rgba(0,0,0,0.30); padding: 10px;\n}\nmushroom-state-info$ .primary { font-size: 28px !important; font-weight: 800 !important; letter-spacing: 0.12em; }\nmushroom-state-info$ .secondary { font-size: 15px !important; opacity: 0.82; }\nmushroom-shape-icon$ .shape { width: 64px !important; height: 64px !important; }\n"
@@ -50,7 +50,7 @@
                   "card_mod": {
                     "style": "ha-card {\n  overflow: hidden; min-height: 102px; border-radius: 22px; background: radial-gradient(circle at 10% 10%, rgba(0,210,130,0.18), transparent 48%), linear-gradient(135deg, rgba(11,41,31,0.97), rgba(14,20,27,0.97)); border: 1px solid rgba(0,220,135,0.28); }\n"
                   },
-                  "entity": "switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2",
+                  "entity": "switch.smart_switch_deviceid_001_outlet_2",
                   "hold_action": {
                     "action": "more-info"
                   },
@@ -68,7 +68,7 @@
                   "card_mod": {
                     "style": "ha-card {\n  overflow: hidden; min-height: 102px; border-radius: 22px; background: radial-gradient(circle at 10% 10%, rgba(30,150,255,0.18), transparent 48%), linear-gradient(135deg, rgba(12,32,49,0.97), rgba(14,20,27,0.97)); border: 1px solid rgba(25,155,255,0.28); }\n"
                   },
-                  "entity": "switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1",
+                  "entity": "switch.smart_switch_deviceid_001_outlet_1",
                   "hold_action": {
                     "action": "more-info"
                   },
@@ -251,7 +251,7 @@
               }
             },
             {
-              "entity": "switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1",
+              "entity": "switch.smart_switch_deviceid_001_outlet_1",
               "fill_container": true,
               "hold_action": {
                 "action": "more-info"
@@ -511,7 +511,7 @@
               }
             },
             {
-              "entity": "switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2",
+              "entity": "switch.smart_switch_deviceid_001_outlet_2",
               "fill_container": true,
               "hold_action": {
                 "action": "more-info"

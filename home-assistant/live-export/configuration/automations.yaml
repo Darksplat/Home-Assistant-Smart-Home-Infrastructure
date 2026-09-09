@@ -20,14 +20,14 @@
       sequence:
       - action: switch.turn_on
         target:
-          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+          entity_id: switch.smart_switch_deviceid_001_outlet_1
     - conditions:
       - condition: trigger
         id: stop
       sequence:
       - action: switch.turn_off
         target:
-          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+          entity_id: switch.smart_switch_deviceid_001_outlet_1
   mode: single
 - id: '1783559291056'
   alias: Garden Watering Monday Thursday
@@ -43,7 +43,7 @@
   actions:
   - action: switch.turn_on
     target:
-      entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+      entity_id: switch.smart_switch_deviceid_001_outlet_1
   - delay: 00:00:15
   - action: switch.turn_on
     target:
@@ -75,7 +75,7 @@
   - delay: 00:00:10
   - action: switch.turn_off
     target:
-      entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+      entity_id: switch.smart_switch_deviceid_001_outlet_1
   mode: single
 - id: '1783560423508'
   alias: FarmBot Power Schedule
@@ -95,14 +95,14 @@
       sequence:
       - action: switch.turn_on
         target:
-          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2
+          entity_id: switch.smart_switch_deviceid_001_outlet_2
     - conditions:
       - condition: trigger
         id: power_off
       sequence:
       - action: switch.turn_off
         target:
-          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2
+          entity_id: switch.smart_switch_deviceid_001_outlet_2
   mode: single
 - id: '1783842643540'
   alias: FarmBot – Graceful Shutdown at 17:55
@@ -191,11 +191,11 @@
   - action: input_boolean.turn_on
     target:
       entity_id: input_boolean.letterbox_parcel_waiting
-  - action: notify.mobile_app_jem_iphone
+  - action: notify.mobile_app_household_device_01
     data:
       title: "\U0001F4E6 Parcel Delivered"
       message: A parcel has been delivered to the parcel door.
-  - action: notify.mobile_app_alkira_pro_ipad
+  - action: notify.mobile_app_household_device_02
     data:
       title: "\U0001F4E6 Parcel Delivered"
       message: A parcel has been delivered to the parcel door.
@@ -219,12 +219,12 @@
       - condition: trigger
         id: battery_25
       sequence:
-      - action: notify.mobile_app_jem_iphone
+      - action: notify.mobile_app_household_device_01
         data:
           title: "\U0001F4E6 Letterbox Sentinel"
           message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
             }}%. Change the AAA battery soon.
-      - action: notify.mobile_app_alkira_pro_ipad
+      - action: notify.mobile_app_household_device_02
         data:
           title: "\U0001F4E6 Letterbox Sentinel"
           message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
@@ -233,7 +233,7 @@
       - condition: trigger
         id: battery_15
       sequence:
-      - action: notify.mobile_app_jem_iphone
+      - action: notify.mobile_app_household_device_01
         data:
           title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
           message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
@@ -241,7 +241,7 @@
           data:
             push:
               interruption-level: time-sensitive
-      - action: notify.mobile_app_alkira_pro_ipad
+      - action: notify.mobile_app_household_device_02
         data:
           title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
           message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
@@ -269,12 +269,12 @@
       - condition: trigger
         id: battery_25
       sequence:
-      - action: notify.mobile_app_jem_iphone
+      - action: notify.mobile_app_household_device_01
         data:
           title: "\U0001F4EC Letterbox Sentinel"
           message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')
             }}%. Recharge or replace the battery soon.
-      - action: notify.mobile_app_alkira_pro_ipad
+      - action: notify.mobile_app_household_device_02
         data:
           title: "\U0001F4EC Letterbox Sentinel"
           message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')
@@ -283,7 +283,7 @@
       - condition: trigger
         id: battery_15
       sequence:
-      - action: notify.mobile_app_jem_iphone
+      - action: notify.mobile_app_household_device_01
         data:
           title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
           message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')
@@ -291,7 +291,7 @@
           data:
             push:
               interruption-level: time-sensitive
-      - action: notify.mobile_app_alkira_pro_ipad
+      - action: notify.mobile_app_household_device_02
         data:
           title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
           message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')

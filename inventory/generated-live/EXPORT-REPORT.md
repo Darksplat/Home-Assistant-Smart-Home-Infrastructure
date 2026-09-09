@@ -1,6 +1,6 @@
 # Home Assistant export report
 
-Generated: `2026-09-09T12:21:25+10:00`
+Generated: `2026-09-09T12:31:28+10:00`
 Source mount: `/Volumes/config`
 
 ## Generated counts

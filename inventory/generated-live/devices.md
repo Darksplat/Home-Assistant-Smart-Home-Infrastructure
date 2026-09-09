@@ -59,7 +59,7 @@ Identifiers, MAC addresses, serial numbers, unique IDs and config-entry IDs are 
 | D053 | Helios | ReikanYsora | plugin |  |  |
 | D054 | Meross Integration | albertogeniola | integration |  |  |
 | D055 | Meross LAN | krahabb | integration |  |  |
-| D056 | Smart Switch (26030582330465570902c4e7ae28b8aa) | Meross | mss620 7.0.0 | Water Tank Pump |  |
+| D056 | Smart Switch (deviceid_001) | Meross | mss620 7.0.0 | Water Tank Pump |  |
 | D057 | Rain Bird Controller | Rain Bird | ESP-TM2 | Water Tank Pump |  |
 | D058 | Rain Bird Sprinkler 1 | Rain Bird |  | Front LH Side Garden |  |
 | D059 | Rain Bird Sprinkler 2 | Rain Bird |  | Bee Area |  |
@@ -140,8 +140,8 @@ Identifiers, MAC addresses, serial numbers, unique IDs and config-entry IDs are 
 | D134 | BILRESA dual button 5 | IKEA of Sweden | BILRESA dual button | Kitchen |  |
 | D135 | BILRESA dual button 6 | IKEA of Sweden | BILRESA dual button | Kitchen |  |
 | D136 | Aqua Temp | radical-squared, elad-bar | integration |  |  |
-| D137 | EVO270 – Bathroom & Laundry 34EAE7B41FEA |  |  | Backyard |  |
-| D138 | EVO270 – Ensuite & Kitchen 34EAE79F4BCE |  |  | Back Fence Garden |  |
+| D137 | EVO270 – Bathroom & Laundry deviceid_004 |  |  | Backyard |  |
+| D138 | EVO270 – Ensuite & Kitchen deviceid_005 |  |  | Back Fence Garden |  |
 | D139 | LG webOS TV OLED77C2PSC | LG | OLED77C2PSC | Media Room |  |
 | D140 | Automate Pulse Pro | IamDan77 | integration |  |  |
 | D141 | Automate Shade YDK | Rollease Acmeda | Pulse PRO Controlled Shade |  |  |
@@ -154,8 +154,8 @@ Identifiers, MAC addresses, serial numbers, unique IDs and config-entry IDs are 
 | D148 | Pioneer Dr Weather Station | Ecowitt | GW3000C | Farmbot |  |
 | D149 | HA_Data | Home Assistant | Home Assistant Mount |  |  |
 | D150 | Garage Door Opener | Meross | msg100 7.0.0 | Garage |  |
-| D151 | EVO270 – Bathroom & Laundry 34EAE7B41FEA | EvoHeat | EVO270-1 / PASHW015-270LD-WG-NO / HW211 |  |  |
-| D152 | EVO270 – Ensuite & Kitchen 34EAE79F4BCE | EvoHeat | EVO270-1 / PASHW015-270LD-WG-NO / HW211 |  |  |
+| D151 | EVO270 – Bathroom & Laundry deviceid_004 | EvoHeat | EVO270-1 / PASHW015-270LD-WG-NO / HW211 |  |  |
+| D152 | EVO270 – Ensuite & Kitchen deviceid_005 | EvoHeat | EVO270-1 / PASHW015-270LD-WG-NO / HW211 |  |  |
 | D153 | Maiden Gully | Australian Bureau of Meteorology | Weather Sensor | Home |  |
 | D154 | Pioneer Drive Maiden Gully | Australian Bureau of Meteorology | Weather Sensor | Home |  |
 | D155 | Aeryn iPhone | Apple | iPhone17,5 |  |  |

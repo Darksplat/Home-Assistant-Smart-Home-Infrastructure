@@ -5,7 +5,6 @@ Generated from Home Assistant storage-mode Lovelace files. The `.storage` wrappe
 | Source key | Dashboard | Views | Sections | Cards | Export bytes |
 | --- | --- | ---: | ---: | ---: | ---: |
 | `lovelace.dashboard_garden` | Farm Max | 1 | 0 | 7 | 23574 |
-| `lovelace.dashboard_household` | Household | 3 | 3 | 13 | 32389 |
 | `lovelace.dashboard_reolink` | Reolink Security | 1 | 6 | 16 | 19766 |
 | `lovelace.duino_coin_miner` | Duino-Coin | 1 | 4 | 9 | 30480 |
 | `lovelace.energy_control_dashboard` | Energy Max | 1 | 0 | 15 | 72374 |
