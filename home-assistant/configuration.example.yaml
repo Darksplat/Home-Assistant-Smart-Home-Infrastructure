@@ -1,0 +1,12 @@
+# Example configuration only.
+#
+# Do not replace your working configuration.yaml blindly.
+# Individual sections from this repository should be integrated
+# into an existing Home Assistant installation as documented.
+
+homeassistant:
+  packages: !include_dir_named packages
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
