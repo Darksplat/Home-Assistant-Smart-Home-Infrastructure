@@ -2,62 +2,107 @@
 
 The live dashboards are storage-mode Lovelace exports. Their YAML/JSON can be preserved in Git, but several dashboards also depend on HACS/frontend resources that must be installed separately.
 
-## Known minimum frontend set
+## Current generated inventory
 
-The current public dashboards demonstrate use of the following custom frontend components:
+The exporter now audits every public JSON dashboard after privacy filtering and writes the authoritative current component-use report to:
 
-| Frontend component | Observed use |
-| --- | --- |
-| Mushroom Cards | Hot Water, Energy, Garden, Reolink and other status cards |
-| card-mod | Styling across multiple dashboards |
-| layout-card / `custom:grid-layout` | Energy, Garden and Home Operations responsive layouts |
-| button-card | Roller Blinds, Home Operations/Waste Collection and Duino-Coin |
-| weather-forecast-card | Weather Operations Centre and Home Operations |
-| power-flow-card-plus | Energy Max live power-flow display |
-| ApexCharts Card | Letterbox Sentinel battery visualization |
+```text
+inventory/generated-live/FRONTEND-DEPENDENCIES.md
+```
 
-This is a **minimum known set**, not a promise that no additional custom card appears in a later dashboard revision.
+The 9 September 2026 baseline scans 11 public dashboards and detects 12 custom element/configuration names. Those 12 names collapse to **nine installable frontend packages** because `grid-layout` is supplied by layout-card, while the three `mushroom-*` card types are supplied by Mushroom Cards.
+
+## Required installable frontend packages
+
+| Installable package | Dashboard component names observed | Observed dashboard use |
+| --- | --- | --- |
+| ApexCharts Card | `apexcharts-card` | Garden, Energy Max, Letterbox Sentinel, Weather Operations Centre |
+| Button Card | `button-card` | Duino-Coin, Home Operations, Roller Blinds |
+| card-mod | `card_mod` configuration blocks | Garden, Reolink, Energy Max, Home Operations, Hot Water, Weather Operations Centre |
+| Helios Card | `helios-card` | Home Energy |
+| layout-card | `layout-card`, `grid-layout` | Garden, Energy Max, Home Operations |
+| Mushroom Cards | `mushroom-entity-card`, `mushroom-template-card`, `mushroom-title-card` | Duino-Coin, Home Operations, Garden, Reolink, Energy Max, Hot Water, Letterbox Sentinel |
+| Power Flow Card Plus | `power-flow-card-plus` | Energy Max, Home Operations |
+| Weather Forecast Card | `weather-forecast-card` | Home Operations, Weather Operations Centre |
+| Windrose Card | `windrose-card` | Weather Operations Centre |
+
+Install the maintained Home Assistant-compatible release of each package through HACS or the component's supported installation method.
+
+The generated report, not this prose table, is the source of truth for which custom element names are present after a future dashboard refresh.
 
 ## Rebuild procedure
 
 1. Install HACS and restart Home Assistant if required by the HACS installation process.
-2. Install the current compatible release of each required frontend component.
-3. Confirm its Lovelace resource is registered and loads without a browser-console error.
-4. Clear/reload the browser frontend if a newly installed card still reports `Custom element doesn't exist`.
-5. Import dashboards only after their custom cards are available.
-6. Resolve unavailable entities separately from frontend-card errors; they are different failure classes.
+2. Install all nine currently required frontend packages listed above.
+3. Confirm each Lovelace resource is registered and loads without a browser-console error.
+4. Re-run the live export/dependency audit if restoring from a newer repository snapshot and compare the generated inventory with the installed set.
+5. Clear/reload the browser frontend if a newly installed card still reports `Custom element doesn't exist`.
+6. Import or restore dashboards only after their custom cards are available.
+7. Resolve unavailable entities separately from frontend-card errors; they are different failure classes.
 
 ## Typical failure messages
 
 ### `Custom element doesn't exist: mushroom-template-card`
 
-Install/repair Mushroom Cards and confirm the resource loaded.
+Install/repair Mushroom Cards and confirm the resource loaded. The same package provides the observed Mushroom entity, template and title cards.
 
-### `Custom element doesn't exist: layout-card`
+### `Custom element doesn't exist: layout-card` or `grid-layout`
 
-Install/repair layout-card. Dashboards using `custom:grid-layout` will not render correctly without it.
+Install/repair layout-card. The deployed responsive layouts use both `custom:layout-card` and `custom:grid-layout`.
 
 ### `Custom element doesn't exist: button-card`
 
-Install/repair button-card. This affects advanced cards in the blinds, waste/home operations and Duino-Coin dashboards.
+Install/repair Button Card. This affects advanced cards in Roller Blinds, Home Operations and Duino-Coin.
 
 ### `Custom element doesn't exist: power-flow-card-plus`
 
-Install/repair Power Flow Card Plus. Energy telemetry may still be healthy even though the graphical flow card is missing.
+Install/repair Power Flow Card Plus. Energy telemetry can remain healthy even though the graphical flow card is missing.
 
 ### `Custom element doesn't exist: apexcharts-card`
 
-Install/repair ApexCharts Card. Letterbox entities can still be tested from Developer Tools while the chart component is unavailable.
+Install/repair ApexCharts Card. Underlying entities can still be tested from Developer Tools while charts are unavailable.
+
+### `Custom element doesn't exist: helios-card`
+
+Install/repair Helios Card. The current Home Energy dashboard is the public dashboard that depends on it.
+
+### `Custom element doesn't exist: windrose-card`
+
+Install/repair Windrose Card. The current Weather Operations Centre uses it for wind visualization.
+
+### `Custom element doesn't exist: weather-forecast-card`
+
+Install/repair Weather Forecast Card. This is used by Home Operations and the Weather Operations Centre.
 
 ## Dashboard dependency audit
 
-Before treating this file as current after a major dashboard change, inspect the generated dashboard files under:
+The normal export command:
 
-```text
-home-assistant/live-export/dashboards/
+```bash
+zsh tools/ha-export/run-export.sh
 ```
 
-Search for `custom:` card types and `card_mod:` blocks. The repository also contains a small audit helper under `tools/repo-audit/` to list custom card types from the JSON dashboard exports.
+now performs the frontend dependency audit automatically after the public-safety pass.
+
+For a standalone audit against the already exported public dashboards, run:
+
+```bash
+python3 tools/repo-audit/dashboard_dependencies.py
+```
+
+The audit reads:
+
+```text
+home-assistant/live-export/dashboards/*.json
+```
+
+and writes:
+
+```text
+inventory/generated-live/FRONTEND-DEPENDENCIES.md
+```
+
+This should be reviewed whenever dashboard configuration changes materially.
 
 ## Browser/device considerations
 

@@ -4,9 +4,9 @@ Generated automatically after the Home Assistant export.
 
 ## Automatic identifier redaction
 
-- MAC/hardware addresses redacted: **2**
+- MAC/hardware addresses redacted: **0**
 - Email addresses redacted: **0**
-- Opaque hardware/vendor identifiers aliased: **871**
+- Opaque hardware/vendor identifiers aliased: **288**
 - Mobile-app notification targets aliased: **10**
 
 ## Privacy exclusions
