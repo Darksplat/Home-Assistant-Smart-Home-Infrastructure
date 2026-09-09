@@ -1,0 +1,4019 @@
+{
+  "title": "Pioneer Drive Weather Operations Centre — Responsive",
+  "views": [
+    {
+      "card_mod": {
+        "style": ":host {\n  --grid-card-gap: 12px;\n  --masonry-view-card-margin: 6px;\n}"
+      },
+      "cards": [
+        {
+          "card_mod": {
+            "style": "ha-card {\n  background:\n    radial-gradient(circle at 88% 10%, rgba(59,130,246,0.28), transparent 30%),\n    radial-gradient(circle at 10% 90%, rgba(6,182,212,0.20), transparent 35%),\n    linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.97));\n  border: 1px solid rgba(148,163,184,0.20);\n  border-radius: 28px;\n  box-shadow: 0 18px 45px rgba(0,0,0,0.30);\n  padding: 22px 26px;\n}\nha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          },
+          "content": "# Overview\n**Live conditions, forecast and whole-station analytics — Maiden Gully**",
+          "text_only": true,
+          "type": "markdown",
+          "view_layout": {
+            "grid-column": "span 12"
+          }
+        },
+        {
+          "type": "grid",
+          "columns": 3,
+          "square": false,
+          "cards": [
+            {
+              "type": "button",
+              "name": "Overview",
+              "icon": "mdi:weather-partly-cloudy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./overview"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Rain",
+              "icon": "mdi:weather-pouring",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./rain"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Wind",
+              "icon": "mdi:weather-windy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./wind"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Climate",
+              "icon": "mdi:thermometer-water",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./climate"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Sun & Solar",
+              "icon": "mdi:white-balance-sunny",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./sun-tracker"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Station",
+              "icon": "mdi:radio-tower",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./station"
+              }
+            }
+          ],
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Current conditions",
+              "icon": "mdi:weather-partly-cloudy",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "type": "custom:weather-forecast-card",
+              "entity": "weather.pioneer_drive_maiden_gully",
+              "name": "Pioneer Drive • Maiden Gully",
+              "show_current": true,
+              "show_forecast": true,
+              "default_forecast": "daily",
+              "forecast_types": "both",
+              "show_condition_effects": true,
+              "current": {
+                "temperature_entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                "attributes_layout": "compact",
+                "show_attributes": [
+                  {
+                    "name": "apparent_temperature",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+                    "label": "Feels like",
+                    "icon": "mdi:thermometer-lines"
+                  },
+                  {
+                    "name": "humidity",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+                    "label": "Humidity",
+                    "icon": "mdi:water-percent"
+                  },
+                  {
+                    "name": "dew_point",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_dewpoint",
+                    "label": "Dew point",
+                    "icon": "mdi:water-thermometer"
+                  },
+                  {
+                    "name": "pressure",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+                    "label": "Pressure",
+                    "icon": "mdi:gauge"
+                  },
+                  {
+                    "name": "wind_speed",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_speed",
+                    "label": "Local wind",
+                    "icon": "mdi:weather-windy"
+                  },
+                  {
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_gust",
+                    "label": "Local gust",
+                    "icon": "mdi:weather-windy-variant"
+                  },
+                  {
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction",
+                    "label": "Local direction",
+                    "icon": "mdi:compass"
+                  },
+                  {
+                    "name": "uv_index",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+                    "label": "Local UV",
+                    "icon": "mdi:weather-sunny-alert"
+                  },
+                  {
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+                    "label": "Solar radiation",
+                    "icon": "mdi:white-balance-sunny"
+                  },
+                  {
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_24h_rain_piezo",
+                    "label": "Local rain 24 h",
+                    "icon": "mdi:weather-rainy"
+                  }
+                ]
+              },
+              "forecast": {
+                "mode": "chart",
+                "daily_slots": 7,
+                "hourly_slots": 24,
+                "show_sun_times": true,
+                "show_attribute_selector": true,
+                "default_chart_attribute": "temperature_and_precipitation",
+                "extra_attribute": "precipitation_probability"
+              },
+              "view_layout": {
+                "grid-column": "span 12"
+              }
+            },
+            {
+              "type": "custom:weather-forecast-card",
+              "entity": "weather.pioneer_drive_maiden_gully_hourly",
+              "name": "BOM • Next 12 Hours",
+              "show_current": false,
+              "show_forecast": true,
+              "default_forecast": "hourly",
+              "forecast_types": "hourly",
+              "show_condition_effects": true,
+              "forecast": {
+                "mode": "simple",
+                "hourly_slots": 12,
+                "hourly_group_size": 1,
+                "show_sun_times": true,
+                "extra_attribute": "precipitation_probability"
+              },
+              "view_layout": {
+                "grid-column": "span 12"
+              }
+            },
+            {
+              "type": "grid",
+              "columns": 3,
+              "square": false,
+              "cards": [
+                {
+                  "type": "tile",
+                  "entity": "sensor.maiden_gully_warnings",
+                  "name": "BOM warnings",
+                  "icon": "mdi:alert-circle-outline",
+                  "vertical": true
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.maiden_gully_wind_speed_kilometre",
+                  "name": "BOM wind",
+                  "icon": "mdi:weather-windy",
+                  "vertical": true
+                },
+                {
+                  "type": "tile",
+                  "entity": "sensor.maiden_gully_wind_direction",
+                  "name": "BOM direction",
+                  "icon": "mdi:compass",
+                  "vertical": true
+                }
+              ],
+              "view_layout": {
+                "grid-column": "span 12"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Live instruments",
+              "icon": "mdi:gauge",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "orange",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+              "icon": "mdi:thermometer",
+              "name": "Outdoor",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "amber",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+              "icon": "mdi:thermometer-lines",
+              "name": "Feels like",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "cyan",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_dewpoint",
+              "icon": "mdi:water-thermometer",
+              "name": "Dew point",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_temperature",
+              "name": "Indoor",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "show_entity_picture": false,
+              "vertical": true,
+              "features_position": "bottom",
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_humidity",
+              "name": "Indoor Humidity",
+              "icon": "mdi:thermometer",
+              "color": "orange",
+              "vertical": true,
+              "features_position": "bottom",
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+              "max": 100,
+              "min": 0,
+              "name": "Outdoor humidity",
+              "needle": true,
+              "severity": {
+                "green": 35,
+                "red": 85,
+                "yellow": 65
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+              "max": 1040,
+              "min": 970,
+              "name": "Relative pressure",
+              "needle": true,
+              "severity": {
+                "green": 1010,
+                "red": 970,
+                "yellow": 995
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+              "max": 14,
+              "min": 0,
+              "name": "UV index",
+              "needle": true,
+              "severity": {
+                "green": 0,
+                "red": 8,
+                "yellow": 3
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+              "max": 1400,
+              "min": 0,
+              "name": "Solar radiation",
+              "needle": true,
+              "severity": {
+                "green": 0,
+                "red": 1000,
+                "yellow": 500
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Temperature analysis",
+              "icon": "mdi:chart-line",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "all_series_config": {
+                "group_by": {
+                  "duration": "10min",
+                  "func": "avg"
+                },
+                "stroke_width": 3
+              },
+              "apex_config": {
+                "chart": {
+                  "height": 350
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "legend": {
+                  "show": true
+                },
+                "stroke": {
+                  "curve": "smooth"
+                },
+                "tooltip": {
+                  "shared": true
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Temperature, feels-like and dew point — 48 hours"
+              },
+              "now": {
+                "label": "Now",
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ff9800",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "extend_to": "now",
+                  "name": "Outdoor",
+                  "opacity": 0.25,
+                  "type": "area"
+                },
+                {
+                  "color": "#ffca28",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+                  "extend_to": "now",
+                  "name": "Feels like",
+                  "type": "line"
+                },
+                {
+                  "color": "#26c6da",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_dewpoint",
+                  "extend_to": "now",
+                  "name": "Dew point",
+                  "type": "line"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "max": "|+2|",
+                  "min": "|-2|"
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 320
+                },
+                "dataLabels": {
+                  "enabled": false
+                },
+                "legend": {
+                  "show": true
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 5,
+                    "columnWidth": "45%"
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "7d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Outdoor temperature range — seven days"
+              },
+              "series": [
+                {
+                  "color": "#ef5350",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "name": "Daily high",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "max"
+                  },
+                  "type": "column"
+                },
+                {
+                  "color": "#ffb300",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "name": "Daily mean",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "mean"
+                  },
+                  "stroke_width": 3,
+                  "type": "line"
+                },
+                {
+                  "color": "#42a5f5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "name": "Daily low",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "min"
+                  },
+                  "type": "column"
+                }
+              ],
+              "span": {
+                "offset": "-6d",
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 8"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Atmosphere",
+              "icon": "mdi:weather-windy-variant",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "#78909c",
+                      "label": {
+                        "text": "Standard pressure"
+                      },
+                      "y": 1013.25
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Relative pressure — 48 hours"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ab47bc",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+                  "extend_to": "now",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Relative pressure",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "max": "|+4|",
+                  "min": "|-4|"
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Humidity and vapour pressure deficit"
+              },
+              "series": [
+                {
+                  "color": "#29b6f6",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Humidity",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "humidity"
+                },
+                {
+                  "color": "#ec407a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_vapour_pressure_deficit",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "VPD",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "vpd"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "id": "humidity",
+                  "max": 100,
+                  "min": 0
+                },
+                {
+                  "decimals": 2,
+                  "id": "vpd",
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Wind analysis",
+              "icon": "mdi:weather-windy",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "buttons_config": {
+                "buttons": [
+                  {
+                    "active": true,
+                    "button_text": "Today",
+                    "preset_period": "today",
+                    "statistics_period": "5minute",
+                    "type": "period_selector",
+                    "use_statistics": true
+                  },
+                  {
+                    "button_text": "7 days",
+                    "preset_period": "last_7_days",
+                    "statistics_period": "hour",
+                    "type": "period_selector",
+                    "use_statistics": true
+                  },
+                  {
+                    "active": true,
+                    "button_text": "Wind",
+                    "type": "windrose_speed_selector",
+                    "windspeed_entity_index": 0
+                  },
+                  {
+                    "button_text": "Gust",
+                    "type": "windrose_speed_selector",
+                    "windspeed_entity_index": 1
+                  }
+                ],
+                "location": "bottom"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "rose_config": {
+                "center_circle": {
+                  "enabled": true,
+                  "size": 70,
+                  "text": "${calm-percentage}% calm",
+                  "text_size": 28
+                },
+                "wind_direction_count": 16
+              },
+              "title": "Wind rose",
+              "type": "custom:windrose-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "wind_direction_entity": {
+                "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction",
+                "statistics_period": "5minute",
+                "use_statistics": true
+              },
+              "windspeed_bar_location": "right",
+              "windspeed_entities": [
+                {
+                  "current_speed_arrow": true,
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_speed",
+                  "name": "Wind",
+                  "output_speed_unit": "kph",
+                  "speed_range_beaufort": false,
+                  "speed_range_max": 40,
+                  "speed_range_step": 5,
+                  "statistics_period": "5minute",
+                  "use_for_windrose": true,
+                  "use_statistics": true
+                },
+                {
+                  "current_speed_arrow": true,
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_gust",
+                  "name": "Gust",
+                  "output_speed_unit": "kph",
+                  "speed_range_beaufort": false,
+                  "speed_range_max": 60,
+                  "speed_range_step": 5,
+                  "statistics_period": "5minute",
+                  "use_statistics": true
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 350
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "legend": {
+                  "show": true
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Wind speed and gusts — 24 hours"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#26a69a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_speed",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Wind",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area"
+                },
+                {
+                  "color": "#ef5350",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_gust",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "max"
+                  },
+                  "name": "Gust",
+                  "stroke_width": 3,
+                  "type": "line"
+                }
+              ],
+              "span": {
+                "offset": "-23h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "max": "|+5|",
+                  "min": 0
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 8"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Rainfall",
+              "icon": "mdi:weather-pouring",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_24h_rain_piezo",
+              "icon": "mdi:hours-24",
+              "name": "Rolling 24 hours",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_daily_rain_piezo",
+              "icon": "mdi:calendar-today",
+              "name": "Station day",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "indigo",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_rain_rate_piezo",
+              "icon": "mdi:weather-rainy",
+              "name": "Rain rate",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "light-blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_hourly_rain_piezo",
+              "icon": "mdi:clock-outline",
+              "name": "This hour",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "light-blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_weekly_rain_piezo",
+              "icon": "mdi:calendar-week",
+              "name": "This week",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "light-blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_monthly_rain_piezo",
+              "icon": "mdi:calendar-month",
+              "name": "This month",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "cyan",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_yearly_rain_piezo",
+              "icon": "mdi:calendar",
+              "name": "This year",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "deep-purple",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_event_rain_piezo",
+              "icon": "mdi:weather-lightning-rainy",
+              "name": "Current rain event",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Rain analysis",
+              "icon": "mdi:chart-bar",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 280
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Rain rate — 24 hours"
+              },
+              "series": [
+                {
+                  "color": "#1976d2",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_rain_rate_piezo",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "max"
+                  },
+                  "name": "Rain rate",
+                  "opacity": 0.35,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "offset": "-23h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "min": 0
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 320
+                },
+                "dataLabels": {
+                  "enabled": true,
+                  "formatter": "EVAL:function(value) {\n  return value > 0 ? value.toFixed(1) : \"\";\n}\n",
+                  "offsetY": -8
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 5,
+                    "columnWidth": "72%",
+                    "dataLabels": {
+                      "position": "top"
+                    }
+                  }
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "30d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Daily rainfall — 30 days"
+              },
+              "series": [
+                {
+                  "color": "#1e88e5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_daily_rain_piezo",
+                  "name": "Daily rain",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "change"
+                  },
+                  "type": "column"
+                }
+              ],
+              "span": {
+                "offset": "-29d",
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "min": 0
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Solar and light",
+              "icon": "mdi:white-balance-sunny",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Solar radiation and UV — today"
+              },
+              "series": [
+                {
+                  "color": "#ffb300",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Radiation",
+                  "opacity": 0.3,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "radiation"
+                },
+                {
+                  "color": "#ec407a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "max"
+                  },
+                  "name": "UV",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "uv"
+                }
+              ],
+              "span": {
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "id": "radiation",
+                  "min": 0
+                },
+                {
+                  "decimals": 0,
+                  "id": "uv",
+                  "max": 14,
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 260
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Illuminance — today"
+              },
+              "series": [
+                {
+                  "color": "#ffee58",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_lux",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Lux",
+                  "opacity": 0.3,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "min": 0
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Indoor conditions and station health",
+              "icon": "mdi:home-thermometer-outline",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Indoor temperature and humidity — 48 hours"
+              },
+              "series": [
+                {
+                  "color": "#ff7043",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_temperature",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Indoor temperature",
+                  "opacity": 0.2,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "temp"
+                },
+                {
+                  "color": "#42a5f5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_humidity",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Indoor humidity",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "humidity"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "id": "temp"
+                },
+                {
+                  "decimals": 0,
+                  "id": "humidity",
+                  "max": 100,
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "green",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_battery",
+              "icon": "mdi:battery",
+              "name": "WH90 battery",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "yellow",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_capacitor",
+              "icon": "mdi:flash",
+              "name": "WH90 capacitor",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entities": [
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_absolute_pressure",
+                  "icon": "mdi:gauge",
+                  "name": "Absolute pressure"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction",
+                  "icon": "mdi:compass",
+                  "name": "Wind direction"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction_10m_avg",
+                  "icon": "mdi:compass-rose",
+                  "name": "10-minute direction"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_max_daily_gust",
+                  "icon": "mdi:weather-windy",
+                  "name": "Maximum daily gust"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_dewpoint",
+                  "icon": "mdi:water-thermometer-outline",
+                  "name": "Indoor dew point"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Station diagnostics",
+              "type": "entities",
+              "view_layout": {
+                "grid-column": "span 12"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        }
+      ],
+      "icon": "mdi:weather-partly-cloudy",
+      "path": "overview",
+      "title": "Overview"
+    },
+    {
+      "card_mod": {
+        "style": ":host {\n  --grid-card-gap: 12px;\n  --masonry-view-card-margin: 6px;\n}"
+      },
+      "cards": [
+        {
+          "card_mod": {
+            "style": "ha-card {\n  background:\n    radial-gradient(circle at 88% 10%, rgba(59,130,246,0.28), transparent 30%),\n    radial-gradient(circle at 10% 90%, rgba(6,182,212,0.20), transparent 35%),\n    linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.97));\n  border: 1px solid rgba(148,163,184,0.20);\n  border-radius: 28px;\n  box-shadow: 0 18px 45px rgba(0,0,0,0.30);\n  padding: 22px 26px;\n}\nha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          },
+          "content": "# Rain Centre\n**Rain rate, rolling totals, daily history and atmospheric context**",
+          "text_only": true,
+          "type": "markdown",
+          "view_layout": {
+            "grid-column": "span 12"
+          }
+        },
+        {
+          "type": "grid",
+          "columns": 3,
+          "square": false,
+          "cards": [
+            {
+              "type": "button",
+              "name": "Overview",
+              "icon": "mdi:weather-partly-cloudy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./overview"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Rain",
+              "icon": "mdi:weather-pouring",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./rain"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Wind",
+              "icon": "mdi:weather-windy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./wind"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Climate",
+              "icon": "mdi:thermometer-water",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./climate"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Sun & Solar",
+              "icon": "mdi:white-balance-sunny",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./sun-tracker"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Station",
+              "icon": "mdi:radio-tower",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./station"
+              }
+            }
+          ],
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Rainfall",
+              "icon": "mdi:weather-pouring",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_24h_rain_piezo",
+              "icon": "mdi:hours-24",
+              "name": "Rolling 24 hours",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_daily_rain_piezo",
+              "icon": "mdi:calendar-today",
+              "name": "Station day",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "indigo",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_rain_rate_piezo",
+              "icon": "mdi:weather-rainy",
+              "name": "Rain rate",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "light-blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_hourly_rain_piezo",
+              "icon": "mdi:clock-outline",
+              "name": "This hour",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "light-blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_weekly_rain_piezo",
+              "icon": "mdi:calendar-week",
+              "name": "This week",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "light-blue",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_monthly_rain_piezo",
+              "icon": "mdi:calendar-month",
+              "name": "This month",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "cyan",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_yearly_rain_piezo",
+              "icon": "mdi:calendar",
+              "name": "This year",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "deep-purple",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_event_rain_piezo",
+              "icon": "mdi:weather-lightning-rainy",
+              "name": "Current rain event",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Rain analysis",
+              "icon": "mdi:chart-bar",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 280
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Rain rate — 24 hours"
+              },
+              "series": [
+                {
+                  "color": "#1976d2",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_rain_rate_piezo",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "max"
+                  },
+                  "name": "Rain rate",
+                  "opacity": 0.35,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "offset": "-23h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "min": 0
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 320
+                },
+                "dataLabels": {
+                  "enabled": true,
+                  "formatter": "EVAL:function(value) {\n  return value > 0 ? value.toFixed(1) : \"\";\n}\n",
+                  "offsetY": -8
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 5,
+                    "columnWidth": "72%",
+                    "dataLabels": {
+                      "position": "top"
+                    }
+                  }
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "30d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Daily rainfall — 30 days"
+              },
+              "series": [
+                {
+                  "color": "#1e88e5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_daily_rain_piezo",
+                  "name": "Daily rain",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "change"
+                  },
+                  "type": "column"
+                }
+              ],
+              "span": {
+                "offset": "-29d",
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "min": 0
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Atmosphere",
+              "icon": "mdi:weather-windy-variant",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "#78909c",
+                      "label": {
+                        "text": "Standard pressure"
+                      },
+                      "y": 1013.25
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Relative pressure — 48 hours"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ab47bc",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+                  "extend_to": "now",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Relative pressure",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "max": "|+4|",
+                  "min": "|-4|"
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Humidity and vapour pressure deficit"
+              },
+              "series": [
+                {
+                  "color": "#29b6f6",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Humidity",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "humidity"
+                },
+                {
+                  "color": "#ec407a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_vapour_pressure_deficit",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "VPD",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "vpd"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "id": "humidity",
+                  "max": 100,
+                  "min": 0
+                },
+                {
+                  "decimals": 2,
+                  "id": "vpd",
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Long-range rainfall",
+              "icon": "mdi:calendar-range",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 360
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 6,
+                    "columnWidth": "62%"
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "12mo",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Monthly rainfall — 12 months"
+              },
+              "series": [
+                {
+                  "color": "#26a69a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_monthly_rain_piezo",
+                  "name": "Monthly rainfall",
+                  "statistics": {
+                    "align": "end",
+                    "period": "month",
+                    "type": "change"
+                  },
+                  "stroke_width": 3,
+                  "type": "column"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 360
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 6,
+                    "columnWidth": "62%"
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "90d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Daily rainfall — 90 days"
+              },
+              "series": [
+                {
+                  "color": "#1e88e5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_daily_rain_piezo",
+                  "name": "Daily rainfall",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "change"
+                  },
+                  "stroke_width": 3,
+                  "type": "column"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 8"
+          }
+        }
+      ],
+      "icon": "mdi:weather-pouring",
+      "path": "rain",
+      "title": "Rain Centre"
+    },
+    {
+      "card_mod": {
+        "style": ":host {\n  --grid-card-gap: 12px;\n  --masonry-view-card-margin: 6px;\n}"
+      },
+      "cards": [
+        {
+          "card_mod": {
+            "style": "ha-card {\n  background:\n    radial-gradient(circle at 88% 10%, rgba(59,130,246,0.28), transparent 30%),\n    radial-gradient(circle at 10% 90%, rgba(6,182,212,0.20), transparent 35%),\n    linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.97));\n  border: 1px solid rgba(148,163,184,0.20);\n  border-radius: 28px;\n  box-shadow: 0 18px 45px rgba(0,0,0,0.30);\n  padding: 22px 26px;\n}\nha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          },
+          "content": "# Wind Centre\n**Wind rose, current direction, gusts and historical wind behaviour**",
+          "text_only": true,
+          "type": "markdown",
+          "view_layout": {
+            "grid-column": "span 12"
+          }
+        },
+        {
+          "type": "grid",
+          "columns": 3,
+          "square": false,
+          "cards": [
+            {
+              "type": "button",
+              "name": "Overview",
+              "icon": "mdi:weather-partly-cloudy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./overview"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Rain",
+              "icon": "mdi:weather-pouring",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./rain"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Wind",
+              "icon": "mdi:weather-windy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./wind"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Climate",
+              "icon": "mdi:thermometer-water",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./climate"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Sun & Solar",
+              "icon": "mdi:white-balance-sunny",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./sun-tracker"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Station",
+              "icon": "mdi:radio-tower",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./station"
+              }
+            }
+          ],
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Wind analysis",
+              "icon": "mdi:weather-windy",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "buttons_config": {
+                "buttons": [
+                  {
+                    "active": true,
+                    "button_text": "Today",
+                    "preset_period": "today",
+                    "statistics_period": "5minute",
+                    "type": "period_selector",
+                    "use_statistics": true
+                  },
+                  {
+                    "button_text": "7 days",
+                    "preset_period": "last_7_days",
+                    "statistics_period": "hour",
+                    "type": "period_selector",
+                    "use_statistics": true
+                  },
+                  {
+                    "active": true,
+                    "button_text": "Wind",
+                    "type": "windrose_speed_selector",
+                    "windspeed_entity_index": 0
+                  },
+                  {
+                    "button_text": "Gust",
+                    "type": "windrose_speed_selector",
+                    "windspeed_entity_index": 1
+                  }
+                ],
+                "location": "bottom"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "rose_config": {
+                "center_circle": {
+                  "enabled": true,
+                  "size": 70,
+                  "text": "${calm-percentage}% calm",
+                  "text_size": 28
+                },
+                "wind_direction_count": 16
+              },
+              "title": "Wind rose",
+              "type": "custom:windrose-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "wind_direction_entity": {
+                "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction",
+                "statistics_period": "5minute",
+                "use_statistics": true
+              },
+              "windspeed_bar_location": "right",
+              "windspeed_entities": [
+                {
+                  "current_speed_arrow": true,
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_speed",
+                  "name": "Wind",
+                  "output_speed_unit": "kph",
+                  "speed_range_beaufort": false,
+                  "speed_range_max": 40,
+                  "speed_range_step": 5,
+                  "statistics_period": "5minute",
+                  "use_for_windrose": true,
+                  "use_statistics": true
+                },
+                {
+                  "current_speed_arrow": true,
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_gust",
+                  "name": "Gust",
+                  "output_speed_unit": "kph",
+                  "speed_range_beaufort": false,
+                  "speed_range_max": 60,
+                  "speed_range_step": 5,
+                  "statistics_period": "5minute",
+                  "use_statistics": true
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 350
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "legend": {
+                  "show": true
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Wind speed and gusts — 24 hours"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#26a69a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_speed",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Wind",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area"
+                },
+                {
+                  "color": "#ef5350",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_gust",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "max"
+                  },
+                  "name": "Gust",
+                  "stroke_width": 3,
+                  "type": "line"
+                }
+              ],
+              "span": {
+                "offset": "-23h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "max": "|+5|",
+                  "min": 0
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 8"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Live instruments",
+              "icon": "mdi:gauge",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "orange",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+              "icon": "mdi:thermometer",
+              "name": "Outdoor",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "amber",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+              "icon": "mdi:thermometer-lines",
+              "name": "Feels like",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "cyan",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_dewpoint",
+              "icon": "mdi:water-thermometer",
+              "name": "Dew point",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+              "max": 100,
+              "min": 0,
+              "name": "Outdoor humidity",
+              "needle": true,
+              "severity": {
+                "green": 35,
+                "red": 85,
+                "yellow": 65
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+              "max": 1040,
+              "min": 970,
+              "name": "Relative pressure",
+              "needle": true,
+              "severity": {
+                "green": 1010,
+                "red": 970,
+                "yellow": 995
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+              "max": 14,
+              "min": 0,
+              "name": "UV index",
+              "needle": true,
+              "severity": {
+                "green": 0,
+                "red": 8,
+                "yellow": 3
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+              "max": 1400,
+              "min": 0,
+              "name": "Solar radiation",
+              "needle": true,
+              "severity": {
+                "green": 0,
+                "red": 1000,
+                "yellow": 500
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        }
+      ],
+      "icon": "mdi:weather-windy",
+      "path": "wind",
+      "title": "Wind Centre"
+    },
+    {
+      "card_mod": {
+        "style": ":host {\n  --grid-card-gap: 12px;\n  --masonry-view-card-margin: 6px;\n}"
+      },
+      "cards": [
+        {
+          "card_mod": {
+            "style": "ha-card {\n  background:\n    radial-gradient(circle at 88% 10%, rgba(59,130,246,0.28), transparent 30%),\n    radial-gradient(circle at 10% 90%, rgba(6,182,212,0.20), transparent 35%),\n    linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.97));\n  border: 1px solid rgba(148,163,184,0.20);\n  border-radius: 28px;\n  box-shadow: 0 18px 45px rgba(0,0,0,0.30);\n  padding: 22px 26px;\n}\nha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          },
+          "content": "# Climate Lab\n**Temperature, humidity, dew point, pressure and indoor climate analysis**",
+          "text_only": true,
+          "type": "markdown",
+          "view_layout": {
+            "grid-column": "span 12"
+          }
+        },
+        {
+          "type": "grid",
+          "columns": 3,
+          "square": false,
+          "cards": [
+            {
+              "type": "button",
+              "name": "Overview",
+              "icon": "mdi:weather-partly-cloudy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./overview"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Rain",
+              "icon": "mdi:weather-pouring",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./rain"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Wind",
+              "icon": "mdi:weather-windy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./wind"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Climate",
+              "icon": "mdi:thermometer-water",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./climate"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Sun & Solar",
+              "icon": "mdi:white-balance-sunny",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./sun-tracker"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Station",
+              "icon": "mdi:radio-tower",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./station"
+              }
+            }
+          ],
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Temperature analysis",
+              "icon": "mdi:chart-line",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "all_series_config": {
+                "group_by": {
+                  "duration": "10min",
+                  "func": "avg"
+                },
+                "stroke_width": 3
+              },
+              "apex_config": {
+                "chart": {
+                  "height": 350
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "legend": {
+                  "show": true
+                },
+                "stroke": {
+                  "curve": "smooth"
+                },
+                "tooltip": {
+                  "shared": true
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Temperature, feels-like and dew point — 48 hours"
+              },
+              "now": {
+                "label": "Now",
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ff9800",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "extend_to": "now",
+                  "name": "Outdoor",
+                  "opacity": 0.25,
+                  "type": "area"
+                },
+                {
+                  "color": "#ffca28",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+                  "extend_to": "now",
+                  "name": "Feels like",
+                  "type": "line"
+                },
+                {
+                  "color": "#26c6da",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_dewpoint",
+                  "extend_to": "now",
+                  "name": "Dew point",
+                  "type": "line"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "max": "|+2|",
+                  "min": "|-2|"
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 320
+                },
+                "dataLabels": {
+                  "enabled": false
+                },
+                "legend": {
+                  "show": true
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 5,
+                    "columnWidth": "45%"
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "7d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Outdoor temperature range — seven days"
+              },
+              "series": [
+                {
+                  "color": "#ef5350",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "name": "Daily high",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "max"
+                  },
+                  "type": "column"
+                },
+                {
+                  "color": "#ffb300",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "name": "Daily mean",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "mean"
+                  },
+                  "stroke_width": 3,
+                  "type": "line"
+                },
+                {
+                  "color": "#42a5f5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "name": "Daily low",
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "min"
+                  },
+                  "type": "column"
+                }
+              ],
+              "span": {
+                "offset": "-6d",
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 8"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Atmosphere",
+              "icon": "mdi:weather-windy-variant",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "#78909c",
+                      "label": {
+                        "text": "Standard pressure"
+                      },
+                      "y": 1013.25
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Relative pressure — 48 hours"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ab47bc",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+                  "extend_to": "now",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Relative pressure",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "max": "|+4|",
+                  "min": "|-4|"
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Humidity and vapour pressure deficit"
+              },
+              "series": [
+                {
+                  "color": "#29b6f6",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Humidity",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "humidity"
+                },
+                {
+                  "color": "#ec407a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_vapour_pressure_deficit",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "VPD",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "vpd"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "id": "humidity",
+                  "max": 100,
+                  "min": 0
+                },
+                {
+                  "decimals": 2,
+                  "id": "vpd",
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Indoor conditions and station health",
+              "icon": "mdi:home-thermometer-outline",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Indoor temperature and humidity — 48 hours"
+              },
+              "series": [
+                {
+                  "color": "#ff7043",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_temperature",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Indoor temperature",
+                  "opacity": 0.2,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "temp"
+                },
+                {
+                  "color": "#42a5f5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_humidity",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Indoor humidity",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "humidity"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "id": "temp"
+                },
+                {
+                  "decimals": 0,
+                  "id": "humidity",
+                  "max": 100,
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "green",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_battery",
+              "icon": "mdi:battery",
+              "name": "WH90 battery",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "yellow",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_capacitor",
+              "icon": "mdi:flash",
+              "name": "WH90 capacitor",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entities": [
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_absolute_pressure",
+                  "icon": "mdi:gauge",
+                  "name": "Absolute pressure"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction",
+                  "icon": "mdi:compass",
+                  "name": "Wind direction"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction_10m_avg",
+                  "icon": "mdi:compass-rose",
+                  "name": "10-minute direction"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_max_daily_gust",
+                  "icon": "mdi:weather-windy",
+                  "name": "Maximum daily gust"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_dewpoint",
+                  "icon": "mdi:water-thermometer-outline",
+                  "name": "Indoor dew point"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Station diagnostics",
+              "type": "entities",
+              "view_layout": {
+                "grid-column": "span 12"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Long-range climate",
+              "icon": "mdi:chart-timeline-variant",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 360
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 6,
+                    "columnWidth": "62%"
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "30d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Mean outdoor temperature — 30 days"
+              },
+              "series": [
+                {
+                  "color": "#ff9800",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                  "name": "Mean temperature",
+                  "opacity": 0.22,
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "mean"
+                  },
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 360
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 6,
+                    "columnWidth": "62%"
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "30d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Mean relative pressure — 30 days"
+              },
+              "series": [
+                {
+                  "color": "#ab47bc",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+                  "name": "Mean pressure",
+                  "opacity": 0.22,
+                  "statistics": {
+                    "align": "end",
+                    "period": "day",
+                    "type": "mean"
+                  },
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 8"
+          }
+        }
+      ],
+      "icon": "mdi:thermometer-water",
+      "path": "climate",
+      "title": "Climate Lab"
+    },
+    {
+      "card_mod": {
+        "style": ":host {\n  --grid-card-gap: 12px;\n  --masonry-view-card-margin: 6px;\n}"
+      },
+      "cards": [
+        {
+          "card_mod": {
+            "style": "ha-card {\n  background:\n    radial-gradient(circle at 88% 10%, rgba(59,130,246,0.28), transparent 30%),\n    radial-gradient(circle at 10% 90%, rgba(6,182,212,0.20), transparent 35%),\n    linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.97));\n  border: 1px solid rgba(148,163,184,0.20);\n  border-radius: 28px;\n  box-shadow: 0 18px 45px rgba(0,0,0,0.30);\n  padding: 22px 26px;\n}\nha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          },
+          "content": "# Station Health\n**WH90 power, sensor diagnostics and environmental baseline monitoring**",
+          "text_only": true,
+          "type": "markdown",
+          "view_layout": {
+            "grid-column": "span 12"
+          }
+        },
+        {
+          "type": "grid",
+          "columns": 3,
+          "square": false,
+          "cards": [
+            {
+              "type": "button",
+              "name": "Overview",
+              "icon": "mdi:weather-partly-cloudy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./overview"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Rain",
+              "icon": "mdi:weather-pouring",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./rain"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Wind",
+              "icon": "mdi:weather-windy",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./wind"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Climate",
+              "icon": "mdi:thermometer-water",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./climate"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Sun & Solar",
+              "icon": "mdi:white-balance-sunny",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./sun-tracker"
+              }
+            },
+            {
+              "type": "button",
+              "name": "Station",
+              "icon": "mdi:radio-tower",
+              "tap_action": {
+                "action": "navigate",
+                "navigation_path": "./station"
+              }
+            }
+          ],
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Indoor conditions and station health",
+              "icon": "mdi:home-thermometer-outline",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Indoor temperature and humidity — 48 hours"
+              },
+              "series": [
+                {
+                  "color": "#ff7043",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_temperature",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Indoor temperature",
+                  "opacity": 0.2,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "temp"
+                },
+                {
+                  "color": "#42a5f5",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_humidity",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Indoor humidity",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "humidity"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "id": "temp"
+                },
+                {
+                  "decimals": 0,
+                  "id": "humidity",
+                  "max": 100,
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "green",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_battery",
+              "icon": "mdi:battery",
+              "name": "WH90 battery",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "yellow",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_capacitor",
+              "icon": "mdi:flash",
+              "name": "WH90 capacitor",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entities": [
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_absolute_pressure",
+                  "icon": "mdi:gauge",
+                  "name": "Absolute pressure"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction",
+                  "icon": "mdi:compass",
+                  "name": "Wind direction"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_direction_10m_avg",
+                  "icon": "mdi:compass-rose",
+                  "name": "10-minute direction"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_max_daily_gust",
+                  "icon": "mdi:weather-windy",
+                  "name": "Maximum daily gust"
+                },
+                {
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_dewpoint",
+                  "icon": "mdi:water-thermometer-outline",
+                  "name": "Indoor dew point"
+                }
+              ],
+              "show_header_toggle": false,
+              "title": "Station diagnostics",
+              "type": "entities",
+              "view_layout": {
+                "grid-column": "span 12"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Atmosphere",
+              "icon": "mdi:weather-windy-variant",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "#78909c",
+                      "label": {
+                        "text": "Standard pressure"
+                      },
+                      "y": 1013.25
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Relative pressure — 48 hours"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ab47bc",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+                  "extend_to": "now",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Relative pressure",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 1,
+                  "max": "|+4|",
+                  "min": "|-4|"
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Humidity and vapour pressure deficit"
+              },
+              "series": [
+                {
+                  "color": "#29b6f6",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "Humidity",
+                  "opacity": 0.25,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "humidity"
+                },
+                {
+                  "color": "#ec407a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_vapour_pressure_deficit",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "VPD",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "vpd"
+                }
+              ],
+              "span": {
+                "offset": "-47h",
+                "start": "hour"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "id": "humidity",
+                  "max": 100,
+                  "min": 0
+                },
+                {
+                  "decimals": 2,
+                  "id": "vpd",
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Sensor power history",
+              "icon": "mdi:battery-heart-variant",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 360
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "7d",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "WH90 battery and capacitor — seven days"
+              },
+              "series": [
+                {
+                  "color": "#66bb6a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_battery",
+                  "group_by": {
+                    "duration": "1h",
+                    "func": "avg"
+                  },
+                  "name": "Battery",
+                  "stroke_width": 3,
+                  "type": "line"
+                },
+                {
+                  "color": "#ffee58",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_wh90_capacitor",
+                  "group_by": {
+                    "duration": "1h",
+                    "func": "avg"
+                  },
+                  "name": "Capacitor",
+                  "opacity": 0.2,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              },
+              "yaxis": [
+                {
+                  "decimals": 2,
+                  "max": 3.5,
+                  "min": 0
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 8"
+          }
+        }
+      ],
+      "icon": "mdi:radio-tower",
+      "path": "station",
+      "title": "Station Health"
+    },
+    {
+      "title": "Sun & Solar",
+      "path": "sun-tracker",
+      "icon": "mdi:white-balance-sunny",
+      "card_mod": {
+        "style": ":host {\n  --grid-card-gap: 12px;\n  --masonry-view-card-margin: 6px;\n}"
+      },
+      "cards": [
+        {
+          "type": "markdown",
+          "content": "# Sun Tracker\n**Solar position, daylight phase, sunrise/sunset and local solar conditions — Maiden Gully**",
+          "text_only": true,
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  background:\n    radial-gradient(circle at 88% 10%, rgba(255,193,7,0.28), transparent 30%),\n    radial-gradient(circle at 10% 90%, rgba(255,152,0,0.18), transparent 35%),\n    linear-gradient(135deg, rgba(15,23,42,0.98), rgba(30,41,59,0.97));\n  border: 1px solid rgba(148,163,184,0.20);\n  border-radius: 28px;\n  box-shadow: 0 18px 45px rgba(0,0,0,0.30);\n  padding: 22px 26px;\n}"
+          }
+        },
+        {
+          "type": "custom:weather-forecast-card",
+          "entity": "weather.pioneer_drive_maiden_gully",
+          "name": "Pioneer Drive • Sun & Weather",
+          "show_current": true,
+          "show_forecast": true,
+          "default_forecast": "hourly",
+          "forecast_types": "both",
+          "show_condition_effects": true,
+          "current": {
+            "temperature_entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+            "attributes_layout": "compact",
+            "show_attributes": [
+              {
+                "name": "apparent_temperature",
+                "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+                "label": "Feels like",
+                "icon": "mdi:thermometer-lines"
+              },
+              {
+                "name": "humidity",
+                "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+                "label": "Humidity",
+                "icon": "mdi:water-percent"
+              },
+              {
+                "name": "uv_index",
+                "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+                "label": "Local UV",
+                "icon": "mdi:weather-sunny-alert"
+              },
+              {
+                "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+                "label": "Solar radiation",
+                "icon": "mdi:white-balance-sunny"
+              },
+              {
+                "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_lux",
+                "label": "Illuminance",
+                "icon": "mdi:brightness-5"
+              }
+            ]
+          },
+          "forecast": {
+            "mode": "chart",
+            "hourly_slots": 24,
+            "daily_slots": 7,
+            "show_sun_times": true,
+            "show_attribute_selector": true,
+            "default_chart_attribute": "temperature_and_precipitation",
+            "extra_attribute": "uv_index"
+          },
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "{% set el = state_attr('sun.sun', 'elevation') | float(0) %}\nha-card {\n  border-radius: 28px;\n  overflow: hidden;\n  min-height: 360px;\n  {% if el > 15 %}\n  background: linear-gradient(180deg, rgba(21,135,232,0.92) 0%, rgba(99,186,245,0.86) 48%, rgba(188,231,255,0.82) 100%) !important;\n  {% elif el > 0 %}\n  background: linear-gradient(180deg, rgba(38,118,186,0.94) 0%, rgba(117,183,223,0.90) 46%, rgba(255,192,128,0.86) 78%, rgba(255,155,95,0.88) 100%) !important;\n  {% elif el > -6 %}\n  background: linear-gradient(180deg, rgba(23,27,60,0.98) 0%, rgba(81,67,112,0.95) 42%, rgba(199,101,103,0.90) 70%, rgba(255,152,102,0.90) 100%) !important;\n  {% else %}\n  background:\n    radial-gradient(circle at 12% 15%, rgba(255,255,255,0.8) 0px, transparent 1.5px),\n    radial-gradient(circle at 35% 13%, rgba(255,255,255,0.75) 0px, transparent 1.4px),\n    radial-gradient(circle at 55% 20%, rgba(255,255,255,0.7) 0px, transparent 1.5px),\n    radial-gradient(circle at 76% 12%, rgba(255,255,255,0.8) 0px, transparent 1.3px),\n    radial-gradient(circle at 94% 45%, rgba(255,255,255,0.7) 0px, transparent 1.4px),\n    linear-gradient(180deg, #020817 0%, #071329 48%, #10264b 75%, #24436b 100%) !important;\n  animation: starsTwinkle 5s ease-in-out infinite alternate;\n  {% endif %}\n  box-shadow: 0 16px 38px rgba(0,0,0,0.30);\n}\n@keyframes starsTwinkle {\n  from { filter: brightness(0.90); }\n  to   { filter: brightness(1.12); }\n}"
+          }
+        },
+        {
+          "type": "markdown",
+          "content": "{% set az = state_attr('sun.sun','azimuth') | float(0) %}\n{% set el = state_attr('sun.sun','elevation') | float(0) %}\n{% set nr = state_attr('sun.sun','next_rising') %}\n{% set ns = state_attr('sun.sun','next_setting') %}\n\n## ☀️ Solar position\n\n**Status:** {% if el > 6 %}Day{% elif el > 0 %}Golden hour{% elif el > -6 %}Twilight{% else %}Night{% endif %}\n\n**Elevation:** {{ el | round(1) }}°  \n**Azimuth:** {{ az | round(1) }}°  \n**Direction:** {% if az >= 337.5 or az < 22.5 %}North{% elif az < 67.5 %}North-East{% elif az < 112.5 %}East{% elif az < 157.5 %}South-East{% elif az < 202.5 %}South{% elif az < 247.5 %}South-West{% elif az < 292.5 %}West{% else %}North-West{% endif %}\n\n---\n\n**Next sunrise:** {{ as_timestamp(nr) | timestamp_custom('%-I:%M %p') if nr else '—' }}  \n**Next sunset:** {{ as_timestamp(ns) | timestamp_custom('%-I:%M %p') if ns else '—' }}\n\n{% if is_state('sun.sun','above_horizon') %}\n🌞 **Sun is above the horizon**\n{% else %}\n🌙 **Sun is {{ el | abs | round(1) }}° below the horizon**\n{% endif %}",
+          "view_layout": {
+            "grid-column": "span 6"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          }
+        },
+        {
+          "type": "grid",
+          "columns": 2,
+          "square": false,
+          "cards": [
+            {
+              "type": "tile",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+              "name": "Local UV index",
+              "icon": "mdi:weather-sunny-alert",
+              "vertical": true
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+              "name": "Solar radiation",
+              "icon": "mdi:white-balance-sunny",
+              "vertical": true
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_lux",
+              "name": "Illuminance",
+              "icon": "mdi:brightness-5",
+              "vertical": true
+            },
+            {
+              "type": "tile",
+              "entity": "sun.sun",
+              "name": "Sun state",
+              "icon": "mdi:sun-clock",
+              "vertical": true
+            }
+          ],
+          "view_layout": {
+            "grid-column": "span 6"
+          }
+        },
+        {
+          "type": "custom:weather-forecast-card",
+          "entity": "weather.pioneer_drive_maiden_gully_hourly",
+          "name": "BOM • Daylight & Hourly Outlook",
+          "show_current": false,
+          "show_forecast": true,
+          "default_forecast": "hourly",
+          "forecast_types": "hourly",
+          "show_condition_effects": true,
+          "forecast": {
+            "mode": "simple",
+            "hourly_slots": 12,
+            "hourly_group_size": 1,
+            "show_sun_times": true,
+            "extra_attribute": "uv_index"
+          },
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+          }
+        },
+        {
+          "type": "markdown",
+          "content": "## ☀️ Solar Centre\n**Live Pioneer Drive solar instruments, UV, radiation and illuminance history**",
+          "text_only": true,
+          "view_layout": {
+            "grid-column": "span 12"
+          },
+          "card_mod": {
+            "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n  background: linear-gradient(135deg, rgba(255,193,7,0.12), rgba(255,152,0,0.08));\n}"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Solar and light",
+              "icon": "mdi:white-balance-sunny",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Solar radiation and UV — today"
+              },
+              "series": [
+                {
+                  "color": "#ffb300",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Radiation",
+                  "opacity": 0.3,
+                  "stroke_width": 3,
+                  "type": "area",
+                  "yaxis_id": "radiation"
+                },
+                {
+                  "color": "#ec407a",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "max"
+                  },
+                  "name": "UV",
+                  "stroke_width": 3,
+                  "type": "line",
+                  "yaxis_id": "uv"
+                }
+              ],
+              "span": {
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "id": "radiation",
+                  "min": 0
+                },
+                {
+                  "decimals": 0,
+                  "id": "uv",
+                  "max": 14,
+                  "min": 0,
+                  "opposite": true
+                }
+              ]
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 260
+                },
+                "grid": {
+                  "borderColor": "rgba(127,127,127,0.18)"
+                },
+                "stroke": {
+                  "curve": "smooth"
+                }
+              },
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Illuminance — today"
+              },
+              "series": [
+                {
+                  "color": "#ffee58",
+                  "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_lux",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Lux",
+                  "opacity": 0.3,
+                  "stroke_width": 3,
+                  "type": "area"
+                }
+              ],
+              "span": {
+                "start": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "span 12"
+              },
+              "yaxis": [
+                {
+                  "decimals": 0,
+                  "min": 0
+                }
+              ]
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        },
+        {
+          "cards": [
+            {
+              "heading": "Live instruments",
+              "icon": "mdi:gauge",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "orange",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+              "icon": "mdi:thermometer",
+              "name": "Outdoor",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "amber",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+              "icon": "mdi:thermometer-lines",
+              "name": "Feels like",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "color": "cyan",
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_dewpoint",
+              "icon": "mdi:water-thermometer",
+              "name": "Dew point",
+              "type": "tile",
+              "vertical": true,
+              "view_layout": {
+                "grid-column": "span 4"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_humidity",
+              "max": 100,
+              "min": 0,
+              "name": "Outdoor humidity",
+              "needle": true,
+              "severity": {
+                "green": 35,
+                "red": 85,
+                "yellow": 65
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_relative_pressure",
+              "max": 1040,
+              "min": 970,
+              "name": "Relative pressure",
+              "needle": true,
+              "severity": {
+                "green": 1010,
+                "red": 970,
+                "yellow": 995
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_uv_index",
+              "max": 14,
+              "min": 0,
+              "name": "UV index",
+              "needle": true,
+              "severity": {
+                "green": 0,
+                "red": 8,
+                "yellow": 3
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 22px;\n  overflow: hidden;\n  box-sizing: border-box;\n}"
+              },
+              "entity": "sensor.farmbot_pioneer_dr_weather_station_solar_radiation",
+              "max": 1400,
+              "min": 0,
+              "name": "Solar radiation",
+              "needle": true,
+              "severity": {
+                "green": 0,
+                "red": 1000,
+                "yellow": 500
+              },
+              "type": "gauge",
+              "view_layout": {
+                "grid-column": "span 6"
+              }
+            }
+          ],
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-column": "span 4"
+          }
+        }
+      ]
+    }
+  ]
+}

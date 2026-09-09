@@ -1,0 +1,527 @@
+{
+  "title": "Letterbox Sentinel",
+  "views": [
+    {
+      "title": "Letterbox",
+      "path": "letterbox",
+      "icon": "mdi:mailbox",
+      "type": "sections",
+      "max_columns": 3,
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Letterbox Sentinel",
+              "icon": "mdi:mailbox"
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "entity": "binary_sensor.letterbox_sentinel_mail_waiting_2",
+                  "state": "on"
+                }
+              ],
+              "card": {
+                "type": "markdown",
+                "content": "# 📬 MAIL WAITING\n**There is mail in the letterbox.**\n"
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "entity": "binary_sensor.letterbox_sentinel_mail_waiting_2",
+                  "state": "off"
+                }
+              ],
+              "card": {
+                "type": "markdown",
+                "content": "# 📭 NO MAIL\n**The letterbox is currently clear.**\n"
+              }
+            },
+            {
+              "type": "conditional",
+              "conditions": [
+                {
+                  "entity": "binary_sensor.letterbox_sentinel_mail_waiting_2",
+                  "state": "unavailable"
+                }
+              ],
+              "card": {
+                "type": "markdown",
+                "content": "# 😴 SENTINEL SLEEPING\nThe Letterbox Sentinel is currently asleep or offline to conserve battery.\n"
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.letterbox_sentinel_mail_waiting_2",
+              "name": "Mail Waiting",
+              "icon": "mdi:mailbox-up",
+              "vertical": false
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_letter_counter_2",
+              "name": "Letters Detected",
+              "icon": "mdi:counter",
+              "vertical": false
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_last_mail_detected_2",
+              "name": "Last Mail Detected",
+              "icon": "mdi:email-arrow-down",
+              "vertical": false
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_last_collection_time_2",
+              "name": "Last Collection",
+              "icon": "mdi:clock-check",
+              "vertical": false
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_last_collected_by_2",
+              "name": "Collected By",
+              "icon": "mdi:account-check",
+              "vertical": false
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Conditions",
+              "icon": "mdi:thermometer"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_temperature",
+              "name": "Temperature",
+              "icon": "mdi:thermometer"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_humidity",
+              "name": "Humidity",
+              "icon": "mdi:water-percent"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_pressure",
+              "name": "Sea Level Pressure",
+              "icon": "mdi:gauge"
+            },
+            {
+              "type": "heading",
+              "heading": "Power & Connectivity",
+              "icon": "mdi:battery"
+            },
+            {
+              "type": "custom:apexcharts-card",
+              "experimental": {
+                "color_threshold": true
+              },
+              "header": {
+                "show": true,
+                "title": "📬 Mail Sensor Battery",
+                "show_states": false
+              },
+              "chart_type": "radialBar",
+              "series": [
+                {
+                  "entity": "sensor.letterbox_sentinel_battery_2",
+                  "name": "Battery",
+                  "max": 100,
+                  "color_threshold": [
+                    {
+                      "value": 0,
+                      "color": "#ef4444"
+                    },
+                    {
+                      "value": 20,
+                      "color": "#f97316"
+                    },
+                    {
+                      "value": 46,
+                      "color": "#eab308"
+                    },
+                    {
+                      "value": 85,
+                      "color": "#22c55e"
+                    }
+                  ]
+                }
+              ],
+              "apex_config": {
+                "chart": {
+                  "height": 250
+                },
+                "plotOptions": {
+                  "radialBar": {
+                    "startAngle": -90,
+                    "endAngle": 90,
+                    "hollow": {
+                      "size": "60%"
+                    },
+                    "track": {
+                      "background": "#333333",
+                      "strokeWidth": "100%"
+                    },
+                    "dataLabels": {
+                      "name": {
+                        "show": true,
+                        "offsetY": 20,
+                        "fontSize": "14px"
+                      },
+                      "value": {
+                        "show": true,
+                        "offsetY": -20,
+                        "fontSize": "32px",
+                        "fontWeight": 700,
+                        "formatter": "EVAL:function(val) {\n  return Math.round(val) + '%';\n}\n"
+                      }
+                    }
+                  }
+                },
+                "stroke": {
+                  "lineCap": "round"
+                },
+                "grid": {
+                  "padding": {
+                    "top": -20,
+                    "bottom": -20
+                  }
+                }
+              }
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_battery_voltage_2",
+              "name": "Battery Voltage",
+              "icon": "mdi:flash"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.letterbox_sentinel_low_battery_2",
+              "name": "Low Battery",
+              "icon": "mdi:battery-alert"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_wi_fi_signal",
+              "name": "Wi-Fi Signal",
+              "icon": "mdi:wifi"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Controls",
+              "icon": "mdi:tune"
+            },
+            {
+              "type": "button",
+              "entity": "button.letterbox_sentinel_clear_mail_waiting_2",
+              "name": "Clear Mail Waiting",
+              "icon": "mdi:mailbox-open-up",
+              "show_state": false,
+              "tap_action": {
+                "action": "toggle"
+              }
+            },
+            {
+              "type": "button",
+              "entity": "button.letterbox_sentinel_reset_letter_counter_2",
+              "name": "Reset Letter Counter",
+              "icon": "mdi:counter",
+              "show_state": false,
+              "tap_action": {
+                "action": "toggle"
+              }
+            },
+            {
+              "type": "button",
+              "entity": "button.letterbox_sentinel_test_mail_detection_2",
+              "name": "Test Mail Detection",
+              "icon": "mdi:test-tube",
+              "show_state": false,
+              "tap_action": {
+                "action": "toggle"
+              }
+            },
+            {
+              "type": "heading",
+              "heading": "Sensor Status",
+              "icon": "mdi:radar"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.letterbox_sentinel_ir_emitter_active_2",
+              "name": "IR Emitter",
+              "icon": "mdi:infrared"
+            },
+            {
+              "type": "tile",
+              "entity": "binary_sensor.letterbox_sentinel_mail_slot_beam",
+              "name": "Mail Slot Beam",
+              "icon": "mdi:motion-sensor"
+            },
+            {
+              "type": "tile",
+              "entity": "sensor.letterbox_sentinel_uptime",
+              "name": "Uptime",
+              "icon": "mdi:timer-outline"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "New section"
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "entity": "input_boolean.letterbox_parcel_waiting",
+              "primary": "Parcel",
+              "secondary": "{% if is_state('input_boolean.letterbox_parcel_waiting', 'on') %}\n  Parcel waiting for collection\n{% elif is_state('binary_sensor.myggbett_door_window_sensor_door', 'on') %}\n  Parcel door open\n{% else %}\n  No parcel\n{% endif %}",
+              "icon": "{% if is_state('input_boolean.letterbox_parcel_waiting', 'on') %}\n  mdi:package-variant\n{% elif is_state('binary_sensor.myggbett_door_window_sensor_door', 'on') %}\n  mdi:mailbox-open-up\n{% else %}\n  mdi:package-variant-closed\n{% endif %}",
+              "icon_color": "{% if is_state('input_boolean.letterbox_parcel_waiting', 'on') %}\n  orange\n{% elif is_state('binary_sensor.myggbett_door_window_sensor_door', 'on') %}\n  red\n{% else %}\n  green\n{% endif %}",
+              "layout": "horizontal",
+              "fill_container": true
+            },
+            {
+              "type": "custom:apexcharts-card",
+              "experimental": {
+                "color_threshold": true
+              },
+              "header": {
+                "show": true,
+                "title": "📦 Parcel Sensor Battery",
+                "show_states": false
+              },
+              "chart_type": "radialBar",
+              "series": [
+                {
+                  "entity": "sensor.myggbett_door_window_sensor_battery",
+                  "name": "Battery",
+                  "max": 100,
+                  "color_threshold": [
+                    {
+                      "value": 0,
+                      "color": "#ef4444"
+                    },
+                    {
+                      "value": 20,
+                      "color": "#f97316"
+                    },
+                    {
+                      "value": 46,
+                      "color": "#eab308"
+                    },
+                    {
+                      "value": 85,
+                      "color": "#22c55e"
+                    }
+                  ]
+                }
+              ],
+              "apex_config": {
+                "chart": {
+                  "height": 250
+                },
+                "plotOptions": {
+                  "radialBar": {
+                    "startAngle": -90,
+                    "endAngle": 90,
+                    "hollow": {
+                      "size": "60%"
+                    },
+                    "track": {
+                      "background": "#333333",
+                      "strokeWidth": "100%"
+                    },
+                    "dataLabels": {
+                      "name": {
+                        "show": true,
+                        "offsetY": 20,
+                        "fontSize": "14px"
+                      },
+                      "value": {
+                        "show": true,
+                        "offsetY": -20,
+                        "fontSize": "32px",
+                        "fontWeight": 700,
+                        "formatter": "EVAL:function(val) {\n  return Math.round(val) + '%';\n}\n"
+                      }
+                    }
+                  }
+                },
+                "stroke": {
+                  "lineCap": "round"
+                },
+                "grid": {
+                  "padding": {
+                    "top": -20,
+                    "bottom": -20
+                  }
+                }
+              }
+            },
+            {
+              "type": "button",
+              "entity": "input_boolean.letterbox_parcel_waiting",
+              "name": "Clear Parcel Waiting",
+              "icon": "mdi:package-variant-closed-remove",
+              "show_state": false,
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "input_boolean.turn_off",
+                "target": {
+                  "entity_id": "input_boolean.letterbox_parcel_waiting"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Diagnostics",
+      "path": "diagnostics",
+      "icon": "mdi:stethoscope",
+      "type": "sections",
+      "max_columns": 3,
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Device",
+              "icon": "mdi:chip"
+            },
+            {
+              "type": "entities",
+              "show_header_toggle": false,
+              "entities": [
+                {
+                  "entity": "sensor.letterbox_sentinel_firmware_2",
+                  "name": "Firmware"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_ip_address_2",
+                  "name": "IP Address"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_mac_address_2",
+                  "name": "MAC Address"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_wi_fi_ssid_2",
+                  "name": "Wi-Fi SSID"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_gateway_2",
+                  "name": "Gateway"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_dns_server_2",
+                  "name": "DNS Server"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Health",
+              "icon": "mdi:heart-pulse"
+            },
+            {
+              "type": "entities",
+              "show_header_toggle": false,
+              "entities": [
+                {
+                  "entity": "binary_sensor.letterbox_sentinel_network_time_valid_2",
+                  "name": "Network Time Valid"
+                },
+                {
+                  "entity": "binary_sensor.letterbox_sentinel_safe_mode_2",
+                  "name": "Safe Mode"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_reset_reason_2",
+                  "name": "Reset Reason"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_free_heap_2",
+                  "name": "Free Heap"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_uptime",
+                  "name": "Uptime"
+                },
+                {
+                  "entity": "sensor.letterbox_sentinel_wi_fi_signal",
+                  "name": "Wi-Fi Signal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Maintenance",
+              "icon": "mdi:wrench"
+            },
+            {
+              "type": "button",
+              "entity": "button.letterbox_sentinel_restart_2",
+              "name": "Restart",
+              "icon": "mdi:restart",
+              "tap_action": {
+                "action": "toggle"
+              }
+            },
+            {
+              "type": "button",
+              "entity": "button.letterbox_sentinel_enter_safe_mode_2",
+              "name": "Enter Safe Mode",
+              "icon": "mdi:shield-alert",
+              "tap_action": {
+                "action": "toggle"
+              }
+            },
+            {
+              "type": "button",
+              "entity": "button.letterbox_sentinel_exit_safe_mode_2",
+              "name": "Exit Safe Mode",
+              "icon": "mdi:shield-check",
+              "tap_action": {
+                "action": "toggle"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

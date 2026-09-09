@@ -1,0 +1,637 @@
+{
+  "title": "Duino-Coin",
+  "button_card_templates": {
+    "duino_main_miner": {
+      "show_icon": true,
+      "show_name": true,
+      "show_label": true,
+      "show_state": false,
+      "tap_action": {
+        "action": "more-info"
+      },
+      "styles": {
+        "grid": [
+          {
+            "grid-template-areas": "\"i n status\" \"i l status\""
+          },
+          {
+            "grid-template-columns": "58px 1fr 38px"
+          },
+          {
+            "grid-template-rows": "1fr 1fr"
+          }
+        ],
+        "card": [
+          {
+            "min-height": "96px"
+          },
+          {
+            "border-radius": "20px"
+          },
+          {
+            "padding": "14px 16px"
+          },
+          {
+            "overflow": "hidden"
+          },
+          {
+            "position": "relative"
+          },
+          {
+            "transition": "all 0.35s ease"
+          },
+          {
+            "border": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online\n    ? '1px solid rgba(76, 175, 80, 0.38)'\n    : '1px solid rgba(244, 67, 54, 0.48)';\n]]]\n"
+          },
+          {
+            "background": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online\n    ? 'linear-gradient(135deg, rgba(26,38,29,0.96), rgba(25,25,25,0.98))'\n    : 'linear-gradient(135deg, rgba(55,22,22,0.96), rgba(25,25,25,0.98))';\n]]]\n"
+          },
+          {
+            "box-shadow": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online\n    ? '0 6px 20px rgba(0,0,0,0.28), inset 0 0 22px rgba(76,175,80,0.035)'\n    : '0 6px 20px rgba(0,0,0,0.28), inset 0 0 25px rgba(244,67,54,0.07)';\n]]]\n"
+          },
+          {
+            "animation": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online ? 'minerBreath 4s ease-in-out infinite' : 'offlinePulse 1.6s ease-in-out infinite';\n]]]\n"
+          }
+        ],
+        "icon": [
+          {
+            "width": "38px"
+          },
+          {
+            "color": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online ? '#4caf50' : '#ff5252';\n]]]\n"
+          },
+          {
+            "filter": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online\n    ? 'drop-shadow(0 0 7px rgba(76,175,80,0.65))'\n    : 'drop-shadow(0 0 8px rgba(255,82,82,0.8))';\n]]]\n"
+          },
+          {
+            "animation": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online ? 'chipWork 2.4s ease-in-out infinite' : 'offlineShake 3s ease-in-out infinite';\n]]]\n"
+          }
+        ],
+        "name": [
+          {
+            "justify-self": "start"
+          },
+          {
+            "align-self": "end"
+          },
+          {
+            "font-size": "17px"
+          },
+          {
+            "font-weight": 700
+          },
+          {
+            "color": "var(--primary-text-color)"
+          }
+        ],
+        "label": [
+          {
+            "justify-self": "start"
+          },
+          {
+            "align-self": "start"
+          },
+          {
+            "font-size": "13px"
+          },
+          {
+            "line-height": 1.35
+          },
+          {
+            "color": "var(--secondary-text-color)"
+          }
+        ],
+        "custom_fields": {
+          "status": [
+            {
+              "justify-self": "center"
+            },
+            {
+              "align-self": "center"
+            },
+            {
+              "font-size": "25px"
+            },
+            {
+              "animation": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online ? 'statusPop 2.5s ease-in-out infinite' : 'alertPulse 1s ease-in-out infinite';\n]]]\n"
+            }
+          ]
+        }
+      },
+      "custom_fields": {
+        "status": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online ? '●' : '!';\n]]]\n"
+      },
+      "name": "[[[\n  return variables.display_name;\n]]]\n",
+      "icon": "[[[\n  return variables.icon;\n]]]\n",
+      "label": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  const connected = states[variables.connected_sensor]?.state ?? 'Offline';\n\n  let rate = '0 H/s';\n  if (h >= 1000000) rate = `${(h / 1000000).toFixed(2)} MH/s`;\n  else if (h >= 1000) rate = `${(h / 1000).toFixed(1)} kH/s`;\n  else rate = `${h.toFixed(0)} H/s`;\n\n  if (!online) {\n    return `${rate}<br><span style=\"color:#ff6b6b\">● Offline</span>`;\n  }\n\n  return `${rate}<br>⏱ ${connected}`;\n]]]\n",
+      "extra_styles": "@keyframes minerBreath {\n  0%, 100% { transform: translateY(0); }\n  50% { transform: translateY(-1px); }\n}\n\n@keyframes chipWork {\n  0%, 100% { transform: scale(1); opacity: 0.92; }\n  50% { transform: scale(1.08); opacity: 1; }\n}\n\n@keyframes statusPop {\n  0%, 100% {\n    color: #4caf50;\n    text-shadow: 0 0 4px rgba(76,175,80,0.6);\n    transform: scale(0.9);\n  }\n  50% {\n    color: #6ee779;\n    text-shadow: 0 0 14px rgba(76,175,80,0.95);\n    transform: scale(1.12);\n  }\n}\n\n@keyframes offlinePulse {\n  0%, 100% {\n    box-shadow: 0 6px 20px rgba(0,0,0,0.28), inset 0 0 15px rgba(244,67,54,0.05);\n  }\n  50% {\n    box-shadow: 0 6px 20px rgba(0,0,0,0.28), inset 0 0 32px rgba(244,67,54,0.15);\n  }\n}\n\n@keyframes offlineShake {\n  0%, 92%, 100% { transform: translateX(0); }\n  94% { transform: translateX(-2px); }\n  96% { transform: translateX(2px); }\n  98% { transform: translateX(-1px); }\n}\n\n@keyframes alertPulse {\n  0%, 100% {\n    color: #ff5252;\n    text-shadow: 0 0 5px rgba(255,82,82,0.7);\n    transform: scale(0.95);\n  }\n  50% {\n    color: #ff8a80;\n    text-shadow: 0 0 16px rgba(255,82,82,1);\n    transform: scale(1.15);\n  }\n}\n"
+    },
+    "duino_uno_miner": {
+      "show_icon": true,
+      "show_name": true,
+      "show_label": true,
+      "show_state": false,
+      "tap_action": {
+        "action": "more-info"
+      },
+      "styles": {
+        "grid": [
+          {
+            "grid-template-areas": "\"i n status\" \"i l status\""
+          },
+          {
+            "grid-template-columns": "54px 1fr 34px"
+          },
+          {
+            "grid-template-rows": "1fr 1fr"
+          }
+        ],
+        "card": [
+          {
+            "min-height": "90px"
+          },
+          {
+            "border-radius": "18px"
+          },
+          {
+            "padding": "12px 14px"
+          },
+          {
+            "overflow": "hidden"
+          },
+          {
+            "transition": "all 0.35s ease"
+          },
+          {
+            "border": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  if (!online) return '1px solid rgba(244,67,54,0.48)';\n  if (h < 300) return '1px solid rgba(255,152,0,0.52)';\n  return '1px solid rgba(76,175,80,0.34)';\n]]]\n"
+          },
+          {
+            "background": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  if (!online) return 'linear-gradient(135deg, rgba(55,22,22,0.96), rgba(25,25,25,0.98))';\n  if (h < 300) return 'linear-gradient(135deg, rgba(61,42,17,0.96), rgba(25,25,25,0.98))';\n  return 'linear-gradient(135deg, rgba(24,36,27,0.96), rgba(25,25,25,0.98))';\n]]]\n"
+          },
+          {
+            "animation": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  if (!online) return 'offlinePulse 1.6s ease-in-out infinite';\n  if (h < 300) return 'warningPulse 2s ease-in-out infinite';\n  return 'minerBreath 4.5s ease-in-out infinite';\n]]]\n"
+          }
+        ],
+        "icon": [
+          {
+            "width": "34px"
+          },
+          {
+            "color": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  if (!online) return '#ff5252';\n  if (h < 300) return '#ff9800';\n  return '#4caf50';\n]]]\n"
+          },
+          {
+            "filter": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  if (!online) return 'drop-shadow(0 0 8px rgba(255,82,82,0.8))';\n  if (h < 300) return 'drop-shadow(0 0 8px rgba(255,152,0,0.75))';\n  return 'drop-shadow(0 0 6px rgba(76,175,80,0.6))';\n]]]\n"
+          },
+          {
+            "animation": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  return online ? 'unoWork 2.2s ease-in-out infinite' : 'offlineShake 3s ease-in-out infinite';\n]]]\n"
+          }
+        ],
+        "name": [
+          {
+            "justify-self": "start"
+          },
+          {
+            "align-self": "end"
+          },
+          {
+            "font-size": "16px"
+          },
+          {
+            "font-weight": 700
+          },
+          {
+            "color": "var(--primary-text-color)"
+          }
+        ],
+        "label": [
+          {
+            "justify-self": "start"
+          },
+          {
+            "align-self": "start"
+          },
+          {
+            "font-size": "12.5px"
+          },
+          {
+            "line-height": 1.35
+          },
+          {
+            "color": "var(--secondary-text-color)"
+          }
+        ],
+        "custom_fields": {
+          "status": [
+            {
+              "justify-self": "center"
+            },
+            {
+              "align-self": "center"
+            },
+            {
+              "font-size": "22px"
+            },
+            {
+              "animation": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  if (!online) return 'alertPulse 1s ease-in-out infinite';\n  if (h < 300) return 'warningStatus 1.3s ease-in-out infinite';\n  return 'statusPop 2.6s ease-in-out infinite';\n]]]\n"
+            }
+          ]
+        }
+      },
+      "name": "[[[\n  return variables.display_name;\n]]]\n",
+      "icon": "mdi:memory",
+      "custom_fields": {
+        "status": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  if (!online) return '!';\n  if (h < 300) return '▲';\n  return '●';\n]]]\n"
+      },
+      "label": "[[[\n  const online = states[variables.binary_sensor]?.state === 'on';\n  const h = Number(states[variables.hash_sensor]?.state || 0);\n  const connected = states[variables.connected_sensor]?.state ?? 'Offline';\n\n  if (!online) {\n    return `${h.toFixed(2)} H/s<br><span style=\"color:#ff6b6b\">● Offline</span>`;\n  }\n\n  if (h < 300) {\n    return `${h.toFixed(2)} H/s<br><span style=\"color:#ffb74d\">▲ Low · ⏱ ${connected}</span>`;\n  }\n\n  return `${h.toFixed(2)} H/s<br>⏱ ${connected}`;\n]]]\n",
+      "extra_styles": "@keyframes minerBreath {\n  0%, 100% { transform: translateY(0); }\n  50% { transform: translateY(-1px); }\n}\n\n@keyframes unoWork {\n  0%, 100% {\n    transform: scale(1);\n    filter: brightness(0.95);\n  }\n  50% {\n    transform: scale(1.09);\n    filter: brightness(1.15);\n  }\n}\n\n@keyframes statusPop {\n  0%, 100% {\n    color: #4caf50;\n    text-shadow: 0 0 4px rgba(76,175,80,0.55);\n    transform: scale(0.9);\n  }\n  50% {\n    color: #74e781;\n    text-shadow: 0 0 13px rgba(76,175,80,0.95);\n    transform: scale(1.1);\n  }\n}\n\n@keyframes warningPulse {\n  0%, 100% {\n    box-shadow: inset 0 0 12px rgba(255,152,0,0.04);\n  }\n  50% {\n    box-shadow: inset 0 0 30px rgba(255,152,0,0.13);\n  }\n}\n\n@keyframes warningStatus {\n  0%, 100% {\n    color: #ff9800;\n    text-shadow: 0 0 4px rgba(255,152,0,0.6);\n    transform: translateY(0);\n  }\n  50% {\n    color: #ffc15a;\n    text-shadow: 0 0 13px rgba(255,152,0,0.95);\n    transform: translateY(-2px);\n  }\n}\n\n@keyframes offlinePulse {\n  0%, 100% {\n    box-shadow: inset 0 0 12px rgba(244,67,54,0.04);\n  }\n  50% {\n    box-shadow: inset 0 0 30px rgba(244,67,54,0.14);\n  }\n}\n\n@keyframes offlineShake {\n  0%, 92%, 100% { transform: translateX(0); }\n  94% { transform: translateX(-2px); }\n  96% { transform: translateX(2px); }\n  98% { transform: translateX(-1px); }\n}\n\n@keyframes alertPulse {\n  0%, 100% {\n    color: #ff5252;\n    text-shadow: 0 0 5px rgba(255,82,82,0.7);\n    transform: scale(0.95);\n  }\n  50% {\n    color: #ff8a80;\n    text-shadow: 0 0 15px rgba(255,82,82,1);\n    transform: scale(1.14);\n  }\n}\n"
+    }
+  },
+  "views": [
+    {
+      "title": "Mining",
+      "path": "mining",
+      "icon": "mdi:pickaxe",
+      "type": "sections",
+      "max_columns": 1,
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-title-card",
+              "title": "Duino-Coin Mining",
+              "subtitle": "darksplat Mining Farm"
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "DUCO Balance",
+                  "secondary": "{{ states('sensor.duino_coin_balance') }} DUCO · ≈ A${{ states('sensor.duino_coin_balance_aud') }}\n",
+                  "icon": "mdi:wallet",
+                  "icon_color": "amber",
+                  "layout": "vertical",
+                  "fill_container": true
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Total Hashrate",
+                  "secondary": "{% set h = states('sensor.duino_coin_total_hashrate') | float(0) %} {% if h >= 1000000 %}\n  {{ (h / 1000000) | round(3) }} MH/s\n{% elif h >= 1000 %}\n  {{ (h / 1000) | round(1) }} kH/s\n{% else %}\n  {{ h | round(0) }} H/s\n{% endif %}\n",
+                  "icon": "mdi:speedometer",
+                  "icon_color": "blue",
+                  "layout": "vertical",
+                  "fill_container": true
+                },
+                {
+                  "type": "custom:mushroom-entity-card",
+                  "entity": "sensor.duino_coin_active_workers",
+                  "name": "Active Workers",
+                  "icon": "mdi:pickaxe",
+                  "icon_color": "green",
+                  "layout": "vertical",
+                  "fill_container": true
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "RPi Temperature",
+                  "secondary": "{{ states('sensor.duino_coin_rpi_temperature') }} °C\n",
+                  "icon": "mdi:thermometer",
+                  "icon_color": "{% set t = states('sensor.duino_coin_rpi_temperature') | float(0) %} {% if t >= 75 %}\n  red\n{% elif t >= 65 %}\n  orange\n{% else %}\n  green\n{% endif %}\n",
+                  "layout": "vertical",
+                  "fill_container": true,
+                  "entity": "sensor.duino_coin_rpi_temperature"
+                }
+              ]
+            },
+            {
+              "type": "custom:button-card",
+              "entity": "binary_sensor.duino_coin_block_celebration",
+              "name": "[[[\n  if (entity.state === 'on') return '⛓️ BLOCK FOUND! ⛓️';\n  return 'Duino-Coin Block Hunter';\n]]]\n",
+              "label": "[[[\n  const age = states['sensor.duino_coin_last_block_age']?.state ?? 'Never';\n  const reward = states['input_number.duino_coin_saved_block_reward']?.state ?? '0';\n  const hash = states['input_text.duino_coin_saved_block_hash']?.state ?? '';\n\n  if (entity.state === 'on') {\n    return `✨ DARKSPLAT FOUND A BLOCK! ✨<br>${reward} DUCO`;\n  }\n\n  if (!hash || hash === 'unknown' || hash === 'unavailable') {\n    return `Searching the chain...<br>Last found: Never`;\n  }\n\n  return `Searching the chain...<br>Last found: ${age}<br>Reward: ${reward} DUCO`;\n]]]\n",
+              "show_icon": true,
+              "show_label": true,
+              "icon": "mdi:link-variant",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "styles": {
+                "card": [
+                  {
+                    "height": "190px"
+                  },
+                  {
+                    "border-radius": "22px"
+                  },
+                  {
+                    "padding": "18px"
+                  },
+                  {
+                    "overflow": "hidden"
+                  },
+                  {
+                    "transition": "all 0.4s ease"
+                  },
+                  {
+                    "background": "[[[\n  if (entity.state === 'on') {\n    return 'radial-gradient(circle at center, rgba(255,215,0,0.35), rgba(40,40,40,0.95))';\n  }\n  return 'linear-gradient(145deg, rgba(30,30,30,0.95), rgba(15,15,15,0.98))';\n]]]\n"
+                  },
+                  {
+                    "box-shadow": "[[[\n  if (entity.state === 'on') {\n    return '0 0 25px rgba(255,215,0,0.85), 0 0 60px rgba(255,140,0,0.45)';\n  }\n  return '0 4px 14px rgba(0,0,0,0.35)';\n]]]\n"
+                  }
+                ],
+                "icon": [
+                  {
+                    "width": "64px"
+                  },
+                  {
+                    "color": "[[[\n  return entity.state === 'on' ? '#FFD700' : '#7f8c8d';\n]]]\n"
+                  },
+                  {
+                    "animation": "[[[\n  return entity.state === 'on'\n    ? 'chainPulse 0.7s ease-in-out infinite alternate'\n    : 'chainIdle 4s ease-in-out infinite';\n]]]\n"
+                  }
+                ],
+                "name": [
+                  {
+                    "font-size": "24px"
+                  },
+                  {
+                    "font-weight": 700
+                  },
+                  {
+                    "margin-top": "8px"
+                  },
+                  {
+                    "color": "[[[\n  return entity.state === 'on' ? '#FFD700' : 'var(--primary-text-color)';\n]]]\n"
+                  },
+                  {
+                    "animation": "[[[\n  return entity.state === 'on'\n    ? 'titleGlow 0.8s ease-in-out infinite alternate'\n    : 'none';\n]]]\n"
+                  }
+                ],
+                "label": [
+                  {
+                    "font-size": "16px"
+                  },
+                  {
+                    "line-height": 1.5
+                  },
+                  {
+                    "margin-top": "10px"
+                  },
+                  {
+                    "color": "var(--secondary-text-color)"
+                  }
+                ]
+              },
+              "extra_styles": "@keyframes chainPulse {\n  from {\n    transform: scale(1) rotate(-3deg);\n    filter: drop-shadow(0 0 4px #FFD700);\n  }\n  to {\n    transform: scale(1.2) rotate(3deg);\n    filter: drop-shadow(0 0 18px #FFD700);\n  }\n}\n\n@keyframes chainIdle {\n  0% {\n    transform: translateX(-3px);\n    opacity: 0.65;\n  }\n  50% {\n    transform: translateX(3px);\n    opacity: 1;\n  }\n  100% {\n    transform: translateX(-3px);\n    opacity: 0.65;\n  }\n}\n\n@keyframes titleGlow {\n  from {\n    text-shadow:\n      0 0 4px #FFD700,\n      0 0 8px #FFB000;\n  }\n  to {\n    text-shadow:\n      0 0 10px #FFD700,\n      0 0 24px #FF8C00;\n  }\n}\n"
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-title-card",
+              "title": "Main Miners",
+              "subtitle": "Live hashrate · connection time · server status"
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_main_miner",
+                  "entity": "binary_sensor.duino_coin_rpi_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_rpi_hashrate",
+                    "sensor.duino_coin_rpi_connected_for",
+                    "binary_sensor.duino_coin_rpi_mining"
+                  ],
+                  "variables": {
+                    "display_name": "Raspberry Pi 4",
+                    "icon": "mdi:raspberry-pi",
+                    "binary_sensor": "binary_sensor.duino_coin_rpi_mining",
+                    "hash_sensor": "sensor.duino_coin_rpi_hashrate",
+                    "connected_sensor": "sensor.duino_coin_rpi_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_main_miner",
+                  "entity": "binary_sensor.duino_coin_esp32_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_esp32_hashrate",
+                    "sensor.duino_coin_esp32_connected_for",
+                    "binary_sensor.duino_coin_esp32_mining"
+                  ],
+                  "variables": {
+                    "display_name": "ESP32",
+                    "icon": "mdi:chip",
+                    "binary_sensor": "binary_sensor.duino_coin_esp32_mining",
+                    "hash_sensor": "sensor.duino_coin_esp32_hashrate",
+                    "connected_sensor": "sensor.duino_coin_esp32_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_main_miner",
+                  "entity": "binary_sensor.duino_coin_8266_no1_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_8266_no1_hashrate",
+                    "sensor.duino_coin_8266_no1_connected_for",
+                    "binary_sensor.duino_coin_8266_no1_mining"
+                  ],
+                  "variables": {
+                    "display_name": "ESP8266 No1",
+                    "icon": "mdi:chip",
+                    "binary_sensor": "binary_sensor.duino_coin_8266_no1_mining",
+                    "hash_sensor": "sensor.duino_coin_8266_no1_hashrate",
+                    "connected_sensor": "sensor.duino_coin_8266_no1_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_main_miner",
+                  "entity": "binary_sensor.duino_coin_8266_no2_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_8266_no2_hashrate",
+                    "sensor.duino_coin_8266_no2_connected_for",
+                    "binary_sensor.duino_coin_8266_no2_mining"
+                  ],
+                  "variables": {
+                    "display_name": "ESP8266 No2",
+                    "icon": "mdi:chip",
+                    "binary_sensor": "binary_sensor.duino_coin_8266_no2_mining",
+                    "hash_sensor": "sensor.duino_coin_8266_no2_hashrate",
+                    "connected_sensor": "sensor.duino_coin_8266_no2_connected_for"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-title-card",
+              "title": "Arduino UNO Miners",
+              "subtitle": "Green = healthy · Amber = under 300 H/s · Red = offline"
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno1_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno1_hashrate",
+                    "sensor.duino_coin_uno1_connected_for",
+                    "binary_sensor.duino_coin_uno1_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 1",
+                    "binary_sensor": "binary_sensor.duino_coin_uno1_mining",
+                    "hash_sensor": "sensor.duino_coin_uno1_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno1_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno2_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno2_hashrate",
+                    "sensor.duino_coin_uno2_connected_for",
+                    "binary_sensor.duino_coin_uno2_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 2",
+                    "binary_sensor": "binary_sensor.duino_coin_uno2_mining",
+                    "hash_sensor": "sensor.duino_coin_uno2_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno2_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno3_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno3_hashrate",
+                    "sensor.duino_coin_uno3_connected_for",
+                    "binary_sensor.duino_coin_uno3_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 3",
+                    "binary_sensor": "binary_sensor.duino_coin_uno3_mining",
+                    "hash_sensor": "sensor.duino_coin_uno3_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno3_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno4_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno4_hashrate",
+                    "sensor.duino_coin_uno4_connected_for",
+                    "binary_sensor.duino_coin_uno4_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 4",
+                    "binary_sensor": "binary_sensor.duino_coin_uno4_mining",
+                    "hash_sensor": "sensor.duino_coin_uno4_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno4_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno5_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno5_hashrate",
+                    "sensor.duino_coin_uno5_connected_for",
+                    "binary_sensor.duino_coin_uno5_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 5",
+                    "binary_sensor": "binary_sensor.duino_coin_uno5_mining",
+                    "hash_sensor": "sensor.duino_coin_uno5_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno5_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno6_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno6_hashrate",
+                    "sensor.duino_coin_uno6_connected_for",
+                    "binary_sensor.duino_coin_uno6_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 6",
+                    "binary_sensor": "binary_sensor.duino_coin_uno6_mining",
+                    "hash_sensor": "sensor.duino_coin_uno6_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno6_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno7_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno7_hashrate",
+                    "sensor.duino_coin_uno7_connected_for",
+                    "binary_sensor.duino_coin_uno7_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 7",
+                    "binary_sensor": "binary_sensor.duino_coin_uno7_mining",
+                    "hash_sensor": "sensor.duino_coin_uno7_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno7_connected_for"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "template": "duino_uno_miner",
+                  "entity": "binary_sensor.duino_coin_uno8_mining",
+                  "triggers_update": [
+                    "sensor.duino_coin_uno8_hashrate",
+                    "sensor.duino_coin_uno8_connected_for",
+                    "binary_sensor.duino_coin_uno8_mining"
+                  ],
+                  "variables": {
+                    "display_name": "UNO 8",
+                    "binary_sensor": "binary_sensor.duino_coin_uno8_mining",
+                    "hash_sensor": "sensor.duino_coin_uno8_hashrate",
+                    "connected_sensor": "sensor.duino_coin_uno8_connected_for"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-title-card",
+              "title": "Status"
+            },
+            {
+              "type": "markdown",
+              "content": "🟢 **Online** — Mining normally  \n🟠 **Low hashrate** — UNO below 300 H/s  \n🔴 **Offline** — Not reporting to Duino-Coin  \n\n⏱ **Connected** — How long Home Assistant has continuously seen the miner online  \n\nAPI data refreshes every **60 seconds**.\n"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

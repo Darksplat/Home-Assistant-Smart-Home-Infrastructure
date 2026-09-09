@@ -8,3 +8,6 @@ SOURCE="${1:-/Volumes/config}"
 python3 "$SCRIPT_DIR/export_home_assistant.py" \
   --source "$SOURCE" \
   --repo "$REPO_ROOT"
+
+python3 "$SCRIPT_DIR/public_safety.py" \
+  --repo "$REPO_ROOT"

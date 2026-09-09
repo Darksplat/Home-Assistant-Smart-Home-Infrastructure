@@ -1,0 +1,1792 @@
+{
+  "title": "Energy Max",
+  "views": [
+    {
+      "card_mod": {
+        "style": ":host {\n  --grid-card-gap: 12px;\n  --masonry-view-card-margin: 6px;\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  padding-right: 18px !important;\n  padding-left: 6px !important;\n  box-sizing: border-box !important;\n  overflow-x: clip !important;\n}\n"
+      },
+      "cards": [
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "card_mod": {
+                "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n    min-height: 112px;\n    border-radius: 26px;\n    border: 1px solid rgba(255,255,255,0.12);\n    background:\n    radial-gradient(circle at 90% 10%, rgba(255,193,7,0.20), transparent 34%),\n    radial-gradient(circle at 10% 90%, rgba(0,188,212,0.16), transparent 38%),\n    linear-gradient(135deg, rgba(20,27,38,0.98), rgba(8,12,20,0.98));\n    box-shadow: 0 14px 36px rgba(0,0,0,0.30);\n    padding: 10px;\n    }\nmushroom-state-info$ .primary {\n  font-size: 28px !important;\n  font-weight: 800 !important;\n  letter-spacing: 0.12em;\n}\nmushroom-state-info$ .secondary {\n  font-size: 15px !important;\n  opacity: 0.82;\n}\nmushroom-shape-icon$ .shape {\n  width: 64px !important;\n  height: 64px !important;\n}\n"
+              },
+              "fill_container": true,
+              "icon": "mdi:home-lightning-bolt",
+              "icon_color": "{% if is_state('binary_sensor.sigen_plant_importing_from_grid', 'on') %}\n  red\n{% elif is_state('binary_sensor.sigen_plant_exporting_to_grid', 'on') %}\n  green\n{% elif is_state('binary_sensor.sigen_plant_pv_generating', 'on') %}\n  amber\n{% else %}\n  blue\n{% endif %}",
+              "multiline_secondary": true,
+              "primary": "ENERGY MAX",
+              "secondary": "{% set pv = states('sensor.sigen_plant_pv_power') | float(0) %} {% set load = states('sensor.sigen_plant_total_load_power') | float(0) %} {% set soc = states('sensor.sigen_plant_battery_state_of_charge') | float(0) %} {% set grid_import = states('sensor.sigen_plant_grid_import_power') | float(0) %} {% set grid_export = states('sensor.sigen_plant_grid_export_power') | float(0) %} {% if grid_import > 0.05 %}\n  Importing {{ grid_import | round(2) }} kW · Battery {{ soc | round(0) }}%\n{% elif grid_export > 0.05 %}\n  Exporting {{ grid_export | round(2) }} kW · Battery {{ soc | round(0) }}%\n{% elif pv > 0.05 %}\n  Solar supplying the property · Battery {{ soc | round(0) }}%\n{% else %}\n  Home using {{ load | round(2) }} kW · Battery {{ soc | round(0) }}%\n{% endif %}",
+              "tap_action": {
+                "action": "none"
+              },
+              "type": "custom:mushroom-template-card",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "minmax(0, 1fr)",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "1 / -1"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Live Energy Flow",
+              "heading_style": "title",
+              "icon": "mdi:transmission-tower",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n    border-radius: 26px;\n    border: 1px solid rgba(255,255,255,0.10);\n    background:\n    radial-gradient(circle at 50% 42%, rgba(0,188,212,0.09), transparent 35%),\n    linear-gradient(145deg, rgba(20,25,34,0.98), rgba(8,12,18,0.98));\n    box-shadow: 0 12px 34px rgba(0,0,0,0.28);\n    overflow: hidden;\n    }\n"
+              },
+              "clickable_entities": true,
+              "display_zero_lines": {
+                "grey_color": [
+                  145,
+                  145,
+                  145
+                ],
+                "mode": "show",
+                "transparency": 35
+              },
+              "entities": {
+                "battery": {
+                  "display_state": "two_way",
+                  "entity": "sensor.sigen_plant_battery_power",
+                  "icon": "mdi:home-battery",
+                  "invert_state": true,
+                  "name": "SigenStor",
+                  "state_of_charge": "sensor.sigen_plant_battery_state_of_charge"
+                },
+                "grid": {
+                  "display_state": "two_way",
+                  "entity": "sensor.sigen_plant_grid_active_power",
+                  "icon": "mdi:transmission-tower",
+                  "invert_state": false,
+                  "name": "Powercor Grid"
+                },
+                "home": {
+                  "entity": "sensor.sigen_plant_total_load_power",
+                  "icon": "mdi:home-lightning-bolt",
+                  "name": "Pioneer Drive"
+                },
+                "solar": {
+                  "display_zero_state": true,
+                  "entity": "sensor.sigen_plant_pv_power",
+                  "icon": "mdi:solar-power",
+                  "name": "Combined Solar"
+                }
+              },
+              "kw_decimals": 2,
+              "max_expected_power": 20000,
+              "max_flow_rate": 7,
+              "min_expected_power": 0.01,
+              "min_flow_rate": 0.7,
+              "transparency_zero_lines": 35,
+              "type": "custom:power-flow-card-plus",
+              "use_new_flow_rate_model": true,
+              "view_layout": {
+                "grid-column": "1 / -1"
+              },
+              "w_decimals": 0,
+              "watt_threshold": 1000
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "minmax(0, 1fr)",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 3"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "System Status",
+              "heading_style": "title",
+              "icon": "mdi:heart-pulse",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "card_mod": {
+                "style": ":host {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+              },
+              "cards": [
+                {
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\nmin-height: 102px;\nheight: auto !important;\nmargin: 0 !important;\npadding: 8px 10px;\nborder-radius: 22px;\noverflow: hidden;\nbackground:\nradial-gradient(circle at 10% 10%, rgba(0,210,130,0.18), transparent 48%),\nlinear-gradient(135deg, rgba(11,41,31,0.97), rgba(14,20,27,0.97));\nborder: 1px solid rgba(0,220,135,0.28);\nbox-shadow: 0 8px 22px rgba(0,0,0,0.22);\n}\nmushroom-state-info$ .primary {\n  font-weight: 700 !important;\n}\nmushroom-state-info$ .secondary {\n  white-space: normal !important;\n  line-height: 1.3 !important;\n}\n"
+                  },
+                  "entity": "sensor.sigen_plant_battery_state_of_charge",
+                  "icon": "{% set soc = states(entity) | float(0) %} {% if soc >= 95 %}\n  mdi:battery\n{% elif soc >= 80 %}\n  mdi:battery-80\n{% elif soc >= 60 %}\n  mdi:battery-60\n{% elif soc >= 40 %}\n  mdi:battery-40\n{% elif soc >= 20 %}\n  mdi:battery-20\n{% else %}\n  mdi:battery-alert\n{% endif %}",
+                  "icon_color": "{% set soc = states(entity) | float(0) %} {% if soc < 20 %}\n  red\n{% elif soc < 40 %}\n  orange\n{% else %}\n  green\n{% endif %}",
+                  "layout": "horizontal",
+                  "primary": "Battery",
+                  "secondary": "{% set soc = states(entity) | float(0) %} {% set p = states('sensor.sigen_plant_battery_power') | float(0) %} {{ soc | round(1) }}% · {% if p > 0.05 %}\n  charging at {{ p | abs | round(2) }} kW\n{% elif p < -0.05 %}\n  discharging at {{ p | abs | round(2) }} kW\n{% else %}\n  standing by\n{% endif %}",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "custom:mushroom-template-card"
+                },
+                {
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\nmin-height: 102px;\nheight: auto !important;\nmargin: 0 !important;\npadding: 8px 10px;\nborder-radius: 22px;\noverflow: hidden;\nbackground:\nradial-gradient(circle at 10% 10%, rgba(30,150,255,0.18), transparent 48%),\nlinear-gradient(135deg, rgba(12,32,49,0.97), rgba(14,20,27,0.97));\nborder: 1px solid rgba(25,155,255,0.28);\nbox-shadow: 0 8px 22px rgba(0,0,0,0.22);\n}\nmushroom-state-info$ .primary {\n  font-weight: 700 !important;\n}\nmushroom-state-info$ .secondary {\n  white-space: normal !important;\n  line-height: 1.3 !important;\n}\n"
+                  },
+                  "entity": "sensor.sigen_plant_grid_connection_status",
+                  "icon": "{% if is_state('binary_sensor.sigen_plant_importing_from_grid', 'on') %}\n  mdi:transmission-tower-export\n{% elif is_state('binary_sensor.sigen_plant_exporting_to_grid', 'on') %}\n  mdi:transmission-tower-import\n{% else %}\n  mdi:transmission-tower\n{% endif %}",
+                  "icon_color": "{% if is_state('binary_sensor.sigen_plant_importing_from_grid', 'on') %}\n  red\n{% elif is_state('binary_sensor.sigen_plant_exporting_to_grid', 'on') %}\n  green\n{% else %}\n  blue\n{% endif %}",
+                  "layout": "horizontal",
+                  "primary": "Grid",
+                  "secondary": "{% set imp = states('sensor.sigen_plant_grid_import_power') | float(0) %} {% set exp = states('sensor.sigen_plant_grid_export_power') | float(0) %} {% if imp > 0.01 %}\n  Importing {{ imp | round(2) }} kW\n{% elif exp > 0.01 %}\n  Exporting {{ exp | round(2) }} kW\n{% else %}\n  Grid neutral\n{% endif %}",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "custom:mushroom-template-card"
+                },
+                {
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\nmin-height: 102px;\nheight: auto !important;\nmargin: 0 !important;\npadding: 8px 10px;\nborder-radius: 22px;\noverflow: hidden;\nbackground:\nradial-gradient(circle at 10% 10%, rgba(170,95,255,0.18), transparent 48%),\nlinear-gradient(135deg, rgba(37,24,50,0.97), rgba(14,20,27,0.97));\nborder: 1px solid rgba(180,105,255,0.28);\nbox-shadow: 0 8px 22px rgba(0,0,0,0.22);\n}\nmushroom-state-info$ .primary {\n  font-weight: 700 !important;\n}\nmushroom-state-info$ .secondary {\n  white-space: normal !important;\n  line-height: 1.3 !important;\n}\n"
+                  },
+                  "entity": "sensor.sigen_plant_ems_work_mode",
+                  "icon": "mdi:brain",
+                  "icon_color": "purple",
+                  "layout": "horizontal",
+                  "primary": "Energy Strategy",
+                  "secondary": "{{ states(entity) }}",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "custom:mushroom-template-card"
+                },
+                {
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\nmin-height: 102px;\nheight: auto !important;\nmargin: 0 !important;\npadding: 8px 10px;\nborder-radius: 22px;\noverflow: hidden;\nbackground:\nradial-gradient(circle at 10% 10%, rgba(65,205,115,0.17), transparent 48%),\nlinear-gradient(135deg, rgba(17,40,29,0.97), rgba(14,20,27,0.97));\nborder: 1px solid rgba(65,215,125,0.26);\nbox-shadow: 0 8px 22px rgba(0,0,0,0.22);\n}\nmushroom-state-info$ .primary {\n  font-weight: 700 !important;\n}\nmushroom-state-info$ .secondary {\n  white-space: normal !important;\n  line-height: 1.3 !important;\n}\n"
+                  },
+                  "entity": "sensor.sigen_plant_plant_running_state",
+                  "icon": "{% if is_state(entity, 'Running') %}\n  mdi:check-decagram\n{% else %}\n  mdi:alert-decagram\n{% endif %}",
+                  "icon_color": "{% if is_state(entity, 'Running') %}\n  green\n{% else %}\n  red\n{% endif %}",
+                  "layout": "horizontal",
+                  "primary": "Plant Status",
+                  "secondary": "{{ states(entity) }} · {{ states('sensor.sigen_plant_grid_connection_status') }}",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "custom:mushroom-template-card"
+                }
+              ],
+              "columns": 2,
+              "square": false,
+              "type": "grid",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "minmax(0, 1fr)",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 1"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Live Power History",
+              "heading_style": "title",
+              "icon": "mdi:chart-areaspline",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "all_series_config": {
+                "group_by": {
+                  "duration": "5min",
+                  "func": "avg"
+                },
+                "opacity": 0.16,
+                "show": {
+                  "extremas": true,
+                  "in_header": "raw"
+                },
+                "type": "area"
+              },
+              "apex_config": {
+                "chart": {
+                  "height": 390,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "grid": {
+                  "borderColor": "rgba(255,255,255,0.08)"
+                },
+                "legend": {
+                  "position": "top",
+                  "show": true
+                },
+                "stroke": {
+                  "curve": "smooth",
+                  "width": 2
+                },
+                "tooltip": {
+                  "intersect": false,
+                  "shared": true
+                },
+                "yaxis": {
+                  "decimalsInFloat": 1,
+                  "title": {
+                    "text": "kW"
+                  }
+                }
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Property Power Flow — Last 24 Hours"
+              },
+              "now": {
+                "label": "Now",
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ffbf00",
+                  "entity": "sensor.sigen_plant_pv_power",
+                  "name": "Combined Solar"
+                },
+                {
+                  "color": "#00c8d8",
+                  "entity": "sensor.sigen_plant_total_load_power",
+                  "name": "Home Load"
+                },
+                {
+                  "color": "#00d084",
+                  "entity": "sensor.sigen_plant_battery_power",
+                  "name": "Battery",
+                  "transform": "return -x;"
+                },
+                {
+                  "color": "#ff5252",
+                  "entity": "sensor.sigen_plant_grid_import_power",
+                  "name": "Grid Import"
+                },
+                {
+                  "color": "#43d17a",
+                  "entity": "sensor.sigen_plant_grid_export_power",
+                  "name": "Grid Export",
+                  "transform": "return -x;"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "update_interval": "1min",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "minmax(0, 1fr)",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "1 / -1"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Right Now",
+              "heading_style": "title",
+              "icon": "mdi:flash",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "entity": "sensor.sigen_plant_pv_power",
+              "fill_container": true,
+              "icon": "mdi:solar-power",
+              "icon_color": "amber",
+              "layout": "vertical",
+              "primary": "Combined Solar",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kW",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_inverter_pv_power",
+              "fill_container": true,
+              "icon": "mdi:solar-panel-large",
+              "icon_color": "orange",
+              "layout": "vertical",
+              "primary": "Sigenergy Solar",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kW",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.solarnet_power_photovoltaics",
+              "fill_container": true,
+              "icon": "mdi:solar-panel",
+              "icon_color": "yellow",
+              "layout": "vertical",
+              "primary": "Fronius Solar",
+              "secondary": "{{ (states(entity) | float(0) / 1000) | round(2) }} kW",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_total_load_power",
+              "fill_container": true,
+              "icon": "mdi:home-lightning-bolt",
+              "icon_color": "cyan",
+              "layout": "vertical",
+              "primary": "Home Demand",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kW",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_battery_power",
+              "fill_container": true,
+              "icon": "{% if is_state('binary_sensor.sigen_plant_battery_charging', 'on') %}\n  mdi:battery-arrow-up\n{% elif is_state('binary_sensor.sigen_plant_battery_discharging', 'on') %}\n  mdi:battery-arrow-down\n{% else %}\n  mdi:battery\n{% endif %}",
+              "icon_color": "{% if is_state('binary_sensor.sigen_plant_battery_charging', 'on') %}\n  cyan\n{% elif is_state('binary_sensor.sigen_plant_battery_discharging', 'on') %}\n  green\n{% else %}\n  grey\n{% endif %}",
+              "layout": "vertical",
+              "primary": "Battery Power",
+              "secondary": "{% set p = states(entity) | float(0) %} {% if p > 0.05 %}\n  +{{ p | round(2) }} kW charge\n{% elif p < -0.05 %}\n  {{ p | abs | round(2) }} kW discharge\n{% else %}\n  0.00 kW standby\n{% endif %}",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_grid_import_power",
+              "fill_container": true,
+              "icon": "mdi:transmission-tower-export",
+              "icon_color": "red",
+              "layout": "vertical",
+              "primary": "Grid Import",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kW",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_grid_export_power",
+              "fill_container": true,
+              "icon": "mdi:transmission-tower-import",
+              "icon_color": "green",
+              "layout": "vertical",
+              "primary": "Grid Export",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kW",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_battery_state_of_charge",
+              "fill_container": true,
+              "icon": "mdi:home-battery",
+              "icon_color": "green",
+              "layout": "vertical",
+              "primary": "Battery Reserve",
+              "secondary": "{{ states(entity) | float(0) | round(1) }}% · {{ ((states(entity) | float(0) / 100) *\n    (states('sensor.sigen_plant_rated_energy_capacity') | float(0)))\n    | round(1) }} kWh stored",
+              "type": "custom:mushroom-template-card"
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(4, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 1100px)": {
+                "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+              },
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "1 / -1"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Today’s Energy",
+              "heading_style": "title",
+              "icon": "mdi:calendar-today",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "entity": "sensor.sigen_plant_pv_daily_generation",
+              "fill_container": true,
+              "icon": "mdi:white-balance-sunny",
+              "icon_color": "amber",
+              "layout": "vertical",
+              "primary": "Total Solar",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_daily_pv_energy",
+              "fill_container": true,
+              "icon": "mdi:solar-panel-large",
+              "icon_color": "orange",
+              "layout": "vertical",
+              "primary": "Sigenergy Array",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_daily_third_party_inverter_energy",
+              "fill_container": true,
+              "icon": "mdi:solar-panel",
+              "icon_color": "yellow",
+              "layout": "vertical",
+              "primary": "Fronius Array",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_daily_load_consumption",
+              "fill_container": true,
+              "icon": "mdi:home-lightning-bolt",
+              "icon_color": "cyan",
+              "layout": "vertical",
+              "primary": "Home Consumption",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_daily_grid_import_energy",
+              "fill_container": true,
+              "icon": "mdi:transmission-tower-export",
+              "icon_color": "red",
+              "layout": "vertical",
+              "primary": "Imported",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_daily_grid_export_energy",
+              "fill_container": true,
+              "icon": "mdi:transmission-tower-import",
+              "icon_color": "green",
+              "layout": "vertical",
+              "primary": "Exported",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_daily_battery_charge_energy",
+              "fill_container": true,
+              "icon": "mdi:battery-positive",
+              "icon_color": "teal",
+              "layout": "vertical",
+              "primary": "Battery Charged",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_daily_battery_discharge_energy",
+              "fill_container": true,
+              "icon": "mdi:battery-negative",
+              "icon_color": "green",
+              "layout": "vertical",
+              "primary": "Battery Discharged",
+              "secondary": "{{ states(entity) | float(0) | round(2) }} kWh",
+              "type": "custom:mushroom-template-card"
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(4, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 1100px)": {
+                "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+              },
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "1 / -1"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "SigenStor Battery",
+              "heading_style": "title",
+              "icon": "mdi:home-battery",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "fill": {
+                  "gradient": {
+                    "opacityFrom": 0.5,
+                    "opacityTo": 0.05,
+                    "shadeIntensity": 0.2
+                  },
+                  "type": "gradient"
+                },
+                "stroke": {
+                  "curve": "smooth",
+                  "width": 3
+                },
+                "yaxis": {
+                  "max": 100,
+                  "min": 0,
+                  "tickAmount": 5,
+                  "title": {
+                    "text": "Battery %"
+                  }
+                }
+              },
+              "graph_span": "48h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Battery Charge Level"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#00d084",
+                  "entity": "sensor.sigen_plant_battery_state_of_charge",
+                  "group_by": {
+                    "duration": "10min",
+                    "func": "avg"
+                  },
+                  "name": "State of Charge",
+                  "show": {
+                    "extremas": true
+                  },
+                  "type": "area"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "update_interval": "5min",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "rgba(255,255,255,0.28)",
+                      "y": 0
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 300,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth",
+                  "width": 2
+                },
+                "yaxis": {
+                  "title": {
+                    "text": "kW"
+                  }
+                }
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Battery Charge and Discharge Power"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#00d084",
+                  "entity": "sensor.sigen_plant_battery_power",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Battery Power",
+                  "show": {
+                    "extremas": true
+                  },
+                  "transform": "return -x;",
+                  "type": "area"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "update_interval": "1min",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 2"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Solar Performance",
+              "heading_style": "title",
+              "icon": "mdi:solar-power-variant",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 350,
+                  "stacked": true,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "dataLabels": {
+                  "enabled": false
+                },
+                "legend": {
+                  "position": "top"
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 5,
+                    "columnWidth": "58%"
+                  }
+                },
+                "yaxis": {
+                  "title": {
+                    "text": "kWh"
+                  }
+                }
+              },
+              "graph_span": "14d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Sigenergy vs Fronius — Daily Generation"
+              },
+              "series": [
+                {
+                  "color": "#ff8c00",
+                  "entity": "sensor.sigen_plant_daily_pv_energy",
+                  "group_by": {
+                    "duration": "1d",
+                    "func": "max"
+                  },
+                  "name": "Sigenergy",
+                  "type": "column"
+                },
+                {
+                  "color": "#ffd54f",
+                  "entity": "sensor.sigen_plant_daily_third_party_inverter_energy",
+                  "group_by": {
+                    "duration": "1d",
+                    "func": "max"
+                  },
+                  "name": "Fronius",
+                  "type": "column"
+                }
+              ],
+              "span": {
+                "end": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 350,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "markers": {
+                  "size": 4
+                },
+                "stroke": {
+                  "curve": "smooth",
+                  "width": 3
+                },
+                "yaxis": {
+                  "title": {
+                    "text": "kWh"
+                  }
+                }
+              },
+              "graph_span": "7d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Total Generation vs Home Consumption"
+              },
+              "series": [
+                {
+                  "color": "#ffbf00",
+                  "entity": "sensor.sigen_plant_pv_daily_generation",
+                  "group_by": {
+                    "duration": "1d",
+                    "func": "max"
+                  },
+                  "name": "Solar Generation",
+                  "type": "line"
+                },
+                {
+                  "color": "#00c8d8",
+                  "entity": "sensor.sigen_plant_daily_load_consumption",
+                  "group_by": {
+                    "duration": "1d",
+                    "func": "max"
+                  },
+                  "name": "Home Consumption",
+                  "type": "line"
+                }
+              ],
+              "span": {
+                "end": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "1 / -1"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Grid Exchange",
+              "heading_style": "title",
+              "icon": "mdi:transmission-tower",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "rgba(255,255,255,0.28)",
+                      "y": 0
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 300,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "stroke": {
+                  "curve": "smooth",
+                  "width": 2
+                },
+                "yaxis": {
+                  "title": {
+                    "text": "kW"
+                  }
+                }
+              },
+              "graph_span": "24h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Import and Export Power"
+              },
+              "now": {
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#ff5252",
+                  "entity": "sensor.sigen_plant_grid_import_power",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Import",
+                  "type": "area"
+                },
+                {
+                  "color": "#43d17a",
+                  "entity": "sensor.sigen_plant_grid_export_power",
+                  "group_by": {
+                    "duration": "5min",
+                    "func": "avg"
+                  },
+                  "name": "Export",
+                  "transform": "return -x;",
+                  "type": "area"
+                }
+              ],
+              "type": "custom:apexcharts-card",
+              "update_interval": "1min",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            },
+            {
+              "apex_config": {
+                "chart": {
+                  "height": 300,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "dataLabels": {
+                  "enabled": false
+                },
+                "plotOptions": {
+                  "bar": {
+                    "borderRadius": 4,
+                    "columnWidth": "55%"
+                  }
+                },
+                "yaxis": {
+                  "title": {
+                    "text": "kWh"
+                  }
+                }
+              },
+              "graph_span": "14d",
+              "header": {
+                "show": true,
+                "show_states": false,
+                "title": "Daily Grid Energy — 14 Days"
+              },
+              "series": [
+                {
+                  "color": "#ff5252",
+                  "entity": "sensor.sigen_plant_daily_grid_import_energy",
+                  "group_by": {
+                    "duration": "1d",
+                    "func": "max"
+                  },
+                  "name": "Imported",
+                  "type": "column"
+                },
+                {
+                  "color": "#43d17a",
+                  "entity": "sensor.sigen_plant_daily_grid_export_energy",
+                  "group_by": {
+                    "duration": "1d",
+                    "func": "max"
+                  },
+                  "name": "Exported",
+                  "type": "column"
+                }
+              ],
+              "span": {
+                "end": "day"
+              },
+              "type": "custom:apexcharts-card",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 2"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Solar Forecast",
+              "heading_style": "title",
+              "icon": "mdi:weather-partly-cloudy",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "entity": "sensor.roof_solcast_pv_forecast_forecast_today",
+              "fill_container": true,
+              "icon": "mdi:weather-sunny",
+              "icon_color": "amber",
+              "layout": "horizontal",
+              "multiline_secondary": true,
+              "primary": "Today",
+              "secondary": "{{ states(entity) | float(0) | round(1) }} kWh forecast · {{ states('sensor.sigen_plant_pv_daily_generation') | float(0) | round(1) }} kWh generated",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.roof_solcast_pv_forecast_forecast_tomorrow",
+              "fill_container": true,
+              "icon": "mdi:weather-sunset-up",
+              "icon_color": "orange",
+              "layout": "horizontal",
+              "primary": "Tomorrow",
+              "secondary": "{{ states(entity) | float(0) | round(1) }} kWh expected",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.solcast_pv_forecast_pioneer_drive_rooftop_1_fronius",
+              "fill_container": true,
+              "icon": "mdi:solar-panel",
+              "icon_color": "yellow",
+              "layout": "horizontal",
+              "primary": "Fronius Forecast",
+              "secondary": "Today {{ states(entity) | float(0) | round(1) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.solcast_pv_forecast_pioneer_drive_rooftop_2_sigenergy",
+              "fill_container": true,
+              "icon": "mdi:solar-panel-large",
+              "icon_color": "orange",
+              "layout": "horizontal",
+              "primary": "Sigenergy Forecast",
+              "secondary": "Today {{ states(entity) | float(0) | round(1) }} kWh",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.solcast_pv_forecast_peak_forecast_tomorrow",
+              "fill_container": true,
+              "icon": "mdi:chart-bell-curve",
+              "icon_color": "amber",
+              "layout": "horizontal",
+              "multiline_secondary": true,
+              "primary": "Tomorrow’s Peak",
+              "secondary": "{{ (states(entity) | float(0) / 1000) | round(2) }} kW at {{ as_timestamp(states('sensor.solcast_pv_forecast_peak_time_tomorrow'))\n   | timestamp_custom('%-I:%M %p', true) }}",
+              "type": "custom:mushroom-template-card"
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 2"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Amber Energy Market",
+              "heading_style": "title",
+              "icon": "mdi:currency-usd",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "entity": "sensor.amber_express_home_general_price",
+              "fill_container": true,
+              "icon": "mdi:cart-arrow-down",
+              "icon_color": "{% set p = states(entity) | float(0) %} {% if p < 0 %}\n  green\n{% elif p < 0.20 %}\n  cyan\n{% elif p < 0.35 %}\n  orange\n{% else %}\n  red\n{% endif %}",
+              "layout": "horizontal",
+              "primary": "Buy Electricity",
+              "secondary": "{{ ((states(entity) | float(0)) * 100) | round(2) }} ¢/kWh · {{ state_attr(entity, 'descriptor') | default('current') }}",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.amber_express_home_feed_in_price",
+              "fill_container": true,
+              "icon": "mdi:cash-plus",
+              "icon_color": "{% set p = states(entity) | float(0) %} {% if p < 0 %}\n  red\n{% elif p < 0.05 %}\n  orange\n{% elif p < 0.15 %}\n  green\n{% else %}\n  purple\n{% endif %}",
+              "layout": "horizontal",
+              "primary": "Sell Electricity",
+              "secondary": "{{ ((states(entity) | float(0)) * 100) | round(2) }} ¢/kWh · {{ state_attr(entity, 'descriptor') | default('current') }}",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.amber_express_home_renewables",
+              "fill_container": true,
+              "icon": "mdi:leaf",
+              "icon_color": "green",
+              "layout": "horizontal",
+              "primary": "Grid Renewables",
+              "secondary": "{{ states(entity) | float(0) | round(1) }}%",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "binary_sensor.amber_express_home_price_spike",
+              "fill_container": true,
+              "icon": "{% if is_state(entity, 'on') %}\n  mdi:alert-decagram\n{% else %}\n  mdi:shield-check\n{% endif %}",
+              "icon_color": "{% if is_state(entity, 'on') %}\n  red\n{% else %}\n  green\n{% endif %}",
+              "layout": "horizontal",
+              "primary": "Price Spike",
+              "secondary": "{% if is_state(entity, 'on') %}\n  Active — minimise grid use\n{% else %}\n  No spike detected\n{% endif %}",
+              "type": "custom:mushroom-template-card"
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 2"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Electricity Price Forecast",
+              "heading_style": "title",
+              "icon": "mdi:chart-line",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "#ff9800",
+                      "label": {
+                        "text": "Expensive"
+                      },
+                      "y": 30
+                    },
+                    {
+                      "borderColor": "#ff5252",
+                      "label": {
+                        "text": "Very expensive"
+                      },
+                      "y": 50
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 340,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "stroke": {
+                  "curve": "stepline",
+                  "width": 3
+                },
+                "tooltip": {
+                  "x": {
+                    "format": "dd MMM h:mm TT"
+                  }
+                },
+                "yaxis": {
+                  "decimalsInFloat": 1,
+                  "title": {
+                    "text": "cents/kWh"
+                  }
+                }
+              },
+              "graph_span": "31h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Amber Buy Price Forecast"
+              },
+              "now": {
+                "label": "Now",
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#00bcd4",
+                  "data_generator": "return entity.attributes.forecast.map((entry) => {\n  return [\n    new Date(entry.time).getTime(),\n    Number(entry.value) * 100\n  ];\n});\n",
+                  "entity": "sensor.amber_express_home_general_price",
+                  "name": "Buy Price",
+                  "type": "line",
+                  "unit": "¢/kWh"
+                }
+              ],
+              "span": {
+                "start": "minute"
+              },
+              "type": "custom:apexcharts-card",
+              "update_interval": "5min",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            },
+            {
+              "apex_config": {
+                "annotations": {
+                  "yaxis": [
+                    {
+                      "borderColor": "#ff5252",
+                      "label": {
+                        "text": "Negative feed-in"
+                      },
+                      "y": 0
+                    },
+                    {
+                      "borderColor": "#43d17a",
+                      "label": {
+                        "text": "Strong export value"
+                      },
+                      "y": 10
+                    }
+                  ]
+                },
+                "chart": {
+                  "height": 340,
+                  "toolbar": {
+                    "show": false
+                  }
+                },
+                "stroke": {
+                  "curve": "stepline",
+                  "width": 3
+                },
+                "tooltip": {
+                  "x": {
+                    "format": "dd MMM h:mm TT"
+                  }
+                },
+                "yaxis": {
+                  "decimalsInFloat": 1,
+                  "title": {
+                    "text": "cents/kWh"
+                  }
+                }
+              },
+              "graph_span": "31h",
+              "header": {
+                "colorize_states": true,
+                "show": true,
+                "show_states": true,
+                "title": "Amber Feed-In Price Forecast"
+              },
+              "now": {
+                "label": "Now",
+                "show": true
+              },
+              "series": [
+                {
+                  "color": "#43d17a",
+                  "data_generator": "return entity.attributes.forecast.map((entry) => {\n  return [\n    new Date(entry.time).getTime(),\n    Number(entry.value) * 100\n  ];\n});\n",
+                  "entity": "sensor.amber_express_home_feed_in_price",
+                  "name": "Feed-In Price",
+                  "type": "line",
+                  "unit": "¢/kWh"
+                }
+              ],
+              "span": {
+                "start": "minute"
+              },
+              "type": "custom:apexcharts-card",
+              "update_interval": "5min",
+              "view_layout": {
+                "grid-column": "auto"
+              }
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "1 / -1"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Battery Health",
+              "heading_style": "title",
+              "icon": "mdi:battery-heart",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "color": "green",
+              "entity": "sensor.sigen_plant_battery_state_of_health",
+              "hide_state": false,
+              "icon": "mdi:battery-heart",
+              "name": "State of Health",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "orange",
+              "entity": "sensor.sigen_plant_ess_average_cell_temperature",
+              "hide_state": false,
+              "icon": "mdi:thermometer",
+              "name": "Average Cell Temperature",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "green",
+              "entity": "sensor.sigen_plant_rated_energy_capacity",
+              "hide_state": false,
+              "icon": "mdi:battery-high",
+              "name": "Rated Capacity",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "cyan",
+              "entity": "sensor.sigen_plant_ess_rated_charging_power",
+              "hide_state": false,
+              "icon": "mdi:battery-arrow-up",
+              "name": "Maximum Charge Rating",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "green",
+              "entity": "sensor.sigen_plant_ess_rated_discharging_power",
+              "hide_state": false,
+              "icon": "mdi:battery-arrow-down",
+              "name": "Maximum Discharge Rating",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "red",
+              "entity": "sensor.sigen_inverter_pcs_internal_temperature",
+              "hide_state": false,
+              "icon": "mdi:thermometer-lines",
+              "name": "Inverter Temperature",
+              "type": "tile",
+              "vertical": false
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 2"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "Lifetime Energy",
+              "heading_style": "title",
+              "icon": "mdi:counter",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "color": "amber",
+              "entity": "sensor.sigen_plant_total_pv_generation",
+              "hide_state": false,
+              "icon": "mdi:solar-power",
+              "name": "Total Solar Generation",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "cyan",
+              "entity": "sensor.sigen_plant_total_load_consumption",
+              "hide_state": false,
+              "icon": "mdi:home-lightning-bolt",
+              "name": "Total Home Consumption",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "red",
+              "entity": "sensor.sigen_plant_total_imported_energy",
+              "hide_state": false,
+              "icon": "mdi:transmission-tower-export",
+              "name": "Total Grid Import",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "green",
+              "entity": "sensor.sigen_plant_total_exported_energy",
+              "hide_state": false,
+              "icon": "mdi:transmission-tower-import",
+              "name": "Total Grid Export",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "teal",
+              "entity": "sensor.sigen_plant_total_charged_energy_of_the_ess",
+              "hide_state": false,
+              "icon": "mdi:battery-positive",
+              "name": "Total Battery Charge",
+              "type": "tile",
+              "vertical": false
+            },
+            {
+              "color": "green",
+              "entity": "sensor.sigen_plant_total_discharged_energy_of_the_ess",
+              "hide_state": false,
+              "icon": "mdi:battery-negative",
+              "name": "Total Battery Discharge",
+              "type": "tile",
+              "vertical": false
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "span 2"
+          }
+        },
+        {
+          "card_mod": {
+            "style": ":host {\n  display: block;\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  margin: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden !important;\n}\n"
+          },
+          "cards": [
+            {
+              "heading": "System Diagnostics",
+              "heading_style": "title",
+              "icon": "mdi:shield-check",
+              "type": "heading",
+              "view_layout": {
+                "grid-column": "1 / -1"
+              }
+            },
+            {
+              "fill_container": true,
+              "icon": "mdi:shield-check",
+              "icon_color": "green",
+              "layout": "horizontal",
+              "multiline_secondary": true,
+              "primary": "Sigenergy Plant Alarms",
+              "secondary": "{% set alarms = [\n  states('sensor.sigen_plant_general_alarm_1'),\n  states('sensor.sigen_plant_general_alarm_2'),\n  states('sensor.sigen_plant_general_alarm_3'),\n  states('sensor.sigen_plant_general_alarm_4'),\n  states('sensor.sigen_plant_general_alarm_5'),\n  states('sensor.sigen_plant_general_alarm_6'),\n  states('sensor.sigen_plant_general_alarm_7')\n] %} {% set problems = alarms\n  | reject('in', ['No Problem', 'unknown', 'unavailable'])\n  | list %}\n{% if problems | count == 0 %}\n  No active plant alarms\n{% else %}\n  {{ problems | join(' · ') }}\n{% endif %}",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "fill_container": true,
+              "icon": "mdi:solar-power-variant",
+              "icon_color": "green",
+              "layout": "horizontal",
+              "multiline_secondary": true,
+              "primary": "Inverter Alarms",
+              "secondary": "{% set alarms = [\n  states('sensor.sigen_inverter_alarm_1'),\n  states('sensor.sigen_inverter_alarm_2'),\n  states('sensor.sigen_inverter_alarm_3'),\n  states('sensor.sigen_inverter_alarm_4'),\n  states('sensor.sigen_inverter_alarm_5')\n] %} {% set problems = alarms\n  | reject('in', ['No Problem', 'unknown', 'unavailable'])\n  | list %}\n{% if problems | count == 0 %}\n  No active inverter alarms\n{% else %}\n  {{ problems | join(' · ') }}\n{% endif %}",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.sigen_plant_modbus_max_data_fetch_time_since_restart",
+              "fill_container": true,
+              "icon": "mdi:lan-connect",
+              "icon_color": "{% set t = states(entity) | float(0) %} {% if t > 20 %}\n  red\n{% elif t > 10 %}\n  orange\n{% else %}\n  green\n{% endif %}",
+              "layout": "horizontal",
+              "primary": "Sigenergy Communications",
+              "secondary": "Maximum fetch time: {{ states(entity) | float(0) | round(2) }} seconds",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.amber_express_home_api_status",
+              "fill_container": true,
+              "icon": "mdi:api",
+              "icon_color": "{% if is_state(entity, 'OK') %}\n  green\n{% else %}\n  red\n{% endif %}",
+              "layout": "horizontal",
+              "primary": "Amber Connection",
+              "secondary": "{{ states(entity) }} · {{ state_attr(entity, 'rate_limit_remaining') | default('?') }} API calls remaining",
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "entity": "sensor.solcast_pv_forecast_api_last_polled",
+              "fill_container": true,
+              "icon": "mdi:weather-partly-cloudy",
+              "icon_color": "amber",
+              "layout": "horizontal",
+              "multiline_secondary": true,
+              "primary": "Solcast Forecast",
+              "secondary": "Last updated {{ relative_time(states(entity) | as_datetime) }} ago · {{ states('sensor.solcast_pv_forecast_api_used') }}/{{\n     states('sensor.solcast_pv_forecast_api_limit') }} calls used",
+              "type": "custom:mushroom-template-card"
+            }
+          ],
+          "layout": {
+            "align-items": "stretch",
+            "box-sizing": "border-box",
+            "gap": "12px",
+            "grid-auto-flow": "row dense",
+            "grid-gap": "12px",
+            "grid-template-columns": "repeat(5, minmax(0, 1fr))",
+            "justify-items": "stretch",
+            "margin": 0,
+            "max-width": "100%",
+            "mediaquery": {
+              "(max-width: 1300px)": {
+                "grid-template-columns": "repeat(3, minmax(0, 1fr))"
+              },
+              "(max-width: 600px)": {
+                "grid-template-columns": "minmax(0, 1fr)"
+              },
+              "(max-width: 900px)": {
+                "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+              }
+            },
+            "min-width": 0,
+            "padding": 0,
+            "width": "auto"
+          },
+          "layout_type": "custom:grid-layout",
+          "type": "custom:layout-card",
+          "view_layout": {
+            "grid-column": "1 / -1"
+          }
+        }
+      ],
+      "icon": "mdi:home-lightning-bolt",
+      "layout": {
+        "align-items": "start",
+        "box-sizing": "border-box",
+        "gap": "12px",
+        "grid-auto-flow": "row dense",
+        "grid-gap": "12px",
+        "grid-template-columns": "repeat(4, minmax(0, 1fr))",
+        "justify-items": "stretch",
+        "margin": 0,
+        "max-width": "100%",
+        "mediaquery": {
+          "(max-width: 1000px)": {
+            "grid-template-columns": "minmax(0, 1fr)"
+          },
+          "(max-width: 1300px)": {
+            "grid-template-columns": "repeat(2, minmax(0, 1fr))"
+          }
+        },
+        "padding": 0,
+        "width": "auto"
+      },
+      "path": "energy-max",
+      "title": "Energy Max",
+      "type": "custom:grid-layout"
+    }
+  ]
+}
