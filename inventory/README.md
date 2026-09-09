@@ -23,7 +23,7 @@ The full device and entity registry tables are **not published**. They contain m
 
 ## Generated public-safe inventory
 
-`generated-live/` currently contains:
+`generated-live/` contains or, after the next export refresh, generates:
 
 - `areas.md` — Home Assistant area names
 - `integrations.md` — integration domains and config-entry counts
@@ -31,6 +31,7 @@ The full device and entity registry tables are **not published**. They contain m
 - `esphome-files.md` — ESPHome YAML filenames only, never the credential-bearing YAML
 - `EXPORT-REPORT.md` — source snapshot counts and exported-file summary
 - `PUBLIC-SAFETY-SCAN.md` — privacy/credential guardrail results
+- `FRONTEND-DEPENDENCIES.md` — custom Lovelace card/layout dependencies derived from the retained public dashboards
 
 Detailed device and entity registry inventories are generated only transiently during export and are removed by the public-safety pass.
 
@@ -46,6 +47,17 @@ The curated inventory should record:
 - public repository location
 - related standalone repository where applicable
 - documentation status
+
+## Recovery use
+
+The generated inventory is useful during a rebuild to answer:
+
+- which integration domains existed;
+- which custom components were installed and their captured versions;
+- which dashboard frontend dependencies are required;
+- how many major areas/integration entries were present at the baseline.
+
+It is not a substitute for a full Home Assistant backup or the private recovery set described in `docs/installation/PRIVATE-RECOVERY-REQUIREMENTS.md`.
 
 ## Public repository policy
 
