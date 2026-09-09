@@ -1,0 +1,363 @@
+{
+  "title": "Household",
+  "views": [
+    {
+      "title": "Home",
+      "path": "home",
+      "icon": "mdi:home-heart",
+      "type": "sections",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Walter & Astra",
+              "secondary": "Keep the hounds happy, fed and moving!",
+              "layout": "horizontal",
+              "multiline_secondary": true,
+              "tap_action": {
+                "action": "none"
+              },
+              "card_mod": {
+                "style": {
+                  "mushroom-state-info$": ".primary {\n  font-size: 24px !important;\n  font-weight: 700 !important;\n  line-height: 1.15 !important;\n}\n.secondary {\n  white-space: normal !important;\n  overflow: visible !important;\n  text-overflow: unset !important;\n  line-height: 1.25 !important;\n}\n",
+                  ".": "ha-card {\n  position: relative;\n  overflow: visible;\n  background: transparent !important;\n  border: none !important;\n  box-shadow: none !important;\n  padding: 8px 8px 12px 82px;\n  min-height: 74px;\n}\nha-card::before {\n  content: \"🐾\";\n  position: absolute;\n  left: 18px;\n  top: 15px;\n  font-size: 27px;\n  filter: hue-rotate(165deg) saturate(3) brightness(1.35)\n    drop-shadow(0 0 7px rgba(33,150,243,.9));\n  transform-origin: center;\n  animation: paw-step-left 2.2s ease-in-out infinite;\n  pointer-events: none;\n}\nha-card::after {\n  content: \"🐾\";\n  position: absolute;\n  left: 43px;\n  top: 36px;\n  font-size: 24px;\n  filter: hue-rotate(165deg) saturate(3) brightness(1.35)\n    drop-shadow(0 0 7px rgba(33,150,243,.9));\n  transform-origin: center;\n  animation: paw-step-right 2.2s ease-in-out infinite;\n  pointer-events: none;\n}\n@keyframes paw-step-left {\n  0% { opacity: 0; transform: translate(-8px,5px) rotate(-18deg) scale(.8); }\n  10%,34% { opacity: 1; transform: translate(0,0) rotate(-18deg) scale(1); }\n  47%,100% { opacity: 0; transform: translate(8px,-5px) rotate(-18deg) scale(.85); }\n}\n@keyframes paw-step-right {\n  0%,18% { opacity: 0; transform: translate(-8px,5px) rotate(16deg) scale(.8); }\n  28%,52% { opacity: 1; transform: translate(0,0) rotate(16deg) scale(1); }\n  65%,100% { opacity: 0; transform: translate(8px,-5px) rotate(16deg) scale(.85); }\n}\n"
+                }
+              }
+            },
+            {
+              "type": "custom:mushroom-chips-card",
+              "alignment": "center",
+              "chips": [
+                {
+                  "type": "template",
+                  "icon": "mdi:food-drumstick",
+                  "content": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}BREAKFAST DONE {% elif is_state('binary_sensor.dog_breakfast_needs_attention','on') %}BREAKFAST DUE {% else %}BREAKFAST WAITING{% endif %}\n",
+                  "icon_color": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}green {% elif is_state('binary_sensor.dog_breakfast_needs_attention','on') %}red {% else %}orange{% endif %}\n"
+                },
+                {
+                  "type": "template",
+                  "icon": "mdi:food-drumstick-outline",
+                  "content": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}DINNER DONE {% elif is_state('binary_sensor.dog_dinner_needs_attention','on') %}DINNER DUE {% else %}DINNER WAITING{% endif %}\n",
+                  "icon_color": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}green {% elif is_state('binary_sensor.dog_dinner_needs_attention','on') %}red {% else %}orange{% endif %}\n"
+                },
+                {
+                  "type": "template",
+                  "icon": "mdi:dog-side",
+                  "content": "{% if is_state('binary_sensor.dog_walk_needs_attention','on') %}\n  WALK DUE\n{% else %}\n  WALK OK\n{% endif %}\n",
+                  "icon_color": "{% if is_state('binary_sensor.dog_walk_needs_attention','on') %}red{% else %}green{% endif %}\n"
+                },
+                {
+                  "type": "template",
+                  "icon": "mdi:pill",
+                  "content": "{% set last = states('input_datetime.walter_flea_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}\n  WALTER TABLET DUE\n{% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days >= 30 %}WALTER TABLET DUE\n  {% elif days >= 25 %}TABLET SOON\n  {% else %}TABLET OK{% endif %}\n{% endif %}\n",
+                  "icon_color": "{% set last = states('input_datetime.walter_flea_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}red {% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days >= 30 %}red{% elif days >= 25 %}orange{% else %}green{% endif %}\n{% endif %}\n"
+                },
+                {
+                  "type": "template",
+                  "icon": "mdi:shower-head",
+                  "content": "{% set last = states('input_datetime.walter_bath_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}\n  WALTER BATH DUE\n{% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days >= 30 %}WALTER BATH DUE\n  {% elif days >= 25 %}BATH SOON\n  {% else %}BATH OK{% endif %}\n{% endif %}\n",
+                  "icon_color": "{% set last = states('input_datetime.walter_bath_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}red {% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days >= 30 %}red{% elif days >= 25 %}orange{% else %}blue{% endif %}\n{% endif %}\n"
+                }
+              ]
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "entity": "binary_sensor.dog_breakfast_needs_attention",
+                  "layout": "vertical",
+                  "icon": "mdi:food-drumstick",
+                  "primary": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}Breakfast Done{% else %}Breakfast Waiting{% endif %}\n",
+                  "secondary": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}\n  {{ who }} • {{ as_datetime(last).strftime('%-I:%M %p') }}\n{% elif is_state(entity,'on') %}\n  Walter & Astra are waiting!\n{% else %}\n  Due 7:00–8:00 AM\n{% endif %}\n",
+                  "color": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}green{% elif is_state(entity,'on') %}red{% else %}orange{% endif %}\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "entity": "binary_sensor.dog_dinner_needs_attention",
+                  "layout": "vertical",
+                  "icon": "mdi:food-drumstick-outline",
+                  "primary": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}Dinner Done{% else %}Dinner Waiting{% endif %}\n",
+                  "secondary": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}\n  {{ who }} • {{ as_datetime(last).strftime('%-I:%M %p') }}\n{% elif is_state(entity,'on') %}\n  Walter & Astra are waiting!\n{% else %}\n  Due at 6:00 PM\n{% endif %}\n",
+                  "color": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}green{% elif is_state(entity,'on') %}red{% else %}orange{% endif %}\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "entity": "binary_sensor.dog_walk_needs_attention",
+                  "layout": "vertical",
+                  "icon": "mdi:dog-side",
+                  "primary": "{% if is_state(entity,'on') %}WALK TIME!{% else %}Walk Done{% endif %}\n",
+                  "secondary": "{% set last = states('input_datetime.dog_walk_last_completed') %} {% set who = states('input_text.dog_walk_completed_by') %} {% if now().weekday() >= 5 %}\n  Weekend — no scheduled walk\n{% elif who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n  {{ who }} • {{ as_datetime(last).strftime('%-I:%M %p') }}\n{% else %}\n  Walter & Astra are waiting!\n{% endif %}\n",
+                  "color": "{% if is_state(entity,'on') %}red{% else %}green{% endif %}\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "entity": "binary_sensor.indoor_dog_water_needs_cleaning",
+                  "layout": "vertical",
+                  "icon": "mdi:bowl-mix",
+                  "primary": "{% if is_state(entity,'on') %}CLEAN INDOOR WATER!{% else %}Indoor Water{% endif %}\n",
+                  "secondary": "{% set last = states('input_datetime.dog_indoor_water_last_cleaned') %} {% set who = states('input_text.dog_indoor_water_cleaned_by') %} {% if who in ['unknown','unavailable','none',''] or last in ['unknown','unavailable','none',''] %}\n  Needs its first clean\n{% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days == 0 %}Cleaned today • {{ who }}\n  {% elif days == 1 %}Cleaned yesterday • {{ who }}\n  {% else %}{{ days }} days since clean • {{ who }}{% endif %}\n{% endif %}\n",
+                  "color": "{% if is_state(entity,'on') %}red{% else %}blue{% endif %}\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "entity": "binary_sensor.outdoor_dog_water_needs_cleaning",
+                  "layout": "vertical",
+                  "icon": "mdi:water-pump",
+                  "primary": "{% if is_state(entity,'on') %}CLEAN OUTDOOR WATER!{% else %}Outdoor Water{% endif %}\n",
+                  "secondary": "{% set last = states('input_datetime.dog_outdoor_water_last_cleaned') %} {% set who = states('input_text.dog_outdoor_water_cleaned_by') %} {% if who in ['unknown','unavailable','none',''] or last in ['unknown','unavailable','none',''] %}\n  Needs its first clean\n{% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days == 0 %}Cleaned today • {{ who }}\n  {% elif days == 1 %}Cleaned yesterday • {{ who }}\n  {% else %}{{ days }} days since clean • {{ who }}{% endif %}\n{% endif %}\n",
+                  "color": "{% if is_state(entity,'on') %}red{% else %}blue{% endif %}\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "layout": "vertical",
+                  "icon": "mdi:pill",
+                  "primary": "Walter Tablet",
+                  "secondary": "{% set last = states('input_datetime.walter_flea_last_completed') %} {% set who = states('input_text.walter_flea_completed_by') %} {% if last in ['unknown','unavailable','none',''] %}\n  Never recorded\n{% else %}\n  {% set due = as_datetime(last) + timedelta(days=30) %}\n  Given {{ as_datetime(last).strftime('%-d %b') }} • {{ who }} • Due {{ due.strftime('%-d %b') }}\n{% endif %}\n",
+                  "color": "{% set last = states('input_datetime.walter_flea_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}red {% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days >= 30 %}red{% elif days >= 25 %}orange{% else %}green{% endif %}\n{% endif %}\n",
+                  "tap_action": {
+                    "action": "none"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "layout": "vertical",
+                  "icon": "mdi:shower-head",
+                  "primary": "Walter Bath",
+                  "secondary": "{% set last = states('input_datetime.walter_bath_last_completed') %} {% set who = states('input_text.walter_bath_completed_by') %} {% if last in ['unknown','unavailable','none',''] %}\n  Never recorded\n{% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days == 0 %}Today\n  {% elif days == 1 %}Yesterday\n  {% else %}{{ days }} days ago{% endif %} • {{ who }}\n{% endif %}\n",
+                  "color": "{% set last = states('input_datetime.walter_bath_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}red {% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days >= 30 %}red{% elif days >= 25 %}orange{% else %}blue{% endif %}\n{% endif %}\n",
+                  "tap_action": {
+                    "action": "none"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "custom:mushroom-title-card",
+              "title": "🎉 Household Wins",
+              "subtitle": "{% set ns = namespace(done=0) %} {% if is_state('binary_sensor.dog_breakfast_needs_attention','off') %}{% set ns.done = ns.done + 1 %}{% endif %} {% if is_state('binary_sensor.dog_dinner_needs_attention','off') %}{% set ns.done = ns.done + 1 %}{% endif %} {% if is_state('binary_sensor.dog_walk_needs_attention','off') %}{% set ns.done = ns.done + 1 %}{% endif %} {% if is_state('binary_sensor.indoor_dog_water_needs_cleaning','off') %}{% set ns.done = ns.done + 1 %}{% endif %} {% if is_state('binary_sensor.outdoor_dog_water_needs_cleaning','off') %}{% set ns.done = ns.done + 1 %}{% endif %} {% set wf = states('input_datetime.walter_flea_last_completed') %} {% if wf not in ['unknown','unavailable','none',''] and (now().date() - as_datetime(wf).date()).days < 30 %}\n  {% set ns.done = ns.done + 1 %}\n{% endif %} {% set wb = states('input_datetime.walter_bath_last_completed') %} {% if wb not in ['unknown','unavailable','none',''] and (now().date() - as_datetime(wb).date()).days < 30 %}\n  {% set ns.done = ns.done + 1 %}\n{% endif %} {{ ns.done }} of 7 dog jobs currently green\n"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dog Care",
+      "path": "dog-care",
+      "icon": "mdi:paw",
+      "type": "sections",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "🐕 {{ states('input_text.dog_care_active_dog') }} - Dog Care\n",
+              "secondary": "Scanned by {{ states('input_text.dog_care_active_person') }} • Tap one job to record it\n",
+              "icon": "mdi:paw",
+              "icon_color": "blue",
+              "tap_action": {
+                "action": "none"
+              }
+            },
+            {
+              "type": "grid",
+              "columns": 2,
+              "square": false,
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Walk Dogs",
+                  "secondary": "{% set last = states('input_datetime.dog_walk_last_completed') %} {% set who = states('input_text.dog_walk_completed_by') %} {% if who in ['unknown','unavailable','none',''] or last in ['unknown','unavailable','none',''] %}\n  No walk recorded yet\n{% elif as_datetime(last).date() == now().date() %}\n  Today {{ as_datetime(last).strftime('%-I:%M %p') }} • {{ who }}\n{% else %}\n  {{ as_datetime(last).strftime('%-d %b %-I:%M %p') }} • {{ who }}\n{% endif %}\n",
+                  "icon": "mdi:dog-side",
+                  "icon_color": "{% if is_state('binary_sensor.dog_walk_needs_attention','on') %}red{% else %}green{% endif %}\n",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.household_dog_care_walk"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Bath {{ states('input_text.dog_care_active_dog') }}\n",
+                  "secondary": "{% set dog = states('input_text.dog_care_active_dog') | lower %} {% set last = states('input_datetime.' ~ dog ~ '_bath_last_completed') %} {% set who = states('input_text.' ~ dog ~ '_bath_completed_by') %} {% if who in ['unknown','unavailable','none',''] or last in ['unknown','unavailable','none',''] %}\n  Never recorded\n{% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days == 0 %}Today{% elif days == 1 %}Yesterday{% else %}{{ days }} days ago{% endif %} • {{ who }}\n{% endif %}\n",
+                  "icon": "mdi:shower-head",
+                  "icon_color": "{% set dog = states('input_text.dog_care_active_dog') | lower %} {% set last = states('input_datetime.' ~ dog ~ '_bath_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}red {% elif (now().date() - as_datetime(last).date()).days >= 30 %}red {% elif (now().date() - as_datetime(last).date()).days >= 25 %}orange {% else %}blue{% endif %}\n",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.household_dog_care_bath"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Flea Tablet - {{ states('input_text.dog_care_active_dog') }}\n",
+                  "secondary": "{% set dog = states('input_text.dog_care_active_dog') | lower %} {% set last = states('input_datetime.' ~ dog ~ '_flea_last_completed') %} {% set who = states('input_text.' ~ dog ~ '_flea_completed_by') %} {% if who in ['unknown','unavailable','none',''] or last in ['unknown','unavailable','none',''] %}\n  Never recorded\n{% else %}\n  {% set due = as_datetime(last) + timedelta(days=30) %}\n  Given {{ as_datetime(last).strftime('%-d %b') }} • {{ who }} • Due {{ due.strftime('%-d %b') }}\n{% endif %}\n",
+                  "icon": "mdi:pill",
+                  "icon_color": "{% set dog = states('input_text.dog_care_active_dog') | lower %} {% set last = states('input_datetime.' ~ dog ~ '_flea_last_completed') %} {% if last in ['unknown','unavailable','none',''] %}red {% elif (now().date() - as_datetime(last).date()).days >= 30 %}red {% elif (now().date() - as_datetime(last).date()).days >= 25 %}orange {% else %}green{% endif %}\n",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.household_dog_care_flea"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "custom:mushroom-title-card",
+              "title": "💧 Clean & Refill Water",
+              "subtitle": "Choose which bowls you actually cleaned"
+            },
+            {
+              "type": "grid",
+              "columns": 3,
+              "square": false,
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Indoor",
+                  "secondary": "{% set last = states('input_datetime.dog_indoor_water_last_cleaned') %} {% set who = states('input_text.dog_indoor_water_cleaned_by') %} {% if who in ['unknown','unavailable','none',''] or last in ['unknown','unavailable','none',''] %}\n  Never recorded\n{% else %}\n  {{ as_datetime(last).strftime('%-d %b') }} • {{ who }}\n{% endif %}\n",
+                  "icon": "mdi:bowl-mix",
+                  "icon_color": "{% if is_state('binary_sensor.indoor_dog_water_needs_cleaning','on') %}red{% else %}blue{% endif %}\n",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.household_dog_care_water_indoor"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Outdoor",
+                  "secondary": "{% set last = states('input_datetime.dog_outdoor_water_last_cleaned') %} {% set who = states('input_text.dog_outdoor_water_cleaned_by') %} {% if who in ['unknown','unavailable','none',''] or last in ['unknown','unavailable','none',''] %}\n  Never recorded\n{% else %}\n  {{ as_datetime(last).strftime('%-d %b') }} • {{ who }}\n{% endif %}\n",
+                  "icon": "mdi:water-pump",
+                  "icon_color": "{% if is_state('binary_sensor.outdoor_dog_water_needs_cleaning','on') %}red{% else %}blue{% endif %}\n",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.household_dog_care_water_outdoor"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "primary": "Both",
+                  "secondary": "Cleaned & refilled both bowls",
+                  "icon": "mdi:water-check",
+                  "icon_color": "cyan",
+                  "layout": "vertical",
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "script.household_dog_care_water_both"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Monthly Care Status",
+              "secondary": "{% set w_bath = states('input_datetime.walter_bath_last_completed') %} {% set a_bath = states('input_datetime.astra_bath_last_completed') %} {% set w_flea = states('input_datetime.walter_flea_last_completed') %} {% set a_flea = states('input_datetime.astra_flea_last_completed') %} Walter bath: {{ 'never' if w_bath in ['unknown','unavailable','none',''] else as_datetime(w_bath).strftime('%-d %b') }} • Astra bath: {{ 'never' if a_bath in ['unknown','unavailable','none',''] else as_datetime(a_bath).strftime('%-d %b') }} • Walter flea: {{ 'never' if w_flea in ['unknown','unavailable','none',''] else as_datetime(w_flea).strftime('%-d %b') }} • Astra flea: {{ 'never' if a_flea in ['unknown','unavailable','none',''] else as_datetime(a_flea).strftime('%-d %b') }}\n",
+              "icon": "mdi:calendar-check",
+              "multiline_secondary": true,
+              "tap_action": {
+                "action": "none"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Aeryn",
+      "path": "aeryn",
+      "icon": "mdi:account-heart",
+      "type": "sections",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "Aeryn's Dog Jobs",
+              "secondary": "Tap the job when you have finished it",
+              "icon": "mdi:paw",
+              "icon_color": "pink",
+              "layout": "horizontal",
+              "tap_action": {
+                "action": "none"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  min-height: 90px;\n}\n"
+              }
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "{% set b_last = states('input_datetime.dog_breakfast_last_completed') %} {% set b_who = states('input_text.dog_breakfast_completed_by') %} {% set d_last = states('input_datetime.dog_dinner_last_completed') %} {% set d_who = states('input_text.dog_dinner_completed_by') %} {% set b_done = b_who not in ['unknown','unavailable','none','']\n  and b_last not in ['unknown','unavailable','none','']\n  and as_datetime(b_last).date() == now().date() %}\n{% set d_done = d_who not in ['unknown','unavailable','none','']\n  and d_last not in ['unknown','unavailable','none','']\n  and as_datetime(d_last).date() == now().date() %}\n{% if now().hour >= 6 and now().hour < 10 and b_done %}\n  BREAKFAST DONE ✓\n{% elif now().hour >= 16 and now().hour < 21 and d_done %}\n  DINNER DONE ✓\n{% else %}\n  FEED WALTER & ASTRA\n{% endif %}\n",
+              "secondary": "{% if now().hour >= 6 and now().hour < 10 %}\n  Breakfast\n{% elif now().hour >= 16 and now().hour < 21 %}\n  Dinner\n{% else %}\n  Feeding is not due now\n{% endif %}\n",
+              "icon": "mdi:food-drumstick",
+              "icon_color": "{% set b_last = states('input_datetime.dog_breakfast_last_completed') %} {% set b_who = states('input_text.dog_breakfast_completed_by') %} {% set d_last = states('input_datetime.dog_dinner_last_completed') %} {% set d_who = states('input_text.dog_dinner_completed_by') %} {% set b_done = b_who not in ['unknown','unavailable','none','']\n  and b_last not in ['unknown','unavailable','none','']\n  and as_datetime(b_last).date() == now().date() %}\n{% set d_done = d_who not in ['unknown','unavailable','none','']\n  and d_last not in ['unknown','unavailable','none','']\n  and as_datetime(d_last).date() == now().date() %}\n{% if (now().hour >= 6 and now().hour < 10 and b_done)\n      or (now().hour >= 16 and now().hour < 21 and d_done) %}\n  green\n{% else %}\n  orange\n{% endif %}\n",
+              "layout": "vertical",
+              "fill_container": true,
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "script.household_feed_dogs_aeryn"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  min-height: 180px;\n  border: 3px solid var(--primary-color);\n}\nmushroom-state-info$ .primary {\n  font-size: 22px !important;\n  font-weight: 800 !important;\n}\n"
+              }
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "{% set last = states('input_datetime.walter_flea_last_completed') %} {% set who = states('input_text.walter_flea_completed_by') %} {% if last not in ['unknown','unavailable','none','']\n      and as_datetime(last).date() == now().date()\n      and who == 'Aeryn' %}\n  WALTER TABLET DONE ✓\n{% else %}\n  WALTER TABLET\n{% endif %}\n",
+              "secondary": "{% set last = states('input_datetime.walter_flea_last_completed') %} {% set who = states('input_text.walter_flea_completed_by') %} {% if last in ['unknown','unavailable','none',''] %}\n  No tablet recorded\n{% else %}\n  {% set due = as_datetime(last) + timedelta(days=30) %}\n  Last {{ as_datetime(last).strftime('%-d %b') }} • {{ who }} • Due {{ due.strftime('%-d %b') }}\n{% endif %}\n",
+              "icon": "mdi:pill",
+              "icon_color": "{% set last = states('input_datetime.walter_flea_last_completed') %} {% if last not in ['unknown','unavailable','none',''] and as_datetime(last).date() == now().date() %}\n  green\n{% elif last in ['unknown','unavailable','none',''] %}\n  red\n{% elif (now().date() - as_datetime(last).date()).days >= 30 %}\n  red\n{% elif (now().date() - as_datetime(last).date()).days >= 25 %}\n  orange\n{% else %}\n  green\n{% endif %}\n",
+              "layout": "vertical",
+              "fill_container": true,
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "script.household_walter_flea_aeryn"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  min-height: 180px;\n  border: 3px solid var(--primary-color);\n}\nmushroom-state-info$ .primary {\n  font-size: 22px !important;\n  font-weight: 800 !important;\n}\n"
+              }
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "primary": "{% set last = states('input_datetime.walter_bath_last_completed') %} {% set who = states('input_text.walter_bath_completed_by') %} {% if last not in ['unknown','unavailable','none','']\n      and as_datetime(last).date() == now().date()\n      and who == 'Aeryn' %}\n  WALTER BATH DONE ✓\n{% else %}\n  WALTER BATH\n{% endif %}\n",
+              "secondary": "{% set last = states('input_datetime.walter_bath_last_completed') %} {% set who = states('input_text.walter_bath_completed_by') %} {% if last in ['unknown','unavailable','none',''] %}\n  No bath recorded\n{% else %}\n  {% set days = (now().date() - as_datetime(last).date()).days %}\n  {% if days == 0 %}Bathed today\n  {% elif days == 1 %}Bathed yesterday\n  {% else %}Bathed {{ days }} days ago{% endif %} • {{ who }}\n{% endif %}\n",
+              "icon": "mdi:shower-head",
+              "icon_color": "{% set last = states('input_datetime.walter_bath_last_completed') %} {% if last not in ['unknown','unavailable','none',''] and as_datetime(last).date() == now().date() %}\n  green\n{% elif last in ['unknown','unavailable','none',''] %}\n  red\n{% elif (now().date() - as_datetime(last).date()).days >= 30 %}\n  red\n{% elif (now().date() - as_datetime(last).date()).days >= 25 %}\n  orange\n{% else %}\n  blue\n{% endif %}\n",
+              "layout": "vertical",
+              "fill_container": true,
+              "tap_action": {
+                "action": "perform-action",
+                "perform_action": "script.household_walter_bath_aeryn"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  min-height: 180px;\n  border: 3px solid var(--primary-color);\n}\nmushroom-state-info$ .primary {\n  font-size: 22px !important;\n  font-weight: 800 !important;\n}\n"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

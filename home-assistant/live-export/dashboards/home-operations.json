@@ -1,0 +1,816 @@
+{
+  "title": "Home Operations",
+  "views": [
+    {
+      "title": "Home",
+      "path": "home",
+      "icon": "mdi:home",
+      "type": "custom:grid-layout",
+      "layout": {
+        "grid-template-areas": "\"header header\"\n\"weather weather\"\n\"bins bins\"\n\"energy dogs\"\n\"security mining\"\n",
+        "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+        "grid-auto-rows": "min-content",
+        "column-gap": "12px",
+        "row-gap": "12px",
+        "margin": 0,
+        "padding": "12px",
+        "max-width": "1600px",
+        "mediaquery": {
+          "(max-width: 1100px)": {
+            "grid-template-areas": "\"header\"\n\"weather\"\n\"bins\"\n\"energy\"\n\"dogs\"\n\"security\"\n\"mining\"\n",
+            "grid-template-columns": "minmax(0, 1fr)",
+            "padding": "8px",
+            "column-gap": "8px",
+            "row-gap": "8px"
+          }
+        }
+      },
+      "cards": [
+        {
+          "type": "markdown",
+          "view_layout": {
+            "grid-area": "header"
+          },
+          "content": "# Home Operations\n**Maiden Gully live essentials**\n",
+          "card_mod": {
+            "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 24px;\n  padding: 8px 16px;\n  border: 1px solid rgba(255,255,255,0.12);\n  background:\n    linear-gradient(135deg, rgba(33,150,243,0.30), rgba(156,39,176,0.20));\n  box-shadow: 0 8px 24px rgba(0,0,0,0.20);\n}\n"
+          }
+        },
+        {
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-area": "weather"
+          },
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Weather",
+              "heading_style": "title",
+              "icon": "mdi:weather-partly-cloudy"
+            },
+            {
+              "type": "custom:weather-forecast-card",
+              "entity": "weather.pioneer_drive_maiden_gully",
+              "name": "Pioneer Drive - Maiden Gully",
+              "show_current": true,
+              "show_forecast": true,
+              "default_forecast": "daily",
+              "forecast_types": "both",
+              "show_condition_effects": true,
+              "current": {
+                "temperature_entity": "sensor.farmbot_pioneer_dr_weather_station_outdoor_temperature",
+                "attributes_layout": "compact",
+                "show_attributes": [
+                  {
+                    "name": "apparent_temperature",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_feels_like_temperature",
+                    "label": "Feels like",
+                    "icon": "mdi:thermometer-lines"
+                  },
+                  {
+                    "name": "indoor_temperature",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_indoor_temperature",
+                    "label": "Inside",
+                    "icon": "mdi:home-thermometer"
+                  },
+                  {
+                    "name": "wind_speed",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_wind_speed",
+                    "label": "Wind",
+                    "icon": "mdi:weather-windy"
+                  },
+                  {
+                    "name": "precipitation",
+                    "entity": "sensor.farmbot_pioneer_dr_weather_station_24h_rain_piezo",
+                    "label": "Rain - last 24 hours",
+                    "icon": "mdi:weather-rainy"
+                  }
+                ]
+              },
+              "forecast": {
+                "mode": "chart",
+                "daily_slots": 7,
+                "hourly_slots": 24,
+                "show_sun_times": true,
+                "show_attribute_selector": false,
+                "default_chart_attribute": "temperature_and_precipitation",
+                "extra_attribute": "precipitation_probability"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 24px;\n  border: 1px solid rgba(100,190,255,0.28);\n  background:\n    linear-gradient(145deg, rgba(30,136,229,0.26), rgba(0,188,212,0.15), rgba(20,20,25,0.96));\n  box-shadow: 0 10px 28px rgba(0,0,0,0.26);\n}\n"
+              }
+            }
+          ]
+        },
+        {
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-area": "bins"
+          },
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Bin Collection",
+              "heading_style": "title",
+              "icon": "mdi:trash-can-outline"
+            },
+            {
+              "type": "custom:layout-card",
+              "layout_type": "custom:grid-layout",
+              "layout": {
+                "grid-template-columns": "repeat(3, minmax(0, 1fr))",
+                "gap": "10px",
+                "margin": 0,
+                "padding": 0,
+                "mediaquery": {
+                  "(max-width: 650px)": {
+                    "grid-template-columns": "minmax(0, 1fr)"
+                  }
+                }
+              },
+              "cards": [
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.waste_collection_schedule_general_waste",
+                  "name": "General Waste",
+                  "icon": "mdi:trash-can",
+                  "show_name": true,
+                  "show_icon": true,
+                  "show_state": true,
+                  "state_display": "[[[\n  const d = Number(entity.state);\n  if (!Number.isFinite(d)) return entity.state.toUpperCase();\n  if (d === 0) return 'TODAY';\n  if (d === 1) return 'TOMORROW';\n  return `IN ${d} DAYS`;\n]]]\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "min-width": 0
+                      },
+                      {
+                        "height": "112px"
+                      },
+                      {
+                        "box-sizing": "border-box"
+                      },
+                      {
+                        "overflow": "hidden"
+                      },
+                      {
+                        "border-radius": "22px"
+                      },
+                      {
+                        "padding": "12px"
+                      },
+                      {
+                        "border": "[[[\n  const d = Number(entity.state);\n  if (d === 0) return '3px solid rgba(255,82,82,.98)';\n  if (d === 1) return '3px solid rgba(255,82,82,.82)';\n  return '1px solid rgba(255,255,255,.12)';\n]]]\n"
+                      },
+                      {
+                        "background": "[[[\n  const d = Number(entity.state);\n  if (d === 0) return 'linear-gradient(145deg, rgba(244,67,54,.55), rgba(183,28,28,.28))';\n  if (d === 1) return 'linear-gradient(145deg, rgba(244,67,54,.38), rgba(183,28,28,.18))';\n  return 'linear-gradient(145deg, rgba(55,55,62,.72), rgba(25,25,30,.88))';\n]]]\n"
+                      },
+                      {
+                        "box-shadow": "[[[\n  const d = Number(entity.state);\n  if (d <= 1) return '0 0 20px rgba(244,67,54,.28)';\n  return '0 6px 18px rgba(0,0,0,.18)';\n]]]\n"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i n\" \"i s\""
+                      },
+                      {
+                        "grid-template-columns": "54px minmax(0, 1fr)"
+                      },
+                      {
+                        "grid-template-rows": "1fr 1fr"
+                      },
+                      {
+                        "column-gap": "12px"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "width": "42px"
+                      },
+                      {
+                        "color": "[[[\n  return Number(entity.state) <= 1 ? '#ff5252' : '#9e9e9e';\n]]]\n"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "justify-self": "start"
+                      },
+                      {
+                        "align-self": "end"
+                      },
+                      {
+                        "font-size": "16px"
+                      },
+                      {
+                        "font-weight": 700
+                      },
+                      {
+                        "white-space": "normal"
+                      }
+                    ],
+                    "state": [
+                      {
+                        "justify-self": "start"
+                      },
+                      {
+                        "align-self": "start"
+                      },
+                      {
+                        "font-size": "13px"
+                      },
+                      {
+                        "font-weight": 800
+                      },
+                      {
+                        "letter-spacing": "0.5px"
+                      },
+                      {
+                        "color": "[[[\n  return Number(entity.state) <= 1 ? '#ffffff' : 'var(--secondary-text-color)';\n]]]\n"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.waste_collection_schedule_recycling",
+                  "name": "Recycling",
+                  "icon": "mdi:recycle",
+                  "show_name": true,
+                  "show_icon": true,
+                  "show_state": true,
+                  "state_display": "[[[\n  const d = Number(entity.state);\n  if (!Number.isFinite(d)) return entity.state.toUpperCase();\n  if (d === 0) return 'TODAY';\n  if (d === 1) return 'TOMORROW';\n  return `IN ${d} DAYS`;\n]]]\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "min-width": 0
+                      },
+                      {
+                        "height": "112px"
+                      },
+                      {
+                        "box-sizing": "border-box"
+                      },
+                      {
+                        "overflow": "hidden"
+                      },
+                      {
+                        "border-radius": "22px"
+                      },
+                      {
+                        "padding": "12px"
+                      },
+                      {
+                        "border": "[[[\n  const d = Number(entity.state);\n  if (d === 0) return '3px solid rgba(255,214,0,.98)';\n  if (d === 1) return '3px solid rgba(255,214,0,.82)';\n  return '1px solid rgba(255,255,255,.12)';\n]]]\n"
+                      },
+                      {
+                        "background": "[[[\n  const d = Number(entity.state);\n  if (d === 0) return 'linear-gradient(145deg, rgba(255,214,0,.52), rgba(245,124,0,.20))';\n  if (d === 1) return 'linear-gradient(145deg, rgba(255,214,0,.34), rgba(245,124,0,.13))';\n  return 'linear-gradient(145deg, rgba(55,55,62,.72), rgba(25,25,30,.88))';\n]]]\n"
+                      },
+                      {
+                        "box-shadow": "[[[\n  const d = Number(entity.state);\n  if (d <= 1) return '0 0 20px rgba(255,214,0,.25)';\n  return '0 6px 18px rgba(0,0,0,.18)';\n]]]\n"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i n\" \"i s\""
+                      },
+                      {
+                        "grid-template-columns": "54px minmax(0, 1fr)"
+                      },
+                      {
+                        "grid-template-rows": "1fr 1fr"
+                      },
+                      {
+                        "column-gap": "12px"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "width": "42px"
+                      },
+                      {
+                        "color": "[[[\n  return Number(entity.state) <= 1 ? '#ffd600' : '#9e9e9e';\n]]]\n"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "justify-self": "start"
+                      },
+                      {
+                        "align-self": "end"
+                      },
+                      {
+                        "font-size": "16px"
+                      },
+                      {
+                        "font-weight": 700
+                      },
+                      {
+                        "white-space": "normal"
+                      }
+                    ],
+                    "state": [
+                      {
+                        "justify-self": "start"
+                      },
+                      {
+                        "align-self": "start"
+                      },
+                      {
+                        "font-size": "13px"
+                      },
+                      {
+                        "font-weight": 800
+                      },
+                      {
+                        "letter-spacing": "0.5px"
+                      },
+                      {
+                        "color": "[[[\n  return Number(entity.state) <= 1 ? '#ffffff' : 'var(--secondary-text-color)';\n]]]\n"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.waste_collection_schedule_green_waste",
+                  "name": "Green Waste",
+                  "icon": "mdi:leaf",
+                  "show_name": true,
+                  "show_icon": true,
+                  "show_state": true,
+                  "state_display": "[[[\n  const d = Number(entity.state);\n  if (!Number.isFinite(d)) return entity.state.toUpperCase();\n  if (d === 0) return 'TODAY';\n  if (d === 1) return 'TOMORROW';\n  return `IN ${d} DAYS`;\n]]]\n",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "hold_action": {
+                    "action": "none"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "min-width": 0
+                      },
+                      {
+                        "height": "112px"
+                      },
+                      {
+                        "box-sizing": "border-box"
+                      },
+                      {
+                        "overflow": "hidden"
+                      },
+                      {
+                        "border-radius": "22px"
+                      },
+                      {
+                        "padding": "12px"
+                      },
+                      {
+                        "border": "[[[\n  const d = Number(entity.state);\n  if (d === 0) return '3px solid rgba(124,252,0,.98)';\n  if (d === 1) return '3px solid rgba(124,252,0,.82)';\n  return '1px solid rgba(255,255,255,.12)';\n]]]\n"
+                      },
+                      {
+                        "background": "[[[\n  const d = Number(entity.state);\n  if (d === 0) return 'linear-gradient(145deg, rgba(124,252,0,.42), rgba(46,125,50,.25))';\n  if (d === 1) return 'linear-gradient(145deg, rgba(124,252,0,.28), rgba(46,125,50,.16))';\n  return 'linear-gradient(145deg, rgba(55,55,62,.72), rgba(25,25,30,.88))';\n]]]\n"
+                      },
+                      {
+                        "box-shadow": "[[[\n  const d = Number(entity.state);\n  if (d <= 1) return '0 0 20px rgba(124,252,0,.22)';\n  return '0 6px 18px rgba(0,0,0,.18)';\n]]]\n"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i n\" \"i s\""
+                      },
+                      {
+                        "grid-template-columns": "54px minmax(0, 1fr)"
+                      },
+                      {
+                        "grid-template-rows": "1fr 1fr"
+                      },
+                      {
+                        "column-gap": "12px"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "width": "42px"
+                      },
+                      {
+                        "color": "[[[\n  return Number(entity.state) <= 1 ? '#7cfc00' : '#9e9e9e';\n]]]\n"
+                      }
+                    ],
+                    "name": [
+                      {
+                        "justify-self": "start"
+                      },
+                      {
+                        "align-self": "end"
+                      },
+                      {
+                        "font-size": "16px"
+                      },
+                      {
+                        "font-weight": 700
+                      },
+                      {
+                        "white-space": "normal"
+                      }
+                    ],
+                    "state": [
+                      {
+                        "justify-self": "start"
+                      },
+                      {
+                        "align-self": "start"
+                      },
+                      {
+                        "font-size": "13px"
+                      },
+                      {
+                        "font-weight": 800
+                      },
+                      {
+                        "letter-spacing": "0.5px"
+                      },
+                      {
+                        "color": "[[[\n  return Number(entity.state) <= 1 ? '#ffffff' : 'var(--secondary-text-color)';\n]]]\n"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-area": "energy"
+          },
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Live Energy",
+              "heading_style": "title",
+              "icon": "mdi:home-lightning-bolt"
+            },
+            {
+              "type": "custom:power-flow-card-plus",
+              "entities": {
+                "solar": {
+                  "entity": "sensor.sigen_plant_pv_power",
+                  "name": "Combined Solar",
+                  "icon": "mdi:solar-power",
+                  "display_zero_state": true
+                },
+                "grid": {
+                  "entity": "sensor.sigen_plant_grid_active_power",
+                  "name": "Powercor Grid",
+                  "icon": "mdi:transmission-tower",
+                  "invert_state": false,
+                  "display_state": "two_way"
+                },
+                "battery": {
+                  "entity": "sensor.sigen_plant_battery_power",
+                  "state_of_charge": "sensor.sigen_plant_battery_state_of_charge",
+                  "name": "SigenStor",
+                  "icon": "mdi:home-battery",
+                  "invert_state": true,
+                  "display_state": "two_way"
+                },
+                "home": {
+                  "entity": "sensor.sigen_plant_total_load_power",
+                  "name": "Pioneer Drive",
+                  "icon": "mdi:home-lightning-bolt"
+                }
+              },
+              "clickable_entities": true,
+              "display_zero_lines": {
+                "mode": "show",
+                "transparency": 35,
+                "grey_color": [
+                  145,
+                  145,
+                  145
+                ]
+              },
+              "use_new_flow_rate_model": true,
+              "w_decimals": 0,
+              "kw_decimals": 2,
+              "min_flow_rate": 0.7,
+              "max_flow_rate": 7,
+              "max_expected_power": 20000,
+              "min_expected_power": 0.01,
+              "watt_threshold": 1000,
+              "transparency_zero_lines": 35,
+              "card_mod": {
+                "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 24px;\n  border: 1px solid rgba(255,255,255,0.10);\n  background:\n    radial-gradient(circle at 50% 42%, rgba(0,188,212,0.09), transparent 35%),\n    linear-gradient(145deg, rgba(20,25,34,0.98), rgba(8,12,18,0.98));\n  box-shadow: 0 10px 28px rgba(0,0,0,0.26);\n}\n"
+              }
+            },
+            {
+              "type": "custom:mushroom-template-card",
+              "entity": "sensor.sigen_plant_battery_state_of_charge",
+              "primary": "House Battery",
+              "secondary": "{% set soc = states(entity) | float(0) %} {% set p = states('sensor.sigen_plant_battery_power') | float(0) %} {{ soc | round(1) }}% - {% if p > 0.05 %}\n  charging at {{ p | abs | round(2) }} kW\n{% elif p < -0.05 %}\n  discharging at {{ p | abs | round(2) }} kW\n{% else %}\n  standing by\n{% endif %}",
+              "icon": "{% set soc = states(entity) | float(0) %} {% if soc >= 95 %} mdi:battery {% elif soc >= 80 %} mdi:battery-80 {% elif soc >= 60 %} mdi:battery-60 {% elif soc >= 40 %} mdi:battery-40 {% elif soc >= 20 %} mdi:battery-20 {% else %} mdi:battery-alert {% endif %}",
+              "icon_color": "{% set soc = states(entity) | float(0) %} {% if soc < 20 %} red {% elif soc < 40 %} orange {% else %} green {% endif %}",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 20px;\n  border: 1px solid rgba(100,255,160,0.25);\n  background: linear-gradient(145deg, rgba(76,175,80,0.30), rgba(0,150,136,0.16));\n}\n"
+              }
+            }
+          ]
+        },
+        {
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-area": "dogs"
+          },
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Walter and Astra",
+              "heading_style": "title",
+              "icon": "mdi:dog-side"
+            },
+            {
+              "type": "custom:layout-card",
+              "layout_type": "custom:grid-layout",
+              "layout": {
+                "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+                "gap": "10px",
+                "margin": 0,
+                "padding": 0,
+                "mediaquery": {
+                  "(max-width: 600px)": {
+                    "grid-template-columns": "minmax(0, 1fr)"
+                  }
+                }
+              },
+              "cards": [
+                {
+                  "type": "custom:mushroom-template-card",
+                  "entity": "binary_sensor.dog_breakfast_needs_attention",
+                  "layout": "vertical",
+                  "icon": "mdi:food-drumstick",
+                  "primary": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}Breakfast Done{% elif is_state(entity, 'on') %}Breakfast Due{% else %}Breakfast Waiting{% endif %}",
+                  "secondary": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}\n  {{ who }} at {{ as_datetime(last).strftime('%-I:%M %p') }}\n{% elif is_state(entity, 'on') %}\n  Walter and Astra are waiting\n{% else %}\n  Due 7:00-8:00 AM\n{% endif %}",
+                  "icon_color": "{% set last = states('input_datetime.dog_breakfast_last_completed') %} {% set who = states('input_text.dog_breakfast_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}green{% elif is_state(entity, 'on') %}red{% else %}orange{% endif %}",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 22px;\n  {% set last = states('input_datetime.dog_breakfast_last_completed') %}\n  {% set who = states('input_text.dog_breakfast_completed_by') %}\n  {% set done = who not in ['unknown','unavailable','none','']\n    and last not in ['unknown','unavailable','none','']\n    and as_datetime(last).date() == now().date() %}\n  {% if done %}\n    border: 2px solid rgba(80,200,90,.80);\n    background: rgba(76,175,80,.16);\n  {% elif is_state(config.entity, 'on') %}\n    border: 2px solid rgba(255,60,60,.85);\n    background: rgba(244,67,54,.15);\n  {% else %}\n    border: 2px solid rgba(255,152,0,.80);\n    background: rgba(255,152,0,.12);\n  {% endif %}\n}\n"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-template-card",
+                  "entity": "binary_sensor.dog_dinner_needs_attention",
+                  "layout": "vertical",
+                  "icon": "mdi:food-drumstick-outline",
+                  "primary": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}Dinner Done{% elif is_state(entity, 'on') %}Dinner Due{% else %}Dinner Waiting{% endif %}",
+                  "secondary": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}\n  {{ who }} at {{ as_datetime(last).strftime('%-I:%M %p') }}\n{% elif is_state(entity, 'on') %}\n  Walter and Astra are waiting\n{% else %}\n  Due at 6:00 PM\n{% endif %}",
+                  "icon_color": "{% set last = states('input_datetime.dog_dinner_last_completed') %} {% set who = states('input_text.dog_dinner_completed_by') %} {% set done = who not in ['unknown','unavailable','none','']\n  and last not in ['unknown','unavailable','none','']\n  and as_datetime(last).date() == now().date() %}\n{% if done %}green{% elif is_state(entity, 'on') %}red{% else %}orange{% endif %}",
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 22px;\n  {% set last = states('input_datetime.dog_dinner_last_completed') %}\n  {% set who = states('input_text.dog_dinner_completed_by') %}\n  {% set done = who not in ['unknown','unavailable','none','']\n    and last not in ['unknown','unavailable','none','']\n    and as_datetime(last).date() == now().date() %}\n  {% if done %}\n    border: 2px solid rgba(80,200,90,.80);\n    background: rgba(76,175,80,.16);\n  {% elif is_state(config.entity, 'on') %}\n    border: 2px solid rgba(255,60,60,.85);\n    background: rgba(244,67,54,.15);\n  {% else %}\n    border: 2px solid rgba(255,152,0,.80);\n    background: rgba(255,152,0,.12);\n  {% endif %}\n}\n"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "vertical-stack",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Front Entry and Garage",
+              "heading_style": "title",
+              "icon": "mdi:shield-home"
+            },
+            {
+              "type": "custom:button-card",
+              "entity": "cover.garage_garage_door_opener_garage",
+              "name": "12A Pioneer Garage Door",
+              "show_name": true,
+              "show_icon": true,
+              "show_label": true,
+              "icon": "[[[\n  const garage = entity;\n  if (!garage) return 'mdi:garage-alert';\n  if (garage.state === 'closed') return 'mdi:garage';\n  if (garage.state === 'open') return 'mdi:garage-open';\n  return 'mdi:garage-open-variant';\n]]]\n",
+              "label": "[[[\n  const garage = entity;\n  if (!garage) return 'NOT FOUND';\n  return garage.state.replaceAll('_', ' ').toUpperCase();\n]]]\n",
+              "tap_action": {
+                "action": "more-info"
+              },
+              "hold_action": {
+                "action": "none"
+              },
+              "styles": {
+                "card": [
+                  {
+                    "width": "auto"
+                  },
+                  {
+                    "max-width": "100%"
+                  },
+                  {
+                    "min-width": 0
+                  },
+                  {
+                    "height": "58px"
+                  },
+                  {
+                    "box-sizing": "border-box"
+                  },
+                  {
+                    "overflow": "hidden"
+                  },
+                  {
+                    "padding": "7px 12px"
+                  },
+                  {
+                    "border-radius": "999px"
+                  },
+                  {
+                    "border": "[[[\n  const garage = entity;\n  if (!garage) return '1px solid rgba(255,255,255,.16)';\n  if (garage.state === 'closed') return '2px solid rgba(80,200,90,.85)';\n  if (['open','opening','closing'].includes(garage.state)) {\n    return '2px solid rgba(255,82,82,.88)';\n  }\n  return '1px solid rgba(255,255,255,.16)';\n]]]\n"
+                  },
+                  {
+                    "background": "[[[\n  const garage = entity;\n  if (!garage) return 'linear-gradient(90deg, rgba(70,70,80,.35), rgba(35,35,42,.80))';\n  if (garage.state === 'closed') {\n    return 'linear-gradient(90deg, rgba(76,175,80,.28), rgba(0,150,136,.14))';\n  }\n  if (['open','opening','closing'].includes(garage.state)) {\n    return 'linear-gradient(90deg, rgba(244,67,54,.30), rgba(255,87,34,.14))';\n  }\n  return 'linear-gradient(90deg, rgba(70,70,80,.35), rgba(35,35,42,.80))';\n]]]\n"
+                  },
+                  {
+                    "box-shadow": "0 6px 18px rgba(0,0,0,.20)"
+                  }
+                ],
+                "grid": [
+                  {
+                    "grid-template-areas": "\"i n l\""
+                  },
+                  {
+                    "grid-template-columns": "42px minmax(0, 1fr) auto"
+                  },
+                  {
+                    "grid-template-rows": "1fr"
+                  },
+                  {
+                    "column-gap": "9px"
+                  },
+                  {
+                    "align-items": "center"
+                  }
+                ],
+                "icon": [
+                  {
+                    "width": "29px"
+                  },
+                  {
+                    "color": "[[[\n  const garage = entity;\n  if (!garage) return '#9e9e9e';\n  if (garage.state === 'closed') return '#66bb6a';\n  if (['opening','closing'].includes(garage.state)) return '#ffb74d';\n  if (garage.state === 'open') return '#ff5252';\n  return '#9e9e9e';\n]]]\n"
+                  }
+                ],
+                "name": [
+                  {
+                    "justify-self": "start"
+                  },
+                  {
+                    "font-size": "14px"
+                  },
+                  {
+                    "font-weight": 600
+                  },
+                  {
+                    "white-space": "nowrap"
+                  },
+                  {
+                    "overflow": "hidden"
+                  },
+                  {
+                    "text-overflow": "ellipsis"
+                  }
+                ],
+                "label": [
+                  {
+                    "justify-self": "end"
+                  },
+                  {
+                    "padding": "5px 12px"
+                  },
+                  {
+                    "border-radius": "999px"
+                  },
+                  {
+                    "font-size": "12px"
+                  },
+                  {
+                    "font-weight": 800
+                  },
+                  {
+                    "letter-spacing": "0.5px"
+                  },
+                  {
+                    "color": "white"
+                  },
+                  {
+                    "background": "[[[\n  const garage = entity;\n  if (!garage) return 'rgba(117,117,117,.82)';\n  if (garage.state === 'closed') return 'rgba(46,125,50,.92)';\n  if (['opening','closing'].includes(garage.state)) return 'rgba(239,108,0,.92)';\n  if (garage.state === 'open') return 'rgba(198,40,40,.94)';\n  return 'rgba(117,117,117,.82)';\n]]]\n"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "picture-entity",
+              "entity": "camera.doorbell_fluent",
+              "name": "Front Doorbell",
+              "camera_view": "live",
+              "aspect_ratio": "16:9",
+              "show_name": true,
+              "show_state": false,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "hold_action": {
+                "action": "more-info"
+              },
+              "card_mod": {
+                "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 24px;\n  border: 2px solid rgba(0,229,255,0.48);\n  background: linear-gradient(145deg, rgba(0,188,212,0.18), rgba(103,58,183,0.14));\n  box-shadow: 0 10px 28px rgba(0,188,212,0.20);\n}\n"
+              }
+            }
+          ],
+          "view_layout": {
+            "grid-area": "security"
+          }
+        },
+        {
+          "type": "vertical-stack",
+          "view_layout": {
+            "grid-area": "mining"
+          },
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Duino-Coin Miner",
+              "heading_style": "title",
+              "icon": "mdi:pickaxe"
+            },
+            {
+              "type": "custom:layout-card",
+              "layout_type": "custom:grid-layout",
+              "layout": {
+                "grid-template-columns": "repeat(2, minmax(0, 1fr))",
+                "gap": "10px",
+                "margin": 0,
+                "padding": 0,
+                "mediaquery": {
+                  "(max-width: 500px)": {
+                    "grid-template-columns": "minmax(0, 1fr)"
+                  }
+                }
+              },
+              "cards": [
+                {
+                  "type": "custom:mushroom-entity-card",
+                  "entity": "sensor.duino_coin_balance",
+                  "name": "DUCO Balance",
+                  "icon": "mdi:wallet",
+                  "icon_color": "amber",
+                  "layout": "vertical",
+                  "fill_container": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 22px;\n  border: 1px solid rgba(255,193,7,.30);\n  background: linear-gradient(145deg, rgba(255,193,7,.22), rgba(255,152,0,.10));\n}\n"
+                  }
+                },
+                {
+                  "type": "custom:mushroom-entity-card",
+                  "entity": "sensor.duino_coin_active_workers",
+                  "name": "Active Workers",
+                  "icon": "mdi:pickaxe",
+                  "icon_color": "green",
+                  "layout": "vertical",
+                  "fill_container": true,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "card_mod": {
+                    "style": "ha-card {\n  width: auto !important;\n  max-width: 100% !important;\n  min-width: 0 !important;\n  box-sizing: border-box !important;\n  overflow: hidden;\n  border-radius: 22px;\n  border: 1px solid rgba(76,175,80,.30);\n  background: linear-gradient(145deg, rgba(76,175,80,.22), rgba(0,150,136,.10));\n}\n"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

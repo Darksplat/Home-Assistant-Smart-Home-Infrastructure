@@ -1,0 +1,445 @@
+- id: '1783558011933'
+  alias: Garden Pressure Pump Schedule
+  triggers:
+  - trigger: time
+    at: '13:30:00'
+    id: start
+  - trigger: time
+    at: '13:35:00'
+    id: stop
+  conditions:
+  - condition: time
+    weekday:
+    - mon
+    - thu
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: start
+      sequence:
+      - action: switch.turn_on
+        target:
+          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+    - conditions:
+      - condition: trigger
+        id: stop
+      sequence:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+  mode: single
+- id: '1783559291056'
+  alias: Garden Watering Monday Thursday
+  description: Runs garden watering every Monday and Thursday from 8:30am.
+  triggers:
+  - trigger: time
+    at: 08:30:00
+  conditions:
+  - condition: time
+    weekday:
+    - mon
+    - thu
+  actions:
+  - action: switch.turn_on
+    target:
+      entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+  - delay: 00:00:15
+  - action: switch.turn_on
+    target:
+      entity_id: switch.rain_bird_sprinkler_1
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - action: switch.turn_off
+    target:
+      entity_id: switch.rain_bird_sprinkler_1
+  - delay: 00:00:10
+  - action: switch.turn_on
+    target:
+      entity_id: switch.rain_bird_sprinkler_3
+  - delay: 00:30:00
+  - action: switch.turn_off
+    target:
+      entity_id: switch.rain_bird_sprinkler_3
+  - delay: 00:00:10
+  - action: switch.turn_on
+    target:
+      entity_id: switch.rain_bird_sprinkler_2
+  - delay: 00:30:00
+  - action: switch.turn_off
+    target:
+      entity_id: switch.rain_bird_sprinkler_2
+  - delay: 00:00:10
+  - action: switch.turn_off
+    target:
+      entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_1
+  mode: single
+- id: '1783560423508'
+  alias: FarmBot Power Schedule
+  description: Turn the FarmBot power on at 8:00 AM and off at 6:00 PM every day
+  triggers:
+  - trigger: time
+    at: 08:00:00
+    id: power_on
+  - trigger: time
+    at: '18:00:00'
+    id: power_off
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: power_on
+      sequence:
+      - action: switch.turn_on
+        target:
+          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2
+    - conditions:
+      - condition: trigger
+        id: power_off
+      sequence:
+      - action: switch.turn_off
+        target:
+          entity_id: switch.smart_switch_26030582330465570902c4e7ae28b8aa_outlet_2
+  mode: single
+- id: '1783842643540'
+  alias: FarmBot – Graceful Shutdown at 17:55
+  description: Runs the FarmBot graceful shutdown sequence each day at 17:55
+  triggers:
+  - trigger: time
+    at: '17:55:00'
+  conditions: []
+  actions:
+  - action: select.select_option
+    target:
+      entity_id: select.farmbot_sequence
+    data:
+      option: "{{ state_attr('select.farmbot_sequence', 'options')\n   | select('match',
+        '^314129:')\n   | list\n   | first }}"
+  mode: single
+- id: '1785233513587'
+  alias: Blinds - Sunset
+  description: Close all blinds at sunset and leave Dog Door at 68%
+  triggers:
+  - trigger: sun
+    event: sunset
+  conditions: []
+  actions:
+  - action: cover.close_cover
+    target:
+      entity_id:
+      - cover.dining_room_back
+      - cover.dining_room_side
+      - cover.kitchen
+      - cover.living_room
+      - cover.primary_bedroom
+      - cover.tv_room
+  - action: cover.set_cover_position
+    target:
+      entity_id: cover.dog_door
+    data:
+      position: 68
+  mode: single
+- id: '1785233531203'
+  alias: Blinds - Morning Open
+  description: 'Opens all blinds at 07:20 on weekdays during daylight saving, 07:30
+    on weekdays during standard time, and 08:00 on weekends.
+
+    '
+  triggers:
+  - trigger: time
+    at: 07:20:00
+    id: weekday_summer
+  - trigger: time
+    at: 07:30:00
+    id: weekday_winter
+  - trigger: time
+    at: 08:00:00
+    id: weekend
+  conditions:
+  - condition: template
+    value_template: "{% set weekday = now().weekday() < 5 %} {% set daylight_saving
+      = now().utcoffset().total_seconds() == 39600 %}\n{{\n  (trigger.id == 'weekday_summer'
+      and weekday and daylight_saving)\n  or\n  (trigger.id == 'weekday_winter' and
+      weekday and not daylight_saving)\n  or\n  (trigger.id == 'weekend' and not weekday)\n}}\n"
+  actions:
+  - action: cover.open_cover
+    target:
+      entity_id:
+      - cover.dining_room_back
+      - cover.dining_room_side
+      - cover.dog_door
+      - cover.kitchen
+      - cover.living_room
+      - cover.primary_bedroom
+      - cover.tv_room
+  mode: single
+- id: '1785302227686'
+  alias: Letterbox Sentinel - Parcel Detected
+  description: Latches parcel waiting and notifies when the MYGGBETT parcel door is
+    opened
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.myggbett_door_window_sensor_door
+    from: 'off'
+    to: 'on'
+  conditions: []
+  actions:
+  - action: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.letterbox_parcel_waiting
+  - action: notify.mobile_app_jem_iphone
+    data:
+      title: "\U0001F4E6 Parcel Delivered"
+      message: A parcel has been delivered to the parcel door.
+  - action: notify.mobile_app_alkira_pro_ipad
+    data:
+      title: "\U0001F4E6 Parcel Delivered"
+      message: A parcel has been delivered to the parcel door.
+  mode: single
+- id: '1785303470675'
+  alias: Letterbox Sentinel - Parcel Sensor Battery Alerts
+  description: Two-stage battery warnings for the IKEA MYGGBETT parcel sensor.
+  triggers:
+  - trigger: numeric_state
+    entity_id: sensor.myggbett_door_window_sensor_battery
+    below: 26
+    id: battery_25
+  - trigger: numeric_state
+    entity_id: sensor.myggbett_door_window_sensor_battery
+    below: 16
+    id: battery_15
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: battery_25
+      sequence:
+      - action: notify.mobile_app_jem_iphone
+        data:
+          title: "\U0001F4E6 Letterbox Sentinel"
+          message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
+            }}%. Change the AAA battery soon.
+      - action: notify.mobile_app_alkira_pro_ipad
+        data:
+          title: "\U0001F4E6 Letterbox Sentinel"
+          message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
+            }}%. Change the AAA battery soon.
+    - conditions:
+      - condition: trigger
+        id: battery_15
+      sequence:
+      - action: notify.mobile_app_jem_iphone
+        data:
+          title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
+          message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
+            }}%. Change the AAA battery NOW.
+          data:
+            push:
+              interruption-level: time-sensitive
+      - action: notify.mobile_app_alkira_pro_ipad
+        data:
+          title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
+          message: Parcel sensor battery is {{ states('sensor.myggbett_door_window_sensor_battery')
+            }}%. Change the AAA battery NOW.
+          data:
+            push:
+              interruption-level: time-sensitive
+  mode: single
+- id: '1785303497028'
+  alias: Letterbox Sentinel - Mail Sensor Battery Alerts
+  description: Two-stage battery warnings for the main Letterbox Sentinel battery.
+  triggers:
+  - trigger: numeric_state
+    entity_id: sensor.letterbox_sentinel_battery_2
+    below: 26
+    id: battery_25
+  - trigger: numeric_state
+    entity_id: sensor.letterbox_sentinel_battery_2
+    below: 16
+    id: battery_15
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: battery_25
+      sequence:
+      - action: notify.mobile_app_jem_iphone
+        data:
+          title: "\U0001F4EC Letterbox Sentinel"
+          message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')
+            }}%. Recharge or replace the battery soon.
+      - action: notify.mobile_app_alkira_pro_ipad
+        data:
+          title: "\U0001F4EC Letterbox Sentinel"
+          message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')
+            }}%. Recharge or replace the battery soon.
+    - conditions:
+      - condition: trigger
+        id: battery_15
+      sequence:
+      - action: notify.mobile_app_jem_iphone
+        data:
+          title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
+          message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')
+            }}%. Recharge or replace the battery NOW.
+          data:
+            push:
+              interruption-level: time-sensitive
+      - action: notify.mobile_app_alkira_pro_ipad
+        data:
+          title: "\U0001FAAB LETTERBOX SENTINEL - BATTERY CRITICAL"
+          message: Main Letterbox Sentinel battery is {{ states('sensor.letterbox_sentinel_battery_2')
+            }}%. Recharge or replace the battery NOW.
+          data:
+            push:
+              interruption-level: time-sensitive
+  mode: single
+- id: '1788345404906'
+  alias: Bin Night - Household Reminder
+  description: Notify the household at 7 PM when bins are due tomorrow
+  triggers:
+  - trigger: time
+    at: '19:00:00'
+  conditions:
+  - condition: template
+    value_template: "{{\n  states('sensor.waste_collection_schedule_general_waste')
+      | int(99) == 1\n  or states('sensor.waste_collection_schedule_recycling') |
+      int(99) == 1\n  or states('sensor.waste_collection_schedule_green_waste') |
+      int(99) == 1\n}}\n"
+  actions:
+  - action: notify.send_message
+    target:
+      entity_id: notify.household_notifications
+    data:
+      title: "\U0001F5D1️ Bin Night"
+      message: "{% set ns = namespace(bins=[]) %}\n{% if states('sensor.waste_collection_schedule_general_waste')
+        | int(99) == 1 %}\n  {% set ns.bins = ns.bins + ['\U0001F534 General Waste']
+        %}\n{% endif %}\n{% if states('sensor.waste_collection_schedule_recycling')
+        | int(99) == 1 %}\n  {% set ns.bins = ns.bins + ['\U0001F7E1 Recycling'] %}\n{%
+        endif %}\n{% if states('sensor.waste_collection_schedule_green_waste') | int(99)
+        == 1 %}\n  {% set ns.bins = ns.bins + ['\U0001F7E2 Green Waste'] %}\n{% endif
+        %}\nBins need to go out tonight: {{ ns.bins | join(', ') }}. Collection is
+        tomorrow morning."
+  mode: single
+- id: '1788419519086'
+  alias: Fronius - Amber Negative FIT Load Following
+  description: 'Locally curtails the Fronius GEN24 during negative Amber feed-in pricing
+    when the Sigenergy battery is full. Uses whole-site grid import/export as feedback
+    to load-follow the house and avoid paid export.
+
+    '
+  triggers:
+  - seconds: /30
+    trigger: time_pattern
+  - entity_id:
+    - sensor.amber_express_home_feed_in_price
+    - sensor.sigen_plant_battery_state_of_charge
+    trigger: state
+  actions:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: "{{\n  not (\n    fit_valid | bool\n    and soc_valid | bool\n
+          \   and export_valid | bool\n    and import_valid | bool\n  )\n}}\n"
+      sequence:
+      - action: number.set_value
+        target:
+          entity_id: number.garage_pioneer_maidengully_pv_ac_power_limit
+        data:
+          value: 100
+      - action: switch.turn_off
+        target:
+          entity_id: switch.garage_pioneer_maidengully_pv_ac_power_limiting
+    - conditions:
+      - condition: template
+        value_template: '{{ fit >= 0 }}'
+      sequence:
+      - action: number.set_value
+        target:
+          entity_id: number.garage_pioneer_maidengully_pv_ac_power_limit
+        data:
+          value: 100
+      - delay: 00:00:02
+      - action: switch.turn_off
+        target:
+          entity_id: switch.garage_pioneer_maidengully_pv_ac_power_limiting
+    - conditions:
+      - condition: template
+        value_template: '{{ fit < 0 and soc < 99 }}'
+      sequence:
+      - action: number.set_value
+        target:
+          entity_id: number.garage_pioneer_maidengully_pv_ac_power_limit
+        data:
+          value: 100
+      - delay: 00:00:02
+      - action: switch.turn_off
+        target:
+          entity_id: switch.garage_pioneer_maidengully_pv_ac_power_limiting
+    - conditions:
+      - condition: template
+        value_template: '{{ fit < 0 and soc >= 99 }}'
+      sequence:
+      - if:
+        - condition: state
+          entity_id: switch.garage_pioneer_maidengully_pv_ac_power_limiting
+          state: 'off'
+        then:
+        - action: switch.turn_on
+          target:
+            entity_id: switch.garage_pioneer_maidengully_pv_ac_power_limiting
+        - delay: 00:00:03
+      - if:
+        - condition: template
+          value_template: '{{ net_export_kw > 0.15 or net_export_kw < -0.30 }}
+
+            '
+        then:
+        - action: number.set_value
+          target:
+            entity_id: number.garage_pioneer_maidengully_pv_ac_power_limit
+          data:
+            value: '{{ new_limit }}'
+  mode: restart
+  variables:
+    fit_valid: '{{ has_value(''sensor.amber_express_home_feed_in_price'') }}
+
+      '
+    soc_valid: '{{ has_value(''sensor.sigen_plant_battery_state_of_charge'') }}
+
+      '
+    export_valid: '{{ has_value(''sensor.sigen_plant_grid_export_power'') }}
+
+      '
+    import_valid: '{{ has_value(''sensor.sigen_plant_grid_import_power'') }}
+
+      '
+    fit: '{{ states(''sensor.amber_express_home_feed_in_price'') | float(0) }}
+
+      '
+    soc: '{{ states(''sensor.sigen_plant_battery_state_of_charge'') | float(0) }}
+
+      '
+    export_kw: '{{ states(''sensor.sigen_plant_grid_export_power'') | float(0) }}
+
+      '
+    import_kw: '{{ states(''sensor.sigen_plant_grid_import_power'') | float(0) }}
+
+      '
+    net_export_kw: "{{\n  states('sensor.sigen_plant_grid_export_power') | float(0)\n
+      \ -\n  states('sensor.sigen_plant_grid_import_power') | float(0)\n}}\n"
+    current_limit: "{{\n  states('number.garage_pioneer_maidengully_pv_ac_power_limit')\n
+      \ | float(100)\n}}\n"
+    new_limit: "{% set current =\n   states('number.garage_pioneer_maidengully_pv_ac_power_limit')\n
+      \  | float(100)\n%} {% set export =\n   states('sensor.sigen_plant_grid_export_power')\n
+      \  | float(0)\n%} {% set import =\n   states('sensor.sigen_plant_grid_import_power')\n
+      \  | float(0)\n%} {% set net = export - import %}\n{# GEN24 = 10 kW, therefore
+      1 kW = 10 percentage points #} {% set raw = current - (net * 10) %}\n{# Clamp
+      result between 0 and 100 percent #} {{ [[raw, 0] | max, 100] | min | round(1)
+      }}\n"

@@ -1,0 +1,897 @@
+{
+  "title": "Blinds",
+  "views": [
+    {
+      "title": "Blinds",
+      "path": "blinds",
+      "icon": "mdi:blinds-horizontal",
+      "type": "sections",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "All Blinds",
+              "icon": "mdi:blinds-horizontal"
+            },
+            {
+              "type": "horizontal-stack",
+              "cards": [
+                {
+                  "type": "button",
+                  "name": "Open All",
+                  "icon": "mdi:arrow-up-bold",
+                  "show_state": false,
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "cover.open_cover",
+                    "target": {
+                      "entity_id": [
+                        "cover.dining_room_back",
+                        "cover.dining_room_side",
+                        "cover.dog_door",
+                        "cover.kitchen",
+                        "cover.living_room",
+                        "cover.primary_bedroom",
+                        "cover.tv_room"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Stop All",
+                  "icon": "mdi:stop",
+                  "show_state": false,
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "cover.stop_cover",
+                    "target": {
+                      "entity_id": [
+                        "cover.dining_room_back",
+                        "cover.dining_room_side",
+                        "cover.dog_door",
+                        "cover.kitchen",
+                        "cover.living_room",
+                        "cover.primary_bedroom",
+                        "cover.tv_room"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "name": "Close All",
+                  "icon": "mdi:arrow-down-bold",
+                  "show_state": false,
+                  "tap_action": {
+                    "action": "perform-action",
+                    "perform_action": "cover.close_cover",
+                    "target": {
+                      "entity_id": [
+                        "cover.dining_room_back",
+                        "cover.dining_room_side",
+                        "cover.dog_door",
+                        "cover.kitchen",
+                        "cover.living_room",
+                        "cover.primary_bedroom",
+                        "cover.tv_room"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Dining Room",
+              "icon": "mdi:table-chair"
+            },
+            {
+              "type": "tile",
+              "entity": "cover.dining_room_back",
+              "name": "Dining Room Back",
+              "icon": "mdi:blinds-horizontal",
+              "features": [
+                {
+                  "type": "cover-open-close"
+                },
+                {
+                  "type": "cover-position"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "cover.dining_room_side",
+              "name": "Dining Room Side",
+              "icon": "mdi:blinds-horizontal",
+              "features": [
+                {
+                  "type": "cover-open-close"
+                },
+                {
+                  "type": "cover-position"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Living Areas",
+              "icon": "mdi:sofa"
+            },
+            {
+              "type": "tile",
+              "entity": "cover.kitchen",
+              "name": "Kitchen",
+              "icon": "mdi:blinds-horizontal",
+              "features": [
+                {
+                  "type": "cover-open-close"
+                },
+                {
+                  "type": "cover-position"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "cover.living_room",
+              "name": "Living Room",
+              "icon": "mdi:blinds-horizontal",
+              "features": [
+                {
+                  "type": "cover-open-close"
+                },
+                {
+                  "type": "cover-position"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "cover.tv_room",
+              "name": "TV Room",
+              "icon": "mdi:blinds-horizontal",
+              "features": [
+                {
+                  "type": "cover-open-close"
+                },
+                {
+                  "type": "cover-position"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Other Blinds",
+              "icon": "mdi:home"
+            },
+            {
+              "type": "tile",
+              "entity": "cover.primary_bedroom",
+              "name": "Primary Bedroom",
+              "icon": "mdi:blinds-horizontal",
+              "features": [
+                {
+                  "type": "cover-open-close"
+                },
+                {
+                  "type": "cover-position"
+                }
+              ]
+            },
+            {
+              "type": "tile",
+              "entity": "cover.dog_door",
+              "name": "Dog Door",
+              "icon": "mdi:blinds-horizontal",
+              "features": [
+                {
+                  "type": "cover-open-close"
+                },
+                {
+                  "type": "cover-position"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "Battery Levels",
+              "heading_style": "title"
+            },
+            {
+              "type": "grid",
+              "columns": 4,
+              "square": false,
+              "cards": [
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.automate_shade_7ih_pulse_blind_7ih_battery",
+                  "icon": "mdi:bed-king-outline",
+                  "show_name": false,
+                  "show_state": false,
+                  "show_icon": true,
+                  "custom_fields": {
+                    "pct": "[[[ return entity.state + \"%\"; ]]]",
+                    "volts": "[[[ return Number(entity.attributes.battery_voltage).toFixed(2) + \" V\"; ]]]",
+                    "bar": "[[[\n  const b = Number(entity.state);\n  const c = b >= 70 ? '#30d158' : b >= 40 ? '#ffd60a' : b >= 20 ? '#ff9f0a' : '#ff453a';\n  return `\n    <style>@keyframes sweep_pb {0%{left:-35%}100%{left:115%}}</style>\n    <div style=\"height:11px;background:rgba(255,255,255,.10);border-radius:20px;overflow:hidden;\">\n      <div style=\"width:${b}%;height:100%;background:${c};border-radius:20px;position:relative;overflow:hidden;box-shadow:0 0 12px ${c};\">\n        <div style=\"position:absolute;top:0;bottom:0;left:-35%;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);animation:sweep_pb 2.5s linear infinite;\"></div>\n      </div>\n    </div>`;\n]]]\n"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "height": "230px"
+                      },
+                      {
+                        "border-radius": "28px"
+                      },
+                      {
+                        "padding": "20px"
+                      },
+                      {
+                        "overflow": "hidden"
+                      },
+                      {
+                        "border": "[[[ const b=Number(entity.state); const c=b>=70?\"48,209,88\":b>=40?\"255,214,10\":b>=20?\"255,159,10\":\"255,69,58\"; return `1px solid rgba(${c},.55)`; ]]]"
+                      },
+                      {
+                        "background": "[[[ const b=Number(entity.state); if(b>=70)return \"radial-gradient(circle at 50% 18%,rgba(48,209,88,.17),transparent 55%),#151515\"; if(b>=40)return \"radial-gradient(circle at 50% 18%,rgba(255,214,10,.17),transparent 55%),#151515\"; if(b>=20)return \"radial-gradient(circle at 50% 18%,rgba(255,159,10,.20),transparent 55%),#151515\"; return \"radial-gradient(circle at 50% 18%,rgba(255,69,58,.20),transparent 55%),#151515\"; ]]]"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i\" \"pct\" \"volts\" \"bar\""
+                      },
+                      {
+                        "grid-template-columns": "1fr"
+                      },
+                      {
+                        "grid-template-rows": "62px 68px 35px 1fr"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "justify-self": "center"
+                      },
+                      {
+                        "width": "50px"
+                      },
+                      {
+                        "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                      },
+                      {
+                        "filter": "[[[ const b=Number(entity.state); const c=b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; return `drop-shadow(0 0 10px ${c})`; ]]]"
+                      }
+                    ],
+                    "custom_fields": {
+                      "pct": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "52px"
+                        },
+                        {
+                          "font-weight": 800
+                        },
+                        {
+                          "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                        }
+                      ],
+                      "volts": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "17px"
+                        },
+                        {
+                          "color": "rgba(255,255,255,.70)"
+                        }
+                      ],
+                      "bar": [
+                        {
+                          "width": "100%"
+                        },
+                        {
+                          "align-self": "end"
+                        }
+                      ]
+                    }
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.automate_shade_269_pulse_blind_269_battery",
+                  "icon": "mdi:television",
+                  "show_name": false,
+                  "show_state": false,
+                  "show_icon": true,
+                  "custom_fields": {
+                    "pct": "[[[ return entity.state + \"%\"; ]]]",
+                    "volts": "[[[ return Number(entity.attributes.battery_voltage).toFixed(2) + \" V\"; ]]]",
+                    "bar": "[[[\n  const b=Number(entity.state); const c=b>=70?'#30d158':b>=40?'#ffd60a':b>=20?'#ff9f0a':'#ff453a';\n  return `<style>@keyframes sweep_tv{0%{left:-35%}100%{left:115%}}</style><div style=\"height:11px;background:rgba(255,255,255,.10);border-radius:20px;overflow:hidden;\"><div style=\"width:${b}%;height:100%;background:${c};border-radius:20px;position:relative;overflow:hidden;box-shadow:0 0 12px ${c};\"><div style=\"position:absolute;top:0;bottom:0;left:-35%;width:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);animation:sweep_tv 2.5s linear infinite;\"></div></div></div>`;\n]]]\n"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "height": "230px"
+                      },
+                      {
+                        "border-radius": "28px"
+                      },
+                      {
+                        "padding": "20px"
+                      },
+                      {
+                        "overflow": "hidden"
+                      },
+                      {
+                        "border": "[[[ const b=Number(entity.state); const c=b>=70?\"48,209,88\":b>=40?\"255,214,10\":b>=20?\"255,159,10\":\"255,69,58\"; return `1px solid rgba(${c},.55)`; ]]]"
+                      },
+                      {
+                        "background": "[[[ const b=Number(entity.state); if(b>=70)return \"radial-gradient(circle at 50% 18%,rgba(48,209,88,.17),transparent 55%),#151515\"; if(b>=40)return \"radial-gradient(circle at 50% 18%,rgba(255,214,10,.17),transparent 55%),#151515\"; if(b>=20)return \"radial-gradient(circle at 50% 18%,rgba(255,159,10,.20),transparent 55%),#151515\"; return \"radial-gradient(circle at 50% 18%,rgba(255,69,58,.20),transparent 55%),#151515\"; ]]]"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i\" \"pct\" \"volts\" \"bar\""
+                      },
+                      {
+                        "grid-template-columns": "1fr"
+                      },
+                      {
+                        "grid-template-rows": "62px 68px 35px 1fr"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "justify-self": "center"
+                      },
+                      {
+                        "width": "50px"
+                      },
+                      {
+                        "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                      },
+                      {
+                        "filter": "[[[ const b=Number(entity.state); const c=b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; return `drop-shadow(0 0 10px ${c})`; ]]]"
+                      }
+                    ],
+                    "custom_fields": {
+                      "pct": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "52px"
+                        },
+                        {
+                          "font-weight": 800
+                        },
+                        {
+                          "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                        }
+                      ],
+                      "volts": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "17px"
+                        },
+                        {
+                          "color": "rgba(255,255,255,.70)"
+                        }
+                      ],
+                      "bar": [
+                        {
+                          "width": "100%"
+                        },
+                        {
+                          "align-self": "end"
+                        }
+                      ]
+                    }
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.automate_shade_743_pulse_blind_743_battery",
+                  "icon": "mdi:sofa-outline",
+                  "show_name": false,
+                  "show_state": false,
+                  "show_icon": true,
+                  "custom_fields": {
+                    "pct": "[[[ return entity.state + \"%\"; ]]]",
+                    "volts": "[[[ return Number(entity.attributes.battery_voltage).toFixed(2) + \" V\"; ]]]",
+                    "bar": "[[[ const b=Number(entity.state); const c=b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; return `<div style=\"height:11px;background:rgba(255,255,255,.10);border-radius:20px;overflow:hidden;\"><div style=\"width:${b}%;height:100%;background:${c};border-radius:20px;box-shadow:0 0 12px ${c};\"></div></div>`; ]]]"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "height": "230px"
+                      },
+                      {
+                        "border-radius": "28px"
+                      },
+                      {
+                        "padding": "20px"
+                      },
+                      {
+                        "border": "[[[ const b=Number(entity.state); const c=b>=70?\"48,209,88\":b>=40?\"255,214,10\":b>=20?\"255,159,10\":\"255,69,58\"; return `1px solid rgba(${c},.55)`; ]]]"
+                      },
+                      {
+                        "background": "[[[ const b=Number(entity.state); if(b>=70)return \"radial-gradient(circle at 50% 18%,rgba(48,209,88,.17),transparent 55%),#151515\"; if(b>=40)return \"radial-gradient(circle at 50% 18%,rgba(255,214,10,.17),transparent 55%),#151515\"; if(b>=20)return \"radial-gradient(circle at 50% 18%,rgba(255,159,10,.20),transparent 55%),#151515\"; return \"radial-gradient(circle at 50% 18%,rgba(255,69,58,.20),transparent 55%),#151515\"; ]]]"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i\" \"pct\" \"volts\" \"bar\""
+                      },
+                      {
+                        "grid-template-columns": "1fr"
+                      },
+                      {
+                        "grid-template-rows": "62px 68px 35px 1fr"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "justify-self": "center"
+                      },
+                      {
+                        "width": "50px"
+                      },
+                      {
+                        "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                      }
+                    ],
+                    "custom_fields": {
+                      "pct": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "52px"
+                        },
+                        {
+                          "font-weight": 800
+                        },
+                        {
+                          "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                        }
+                      ],
+                      "volts": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "17px"
+                        },
+                        {
+                          "color": "rgba(255,255,255,.70)"
+                        }
+                      ],
+                      "bar": [
+                        {
+                          "width": "100%"
+                        },
+                        {
+                          "align-self": "end"
+                        }
+                      ]
+                    }
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.automate_shade_9ok_pulse_blind_9ok_battery",
+                  "icon": "mdi:countertop-outline",
+                  "show_name": false,
+                  "show_state": false,
+                  "show_icon": true,
+                  "custom_fields": {
+                    "pct": "[[[ return entity.state + \"%\"; ]]]",
+                    "volts": "[[[ return Number(entity.attributes.battery_voltage).toFixed(2) + \" V\"; ]]]",
+                    "bar": "[[[ const b=Number(entity.state); const c=b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; return `<div style=\"height:11px;background:rgba(255,255,255,.10);border-radius:20px;overflow:hidden;\"><div style=\"width:${b}%;height:100%;background:${c};border-radius:20px;box-shadow:0 0 12px ${c};\"></div></div>`; ]]]"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "height": "230px"
+                      },
+                      {
+                        "border-radius": "28px"
+                      },
+                      {
+                        "padding": "20px"
+                      },
+                      {
+                        "border": "[[[ const b=Number(entity.state); const c=b>=70?\"48,209,88\":b>=40?\"255,214,10\":b>=20?\"255,159,10\":\"255,69,58\"; return `1px solid rgba(${c},.55)`; ]]]"
+                      },
+                      {
+                        "background": "[[[ const b=Number(entity.state); if(b>=70)return \"radial-gradient(circle at 50% 18%,rgba(48,209,88,.17),transparent 55%),#151515\"; if(b>=40)return \"radial-gradient(circle at 50% 18%,rgba(255,214,10,.17),transparent 55%),#151515\"; if(b>=20)return \"radial-gradient(circle at 50% 18%,rgba(255,159,10,.20),transparent 55%),#151515\"; return \"radial-gradient(circle at 50% 18%,rgba(255,69,58,.20),transparent 55%),#151515\"; ]]]"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i\" \"pct\" \"volts\" \"bar\""
+                      },
+                      {
+                        "grid-template-columns": "1fr"
+                      },
+                      {
+                        "grid-template-rows": "62px 68px 35px 1fr"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "justify-self": "center"
+                      },
+                      {
+                        "width": "50px"
+                      },
+                      {
+                        "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                      }
+                    ],
+                    "custom_fields": {
+                      "pct": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "52px"
+                        },
+                        {
+                          "font-weight": 800
+                        },
+                        {
+                          "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                        }
+                      ],
+                      "volts": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "17px"
+                        },
+                        {
+                          "color": "rgba(255,255,255,.70)"
+                        }
+                      ],
+                      "bar": [
+                        {
+                          "width": "100%"
+                        },
+                        {
+                          "align-self": "end"
+                        }
+                      ]
+                    }
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.automate_shade_kcn_pulse_blind_kcn_battery",
+                  "icon": "mdi:dog",
+                  "show_name": false,
+                  "show_state": false,
+                  "show_icon": true,
+                  "custom_fields": {
+                    "pct": "[[[ return entity.state + \"%\"; ]]]",
+                    "volts": "[[[ return Number(entity.attributes.battery_voltage).toFixed(2) + \" V\"; ]]]",
+                    "bar": "[[[ const b=Number(entity.state); const c=b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; return `<div style=\"height:11px;background:rgba(255,255,255,.10);border-radius:20px;overflow:hidden;\"><div style=\"width:${b}%;height:100%;background:${c};border-radius:20px;box-shadow:0 0 12px ${c};\"></div></div>`; ]]]"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "height": "230px"
+                      },
+                      {
+                        "border-radius": "28px"
+                      },
+                      {
+                        "padding": "20px"
+                      },
+                      {
+                        "border": "[[[ const b=Number(entity.state); const c=b>=70?\"48,209,88\":b>=40?\"255,214,10\":b>=20?\"255,159,10\":\"255,69,58\"; return `1px solid rgba(${c},.55)`; ]]]"
+                      },
+                      {
+                        "background": "[[[ const b=Number(entity.state); if(b>=70)return \"radial-gradient(circle at 50% 18%,rgba(48,209,88,.17),transparent 55%),#151515\"; if(b>=40)return \"radial-gradient(circle at 50% 18%,rgba(255,214,10,.17),transparent 55%),#151515\"; if(b>=20)return \"radial-gradient(circle at 50% 18%,rgba(255,159,10,.20),transparent 55%),#151515\"; return \"radial-gradient(circle at 50% 18%,rgba(255,69,58,.20),transparent 55%),#151515\"; ]]]"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i\" \"pct\" \"volts\" \"bar\""
+                      },
+                      {
+                        "grid-template-columns": "1fr"
+                      },
+                      {
+                        "grid-template-rows": "62px 68px 35px 1fr"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "justify-self": "center"
+                      },
+                      {
+                        "width": "50px"
+                      },
+                      {
+                        "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                      }
+                    ],
+                    "custom_fields": {
+                      "pct": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "52px"
+                        },
+                        {
+                          "font-weight": 800
+                        },
+                        {
+                          "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                        }
+                      ],
+                      "volts": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "17px"
+                        },
+                        {
+                          "color": "rgba(255,255,255,.70)"
+                        }
+                      ],
+                      "bar": [
+                        {
+                          "width": "100%"
+                        },
+                        {
+                          "align-self": "end"
+                        }
+                      ]
+                    }
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.automate_shade_buu_pulse_blind_buu_battery",
+                  "icon": "mdi:table-chair",
+                  "show_name": false,
+                  "show_state": false,
+                  "show_icon": true,
+                  "custom_fields": {
+                    "pct": "[[[ return entity.state + \"%\"; ]]]",
+                    "volts": "[[[ return Number(entity.attributes.battery_voltage).toFixed(2) + \" V\"; ]]]",
+                    "bar": "[[[ const b=Number(entity.state); const c=b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; return `<div style=\"height:11px;background:rgba(255,255,255,.10);border-radius:20px;overflow:hidden;\"><div style=\"width:${b}%;height:100%;background:${c};border-radius:20px;box-shadow:0 0 12px ${c};\"></div></div>`; ]]]"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "height": "230px"
+                      },
+                      {
+                        "border-radius": "28px"
+                      },
+                      {
+                        "padding": "20px"
+                      },
+                      {
+                        "border": "[[[ const b=Number(entity.state); const c=b>=70?\"48,209,88\":b>=40?\"255,214,10\":b>=20?\"255,159,10\":\"255,69,58\"; return `1px solid rgba(${c},.55)`; ]]]"
+                      },
+                      {
+                        "background": "[[[ const b=Number(entity.state); if(b>=70)return \"radial-gradient(circle at 50% 18%,rgba(48,209,88,.17),transparent 55%),#151515\"; if(b>=40)return \"radial-gradient(circle at 50% 18%,rgba(255,214,10,.17),transparent 55%),#151515\"; if(b>=20)return \"radial-gradient(circle at 50% 18%,rgba(255,159,10,.20),transparent 55%),#151515\"; return \"radial-gradient(circle at 50% 18%,rgba(255,69,58,.20),transparent 55%),#151515\"; ]]]"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i\" \"pct\" \"volts\" \"bar\""
+                      },
+                      {
+                        "grid-template-columns": "1fr"
+                      },
+                      {
+                        "grid-template-rows": "62px 68px 35px 1fr"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "justify-self": "center"
+                      },
+                      {
+                        "width": "50px"
+                      },
+                      {
+                        "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                      }
+                    ],
+                    "custom_fields": {
+                      "pct": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "52px"
+                        },
+                        {
+                          "font-weight": 800
+                        },
+                        {
+                          "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                        }
+                      ],
+                      "volts": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "17px"
+                        },
+                        {
+                          "color": "rgba(255,255,255,.70)"
+                        }
+                      ],
+                      "bar": [
+                        {
+                          "width": "100%"
+                        },
+                        {
+                          "align-self": "end"
+                        }
+                      ]
+                    }
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                },
+                {
+                  "type": "custom:button-card",
+                  "entity": "sensor.automate_shade_ydk_pulse_blind_ydk_battery",
+                  "icon": "mdi:table-chair",
+                  "show_name": false,
+                  "show_state": false,
+                  "show_icon": true,
+                  "custom_fields": {
+                    "pct": "[[[ return entity.state + \"%\"; ]]]",
+                    "volts": "[[[ return Number(entity.attributes.battery_voltage).toFixed(2) + \" V\"; ]]]",
+                    "bar": "[[[ const b=Number(entity.state); const c=b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; return `<div style=\"height:11px;background:rgba(255,255,255,.10);border-radius:20px;overflow:hidden;\"><div style=\"width:${b}%;height:100%;background:${c};border-radius:20px;box-shadow:0 0 12px ${c};\"></div></div>`; ]]]"
+                  },
+                  "styles": {
+                    "card": [
+                      {
+                        "height": "230px"
+                      },
+                      {
+                        "border-radius": "28px"
+                      },
+                      {
+                        "padding": "20px"
+                      },
+                      {
+                        "border": "[[[ const b=Number(entity.state); const c=b>=70?\"48,209,88\":b>=40?\"255,214,10\":b>=20?\"255,159,10\":\"255,69,58\"; return `1px solid rgba(${c},.55)`; ]]]"
+                      },
+                      {
+                        "background": "[[[ const b=Number(entity.state); if(b>=70)return \"radial-gradient(circle at 50% 18%,rgba(48,209,88,.17),transparent 55%),#151515\"; if(b>=40)return \"radial-gradient(circle at 50% 18%,rgba(255,214,10,.17),transparent 55%),#151515\"; if(b>=20)return \"radial-gradient(circle at 50% 18%,rgba(255,159,10,.20),transparent 55%),#151515\"; return \"radial-gradient(circle at 50% 18%,rgba(255,69,58,.20),transparent 55%),#151515\"; ]]]"
+                      }
+                    ],
+                    "grid": [
+                      {
+                        "grid-template-areas": "\"i\" \"pct\" \"volts\" \"bar\""
+                      },
+                      {
+                        "grid-template-columns": "1fr"
+                      },
+                      {
+                        "grid-template-rows": "62px 68px 35px 1fr"
+                      }
+                    ],
+                    "icon": [
+                      {
+                        "justify-self": "center"
+                      },
+                      {
+                        "width": "50px"
+                      },
+                      {
+                        "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                      }
+                    ],
+                    "custom_fields": {
+                      "pct": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "52px"
+                        },
+                        {
+                          "font-weight": 800
+                        },
+                        {
+                          "color": "[[[ const b=Number(entity.state); return b>=70?\"#30d158\":b>=40?\"#ffd60a\":b>=20?\"#ff9f0a\":\"#ff453a\"; ]]]"
+                        }
+                      ],
+                      "volts": [
+                        {
+                          "justify-self": "center"
+                        },
+                        {
+                          "font-size": "17px"
+                        },
+                        {
+                          "color": "rgba(255,255,255,.70)"
+                        }
+                      ],
+                      "bar": [
+                        {
+                          "width": "100%"
+                        },
+                        {
+                          "align-self": "end"
+                        }
+                      ]
+                    }
+                  },
+                  "tap_action": {
+                    "action": "more-info"
+                  }
+                }
+              ],
+              "grid_options": {
+                "columns": "full",
+                "rows": "auto"
+              }
+            }
+          ],
+          "column_span": 2
+        }
+      ]
+    }
+  ]
+}

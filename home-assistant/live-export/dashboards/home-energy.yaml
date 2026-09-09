@@ -1,0 +1,48 @@
+{
+  "views": [
+    {
+      "type": "sections",
+      "sections": [
+        {
+          "type": "grid",
+          "cards": [
+            {
+              "type": "heading",
+              "heading": "New section"
+            },
+            {
+              "type": "custom:helios-card",
+              "cache-id": "cmsu0xtmv7ckzjj",
+              "auto-rotate-enabled": true,
+              "camera-locked": false,
+              "camera-bearing-deg": 347,
+              "camera-pitch-deg": 50,
+              "map-color-land": "#2a2f3a",
+              "map-color-water": "#33445f",
+              "map-color-wood": "#2c3730",
+              "map-color-grass": "#313d33",
+              "map-color-sand": "#3a3730",
+              "map-color-wetland": "#2d3838",
+              "map-color-ice": "#39404a",
+              "map-color-landuse": "#2e3340",
+              "map-color-roadMajor": "#454c5e",
+              "map-color-roadMinor": "#3a4152",
+              "map-color-roadCasing": "#20242e",
+              "map-color-path": "#3c4354",
+              "map-color-rail": "#4a5060",
+              "map-color-building": "#333a48",
+              "map-color-boundary": "#5a4a63",
+              "display-update-frequency-per-hour": 4,
+              "max-expected-power": 14000,
+              "battery-chip-mode": "soc",
+              "battery-sign": "default",
+              "building-cluster-radius": 20,
+              "map-theme-mode": "dark",
+              "building-color": "brown"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

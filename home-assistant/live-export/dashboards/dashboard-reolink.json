@@ -1,0 +1,477 @@
+{
+  "title": "Reolink Security",
+  "views": [
+    {
+      "background": {
+        "alignment": "center",
+        "attachment": "fixed",
+        "image": "linear-gradient(145deg, rgba(4,10,24,1) 0%, rgba(8,28,49,1) 45%, rgba(23,13,50,1) 100%)",
+        "opacity": 100,
+        "repeat": "no-repeat",
+        "size": "cover"
+      },
+      "cards": [],
+      "icon": "mdi:cctv",
+      "max_columns": 4,
+      "path": "reolink-security",
+      "sections": [
+        {
+          "cards": [
+            {
+              "card_mod": {
+                "style": "ha-card {\n  overflow: hidden;\n  background: linear-gradient(110deg, rgba(0,188,212,0.28), rgba(103,58,183,0.30), rgba(233,30,99,0.20));\n  border: 1px solid rgba(255,255,255,0.18);\n  border-radius: 28px;\n  box-shadow: 0 14px 36px rgba(0,0,0,0.34);\n  padding: 14px;\n  backdrop-filter: blur(14px);\n}\nmushroom-shape-icon {\n  --shape-color: rgba(0,229,255,0.20) !important;\n  --icon-size: 60px;\n}\n.primary {\n  font-size: 24px !important;\n  font-weight: 800 !important;\n  letter-spacing: 0.3px;\n}\n.secondary {\n  font-size: 14px !important;\n  opacity: 0.82;\n}\n"
+              },
+              "fill_container": true,
+              "icon": "mdi:shield-home",
+              "icon_color": "cyan",
+              "layout": "horizontal",
+              "primary": "Reolink Security Centre",
+              "secondary": "Live property overview • 9 cameras • 2 indoor chimes",
+              "tap_action": {
+                "action": "none"
+              },
+              "type": "custom:mushroom-template-card"
+            },
+            {
+              "cards": [
+                {
+                  "card_mod": {
+                    "style": "ha-card {\n  overflow: hidden;\n  background: linear-gradient(145deg, rgba(255,152,0,0.24), rgba(255,87,34,0.13));\n  border: 1px solid rgba(255,183,77,0.32);\n  border-radius: 22px;\n}\n"
+                  },
+                  "icon": "mdi:home-export-outline",
+                  "icon_color": "amber",
+                  "primary": "Front Zone",
+                  "secondary": "6 camera views",
+                  "tap_action": {
+                    "action": "none"
+                  },
+                  "type": "custom:mushroom-template-card"
+                },
+                {
+                  "card_mod": {
+                    "style": "ha-card {\n  overflow: hidden;\n  background: linear-gradient(145deg, rgba(76,175,80,0.24), rgba(0,150,136,0.13));\n  border: 1px solid rgba(129,199,132,0.30);\n  border-radius: 22px;\n}\n"
+                  },
+                  "icon": "mdi:home-import-outline",
+                  "icon_color": "light-green",
+                  "primary": "Rear Zone",
+                  "secondary": "3 camera views",
+                  "tap_action": {
+                    "action": "none"
+                  },
+                  "type": "custom:mushroom-template-card"
+                },
+                {
+                  "card_mod": {
+                    "style": "ha-card {\n  overflow: hidden;\n  background: linear-gradient(145deg, rgba(156,39,176,0.25), rgba(63,81,181,0.14));\n  border: 1px solid rgba(186,104,200,0.30);\n  border-radius: 22px;\n}\n"
+                  },
+                  "icon": "mdi:bell-ring-outline",
+                  "icon_color": "purple",
+                  "primary": "Chimes",
+                  "secondary": "Kitchen + Media Room",
+                  "tap_action": {
+                    "action": "none"
+                  },
+                  "type": "custom:mushroom-template-card"
+                }
+              ],
+              "type": "horizontal-stack"
+            }
+          ],
+          "column_span": 4,
+          "type": "grid"
+        },
+        {
+          "cards": [
+            {
+              "badges": [
+                {
+                  "entity": "switch.reolink_chime_led",
+                  "icon": "mdi:bell",
+                  "name": "Kitchen Chime",
+                  "show_state": true,
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "type": "entity"
+                },
+                {
+                  "entity": "switch.reolink_chime_media_room_led",
+                  "icon": "mdi:bell",
+                  "name": "Media Chime",
+                  "show_state": true,
+                  "tap_action": {
+                    "action": "toggle"
+                  },
+                  "type": "entity"
+                }
+              ],
+              "heading": "Main Entry",
+              "heading_style": "title",
+              "icon": "mdi:doorbell-video",
+              "type": "heading"
+            },
+            {
+              "aspect_ratio": "16:9",
+              "camera_view": "live",
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 26px;\n  overflow: hidden;\n  border: 2px solid rgba(0,229,255,0.50);\n  box-shadow: 0 14px 34px rgba(0,188,212,0.25);\n}\n.card-content {\n  background: linear-gradient(transparent, rgba(0,0,0,0.82));\n  font-weight: 800;\n  font-size: 18px;\n}\n"
+              },
+              "entity": "camera.doorbell_fluent",
+              "hold_action": {
+                "action": "more-info"
+              },
+              "name": "Front Doorbell",
+              "show_name": true,
+              "show_state": false,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "type": "picture-entity"
+            },
+            {
+              "cards": [
+                {
+                  "aspect_ratio": "16:9",
+                  "camera_view": "auto",
+                  "card_mod": {
+                    "style": "ha-card {\n  border-radius: 20px;\n  overflow: hidden;\n  border: 1px solid rgba(255,193,7,0.42);\n  box-shadow: 0 8px 22px rgba(0,0,0,0.28);\n}\n"
+                  },
+                  "entity": "camera.front_door_fluent",
+                  "name": "Front Door",
+                  "show_name": true,
+                  "show_state": false,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "picture-entity"
+                },
+                {
+                  "aspect_ratio": "16:9",
+                  "camera_view": "auto",
+                  "card_mod": {
+                    "style": "ha-card {\n  border-radius: 20px;\n  overflow: hidden;\n  border: 1px solid rgba(255,152,0,0.42);\n  box-shadow: 0 8px 22px rgba(0,0,0,0.28);\n}\n"
+                  },
+                  "entity": "camera.front_overall_fluent",
+                  "name": "Front Overall",
+                  "show_name": true,
+                  "show_state": false,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "picture-entity"
+                }
+              ],
+              "columns": 2,
+              "square": false,
+              "type": "grid"
+            }
+          ],
+          "column_span": 2,
+          "type": "grid"
+        },
+        {
+          "cards": [
+            {
+              "heading": "Gates & Front Garden",
+              "heading_style": "title",
+              "icon": "mdi:gate",
+              "type": "heading"
+            },
+            {
+              "aspect_ratio": "16:9",
+              "camera_view": "live",
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 26px;\n  overflow: hidden;\n  border: 2px solid rgba(255,193,7,0.48);\n  box-shadow: 0 14px 34px rgba(255,152,0,0.20);\n}\n.card-content {\n  background: linear-gradient(transparent, rgba(0,0,0,0.82));\n  font-weight: 800;\n  font-size: 18px;\n}\n"
+              },
+              "entity": "camera.front_garden_fluent",
+              "name": "Front Garden",
+              "show_name": true,
+              "show_state": false,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "type": "picture-entity"
+            },
+            {
+              "cards": [
+                {
+                  "aspect_ratio": "16:9",
+                  "camera_view": "auto",
+                  "card_mod": {
+                    "style": "ha-card {\n  border-radius: 20px;\n  overflow: hidden;\n  border: 1px solid rgba(255,112,67,0.45);\n}\n"
+                  },
+                  "entity": "camera.lhs_gate_fluent",
+                  "name": "Left Gate",
+                  "show_name": true,
+                  "show_state": false,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "picture-entity"
+                },
+                {
+                  "aspect_ratio": "16:9",
+                  "camera_view": "auto",
+                  "card_mod": {
+                    "style": "ha-card {\n  border-radius: 20px;\n  overflow: hidden;\n  border: 1px solid rgba(255,112,67,0.45);\n}\n"
+                  },
+                  "entity": "camera.rhs_gate_fluent",
+                  "name": "Right Gate",
+                  "show_name": true,
+                  "show_state": false,
+                  "tap_action": {
+                    "action": "more-info"
+                  },
+                  "type": "picture-entity"
+                }
+              ],
+              "columns": 2,
+              "square": false,
+              "type": "grid"
+            }
+          ],
+          "column_span": 2,
+          "type": "grid"
+        },
+        {
+          "cards": [
+            {
+              "heading": "Backyard",
+              "heading_style": "title",
+              "icon": "mdi:tree-outline",
+              "type": "heading"
+            },
+            {
+              "aspect_ratio": "16:9",
+              "camera_view": "live",
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 26px;\n  overflow: hidden;\n  border: 2px solid rgba(76,175,80,0.50);\n  box-shadow: 0 14px 34px rgba(76,175,80,0.20);\n}\n.card-content {\n  background: linear-gradient(transparent, rgba(0,0,0,0.82));\n  font-weight: 800;\n  font-size: 18px;\n}\n"
+              },
+              "entity": "camera.back_overall_fluent",
+              "name": "Back Overall",
+              "show_name": true,
+              "show_state": false,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "type": "picture-entity"
+            },
+            {
+              "aspect_ratio": "16:9",
+              "camera_view": "auto",
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 20px;\n  overflow: hidden;\n  border: 1px solid rgba(102,187,106,0.42);\n}\n"
+              },
+              "entity": "camera.backyard_fluent",
+              "name": "Backyard Detail",
+              "show_name": true,
+              "show_state": false,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "type": "picture-entity"
+            }
+          ],
+          "column_span": 2,
+          "type": "grid"
+        },
+        {
+          "cards": [
+            {
+              "heading": "Shed & Rear Access",
+              "heading_style": "title",
+              "icon": "mdi:warehouse",
+              "type": "heading"
+            },
+            {
+              "aspect_ratio": "16:9",
+              "camera_view": "live",
+              "card_mod": {
+                "style": "ha-card {\n  border-radius: 26px;\n  overflow: hidden;\n  border: 2px solid rgba(126,87,194,0.50);\n  box-shadow: 0 14px 34px rgba(103,58,183,0.24);\n}\n.card-content {\n  background: linear-gradient(transparent, rgba(0,0,0,0.82));\n  font-weight: 800;\n  font-size: 18px;\n}\n"
+              },
+              "entity": "camera.shed_fluent",
+              "name": "Shed",
+              "show_name": true,
+              "show_state": false,
+              "tap_action": {
+                "action": "more-info"
+              },
+              "type": "picture-entity"
+            },
+            {
+              "card_mod": {
+                "style": "ha-card {\n  overflow: hidden;\n  background: linear-gradient(135deg, rgba(103,58,183,0.22), rgba(33,150,243,0.13));\n  border: 1px solid rgba(179,157,219,0.28);\n  border-radius: 20px;\n}\n"
+              },
+              "icon": "mdi:radar",
+              "icon_color": "deep-purple",
+              "multiline_secondary": true,
+              "primary": "Property Coverage",
+              "secondary": "Front, gates, backyard and shed cameras are available from this view.",
+              "tap_action": {
+                "action": "none"
+              },
+              "type": "custom:mushroom-template-card"
+            }
+          ],
+          "column_span": 2,
+          "type": "grid"
+        },
+        {
+          "cards": [
+            {
+              "heading": "Doorbell Chime Controls",
+              "heading_style": "title",
+              "icon": "mdi:bell-cog-outline",
+              "type": "heading"
+            },
+            {
+              "cards": [
+                {
+                  "cards": [
+                    {
+                      "card_mod": {
+                        "style": "ha-card {\n  overflow: hidden;\n  background: linear-gradient(135deg, rgba(255,152,0,0.24), rgba(255,87,34,0.12));\n  border: 1px solid rgba(255,183,77,0.32);\n  border-radius: 22px 22px 10px 10px;\n}\n"
+                      },
+                      "icon": "mdi:silverware-fork-knife",
+                      "icon_color": "orange",
+                      "primary": "Kitchen Chime",
+                      "secondary": "Front door alerts in the kitchen",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "type": "custom:mushroom-template-card"
+                    },
+                    {
+                      "card_mod": {
+                        "style": "ha-card {\n  overflow: hidden;\n  background: rgba(255,255,255,0.055);\n  border: 1px solid rgba(255,183,77,0.20);\n  border-radius: 10px 10px 22px 22px;\n  backdrop-filter: blur(12px);\n}\n"
+                      },
+                      "entities": [
+                        {
+                          "entity": "switch.reolink_chime_led",
+                          "icon": "mdi:led-on",
+                          "name": "Status LED"
+                        },
+                        {
+                          "entity": "number.reolink_chime_volume",
+                          "icon": "mdi:volume-high",
+                          "name": "Volume"
+                        },
+                        {
+                          "entity": "number.reolink_chime_silent_time",
+                          "icon": "mdi:bell-sleep-outline",
+                          "name": "Silent Time"
+                        },
+                        {
+                          "entity": "select.reolink_chime_visitor_ringtone",
+                          "icon": "mdi:music-note",
+                          "name": "Visitor Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_person_ringtone",
+                          "icon": "mdi:account-music-outline",
+                          "name": "Person Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_motion_ringtone",
+                          "icon": "mdi:motion-sensor",
+                          "name": "Motion Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_vehicle_ringtone",
+                          "icon": "mdi:car-connected",
+                          "name": "Vehicle Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_pet_ringtone",
+                          "icon": "mdi:paw",
+                          "name": "Pet Ringtone"
+                        }
+                      ],
+                      "show_header_toggle": false,
+                      "type": "entities"
+                    }
+                  ],
+                  "type": "vertical-stack"
+                },
+                {
+                  "cards": [
+                    {
+                      "card_mod": {
+                        "style": "ha-card {\n  overflow: hidden;\n  background: linear-gradient(135deg, rgba(156,39,176,0.25), rgba(63,81,181,0.13));\n  border: 1px solid rgba(186,104,200,0.32);\n  border-radius: 22px 22px 10px 10px;\n}\n"
+                      },
+                      "icon": "mdi:television-speaker",
+                      "icon_color": "purple",
+                      "primary": "Media Room Chime",
+                      "secondary": "Front door alerts in the media room",
+                      "tap_action": {
+                        "action": "none"
+                      },
+                      "type": "custom:mushroom-template-card"
+                    },
+                    {
+                      "card_mod": {
+                        "style": "ha-card {\n  overflow: hidden;\n  background: rgba(255,255,255,0.055);\n  border: 1px solid rgba(186,104,200,0.20);\n  border-radius: 10px 10px 22px 22px;\n  backdrop-filter: blur(12px);\n}\n"
+                      },
+                      "entities": [
+                        {
+                          "entity": "switch.reolink_chime_media_room_led",
+                          "icon": "mdi:led-on",
+                          "name": "Status LED"
+                        },
+                        {
+                          "entity": "number.reolink_chime_media_room_volume",
+                          "icon": "mdi:volume-high",
+                          "name": "Volume"
+                        },
+                        {
+                          "entity": "number.reolink_chime_media_room_silent_time",
+                          "icon": "mdi:bell-sleep-outline",
+                          "name": "Silent Time"
+                        },
+                        {
+                          "entity": "select.reolink_chime_media_room_visitor_ringtone",
+                          "icon": "mdi:music-note",
+                          "name": "Visitor Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_media_room_person_ringtone",
+                          "icon": "mdi:account-music-outline",
+                          "name": "Person Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_media_room_motion_ringtone",
+                          "icon": "mdi:motion-sensor",
+                          "name": "Motion Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_media_room_vehicle_ringtone",
+                          "icon": "mdi:car-connected",
+                          "name": "Vehicle Ringtone"
+                        },
+                        {
+                          "entity": "select.reolink_chime_media_room_pet_ringtone",
+                          "icon": "mdi:paw",
+                          "name": "Pet Ringtone"
+                        }
+                      ],
+                      "show_header_toggle": false,
+                      "type": "entities"
+                    }
+                  ],
+                  "type": "vertical-stack"
+                }
+              ],
+              "columns": 2,
+              "square": false,
+              "type": "grid"
+            }
+          ],
+          "column_span": 4,
+          "type": "grid"
+        }
+      ],
+      "title": "Security",
+      "type": "sections"
+    }
+  ]
+}

@@ -1,0 +1,1018 @@
+###############################################################################
+# DUINO-COIN HOME ASSISTANT PACKAGE
+#
+# Account: darksplat
+#
+# Provides:
+#   - Balance
+#   - Active worker count
+#   - Total hashrate
+#   - Raspberry Pi monitoring
+#   - ESP32 monitoring
+#   - ESP8266 monitoring
+#   - UNO1 - UNO8 monitoring
+#   - Individual miner connectivity
+#   - Duino-Coin found-block monitoring
+#
+###############################################################################
+
+
+###############################################################################
+# REST API
+###############################################################################
+
+rest:
+
+  ###########################################################################
+  # DUINO-COIN ACCOUNT / MINER API
+  ###########################################################################
+
+  - resource: "https://server.duinocoin.com/users/darksplat"
+    scan_interval: 60
+    timeout: 15
+
+    sensor:
+
+      #######################################################################
+      # ACCOUNT
+      #######################################################################
+
+      - name: "Duino Coin Balance"
+        unique_id: duino_coin_balance
+        value_template: >
+          {{ value_json.result.balance.balance | float(0) | round(4) }}
+        unit_of_measurement: "DUCO"
+        icon: mdi:currency-usd
+
+      - name: "Duino Coin Active Workers"
+        unique_id: duino_coin_active_workers
+        value_template: >
+          {{ value_json.result.miners | count }}
+        unit_of_measurement: "workers"
+        icon: mdi:pickaxe
+
+      - name: "Duino Coin Total Hashrate"
+        unique_id: duino_coin_total_hashrate
+        value_template: >
+          {{ value_json.result.miners
+             | map(attribute='hashrate')
+             | map('float')
+             | sum
+             | round(0) }}
+        unit_of_measurement: "H/s"
+        icon: mdi:speedometer
+
+
+      #######################################################################
+      # RASPBERRY PI
+      #######################################################################
+
+      - name: "Duino Coin RPI Hashrate"
+        unique_id: duino_coin_rpi_hashrate
+        value_template: >
+          {% set ns = namespace(total=0) %}
+          {% for miner in value_json.result.miners %}
+            {% if miner.identifier == "RPI - RPi" %}
+              {% set ns.total = ns.total + (miner.hashrate | float(0)) %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.total | round(0) }}
+        unit_of_measurement: "H/s"
+        icon: mdi:raspberry-pi
+
+      - name: "Duino Coin RPI Temperature"
+        unique_id: duino_coin_rpi_temperature
+        value_template: >
+          {% for miner in value_json.result.miners %}
+            {% if miner.identifier == "RPI - RPi" and miner.it %}
+              {{ miner.it
+                 | replace("CPU temperature:", "")
+                 | replace("*C", "")
+                 | replace("C", "")
+                 | trim
+                 | float(0)
+                 | round(1) }}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        unit_of_measurement: "°C"
+        device_class: temperature
+        icon: mdi:thermometer
+
+      #######################################################################
+      # ESP32
+      #######################################################################
+
+      - name: "Duino Coin ESP32 Hashrate"
+        unique_id: duino_coin_esp32_hashrate
+        value_template: >
+          {% set ns = namespace(total=0) %}
+          {% for miner in value_json.result.miners %}
+            {% if "ESP32 Miner" in miner.software %}
+              {% set ns.total = ns.total + (miner.hashrate | float(0)) %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.total | round(0) }}
+        unit_of_measurement: "H/s"
+        icon: mdi:chip
+
+
+      #######################################################################
+      # ESP8266
+      #######################################################################
+
+      - name: "Duino Coin 8266 No1 Hashrate"
+        unique_id: duino_coin_8266_no1_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', '8266 No1')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) | round(0) }}
+        unit_of_measurement: "H/s"
+        icon: mdi:chip
+
+      - name: "Duino Coin 8266 No2 Hashrate"
+        unique_id: duino_coin_8266_no2_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', '8266 No2')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) | round(0) }}
+        unit_of_measurement: "H/s"
+        icon: mdi:chip
+
+
+      #######################################################################
+      # ARDUINO UNO MINERS
+      #######################################################################
+
+      - name: "Duino Coin UNO1 Hashrate"
+        unique_id: duino_coin_uno1_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO1')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+      - name: "Duino Coin UNO2 Hashrate"
+        unique_id: duino_coin_uno2_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO2')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+      - name: "Duino Coin UNO3 Hashrate"
+        unique_id: duino_coin_uno3_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO3')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+      - name: "Duino Coin UNO4 Hashrate"
+        unique_id: duino_coin_uno4_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO4')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+      - name: "Duino Coin UNO5 Hashrate"
+        unique_id: duino_coin_uno5_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO5')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+      - name: "Duino Coin UNO6 Hashrate"
+        unique_id: duino_coin_uno6_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO6')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+      - name: "Duino Coin UNO7 Hashrate"
+        unique_id: duino_coin_uno7_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO7')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+      - name: "Duino Coin UNO8 Hashrate"
+        unique_id: duino_coin_uno8_hashrate
+        value_template: >
+          {{ (value_json.result.miners
+              | selectattr('identifier', 'eq', 'UNO8')
+              | map(attribute='hashrate')
+              | first
+              | default(0)) | float(0) }}
+        unit_of_measurement: "H/s"
+
+
+    #########################################################################
+    # MINER CONNECTIVITY
+    #########################################################################
+
+    binary_sensor:
+
+      - name: "Duino Coin UNO1 Mining"
+        unique_id: duino_coin_uno1_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO1')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin UNO2 Mining"
+        unique_id: duino_coin_uno2_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO2')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin UNO3 Mining"
+        unique_id: duino_coin_uno3_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO3')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin UNO4 Mining"
+        unique_id: duino_coin_uno4_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO4')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin UNO5 Mining"
+        unique_id: duino_coin_uno5_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO5')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin UNO6 Mining"
+        unique_id: duino_coin_uno6_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO6')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin UNO7 Mining"
+        unique_id: duino_coin_uno7_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO7')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin UNO8 Mining"
+        unique_id: duino_coin_uno8_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'UNO8')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin RPI Mining"
+        unique_id: duino_coin_rpi_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', 'RPI - RPi')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin ESP32 Mining"
+        unique_id: duino_coin_esp32_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('software', 'search', 'ESP32 Miner')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin 8266 No1 Mining"
+        unique_id: duino_coin_8266_no1_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', '8266 No1')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+      - name: "Duino Coin 8266 No2 Mining"
+        unique_id: duino_coin_8266_no2_mining
+        value_template: >
+          {{ value_json.result.miners
+             | selectattr('identifier', 'eq', '8266 No2')
+             | list
+             | count > 0 }}
+        device_class: connectivity
+
+
+  ###########################################################################
+  # DUINO-COIN FOUND BLOCK API
+  ###########################################################################
+
+  - resource: "https://server.duinocoin.com/foundBlocks.json"
+    scan_interval: 60
+    timeout: 15
+
+    sensor:
+
+      #######################################################################
+      # LAST BLOCK HASH
+      #######################################################################
+
+      - name: "Duino Coin Last Block Hash"
+        unique_id: duino_coin_last_block_hash
+        icon: mdi:link-variant
+        value_template: >
+          {% set ns = namespace(
+            latest_hash='none',
+            latest_ts=0
+          ) %}
+
+          {% for hash, block in value_json.items() %}
+            {% if 'darksplat' in (block['Finder'] | lower) %}
+
+              {% set block_ts = as_timestamp(
+                strptime(
+                  block['Date'] ~ ' ' ~ block['Time'],
+                  '%d/%m/%Y %H:%M:%S'
+                )
+              ) %}
+
+              {% if block_ts > ns.latest_ts %}
+                {% set ns.latest_ts = block_ts %}
+                {% set ns.latest_hash = block['Hash'] %}
+              {% endif %}
+
+            {% endif %}
+          {% endfor %}
+
+          {{ ns.latest_hash }}
+
+
+      #######################################################################
+      # LAST BLOCK DATE / TIME
+      #######################################################################
+
+      - name: "Duino Coin Last Block Found"
+        unique_id: duino_coin_last_block_found
+        icon: mdi:clock-check-outline
+        value_template: >
+          {% set ns = namespace(
+            latest='Never',
+            latest_ts=0
+          ) %}
+
+          {% for hash, block in value_json.items() %}
+            {% if 'darksplat' in (block['Finder'] | lower) %}
+
+              {% set block_ts = as_timestamp(
+                strptime(
+                  block['Date'] ~ ' ' ~ block['Time'],
+                  '%d/%m/%Y %H:%M:%S'
+                )
+              ) %}
+
+              {% if block_ts > ns.latest_ts %}
+                {% set ns.latest_ts = block_ts %}
+                {% set ns.latest =
+                  block['Date'] ~ ' ' ~ block['Time']
+                %}
+              {% endif %}
+
+            {% endif %}
+          {% endfor %}
+
+          {{ ns.latest }}
+
+
+      #######################################################################
+      # LAST BLOCK REWARD
+      #######################################################################
+
+      - name: "Duino Coin Last Block Reward"
+        unique_id: duino_coin_last_block_reward
+        icon: mdi:cash
+        unit_of_measurement: "DUCO"
+        value_template: >
+          {% set ns = namespace(
+            reward=0,
+            latest_ts=0
+          ) %}
+
+          {% for hash, block in value_json.items() %}
+            {% if 'darksplat' in (block['Finder'] | lower) %}
+
+              {% set block_ts = as_timestamp(
+                strptime(
+                  block['Date'] ~ ' ' ~ block['Time'],
+                  '%d/%m/%Y %H:%M:%S'
+                )
+              ) %}
+
+              {% if block_ts > ns.latest_ts %}
+                {% set ns.latest_ts = block_ts %}
+                {% set ns.reward =
+                  block['Amount generated']
+                %}
+              {% endif %}
+
+            {% endif %}
+          {% endfor %}
+
+          {{ ns.reward }}
+
+###############################################################################
+# DUINO-COIN FOUND BLOCK - PERSISTENT STORAGE
+###############################################################################
+
+
+  ###########################################################################
+  # DUINO-COIN ESTIMATED USD PRICE
+  ###########################################################################
+
+  - resource: "https://server.duinocoin.com/v3/users/darksplat?limit=1"
+    scan_interval: 300
+    timeout: 15
+
+    sensor:
+
+      - name: "Duino Coin Price USD"
+        unique_id: duino_coin_price_usd
+        icon: mdi:currency-usd
+        unit_of_measurement: "USD"
+        value_template: >
+          {{ value_json.result.exch_rates.max.price | float(0) }}
+
+
+  ###########################################################################
+  # USD TO AUD EXCHANGE RATE
+  ###########################################################################
+
+  - resource: "https://api.frankfurter.dev/v2/rate/USD/AUD?providers=RBA"
+    scan_interval: 3600
+    timeout: 15
+
+    sensor:
+
+      - name: "USD to AUD"
+        unique_id: duino_coin_usd_to_aud
+        icon: mdi:cash-sync
+        value_template: >
+          {{ value_json.rate | float(0) }}
+
+input_text:
+
+  duino_coin_saved_block_hash:
+    name: "Duino Coin Saved Block Hash"
+    icon: mdi:link-variant
+    max: 100
+
+
+input_number:
+
+  duino_coin_saved_block_reward:
+    name: "Duino Coin Saved Block Reward"
+    icon: mdi:cash
+    min: 0
+    max: 1000
+    step: 0.01
+    mode: box
+    unit_of_measurement: "DUCO"
+
+
+input_datetime:
+
+  duino_coin_saved_block_found:
+    name: "Duino Coin Saved Block Found"
+    icon: mdi:clock-check-outline
+    has_date: true
+    has_time: true
+
+
+###############################################################################
+# BLOCK FOUND CELEBRATION TIMER
+###############################################################################
+
+timer:
+
+  duino_coin_block_celebration:
+    name: "Duino Coin Block Celebration"
+    icon: mdi:party-popper
+    duration: "00:00:30"
+    restore: true
+
+
+###############################################################################
+# DERIVED BLOCK INFORMATION
+###############################################################################
+
+template:
+
+  - sensor:
+
+      #########################################################################
+      # HUMAN READABLE TIME SINCE LAST BLOCK
+      #########################################################################
+
+      - name: "Duino Coin Last Block Age"
+        unique_id: duino_coin_last_block_age
+        icon: mdi:timer-sand
+        state: >
+          {% set saved = states('input_datetime.duino_coin_saved_block_found') %}
+
+          {% if saved in ['unknown', 'unavailable', 'none', ''] %}
+            Never
+          {% else %}
+
+            {% set found = as_timestamp(saved, default=none) %}
+
+            {% if found is none %}
+              Never
+            {% else %}
+
+              {% set seconds = (as_timestamp(now()) - found) | int(0) %}
+              {% set days = (seconds // 86400) %}
+              {% set hours = ((seconds % 86400) // 3600) %}
+              {% set minutes = ((seconds % 3600) // 60) %}
+
+              {% if days > 0 %}
+                {{ days }}d {{ hours }}h ago
+              {% elif hours > 0 %}
+                {{ hours }}h {{ minutes }}m ago
+              {% elif minutes > 0 %}
+                {{ minutes }}m ago
+              {% else %}
+                Just now
+              {% endif %}
+
+            {% endif %}
+          {% endif %}
+
+
+
+      #########################################################################
+      # MINER CONTINUOUS CONNECTION DURATION
+      #
+      # These sensors show how long Home Assistant has continuously seen each
+      # miner as online. "Offline" is shown whenever the corresponding mining
+      # binary sensor is off.
+      #########################################################################
+
+
+      - name: "Duino Coin UNO1 Connected For"
+        unique_id: duino_coin_uno1_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno1_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin UNO2 Connected For"
+        unique_id: duino_coin_uno2_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno2_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin UNO3 Connected For"
+        unique_id: duino_coin_uno3_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno3_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin UNO4 Connected For"
+        unique_id: duino_coin_uno4_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno4_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin UNO5 Connected For"
+        unique_id: duino_coin_uno5_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno5_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin UNO6 Connected For"
+        unique_id: duino_coin_uno6_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno6_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin UNO7 Connected For"
+        unique_id: duino_coin_uno7_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno7_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin UNO8 Connected For"
+        unique_id: duino_coin_uno8_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_uno8_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin RPI Connected For"
+        unique_id: duino_coin_rpi_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_rpi_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin ESP32 Connected For"
+        unique_id: duino_coin_esp32_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_esp32_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin 8266 No1 Connected For"
+        unique_id: duino_coin_8266_no1_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_8266_no1_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+      - name: "Duino Coin 8266 No2 Connected For"
+        unique_id: duino_coin_8266_no2_connected_for
+        icon: mdi:timer-outline
+        state: >
+          {% set e = 'binary_sensor.duino_coin_8266_no2_mining' %}
+          {% if is_state(e, 'on') %}
+            {% set s = (as_timestamp(now()) - as_timestamp(states[e].last_changed)) | int(0) %}
+            {% set d = s // 86400 %}
+            {% set h = (s % 86400) // 3600 %}
+            {% set m = (s % 3600) // 60 %}
+            {% if d > 0 %}
+              {{ d }}d {{ h }}h
+            {% elif h > 0 %}
+              {{ h }}h {{ m }}m
+            {% else %}
+              {{ m }}m
+            {% endif %}
+          {% else %}
+            Offline
+          {% endif %}
+
+
+
+      #########################################################################
+      # DUINO-COIN BALANCE VALUE IN AUD
+      #########################################################################
+
+      - name: "Duino Coin Balance AUD"
+        unique_id: duino_coin_balance_aud
+        icon: mdi:cash-multiple
+        unit_of_measurement: "AUD"
+        state_class: measurement
+        state: >
+          {% set balance = states('sensor.duino_coin_balance') | float(0) %}
+          {% set duco_usd = states('sensor.duino_coin_price_usd') | float(0) %}
+          {% set usd_aud = states('sensor.usd_to_aud') | float(0) %}
+
+          {{ (balance * duco_usd * usd_aud) | round(2) }}
+
+
+  - binary_sensor:
+
+      #########################################################################
+      # TRUE WHILE THE 30 SECOND CELEBRATION IS RUNNING
+      #########################################################################
+
+      - name: "Duino Coin Block Celebration"
+        unique_id: duino_coin_block_celebration
+        icon: mdi:party-popper
+        state: >
+          {{ is_state('timer.duino_coin_block_celebration', 'active') }}
+
+
+###############################################################################
+# BLOCK DETECTION AUTOMATION
+###############################################################################
+
+automation:
+
+  - id: duino_coin_detect_new_block
+    alias: "Duino Coin - Detect New Block"
+    description: >
+      Detects a new Duino-Coin block found by darksplat, permanently stores
+      the block information and starts the dashboard celebration timer.
+
+    trigger:
+
+      - platform: state
+        entity_id: sensor.duino_coin_last_block_hash
+
+    condition:
+
+      #########################################################################
+      # IGNORE NONE / UNKNOWN / UNAVAILABLE
+      #########################################################################
+
+      - condition: template
+        value_template: >
+          {{
+            trigger.to_state is not none
+            and trigger.to_state.state not in
+              ['none', 'unknown', 'unavailable', '']
+          }}
+
+      #########################################################################
+      # ONLY PROCESS A HASH WE HAVE NOT ALREADY SAVED
+      #########################################################################
+
+      - condition: template
+        value_template: >
+          {{
+            trigger.to_state.state
+            != states('input_text.duino_coin_saved_block_hash')
+          }}
+
+    action:
+
+      #########################################################################
+      # SAVE BLOCK HASH
+      #########################################################################
+
+      - service: input_text.set_value
+        target:
+          entity_id: input_text.duino_coin_saved_block_hash
+        data:
+          value: >
+            {{ trigger.to_state.state }}
+
+
+      #########################################################################
+      # SAVE BLOCK REWARD
+      #########################################################################
+
+      - service: input_number.set_value
+        target:
+          entity_id: input_number.duino_coin_saved_block_reward
+        data:
+          value: >
+            {{ states('sensor.duino_coin_last_block_reward') | float(0) }}
+
+
+      #########################################################################
+      # SAVE DATE AND TIME
+      #########################################################################
+
+      - service: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.duino_coin_saved_block_found
+        data:
+          datetime: >
+            {% set raw = states('sensor.duino_coin_last_block_found') %}
+            {% set parsed = strptime(
+              raw,
+              '%d/%m/%Y %H:%M:%S',
+              none
+            ) %}
+
+            {% if parsed is not none %}
+              {{ parsed.strftime('%Y-%m-%d %H:%M:%S') }}
+            {% else %}
+              {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
+            {% endif %}
+
+
+      #########################################################################
+      # START 30 SECOND CELEBRATION
+      #########################################################################
+
+      - service: timer.start
+        target:
+          entity_id: timer.duino_coin_block_celebration
+        data:
+          duration: "00:00:30"
+
+    mode: single
+
+
+###############################################################################
+# MANUAL TEST SCRIPT
+#
+# This DOES NOT alter the stored block information.
+# It only starts the 30 second celebration timer so we can test the dashboard.
+###############################################################################
+
+script:
+
+  duino_coin_test_block_celebration:
+    alias: "Duino Coin - Test Block Celebration"
+    icon: mdi:party-popper
+    sequence:
+
+      - service: timer.start
+        target:
+          entity_id: timer.duino_coin_block_celebration
+        data:
+          duration: "00:00:30"
