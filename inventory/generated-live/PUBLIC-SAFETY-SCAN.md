@@ -12,10 +12,9 @@ Generated automatically after the Home Assistant export.
 ## Privacy exclusions
 
 - Household-specific generated files removed: **3**
-- Mobile-app device inventory rows removed: **0**
-- Mobile-app entity inventory rows removed: **174**
+- Full device/entity registry inventory files removed: **2**
 
-The live household chores package/dashboard and Home Assistant Companion App device/entity inventory are intentionally excluded from the public snapshot.
+The live household chores package/dashboard and complete Home Assistant device/entity registries are intentionally excluded from the public snapshot. Aggregate counts, integration inventory, area inventory and curated subsystem documentation remain public.
 
 ## Remaining high-risk findings
 
