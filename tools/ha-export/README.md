@@ -17,6 +17,7 @@ The exporter reads the live Home Assistant files from the Mac Samba mount and ge
 - aggregate device/entity counts in the export report
 - an export report listing redactions and skipped items
 - an automatic post-export public-safety report
+- a generated frontend dependency inventory based on the public dashboard exports
 
 Generated output is written under:
 
@@ -51,12 +52,15 @@ The live registries are still read to produce aggregate counts and to support sa
 
 `core.config_entries` is read only to produce aggregate integration-domain counts. Its raw contents are never written to the repository.
 
-## Automatic public-safety pass
+## Export pipeline
 
-`run-export.sh` performs two stages:
+`run-export.sh` performs three stages:
 
 1. export/sanitize the selected Home Assistant material;
-2. post-process and validate the generated repository files.
+2. post-process and validate the generated repository files;
+3. inventory custom frontend dependencies from the retained public dashboards.
+
+### Public-safety pass
 
 The safety pass automatically:
 
@@ -76,7 +80,19 @@ inventory/generated-live/PUBLIC-SAFETY-SCAN.md
 
 If high-risk findings remain, the script exits with an error and prints `EXPORT NOT READY FOR PUBLIC COMMIT`.
 
-The safety pass only operates on generated files inside the repository. It does not modify the live Home Assistant Samba share.
+### Frontend dependency audit
+
+After the public-safety pass removes private dashboards/material, the workflow scans the remaining JSON dashboard exports for `custom:` card/layout types and `card_mod` usage.
+
+The report is written to:
+
+```text
+inventory/generated-live/FRONTEND-DEPENDENCIES.md
+```
+
+This gives the rebuild documentation a current machine-derived list of custom Lovelace dependencies rather than relying only on memory.
+
+The audit helper lives under `tools/repo-audit/`.
 
 ## Running it on this installation
 
@@ -92,7 +108,7 @@ From the repository root run:
 zsh tools/ha-export/run-export.sh
 ```
 
-Or explicitly run the exporter and safety pass:
+Or explicitly run the stages:
 
 ```bash
 python3 tools/ha-export/export_home_assistant.py \
@@ -101,17 +117,21 @@ python3 tools/ha-export/export_home_assistant.py \
 
 python3 tools/ha-export/public_safety.py \
   --repo /Users/jeremyyounger/Documents/GitHub/Home-Assistant-Smart-Home-Infrastructure
+
+python3 tools/repo-audit/dashboard_dependencies.py \
+  --repo /Users/jeremyyounger/Documents/GitHub/Home-Assistant-Smart-Home-Infrastructure
 ```
 
 The exporter only reads the Home Assistant share. It never modifies files on the Pi.
 
 ## After running
 
-Review both:
+Review:
 
 ```text
 inventory/generated-live/EXPORT-REPORT.md
 inventory/generated-live/PUBLIC-SAFETY-SCAN.md
+inventory/generated-live/FRONTEND-DEPENDENCIES.md
 ```
 
 Then run:
@@ -120,7 +140,7 @@ Then run:
 git status --short
 ```
 
-Do not blindly commit material if either report contains unexpected warnings or redactions. The repository is public, so generated files still receive a review before merge.
+Do not blindly commit material if the reports contain unexpected warnings or redactions. The repository is public, so generated files still receive a review before merge.
 
 ## Repeat exports
 

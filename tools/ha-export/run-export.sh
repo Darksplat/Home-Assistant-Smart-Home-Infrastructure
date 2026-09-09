@@ -11,3 +11,8 @@ python3 "$SCRIPT_DIR/export_home_assistant.py" \
 
 python3 "$SCRIPT_DIR/public_safety.py" \
   --repo "$REPO_ROOT"
+
+# This runs after privacy filtering so the dependency report reflects only
+# dashboards that remain in the public export.
+python3 "$REPO_ROOT/tools/repo-audit/dashboard_dependencies.py" \
+  --repo "$REPO_ROOT"

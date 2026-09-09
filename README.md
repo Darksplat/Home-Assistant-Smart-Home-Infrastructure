@@ -9,6 +9,19 @@ This repository documents a real residential Home Assistant installation with tw
 1. preserve reproducible configuration and system knowledge;
 2. publish only material that is safe and appropriate for a public repository.
 
+## Recovery / rebuild
+
+For a Home Assistant host restore, migration or clean rebuild, start here:
+
+- [`docs/installation/README.md`](docs/installation/README.md) — ordered rebuild procedure
+- [`docs/installation/DEPENDENCIES.md`](docs/installation/DEPENDENCIES.md) — service/integration dependency matrix
+- [`docs/installation/FRONTEND-DEPENDENCIES.md`](docs/installation/FRONTEND-DEPENDENCIES.md) — HACS/Lovelace requirements
+- [`docs/installation/PRIVATE-RECOVERY-REQUIREMENTS.md`](docs/installation/PRIVATE-RECOVERY-REQUIREMENTS.md) — what must be kept securely outside the public repo
+- [`docs/installation/RECOVERY-CHECKLIST.md`](docs/installation/RECOVERY-CHECKLIST.md) — final post-restore acceptance checklist
+- [`docs/troubleshooting/README.md`](docs/troubleshooting/README.md) — whole-system fault isolation
+
+A Home Assistant full backup remains the preferred exact-recovery mechanism. The public repository is deliberately not a copy of credentials, auth state, Thread datasets or private household identity data.
+
 ## Live baseline
 
 A sanitized live export was established from the working Home Assistant installation on 9 September 2026.
@@ -25,7 +38,7 @@ The source snapshot reported:
 
 The public-safety pass intentionally removes household-specific material and complete device/entity registry inventories. Eleven live dashboard exports remain public.
 
-The repeatable export workflow is documented under [`tools/ha-export/`](tools/ha-export/).
+The repeatable export workflow is documented under [`tools/ha-export/`](tools/ha-export/). Each refresh now also inventories custom frontend dependencies from the public dashboard exports.
 
 ## Repository layout
 
@@ -72,15 +85,19 @@ Complete Home Assistant device/entity registry tables are deliberately not publi
 
 ### `docs/`
 
-Whole-system architecture, network, installation, security and troubleshooting documentation.
+Whole-system architecture, network, installation/rebuild, security and troubleshooting documentation.
 
 ### `hardware/`
 
-Hardware-specific documentation for hosts, ESP controllers, networking and Thread infrastructure.
+Public-safe hardware role/recovery index for hosts, controllers, energy hardware, networking and Thread infrastructure.
 
 ### `integrations/`
 
-Installation, configuration and troubleshooting notes for Home Assistant integrations.
+Integration inventory, custom-component snapshot and rebuild guidance.
+
+### `tools/repo-audit/`
+
+Repository maintenance helpers, including relative Markdown-link checking and dashboard frontend-dependency inventory.
 
 ### `diagnostics/`
 
@@ -151,10 +168,13 @@ See [`docs/security/`](docs/security/) for the full policy.
 
 ## Status
 
-The major deployed subsystems represented by the current live snapshot now have curated public documentation. Ongoing work is primarily:
+The repository now contains a sanitized live baseline, curated documentation for the major deployed subsystems, and an ordered rebuild/recovery framework.
+
+Ongoing maintenance is primarily:
 
 - refreshing the live snapshot after meaningful Home Assistant changes;
-- extending rebuild/commissioning procedures as hardware changes;
-- documenting physical network/hardware topology where Home Assistant cannot infer it;
+- keeping the private recovery set current;
+- reviewing generated frontend/custom-integration dependencies after updates;
+- extending commissioning notes as hardware changes;
 - preserving sanitized troubleshooting cases;
 - keeping subsystem docs aligned with deployed automations and dashboards.
